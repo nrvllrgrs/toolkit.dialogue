@@ -1,0 +1,202 @@
+{
+  "api/ToolkitEditor.Dialogue.DialogueCategoryEditor.html": {
+    "href": "api/ToolkitEditor.Dialogue.DialogueCategoryEditor.html",
+    "title": "Class DialogueCategoryEditor | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueCategoryEditor Namespace ToolkitEditor.Dialogue public class DialogueCategoryEditor : BaseToolkitEditor, INestableEditor Inheritance object DialogueCategoryEditor Implements INestableEditor Fields m_infiniteSimulatenous protected SerializedProperty m_infiniteSimulatenous Field Value SerializedProperty m_interruptPriority protected SerializedProperty m_interruptPriority Field Value SerializedProperty m_maxSimultaneous protected SerializedProperty m_maxSimultaneous Field Value SerializedProperty m_priorities protected SerializedProperty m_priorities Field Value SerializedProperty m_queuePriority protected SerializedProperty m_queuePriority Field Value SerializedProperty m_queueable protected SerializedProperty m_queueable Field Value SerializedProperty m_timeToForget protected SerializedProperty m_timeToForget Field Value SerializedProperty Methods DrawProperties() protected override void DrawProperties() GetNestedHeight() public virtual float GetNestedHeight() Returns float OnNestedGUI(ref Rect) public virtual void OnNestedGUI(ref Rect position) Parameters position Rect"
+  },
+  "api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html": {
+    "href": "api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html",
+    "title": "Class DialogueRunnerControlEditor | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueRunnerControlEditor Namespace ToolkitEditor.Dialogue public class DialogueRunnerControlEditor : BaseToolkitEditor Inheritance object DialogueRunnerControlEditor Fields m_dialogueType protected SerializedProperty m_dialogueType Field Value SerializedProperty m_onDialogueComplete protected SerializedProperty m_onDialogueComplete Field Value SerializedProperty m_onDialogueStart protected SerializedProperty m_onDialogueStart Field Value SerializedProperty m_playOnStart protected SerializedProperty m_playOnStart Field Value SerializedProperty m_startNode protected SerializedProperty m_startNode Field Value SerializedProperty Methods DrawEvents() protected override void DrawEvents() DrawProperties() protected override void DrawProperties()"
+  },
+  "api/ToolkitEditor.Dialogue.DialogueTypeEditor.html": {
+    "href": "api/ToolkitEditor.Dialogue.DialogueTypeEditor.html",
+    "title": "Class DialogueTypeEditor | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueTypeEditor Namespace ToolkitEditor.Dialogue public class DialogueTypeEditor : BaseToolkitEditor, INestableEditor Inheritance object DialogueTypeEditor Implements INestableEditor Fields m_autoClearQueue protected SerializedProperty m_autoClearQueue Field Value SerializedProperty m_enqueueIfBlocked protected SerializedProperty m_enqueueIfBlocked Field Value SerializedProperty m_interruptPriority protected SerializedProperty m_interruptPriority Field Value SerializedProperty m_skippable protected SerializedProperty m_skippable Field Value SerializedProperty Methods DrawProperties() protected override void DrawProperties() GetNestedHeight() public float GetNestedHeight() Returns float OnEnable() protected virtual void OnEnable() OnNestedGUI(ref Rect) public void OnNestedGUI(ref Rect position) Parameters position Rect"
+  },
+  "api/ToolkitEditor.Dialogue.VisualScripting.Setup.html": {
+    "href": "api/ToolkitEditor.Dialogue.VisualScripting.Setup.html",
+    "title": "Class Setup | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class Setup Namespace ToolkitEditor.Dialogue.VisualScripting public static class Setup Inheritance object Setup Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString()"
+  },
+  "api/ToolkitEditor.Dialogue.VisualScripting.html": {
+    "href": "api/ToolkitEditor.Dialogue.VisualScripting.html",
+    "title": "Namespace ToolkitEditor.Dialogue.VisualScripting | Dialogue Toolkit | 1.0.0",
+    "keywords": "Namespace ToolkitEditor.Dialogue.VisualScripting Classes Setup"
+  },
+  "api/ToolkitEditor.Dialogue.html": {
+    "href": "api/ToolkitEditor.Dialogue.html",
+    "title": "Namespace ToolkitEditor.Dialogue | Dialogue Toolkit | 1.0.0",
+    "keywords": "Namespace ToolkitEditor.Dialogue Classes DialogueCategoryEditor DialogueRunnerControlEditor DialogueTypeEditor"
+  },
+  "api/ToolkitEngine.Dialogue.AssetReferenceYarnProject.html": {
+    "href": "api/ToolkitEngine.Dialogue.AssetReferenceYarnProject.html",
+    "title": "Class AssetReferenceYarnProject | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class AssetReferenceYarnProject Namespace ToolkitEngine.Dialogue public class AssetReferenceYarnProject : AssetReferenceT<YarnProject>, IKeyEvaluator Inheritance object AssetReferenceYarnProject Implements IKeyEvaluator Constructors AssetReferenceYarnProject(string) public AssetReferenceYarnProject(string guid) Parameters guid string"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueCategory.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueCategory.html",
+    "title": "Class DialogueCategory | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueCategory Namespace ToolkitEngine.Dialogue public class DialogueCategory : ScriptableObject Inheritance object DialogueCategory Properties infiniteSimultaneous public bool infiniteSimultaneous { get; } Property Value bool maxSimultaneous public int maxSimultaneous { get; } Property Value int priorities public DialogueType[] priorities { get; } Property Value DialogueType[] queueable public bool queueable { get; } Property Value bool timeToForget public float timeToForget { get; } Property Value float Methods GetInterruptable(IEnumerable<DialogueRunnerControl>) public DialogueRunnerControl GetInterruptable(IEnumerable<DialogueRunnerControl> controls) Parameters controls IEnumerable<DialogueRunnerControl> Returns DialogueRunnerControl GetPriority(DialogueType) public int GetPriority(DialogueType dialogueType) Parameters dialogueType DialogueType Returns int Next(IEnumerable<DialogueRunnerControl>) public DialogueRunnerControl Next(IEnumerable<DialogueRunnerControl> controls) Parameters controls IEnumerable<DialogueRunnerControl> Returns DialogueRunnerControl"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueEventArgs.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueEventArgs.html",
+    "title": "Class DialogueEventArgs | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueEventArgs Namespace ToolkitEngine.Dialogue public class DialogueEventArgs : EventArgs Inheritance object EventArgs DialogueEventArgs Inherited Members EventArgs.Empty object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors DialogueEventArgs(DialogueRunnerControl) public DialogueEventArgs(DialogueRunnerControl control) Parameters control DialogueRunnerControl Properties control public DialogueRunnerControl control { get; } Property Value DialogueRunnerControl runner public DialogueRunner runner { get; } Property Value DialogueRunner type public DialogueType type { get; } Property Value DialogueType"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.html",
+    "title": "Class DialogueManager.RuntimeDialogueCategory | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueManager.RuntimeDialogueCategory Namespace ToolkitEngine.Dialogue [Serializable] public class DialogueManager.RuntimeDialogueCategory Inheritance object DialogueManager.RuntimeDialogueCategory Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors RuntimeDialogueCategory(DialogueCategory) public RuntimeDialogueCategory(DialogueCategory category) Parameters category DialogueCategory Properties activeRunnerControls public DialogueRunnerControl[] activeRunnerControls { get; } Property Value DialogueRunnerControl[] dialogueCategory public DialogueCategory dialogueCategory { get; } Property Value DialogueCategory dialogueRunningCount public int dialogueRunningCount { get; } Property Value int isDialogueRunning public bool isDialogueRunning { get; } Property Value bool"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueManager.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueManager.html",
+    "title": "Class DialogueManager | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueManager Namespace ToolkitEngine.Dialogue public class DialogueManager : Singleton<DialogueManager> Inheritance object DialogueManager Properties IsAnyDialogueRunning Gets a value that indicates if the dialogue is actively running. public bool IsAnyDialogueRunning { get; } Property Value bool Methods Awake() protected override void Awake() ClearQueue(DialogueRunnerControl) public void ClearQueue(DialogueRunnerControl control) Parameters control DialogueRunnerControl Dequeue(DialogueRunnerControl, string) public void Dequeue(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string Enqueue(DialogueRunnerControl, string) public void Enqueue(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string GetPriority(DialogueType) public int GetPriority(DialogueType dialogueType) Parameters dialogueType DialogueType Returns int GetQueueAge(DialogueRunnerControl) public float GetQueueAge(DialogueRunnerControl control) Parameters control DialogueRunnerControl Returns float IsDialogueCategoryRunning(DialogueCategory) public bool IsDialogueCategoryRunning(DialogueCategory category) Parameters category DialogueCategory Returns bool Play(DialogueRunnerControl, string) public void Play(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueManagerConfig.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueManagerConfig.html",
+    "title": "Class DialogueManagerConfig | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueManagerConfig Namespace ToolkitEngine.Dialogue public class DialogueManagerConfig : ScriptableObject Inheritance object DialogueManagerConfig Properties categories public DialogueCategory[] categories { get; } Property Value DialogueCategory[]"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueRunnerControl.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueRunnerControl.html",
+    "title": "Class DialogueRunnerControl | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueRunnerControl Namespace ToolkitEngine.Dialogue public class DialogueRunnerControl : MonoBehaviour Inheritance object DialogueRunnerControl Properties age Time when DialogueRunner last started public float age { get; } Property Value float dialogueRunner public DialogueRunner dialogueRunner { get; } Property Value DialogueRunner dialogueType public DialogueType dialogueType { get; } Property Value DialogueType onDialogueComplete public UnityEvent<DialogueEventArgs> onDialogueComplete { get; } Property Value UnityEvent<DialogueEventArgs> onDialogueStart public UnityEvent<DialogueEventArgs> onDialogueStart { get; } Property Value UnityEvent<DialogueEventArgs> Methods ClearQueue() public void ClearQueue() Dequeue() public void Dequeue() Dequeue(string) public void Dequeue(string startNode) Parameters startNode string Enqueue() public void Enqueue() Enqueue(string) public void Enqueue(string startNode) Parameters startNode string Play() public void Play() Play(string) public void Play(string startNode) Parameters startNode string Stop() public void Stop()"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueType.InterruptRule.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueType.InterruptRule.html",
+    "title": "Enum DialogueType.InterruptRule | Dialogue Toolkit | 1.0.0",
+    "keywords": "Enum DialogueType.InterruptRule Namespace ToolkitEngine.Dialogue [Flags] public enum DialogueType.InterruptRule Fields Equal = 2 GreaterThan = 8 LessThan = 4"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueType.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueType.html",
+    "title": "Class DialogueType | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueType Namespace ToolkitEngine.Dialogue public class DialogueType : ScriptableObject Inheritance object DialogueType Properties autoClearQueue public bool autoClearQueue { get; } Property Value bool enqueueIfBlocked public bool enqueueIfBlocked { get; } Property Value bool interruptPriority public DialogueType.InterruptRule interruptPriority { get; } Property Value DialogueType.InterruptRule skippable public bool skippable { get; } Property Value bool"
+  },
+  "api/ToolkitEngine.Dialogue.Scoring.DialogueAgeEvaluator.html": {
+    "href": "api/ToolkitEngine.Dialogue.Scoring.DialogueAgeEvaluator.html",
+    "title": "Class DialogueAgeEvaluator | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueAgeEvaluator Namespace ToolkitEngine.Dialogue.Scoring public class DialogueAgeEvaluator : BaseEvaluator Inheritance object DialogueAgeEvaluator Properties max public float max { get; } Property Value float min public float min { get; } Property Value float Methods CalculateNormalizedScore(GameObject, GameObject, Vector3) protected override float CalculateNormalizedScore(GameObject actor, GameObject target, Vector3 position) Parameters actor GameObject target GameObject position Vector3 Returns float"
+  },
+  "api/ToolkitEngine.Dialogue.Scoring.DialogueDistanceEvaluator.html": {
+    "href": "api/ToolkitEngine.Dialogue.Scoring.DialogueDistanceEvaluator.html",
+    "title": "Class DialogueDistanceEvaluator | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueDistanceEvaluator Namespace ToolkitEngine.Dialogue.Scoring public class DialogueDistanceEvaluator : BaseEvaluator Inheritance object DialogueDistanceEvaluator Properties maxDistance public float maxDistance { get; } Property Value float minDistance public float minDistance { get; } Property Value float Methods CalculateNormalizedScore(GameObject, GameObject, Vector3) protected override float CalculateNormalizedScore(GameObject actor, GameObject target, Vector3 position) Parameters actor GameObject target GameObject position Vector3 Returns float"
+  },
+  "api/ToolkitEngine.Dialogue.Scoring.DialoguePriorityEvaluator.html": {
+    "href": "api/ToolkitEngine.Dialogue.Scoring.DialoguePriorityEvaluator.html",
+    "title": "Class DialoguePriorityEvaluator | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialoguePriorityEvaluator Namespace ToolkitEngine.Dialogue.Scoring public class DialoguePriorityEvaluator : BaseEvaluator Inheritance object DialoguePriorityEvaluator Properties max public int max { get; } Property Value int min public int min { get; } Property Value int Methods CalculateNormalizedScore(GameObject, GameObject, Vector3) protected override float CalculateNormalizedScore(GameObject actor, GameObject target, Vector3 position) Parameters actor GameObject target GameObject position Vector3 Returns float"
+  },
+  "api/ToolkitEngine.Dialogue.Scoring.DialogueQueueAgeEvaluator.html": {
+    "href": "api/ToolkitEngine.Dialogue.Scoring.DialogueQueueAgeEvaluator.html",
+    "title": "Class DialogueQueueAgeEvaluator | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueQueueAgeEvaluator Namespace ToolkitEngine.Dialogue.Scoring public class DialogueQueueAgeEvaluator : BaseEvaluator Inheritance object DialogueQueueAgeEvaluator Properties max public int max { get; } Property Value int min public int min { get; } Property Value int Methods CalculateNormalizedScore(GameObject, GameObject, Vector3) protected override float CalculateNormalizedScore(GameObject actor, GameObject target, Vector3 position) Parameters actor GameObject target GameObject position Vector3 Returns float"
+  },
+  "api/ToolkitEngine.Dialogue.Scoring.html": {
+    "href": "api/ToolkitEngine.Dialogue.Scoring.html",
+    "title": "Namespace ToolkitEngine.Dialogue.Scoring | Dialogue Toolkit | 1.0.0",
+    "keywords": "Namespace ToolkitEngine.Dialogue.Scoring Classes DialogueAgeEvaluator DialogueDistanceEvaluator DialoguePriorityEvaluator DialogueQueueAgeEvaluator"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html",
+    "title": "Class BaseYarnEventUnit | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class BaseYarnEventUnit Namespace ToolkitEngine.Dialogue.VisualScripting public abstract class BaseYarnEventUnit : BaseEventUnit<string> Inheritance object BaseYarnEventUnit Derived OnYarnNodeComplete OnYarnNodeStart Fields filtered public bool filtered Field Value bool Properties node public ValueInput node { get; set; } Property Value ValueInput showEventArgs protected override bool showEventArgs { get; } Property Value bool Methods Definition() protected override void Definition() ShouldTrigger(Flow, string) protected override bool ShouldTrigger(Flow flow, string args) Parameters flow Flow args string Returns bool"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html",
+    "title": "Class EventHooks | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class EventHooks Namespace ToolkitEngine.Dialogue.VisualScripting public static class EventHooks Inheritance object EventHooks Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Fields OnYarnCommand public const string OnYarnCommand = \"OnYarnCommand\" Field Value string OnYarnDialogueComplete public const string OnYarnDialogueComplete = \"OnYarnDialogueComplete\" Field Value string OnYarnDialogueStart public const string OnYarnDialogueStart = \"OnYarnDialogueStart\" Field Value string OnYarnNodeComplete public const string OnYarnNodeComplete = \"OnYarnNodeComplete\" Field Value string OnYarnNodeStart public const string OnYarnNodeStart = \"OnYarnNodeStart\" Field Value string"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.VariableType.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.VariableType.html",
+    "title": "Enum GetYarnVariable.VariableType | Dialogue Toolkit | 1.0.0",
+    "keywords": "Enum GetYarnVariable.VariableType Namespace ToolkitEngine.Dialogue.VisualScripting public enum GetYarnVariable.VariableType Fields Boolean = 0 Float = 1 Integer = 2"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.html",
+    "title": "Class GetYarnVariable | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class GetYarnVariable Namespace ToolkitEngine.Dialogue.VisualScripting public class GetYarnVariable : Unit Inheritance object GetYarnVariable Fields asBool public ValueOutput asBool Field Value ValueOutput asFloat public ValueOutput asFloat Field Value ValueOutput asInt public ValueOutput asInt Field Value ValueOutput contains public ValueOutput contains Field Value ValueOutput dialogueRunner public ValueInput dialogueRunner Field Value ValueInput variableName public ValueInput variableName Field Value ValueInput Properties enter public ControlInput enter { get; } Property Value ControlInput exit public ControlOutput exit { get; } Property Value ControlOutput variableType public GetYarnVariable.VariableType variableType { get; set; } Property Value GetYarnVariable.VariableType Methods Definition() protected override void Definition()"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html",
+    "title": "Class OnYarnCommand | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnCommand Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnCommand : BaseEventUnit<string> Inheritance object OnYarnCommand Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener.html",
+    "title": "Class OnYarnCommandMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnCommandMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnCommandMessageListener : MessageListener Inheritance object OnYarnCommandMessageListener"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html",
+    "title": "Class OnYarnDialogueComplete | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnDialogueComplete Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnDialogueComplete : BaseEventUnit<EmptyEventArgs> Inheritance object OnYarnDialogueComplete Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type showEventArgs protected override bool showEventArgs { get; } Property Value bool"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.html",
+    "title": "Class OnYarnDialogueCompleteMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnDialogueCompleteMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnDialogueCompleteMessageListener : MessageListener Inheritance object OnYarnDialogueCompleteMessageListener"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html",
+    "title": "Class OnYarnDialogueStart | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnDialogueStart Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnDialogueStart : BaseEventUnit<EmptyEventArgs> Inheritance object OnYarnDialogueStart Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type showEventArgs protected override bool showEventArgs { get; } Property Value bool"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.html",
+    "title": "Class OnYarnDialogueStartMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnDialogueStartMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnDialogueStartMessageListener : MessageListener Inheritance object OnYarnDialogueStartMessageListener"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html",
+    "title": "Class OnYarnNodeComplete | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnNodeComplete Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnNodeComplete : BaseYarnEventUnit Inheritance object BaseYarnEventUnit OnYarnNodeComplete Inherited Members BaseYarnEventUnit.filtered BaseYarnEventUnit.node BaseYarnEventUnit.showEventArgs BaseYarnEventUnit.Definition() BaseYarnEventUnit.ShouldTrigger(Flow, string) Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.html",
+    "title": "Class OnYarnNodeCompleteMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnNodeCompleteMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnNodeCompleteMessageListener : MessageListener Inheritance object OnYarnNodeCompleteMessageListener"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html",
+    "title": "Class OnYarnNodeStart | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnNodeStart Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnNodeStart : BaseYarnEventUnit Inheritance object BaseYarnEventUnit OnYarnNodeStart Inherited Members BaseYarnEventUnit.filtered BaseYarnEventUnit.node BaseYarnEventUnit.showEventArgs BaseYarnEventUnit.Definition() BaseYarnEventUnit.ShouldTrigger(Flow, string) Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.html",
+    "title": "Class OnYarnNodeStartMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnYarnNodeStartMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnNodeStartMessageListener : MessageListener Inheritance object OnYarnNodeStartMessageListener"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.html",
+    "title": "Namespace ToolkitEngine.Dialogue.VisualScripting | Dialogue Toolkit | 1.0.0",
+    "keywords": "Namespace ToolkitEngine.Dialogue.VisualScripting Classes BaseYarnEventUnit EventHooks GetYarnVariable OnYarnCommand OnYarnCommandMessageListener OnYarnDialogueComplete OnYarnDialogueCompleteMessageListener OnYarnDialogueStart OnYarnDialogueStartMessageListener OnYarnNodeComplete OnYarnNodeCompleteMessageListener OnYarnNodeStart OnYarnNodeStartMessageListener Enums GetYarnVariable.VariableType"
+  },
+  "api/ToolkitEngine.Dialogue.html": {
+    "href": "api/ToolkitEngine.Dialogue.html",
+    "title": "Namespace ToolkitEngine.Dialogue | Dialogue Toolkit | 1.0.0",
+    "keywords": "Namespace ToolkitEngine.Dialogue Classes AssetReferenceYarnProject DialogueCategory DialogueEventArgs DialogueManager DialogueManager.RuntimeDialogueCategory DialogueManagerConfig DialogueRunnerControl DialogueType Enums DialogueType.InterruptRule"
+  },
+  "api/index.html": {
+    "href": "api/index.html",
+    "title": "| Dialogue Toolkit | 1.0.0",
+    "keywords": "This is the documentation for the Scripting APIs of this package."
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "| Dialogue Toolkit | 1.0.0",
+    "keywords": "This page redirects to the manual."
+  },
+  "license/LICENSE.html": {
+    "href": "license/LICENSE.html",
+    "title": "| Dialogue Toolkit | 1.0.0",
+    "keywords": "MIT License Copyright (c) 2024 nrvllrgrs Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+  },
+  "manual/index.html": {
+    "href": "manual/index.html",
+    "title": "toolkit.conversation | Dialogue Toolkit | 1.0.0",
+    "keywords": "toolkit.conversation"
+  }
+}

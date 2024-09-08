@@ -1,0 +1,461 @@
+{
+  "sitemap": {
+    "baseUrl": "https://nrvllrgrs.github.io/toolkit.dialogue/"
+  },
+  "source_base_path": "/home/runner/work/toolkit.dialogue/toolkit.dialogue/Documentation~",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEditor.Dialogue.DialogueCategoryEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEditor.Dialogue.DialogueCategoryEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEditor.Dialogue.DialogueTypeEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEditor.Dialogue.DialogueTypeEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEditor.Dialogue.VisualScripting.Setup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEditor.Dialogue.VisualScripting.Setup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEditor.Dialogue.VisualScripting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEditor.Dialogue.VisualScripting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEditor.Dialogue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEditor.Dialogue.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.AssetReferenceYarnProject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.AssetReferenceYarnProject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueCategory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueManagerConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueManagerConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueRunnerControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueRunnerControl.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueType.InterruptRule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueType.InterruptRule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.Scoring.DialogueAgeEvaluator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.Scoring.DialogueAgeEvaluator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.Scoring.DialogueDistanceEvaluator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.Scoring.DialogueDistanceEvaluator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.Scoring.DialoguePriorityEvaluator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.Scoring.DialoguePriorityEvaluator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.Scoring.DialogueQueueAgeEvaluator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.Scoring.DialogueQueueAgeEvaluator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.Scoring.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.Scoring.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.VariableType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.VariableType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "license/LICENSE.md",
+      "output": {
+        ".html": {
+          "relative_path": "license/LICENSE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "license/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "license/toc.html"
+        },
+        ".json": {
+          "relative_path": "license/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
