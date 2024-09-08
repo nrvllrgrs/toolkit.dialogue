@@ -1,0 +1,19 @@
+{
+    "name": "ToolkitEngine.Dialogue",
+    "rootNamespace": "",
+    "references": [
+        "ToolkitEngine",
+        "YarnSpinner.Unity",
+        "NaughtyAttributes.Core",
+        "Unity.Addressables"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

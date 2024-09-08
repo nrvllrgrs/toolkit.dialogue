@@ -1,0 +1,23 @@
+{
+    "name": "ToolkitEditor.Dialolgue.VisualScripting",
+    "rootNamespace": "",
+    "references": [
+        "GUID:54cb1906aeb4e4264bc1d2aa3818a43f",
+        "GUID:23f3c6063e13e4fd9addce3606ff4e42",
+        "GUID:34aa492b82754644eac2f903cd496268",
+        "GUID:3cb24a45c22d8e045a5ef8a019b8a1b8",
+        "GUID:85bd28e88f1ce014288f37a8c8faa567",
+        "GUID:3f1f571dedb44f84b9692faef46a67d8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

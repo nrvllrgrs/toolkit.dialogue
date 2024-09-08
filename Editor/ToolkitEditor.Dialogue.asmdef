@@ -1,0 +1,21 @@
+{
+    "name": "ToolkitEditor.Dialogue",
+    "rootNamespace": "",
+    "references": [
+        "GUID:34aa492b82754644eac2f903cd496268",
+        "GUID:3cb24a45c22d8e045a5ef8a019b8a1b8",
+        "GUID:4f6675837be5f1d45a32fb1920bd0217",
+        "GUID:3a299c53e4c683b4eb4a04c9ad9e648f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
