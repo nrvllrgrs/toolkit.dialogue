@@ -1,0 +1,12 @@
+{
+	"name": "com.toolkit.dialogue",
+	"displayName": "Dialogue Toolkit",
+	"version": "1.0.0",
+	"unity": "2019.4",
+	"description": "A set components to extend YarnSpinner functionality.",
+	"keywords": [
+		"toolkit"
+	],
+	"category": "Toolkit",
+	"dependencies": { }
+}
