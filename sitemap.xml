@@ -2,241 +2,241 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEditor.Dialogue.DialogueCategoryEditor.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEditor.Dialogue.DialogueTypeEditor.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEditor.Dialogue.VisualScripting.Setup.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEditor.Dialogue.VisualScripting.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEditor.Dialogue.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.AssetReferenceYarnProject.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.DialogueCategory.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.DialogueEventArgs.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.DialogueManager.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.DialogueManagerConfig.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.DialogueRunnerControl.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.DialogueType.InterruptRule.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.DialogueType.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.Scoring.DialogueAgeEvaluator.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.Scoring.DialogueDistanceEvaluator.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.Scoring.DialoguePriorityEvaluator.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.Scoring.DialogueQueueAgeEvaluator.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.Scoring.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.VariableType.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.VisualScripting.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/ToolkitEngine.Dialogue.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/api/index.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/index.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/license/LICENSE.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://nrvllrgrs.github.io/toolkit.dialogue/manual/index.html</loc>
-    <lastmod>2024-09-08T01:07:28+00:00</lastmod>
+    <lastmod>2024-09-09T12:40:43+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

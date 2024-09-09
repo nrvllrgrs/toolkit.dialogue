@@ -196,7 +196,7 @@
   },
   "manual/index.html": {
     "href": "manual/index.html",
-    "title": "toolkit.conversation | Dialogue Toolkit | 1.0.0",
-    "keywords": "toolkit.conversation"
+    "title": "Overview | Dialogue Toolkit | 1.0.0",
+    "keywords": "Overview Prerequisites https://github.com/nrvllrgrs/toolkit.core https://github.com/YarnSpinnerTool/YarnSpinner-Unity.git Installing To load as UMP package from a Git URL: Open the project that you plan to use. Go to Window > Package Manager Open the add menu from the Package Manager's toolbar. Select Add package by git URL from the add menu. Enter https://github.com/nrvllrgrs/toolkit.dialogue.git in the textbox. Click Add. Getting Started Config Setup Scene Setup"
   }
 }
