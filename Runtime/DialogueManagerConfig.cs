@@ -4,7 +4,7 @@ using Yarn;
 
 namespace ToolkitEngine.Dialogue
 {
-	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Dialogue Manager Config")]
+	[CreateAssetMenu(menuName = "Toolkit/Config/DialogueManager Config")]
 	public class DialogueManagerConfig : ScriptableObject
     {
 		#region Fields
