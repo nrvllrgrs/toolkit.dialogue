@@ -32,7 +32,10 @@ namespace ToolkitEngine.Dialogue
 
 		private void OnDisable()
 		{
-			NudgeManager.Instance.Unregister(this);
+			if (NudgeManager.Exists)
+			{
+				NudgeManager.Instance.Unregister(this);
+			}
 		}
 
 		#endregion

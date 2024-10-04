@@ -75,6 +75,11 @@ namespace ToolkitEngine.Dialogue
 				{
 					m_runner.SetProject(value.project);
 					m_remainingTime = value.nudgeType.delayTime;
+
+					if (!string.IsNullOrWhiteSpace(m_activeData.nudgeType.indexVarName))
+					{
+						m_runner.VariableStorage.SetValue(m_activeData.nudgeType.indexVarName, 0);
+					}
 				}
 				else
 				{
