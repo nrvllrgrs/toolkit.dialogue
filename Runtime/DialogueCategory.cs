@@ -30,7 +30,7 @@ namespace ToolkitEngine.Dialogue
 		[SerializeField]
 		private UnityEvaluator m_queuePriority = new();
 
-		[SerializeField, Min(0f)]
+		[SerializeField, MaxInfinity]
 		private float m_timeToForget = 0f;
 
 		#endregion

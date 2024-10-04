@@ -33,16 +33,19 @@ namespace ToolkitEngine.Dialogue
 		private DialogueType m_dialogueType;
 
 		[SerializeField]
-		private bool m_playOnStart;
-
-		[SerializeField]
 		private string m_startNode = "Start";
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onDialogueStart;
+		private bool m_playOnStart;
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onDialogueComplete;
+		private bool m_replicateSettings = true;
+
+		[SerializeField]
+		private UnityEvent<DialogueEventArgs> m_onDialogueStart = new();
+
+		[SerializeField]
+		private UnityEvent<DialogueEventArgs> m_onDialogueComplete = new();
 
 		private DialogueRunner m_dialogueRunner;
 		private float m_startTime = Mathf.NegativeInfinity;
@@ -87,6 +90,12 @@ namespace ToolkitEngine.Dialogue
 			m_dialogueRunner.onDialogueComplete.RemoveListener(DialogueRunner_DialogueComplete);
 		}
 
+		public void Set(DialogueRunner runner, DialogueType dialogueType)
+		{
+			m_dialogueRunner = runner;
+			m_dialogueType = dialogueType;
+		}
+
 		private void Start()
 		{
 			if (m_playOnStart)
@@ -108,6 +117,15 @@ namespace ToolkitEngine.Dialogue
 				return;
 
 			DialogueManager.Instance.Play(this, startNode);
+		}
+
+		internal void PlayInternal(string startNode)
+		{
+			if (m_replicateSettings)
+			{
+				DialogueManager.Instance.ReplicateSettings(this);
+			}
+			m_dialogueRunner.StartDialogue(startNode);
 		}
 
 		[ContextMenu("Enqueue")]
