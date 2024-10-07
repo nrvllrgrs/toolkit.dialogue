@@ -1,5 +1,5 @@
 {
-    "name": "ToolkitEngine.Dialolgue.VisualScripting",
+    "name": "ToolkitEngine.Dialogue.VisualScripting",
     "rootNamespace": "",
     "references": [
         "GUID:34aa492b82754644eac2f903cd496268",

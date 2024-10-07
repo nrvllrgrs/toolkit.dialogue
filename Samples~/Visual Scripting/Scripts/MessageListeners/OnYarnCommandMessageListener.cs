@@ -1,13 +1,12 @@
 using UnityEngine;
 using Unity.VisualScripting;
-using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue.VisualScripting
 {
-    [AddComponentMenu("")]
+	[AddComponentMenu("")]
     public class OnYarnCommandMessageListener : MessageListener
     {
-        private void Start() => GetComponent<DialogueRunner>()?.onCommand.AddListener((value) =>
+        private void Start() => GetComponent<DialogueRunnerControl>()?.onCommand.AddListener((value) =>
         {
             EventBus.Trigger(EventHooks.OnYarnCommand, gameObject, value);
         });

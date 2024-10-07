@@ -12,8 +12,12 @@ namespace ToolkitEditor.Dialogue
 		protected SerializedProperty m_playOnStart;
 		protected SerializedProperty m_startNode;
 		protected SerializedProperty m_replicateSettings;
-		protected SerializedProperty m_onDialogueStart;
-		protected SerializedProperty m_onDialogueComplete;
+
+		protected SerializedProperty m_onDialogueStarted;
+		protected SerializedProperty m_onDialogueCompleted;
+		protected SerializedProperty m_onNodeStarted;
+		protected SerializedProperty m_onNodeCompleted;
+		protected SerializedProperty m_onCommand;
 
 		#endregion
 
@@ -25,8 +29,12 @@ namespace ToolkitEditor.Dialogue
 			m_playOnStart = serializedObject.FindProperty(nameof (m_playOnStart));
 			m_startNode = serializedObject.FindProperty(nameof(m_startNode));
 			m_replicateSettings = serializedObject.FindProperty(nameof(m_replicateSettings));
-			m_onDialogueStart = serializedObject.FindProperty(nameof (m_onDialogueStart));
-			m_onDialogueComplete = serializedObject.FindProperty(nameof(m_onDialogueComplete));
+
+			m_onDialogueStarted = serializedObject.FindProperty(nameof (m_onDialogueStarted));
+			m_onDialogueCompleted = serializedObject.FindProperty(nameof(m_onDialogueCompleted));
+			m_onNodeStarted = serializedObject.FindProperty(nameof(m_onNodeStarted));
+			m_onNodeCompleted = serializedObject.FindProperty(nameof(m_onNodeCompleted));
+			m_onCommand = serializedObject.FindProperty(nameof(m_onCommand));
 		}
 
 		protected override void DrawProperties()
@@ -39,10 +47,18 @@ namespace ToolkitEditor.Dialogue
 
 		protected override void DrawEvents()
 		{
-			if (EditorGUILayoutUtility.Foldout(m_onDialogueStart, "Events"))
+			if (EditorGUILayoutUtility.Foldout(m_onDialogueStarted, "Events"))
 			{
-				EditorGUILayout.PropertyField(m_onDialogueStart);
-				EditorGUILayout.PropertyField(m_onDialogueComplete);
+				EditorGUILayout.LabelField("Dialogue", EditorStyles.boldLabel);
+				EditorGUILayout.PropertyField(m_onDialogueStarted);
+				EditorGUILayout.PropertyField(m_onDialogueCompleted);
+
+				EditorGUILayout.LabelField("Node", EditorStyles.boldLabel);
+				EditorGUILayout.PropertyField(m_onNodeStarted);
+				EditorGUILayout.PropertyField(m_onNodeCompleted);
+
+				EditorGUILayout.LabelField("Command", EditorStyles.boldLabel);
+				EditorGUILayout.PropertyField(m_onCommand);
 			}
 		}
 

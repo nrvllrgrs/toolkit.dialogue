@@ -98,19 +98,16 @@ namespace ToolkitEngine.Dialogue
 			base.Initialize();
 
 			// Pause when any dialogue starts; unpause when dialogue complete
-			DialogueManager.Instance.DialogueStart += DialogueManager_DialogueStart;
-			DialogueManager.Instance.DialogueComplete += DialogueManager_DialogueComplete;
+			DialogueManager.DialogueStarted += DialogueManager_DialogueStart;
+			DialogueManager.DialogueCompleted += DialogueManager_DialogueComplete;
 		}
 
 		protected override void Terminate()
 		{
 			base.Terminate();
 
-			if (DialogueManager.Exists)
-			{
-				DialogueManager.Instance.DialogueStart -= DialogueManager_DialogueStart;
-				DialogueManager.Instance.DialogueComplete -= DialogueManager_DialogueComplete;
-			}
+			DialogueManager.DialogueStarted -= DialogueManager_DialogueStart;
+			DialogueManager.DialogueCompleted -= DialogueManager_DialogueComplete;
 		}
 
 		public void Register(NudgeDialogueRunner runner)

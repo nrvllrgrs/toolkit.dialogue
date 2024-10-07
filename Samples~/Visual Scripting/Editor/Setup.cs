@@ -31,6 +31,7 @@ namespace ToolkitEditor.Dialogue.VisualScripting
 				typeof(DialogueRunnerControl),
 				typeof(DialogueCategory),
 				typeof(DialogueType),
+				typeof(DialogueEventArgs),
 
 				// Nudges
 				typeof(NudgeType),

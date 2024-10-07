@@ -9,6 +9,8 @@ namespace ToolkitEngine.Dialogue
 		#region Properties
 
 		public DialogueRunnerControl control { get; private set; }
+		public string nodeName { get; private set; }
+		public string command { get; private set; }
 		public DialogueType type => control?.dialogueType;
 		public DialogueRunner runner => control?.dialogueRunner;
 
@@ -17,8 +19,18 @@ namespace ToolkitEngine.Dialogue
 		#region Constructors
 
 		public DialogueEventArgs(DialogueRunnerControl control)
+			: this(control, null)
+		{ }
+
+		public DialogueEventArgs(DialogueRunnerControl control, string nodeName)
+			: this(control, nodeName, null)
+		{ }
+
+		public DialogueEventArgs(DialogueRunnerControl control, string nodeName, string command)
 		{
 			this.control = control;
+			this.nodeName = nodeName;
+			this.command = command;
 		}
 
 		#endregion
@@ -42,10 +54,19 @@ namespace ToolkitEngine.Dialogue
 		private bool m_replicateSettings = true;
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onDialogueStart = new();
+		private UnityEvent<DialogueEventArgs> m_onDialogueStarted;
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onDialogueComplete = new();
+		private UnityEvent<DialogueEventArgs> m_onDialogueCompleted;
+
+		[SerializeField]
+		private UnityEvent<DialogueEventArgs> m_onNodeStarted;
+
+		[SerializeField]
+		private UnityEvent<DialogueEventArgs> m_onNodeCompleted;
+
+		[SerializeField]
+		private UnityEvent<DialogueEventArgs> m_onCommand;
 
 		private DialogueRunner m_dialogueRunner;
 		private float m_startTime = Mathf.NegativeInfinity;
@@ -54,8 +75,11 @@ namespace ToolkitEngine.Dialogue
 
 		#region Events
 
-		public UnityEvent<DialogueEventArgs> onDialogueStart => m_onDialogueStart;
-		public UnityEvent<DialogueEventArgs> onDialogueComplete => m_onDialogueComplete;
+		public UnityEvent<DialogueEventArgs> onDialogueStarted => m_onDialogueStarted;
+		public UnityEvent<DialogueEventArgs> onDialogueCompleted => m_onDialogueCompleted;
+		public UnityEvent<DialogueEventArgs> onNodeStarted => m_onNodeStarted;
+		public UnityEvent<DialogueEventArgs> onNodeCompleted => m_onNodeCompleted;
+		public UnityEvent<DialogueEventArgs> onCommand => m_onCommand;
 
 		#endregion
 
@@ -82,12 +106,18 @@ namespace ToolkitEngine.Dialogue
 		{
 			m_dialogueRunner.onDialogueStart.AddListener(DialogueRunner_DialogueStart);
 			m_dialogueRunner.onDialogueComplete.AddListener(DialogueRunner_DialogueComplete);
+			m_dialogueRunner.onNodeStart.AddListener(DialogueRunner_NodeStart);
+			m_dialogueRunner.onNodeComplete.AddListener(DialogueRunner_NodeComplete);
+			m_dialogueRunner.onCommand.AddListener(DialogueRunner_Command);
 		}
 
 		private void OnDisable()
 		{
 			m_dialogueRunner.onDialogueStart.RemoveListener(DialogueRunner_DialogueStart);
 			m_dialogueRunner.onDialogueComplete.RemoveListener(DialogueRunner_DialogueComplete);
+			m_dialogueRunner.onNodeStart.RemoveListener(DialogueRunner_NodeStart);
+			m_dialogueRunner.onNodeComplete.RemoveListener(DialogueRunner_NodeComplete);
+			m_dialogueRunner.onCommand.RemoveListener(DialogueRunner_Command);
 		}
 
 		public void Set(DialogueRunner runner, DialogueType dialogueType)
@@ -116,14 +146,14 @@ namespace ToolkitEngine.Dialogue
 			if (!m_dialogueRunner.NodeExists(startNode))
 				return;
 
-			DialogueManager.Instance.Play(this, startNode);
+			DialogueManager.Play(this, startNode);
 		}
 
 		internal void PlayInternal(string startNode)
 		{
 			if (m_replicateSettings)
 			{
-				DialogueManager.Instance.ReplicateSettings(this);
+				DialogueManager.ReplicateSettings(this);
 			}
 			m_dialogueRunner.StartDialogue(startNode);
 		}
@@ -140,7 +170,7 @@ namespace ToolkitEngine.Dialogue
 			if (!m_dialogueRunner.NodeExists(startNode))
 				return;
 
-			DialogueManager.Instance.Enqueue(this, startNode);
+			DialogueManager.Enqueue(this, startNode);
 		}
 
 		[ContextMenu("Dequeue")]
@@ -155,13 +185,13 @@ namespace ToolkitEngine.Dialogue
 			if (!m_dialogueRunner.NodeExists(startNode))
 				return;
 
-			DialogueManager.Instance.Dequeue(this, startNode);
+			DialogueManager.Dequeue(this, startNode);
 		}
 
 		[ContextMenu("Clear Queue")]
 		public void ClearQueue()
 		{
-			DialogueManager.Instance.ClearQueue(this);
+			DialogueManager.ClearQueue(this);
 		}
 
 		[ContextMenu("Stop")]
@@ -177,12 +207,27 @@ namespace ToolkitEngine.Dialogue
 		private void DialogueRunner_DialogueStart()
 		{
 			m_startTime = Time.time;
-			m_onDialogueStart?.Invoke(new DialogueEventArgs(this));
+			m_onDialogueStarted?.Invoke(new DialogueEventArgs(this));
 		}
 
 		private void DialogueRunner_DialogueComplete()
 		{
-			m_onDialogueComplete?.Invoke(new DialogueEventArgs(this));
+			m_onDialogueCompleted?.Invoke(new DialogueEventArgs(this));
+		}
+
+		private void DialogueRunner_NodeStart(string nodeName)
+		{
+			m_onNodeStarted?.Invoke(new DialogueEventArgs(this, nodeName));
+		}
+
+		private void DialogueRunner_NodeComplete(string nodeName)
+		{
+			m_onNodeCompleted?.Invoke(new DialogueEventArgs(this, nodeName));
+		}
+
+		private void DialogueRunner_Command(string command)
+		{
+			m_onCommand?.Invoke(new DialogueEventArgs(this, null, command));
 		}
 
 		#endregion

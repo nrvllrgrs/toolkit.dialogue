@@ -3,10 +3,21 @@ using Unity.VisualScripting;
 
 namespace ToolkitEngine.Dialogue.VisualScripting
 {
-	[UnitCategory("Events/Dialogue")]
-	[UnitTitle("On Command"), UnitSurtitle("Dialogue Runner")]
-	public class OnYarnCommand : BaseEventUnit<string>
+	[UnitTitle("On Command")]
+	public class OnYarnCommand : BaseFilteredDialogueEventUnit
 	{
 		public override Type MessageListenerType => typeof(OnYarnCommandMessageListener);
+
+		protected override void StartListeningToManager()
+		{
+			DialogueManager.Command += InvokeTrigger;
+		}
+
+		protected override void StopListeningToManager()
+		{
+			DialogueManager.Command -= InvokeTrigger;
+		}
+
+		protected override string GetFilterValue(DialogueEventArgs args) => args.command;
 	}
 }

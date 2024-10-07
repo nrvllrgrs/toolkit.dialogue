@@ -25,7 +25,7 @@ namespace ToolkitEngine.Dialogue.Scoring
 		{
 			if (actor.TryGetComponent(out DialogueRunnerControl control))
 			{
-				return MathUtil.GetPercent(DialogueManager.Instance.GetQueueAge(control), min, max);
+				return MathUtil.GetPercent(DialogueManager.GetQueueAge(control), min, max);
 			}
 			return 0f;
 		}
