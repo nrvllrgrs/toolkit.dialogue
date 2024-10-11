@@ -33,7 +33,7 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 
 		private ControlOutput Enter(Flow flow)
 		{
-			NudgeManager.Instance.Clear(flow.GetValue<NudgeType>(nudgeType));
+			NudgeManager.CastInstance.Clear(flow.GetValue<NudgeType>(nudgeType));
 			return exit;
 		}
 

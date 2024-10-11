@@ -5,28 +5,25 @@ using UnityEngine;
 
 namespace ToolkitEngine.Dialogue
 {
-	public static class DialogueManager
+	public class DialogueManager : ConfigurableSubsystem<DialogueManager, DialogueManagerConfig>
     {
 		#region Fields
 
-		[SerializeField]
-		private static DialogueManagerConfig s_config;
+		private Dictionary<DialogueType, DialogueCategory> m_priorityToCategoryMap;
+		private Dictionary<DialogueCategory, RuntimeDialogueCategory> m_runtimeMap;
 
-		private static Dictionary<DialogueType, DialogueCategory> s_priorityToCategoryMap;
-		private static Dictionary<DialogueCategory, RuntimeDialogueCategory> s_runtimeMap;
-
-		private static Dictionary<DialogueCategory, DialogueRunnerSettings> s_settingsByCategory;
-		private static Dictionary<DialogueType, DialogueRunnerSettings> s_settingsByType;
+		private Dictionary<DialogueCategory, DialogueRunnerSettings> m_settingsByCategory;
+		private Dictionary<DialogueType, DialogueRunnerSettings> m_settingsByType;
 
 		#endregion
 
 		#region Events
 
-		public static event EventHandler<DialogueEventArgs> DialogueStarted;
-		public static event EventHandler<DialogueEventArgs> DialogueCompleted;
-		public static event EventHandler<DialogueEventArgs> NodeStarted;
-		public static event EventHandler<DialogueEventArgs> NodeCompleted;
-		public static event EventHandler<DialogueEventArgs> Command;
+		public event EventHandler<DialogueEventArgs> DialogueStarted;
+		public event EventHandler<DialogueEventArgs> DialogueCompleted;
+		public event EventHandler<DialogueEventArgs> NodeStarted;
+		public event EventHandler<DialogueEventArgs> NodeCompleted;
+		public event EventHandler<DialogueEventArgs> Command;
 
 		#endregion
 
@@ -36,26 +33,24 @@ namespace ToolkitEngine.Dialogue
 		/// Gets a value that indicates if the dialogue is actively
 		/// running.
 		/// </summary>
-		public static bool isAnyDialogueRunning => s_runtimeMap.Any(x => x.Value.isDialogueRunning);
+		public bool isAnyDialogueRunning => m_runtimeMap.Any(x => x.Value.isDialogueRunning);
 
 		#endregion
 
 		#region Methods
 
-		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-		static void OnRuntimeInitialized()
+		protected override void Initialize()
 		{
-			s_config = Resources.Load<DialogueManagerConfig>("DialogueManagerConfig");
-			s_priorityToCategoryMap = new();
-			s_runtimeMap = new();
-			s_settingsByCategory = new();
-			s_settingsByType = new();
+			m_priorityToCategoryMap = new();
+			m_runtimeMap = new();
+			m_settingsByCategory = new();
+			m_settingsByType = new();
 
-			foreach (var category in s_config.categories)
+			foreach (var category in Config.categories)
 			{
 				foreach (var priority in category.priorities)
 				{
-					s_priorityToCategoryMap.Add(priority, category);
+					m_priorityToCategoryMap.Add(priority, category);
 				}
 
 				var runtimeCategory = new RuntimeDialogueCategory(category);
@@ -65,18 +60,18 @@ namespace ToolkitEngine.Dialogue
 				runtimeCategory.NodeCompleted += RuntimeCategory_NodeCompleted;
 				runtimeCategory.Command += RuntimeCategory_Command;
 
-				s_runtimeMap.Add(category, runtimeCategory);
+				m_runtimeMap.Add(category, runtimeCategory);
 			}
 		}
 
-		public static bool IsDialogueCategoryRunning(DialogueCategory category)
+		public bool IsDialogueCategoryRunning(DialogueCategory category)
 		{
-			return s_runtimeMap.TryGetValue(category, out var runtimeCategory)
+			return m_runtimeMap.TryGetValue(category, out var runtimeCategory)
 				? runtimeCategory.isDialogueRunning
 				: false;
 		}
 
-		public static void Play(DialogueRunnerControl control, string startNode)
+		public void Play(DialogueRunnerControl control, string startNode)
 		{
 			if (!TryGetRuntimeDialogueCategory(control, out var runtimeCategory))
 				return;
@@ -84,7 +79,7 @@ namespace ToolkitEngine.Dialogue
 			runtimeCategory.Play(control, startNode);
 		}
 
-		public static void Enqueue(DialogueRunnerControl control, string startNode)
+		public void Enqueue(DialogueRunnerControl control, string startNode)
 		{
 			if (!TryGetRuntimeDialogueCategory(control, out var runtimeCategory))
 				return;
@@ -92,7 +87,7 @@ namespace ToolkitEngine.Dialogue
 			runtimeCategory.Enqueue(control, startNode);
 		}
 
-		public static void Dequeue(DialogueRunnerControl control, string startNode)
+		public void Dequeue(DialogueRunnerControl control, string startNode)
 		{
 			if (!TryGetRuntimeDialogueCategory(control, out var runtimeCategory))
 				return;
@@ -100,7 +95,7 @@ namespace ToolkitEngine.Dialogue
 			runtimeCategory.Dequeue(control);
 		}
 
-		public static void ClearQueue(DialogueRunnerControl control)
+		public void ClearQueue(DialogueRunnerControl control)
 		{
 			if (!TryGetRuntimeDialogueCategory(control, out var runtimeCategory))
 				return;
@@ -108,7 +103,7 @@ namespace ToolkitEngine.Dialogue
 			runtimeCategory.ClearQueue();
 		}
 
-		public static bool TryGetDialogueCategory(DialogueType type, out DialogueCategory category)
+		public bool TryGetDialogueCategory(DialogueType type, out DialogueCategory category)
 		{
 			if (TryGetRuntimeDialogueCategory(type, out var runtimeCategory))
 			{
@@ -120,12 +115,12 @@ namespace ToolkitEngine.Dialogue
 			return false;
 		}
 
-		private static bool TryGetRuntimeDialogueCategory(DialogueRunnerControl control, out RuntimeDialogueCategory runtimeCategory)
+		private bool TryGetRuntimeDialogueCategory(DialogueRunnerControl control, out RuntimeDialogueCategory runtimeCategory)
 		{
 			return TryGetRuntimeDialogueCategory(control?.dialogueType, out runtimeCategory);
 		}
 
-		private static bool TryGetRuntimeDialogueCategory(DialogueType type, out RuntimeDialogueCategory runtimeCategory)
+		private bool TryGetRuntimeDialogueCategory(DialogueType type, out RuntimeDialogueCategory runtimeCategory)
 		{
 			runtimeCategory = null;
 
@@ -135,8 +130,8 @@ namespace ToolkitEngine.Dialogue
 				return false;
 			}
 
-			if (!s_priorityToCategoryMap.TryGetValue(type, out var category)
-				|| !s_runtimeMap.TryGetValue(category, out runtimeCategory))
+			if (!m_priorityToCategoryMap.TryGetValue(type, out var category)
+				|| !m_runtimeMap.TryGetValue(category, out runtimeCategory))
 			{
 				Debug.LogErrorFormat("DialogueType {0} does not exist in config! Cannot play dialogue.", type.name);
 				return false;
@@ -145,14 +140,14 @@ namespace ToolkitEngine.Dialogue
 			return true;
 		}
 
-		public static int GetPriority(DialogueType dialogueType)
+		public int GetPriority(DialogueType dialogueType)
 		{
 			return TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory)
 				? runtimeCategory.dialogueCategory.GetPriority(dialogueType)
 				: -1;
 		}
 
-		public static float GetQueueAge(DialogueRunnerControl control)
+		public float GetQueueAge(DialogueRunnerControl control)
 		{
 			return TryGetRuntimeDialogueCategory(control, out var runtimeCategory)
 				? runtimeCategory.GetQueueAge(control)
@@ -163,63 +158,63 @@ namespace ToolkitEngine.Dialogue
 
 		#region Settings Methods
 
-		public static void Register(DialogueRunnerSettings settings)
+		public void Register(DialogueRunnerSettings settings)
 		{
 			switch (settings.registration)
 			{
 				case DialogueRunnerSettings.RegistrationMode.Category:
-					if (!s_settingsByCategory.ContainsKey(settings.dialogueCategory))
+					if (!m_settingsByCategory.ContainsKey(settings.dialogueCategory))
 					{
-						s_settingsByCategory.Add(settings.dialogueCategory, settings);
+						m_settingsByCategory.Add(settings.dialogueCategory, settings);
 					}
 					else
 					{
-						s_settingsByCategory[settings.dialogueCategory] = settings;
+						m_settingsByCategory[settings.dialogueCategory] = settings;
 					}
 					break;
 
 				case DialogueRunnerSettings.RegistrationMode.Type:
-					if (!s_settingsByType.ContainsKey(settings.dialogueType))
+					if (!m_settingsByType.ContainsKey(settings.dialogueType))
 					{
-						s_settingsByType.Add(settings.dialogueType, settings);
+						m_settingsByType.Add(settings.dialogueType, settings);
 					}
 					else
 					{
-						s_settingsByType[settings.dialogueType] = settings;
+						m_settingsByType[settings.dialogueType] = settings;
 					}
 					break;
 			}
 		}
 
-		public static void Unregister(DialogueRunnerSettings settings)
+		public void Unregister(DialogueRunnerSettings settings)
 		{
 			switch (settings.registration)
 			{
 				case DialogueRunnerSettings.RegistrationMode.Category:
-					s_settingsByCategory.Remove(settings.dialogueCategory);
+					m_settingsByCategory.Remove(settings.dialogueCategory);
 					break;
 
 				case DialogueRunnerSettings.RegistrationMode.Type:
-					s_settingsByType.Remove(settings.dialogueType);
+					m_settingsByType.Remove(settings.dialogueType);
 					break;
 			}
 		}
 
-		public static bool TryGetDialogueRunnerSettings(DialogueCategory category, out DialogueRunnerSettings settings)
+		public bool TryGetDialogueRunnerSettings(DialogueCategory category, out DialogueRunnerSettings settings)
 		{
-			return s_settingsByCategory.TryGetValue(category, out settings);
+			return m_settingsByCategory.TryGetValue(category, out settings);
 		}
 
-		public static bool TryGetDialogueRunnerSettings(DialogueType type, out DialogueRunnerSettings settings)
+		public bool TryGetDialogueRunnerSettings(DialogueType type, out DialogueRunnerSettings settings)
 		{
-			if (s_settingsByType.TryGetValue(type, out settings))
+			if (m_settingsByType.TryGetValue(type, out settings))
 				return true;
 
 			return TryGetDialogueCategory(type, out var category)
 				&& TryGetDialogueRunnerSettings(category, out settings);
 		}
 
-		public static bool ReplicateSettings(DialogueRunnerControl control)
+		public bool ReplicateSettings(DialogueRunnerControl control)
 		{
 			if (TryGetDialogueRunnerSettings(control.dialogueType, out var settings))
 			{
@@ -249,27 +244,27 @@ namespace ToolkitEngine.Dialogue
 
 		#region Callbacks
 
-		private static void RuntimeCategory_DialogueStart(object sender, DialogueEventArgs e)
+		private void RuntimeCategory_DialogueStart(object sender, DialogueEventArgs e)
 		{
 			DialogueStarted?.Invoke(null, e);
 		}
 
-		private static void RuntimeCategory_DialogueComplete(object sender, DialogueEventArgs e)
+		private void RuntimeCategory_DialogueComplete(object sender, DialogueEventArgs e)
 		{
 			DialogueCompleted?.Invoke(null, e);
 		}
 
-		private static void RuntimeCategory_NodeStarted(object sender, DialogueEventArgs e)
+		private void RuntimeCategory_NodeStarted(object sender, DialogueEventArgs e)
 		{
 			NodeStarted?.Invoke(null, e);
 		}
 
-		private static void RuntimeCategory_NodeCompleted(object sender, DialogueEventArgs e)
+		private void RuntimeCategory_NodeCompleted(object sender, DialogueEventArgs e)
 		{
 			NodeCompleted?.Invoke(null, e);
 		}
 
-		private static void RuntimeCategory_Command(object sender, DialogueEventArgs e)
+		private void RuntimeCategory_Command(object sender, DialogueEventArgs e)
 		{
 			Command?.Invoke(null, e);
 		}

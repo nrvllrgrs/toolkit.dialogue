@@ -25,7 +25,7 @@ namespace ToolkitEngine.Dialogue.Scoring
 		{
 			if (actor.TryGetComponent(out DialogueRunnerControl control))
 			{
-				int priority = DialogueManager.GetPriority(control.dialogueType);
+				int priority = DialogueManager.CastInstance.GetPriority(control.dialogueType);
 				if (priority > 0)
 				{
 					return MathUtil.GetPercent(priority, min, max);

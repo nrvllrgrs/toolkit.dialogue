@@ -52,12 +52,12 @@ namespace ToolkitEngine.Dialogue
 
 		private void OnEnable()
 		{
-			DialogueManager.Register(this);
+			DialogueManager.CastInstance.Register(this);
 		}
 
 		private void OnDisable()
 		{
-			DialogueManager.Unregister(this);
+			DialogueManager.CastInstance.Unregister(this);
 		}
 
 		#endregion

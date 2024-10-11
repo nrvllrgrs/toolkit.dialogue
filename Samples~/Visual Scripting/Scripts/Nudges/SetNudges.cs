@@ -48,7 +48,7 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 
 		private ControlOutput Enter(Flow flow)
 		{
-			NudgeManager.Instance.Set(
+			NudgeManager.CastInstance.Set(
 				flow.GetValue<NudgeType>(nudgeType),
 				flow.GetValue<YarnProject>(project),
 				flow.GetValue<string>(startNode),

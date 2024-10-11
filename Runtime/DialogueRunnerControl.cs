@@ -146,14 +146,14 @@ namespace ToolkitEngine.Dialogue
 			if (!m_dialogueRunner.NodeExists(startNode))
 				return;
 
-			DialogueManager.Play(this, startNode);
+			DialogueManager.CastInstance.Play(this, startNode);
 		}
 
 		internal void PlayInternal(string startNode)
 		{
 			if (m_replicateSettings)
 			{
-				DialogueManager.ReplicateSettings(this);
+				DialogueManager.CastInstance.ReplicateSettings(this);
 			}
 			m_dialogueRunner.StartDialogue(startNode);
 		}
@@ -170,7 +170,7 @@ namespace ToolkitEngine.Dialogue
 			if (!m_dialogueRunner.NodeExists(startNode))
 				return;
 
-			DialogueManager.Enqueue(this, startNode);
+			DialogueManager.CastInstance.Enqueue(this, startNode);
 		}
 
 		[ContextMenu("Dequeue")]
@@ -185,13 +185,13 @@ namespace ToolkitEngine.Dialogue
 			if (!m_dialogueRunner.NodeExists(startNode))
 				return;
 
-			DialogueManager.Dequeue(this, startNode);
+			DialogueManager.CastInstance.Dequeue(this, startNode);
 		}
 
 		[ContextMenu("Clear Queue")]
 		public void ClearQueue()
 		{
-			DialogueManager.ClearQueue(this);
+			DialogueManager.CastInstance.ClearQueue(this);
 		}
 
 		[ContextMenu("Stop")]

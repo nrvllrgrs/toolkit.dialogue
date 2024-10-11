@@ -27,7 +27,7 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 
 		private ControlOutput Enter(Flow flow)
 		{
-			NudgeManager.Instance.Play();
+			NudgeManager.CastInstance.Play();
 			return exit;
 		}
 

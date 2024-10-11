@@ -27,7 +27,7 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 
 		private ControlOutput Enter(Flow flow)
 		{
-			NudgeManager.Instance.ResetTimer();
+			NudgeManager.CastInstance.ResetTimer();
 			return exit;
 		}
 

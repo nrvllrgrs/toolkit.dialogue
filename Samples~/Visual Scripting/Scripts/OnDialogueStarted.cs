@@ -10,12 +10,12 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 
 		protected override void StartListeningToManager()
 		{
-			DialogueManager.DialogueStarted += InvokeTrigger;
+			DialogueManager.CastInstance.DialogueStarted += InvokeTrigger;
 		}
 
 		protected override void StopListeningToManager()
 		{
-			DialogueManager.DialogueStarted -= InvokeTrigger;
+			DialogueManager.CastInstance.DialogueStarted -= InvokeTrigger;
 		}
 	}
 }

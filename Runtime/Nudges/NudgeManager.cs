@@ -6,12 +6,9 @@ using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue
 {
-	public class NudgeManager : Singleton<NudgeManager>
-    {
+	public class NudgeManager : InstantiableSubsystem<NudgeManager, NudgeManagerConfig>
+	{
 		#region Fields
-
-		[SerializeField]
-		private NudgeManagerConfig m_config;
 
 		/// <summary>
 		/// Objects pausing nudge countdown timer
@@ -37,8 +34,6 @@ namespace ToolkitEngine.Dialogue
 
 		#region Properties
 
-		public NudgeManagerConfig config => m_config;
-
 		public bool paused
 		{
 			get => m_paused || activeData == null;
@@ -62,30 +57,64 @@ namespace ToolkitEngine.Dialogue
 				if (Equals(m_activeData, value))
 					return;
 
+				if (runner == null)
+				{
+					Debug.LogError("DialogRunner in NudgeManagerConfig is undefined!");
+					return;
+				}
+
 				// Stop if another nudge is actively running
 				// Needs to occur before changing runner project
-				if (m_runner.IsDialogueRunning)
+				if (runner.IsDialogueRunning)
 				{
-					m_runner.Stop();
+					runner.Stop();
 				}
 
 				m_activeData = value;
 
 				if (value != null)
 				{
-					m_runner.SetProject(value.project);
+					runner.SetProject(value.project);
 					m_remainingTime = value.nudgeType.delayTime;
 
 					if (!string.IsNullOrWhiteSpace(m_activeData.nudgeType.indexVarName))
 					{
-						m_runner.VariableStorage.SetValue(m_activeData.nudgeType.indexVarName, 0);
+						runner.VariableStorage.SetValue(m_activeData.nudgeType.indexVarName, 0);
 					}
 				}
 				else
 				{
-					m_runner.SetProject(null);
+					runner.SetProject(null);
 					m_remainingTime = float.PositiveInfinity;
 				}
+			}
+		}
+
+		protected DialogueRunner runner
+		{
+			get
+			{
+				if (m_runner == null)
+				{
+					m_runner = GetInstance()?.GetComponent<DialogueRunner>();
+				}
+				return m_runner;
+			}
+		}
+
+		protected DialogueRunnerControl control
+		{
+			get
+			{
+				if (m_control == null)
+				{
+					m_control = GetInstance()?.GetComponent<DialogueRunnerControl>();
+					if (m_control != null)
+					{
+						m_control.Set(runner, Config.dialogueType);
+					}
+				}
+				return m_control;
 			}
 		}
 
@@ -98,44 +127,21 @@ namespace ToolkitEngine.Dialogue
 			base.Initialize();
 
 			// Pause when any dialogue starts; unpause when dialogue complete
-			DialogueManager.DialogueStarted += DialogueManager_DialogueStart;
-			DialogueManager.DialogueCompleted += DialogueManager_DialogueComplete;
+			DialogueManager.CastInstance.DialogueStarted += DialogueManager_DialogueStart;
+			DialogueManager.CastInstance.DialogueCompleted += DialogueManager_DialogueComplete;
+			LifecycleSubsystem.Register(this, LifecycleSubsystem.Phase.Update);
 		}
 
 		protected override void Terminate()
 		{
 			base.Terminate();
 
-			DialogueManager.DialogueStarted -= DialogueManager_DialogueStart;
-			DialogueManager.DialogueCompleted -= DialogueManager_DialogueComplete;
+			LifecycleSubsystem.Unregister(this, LifecycleSubsystem.Phase.Update);
+			DialogueManager.CastInstance.DialogueStarted -= DialogueManager_DialogueStart;
+			DialogueManager.CastInstance.DialogueCompleted -= DialogueManager_DialogueComplete;
 		}
 
-		public void Register(NudgeDialogueRunner runner)
-		{
-			if (m_runner != null)
-				return;
-
-			m_runner = runner.dialogueRunner;
-			if (m_config.dialogueType != null)
-			{
-				m_control = runner.GetComponent<DialogueRunnerControl>();
-				if (m_control != null)
-				{
-					m_control.Set(m_runner, m_config.dialogueType);
-				}
-			}
-		}
-
-		public void Unregister(NudgeDialogueRunner runner)
-		{
-			if (m_runner != runner.dialogueRunner)
-				return;
-
-			m_runner = null;
-			m_control = null;
-		}
-
-		private void Update()
+		public override void Update()
 		{
 			if (paused)
 				return;
@@ -158,7 +164,7 @@ namespace ToolkitEngine.Dialogue
 				nudgeType = nudgeType,
 				project = project,
 				startNode = startNode,
-				priority = config.GetPriority(nudgeType)
+				priority = Config.GetPriority(nudgeType)
 			};
 
 			if (!m_map.ContainsKey(nudgeType))
@@ -219,13 +225,13 @@ namespace ToolkitEngine.Dialogue
 		/// </summary>
 		public void Play()
 		{
-			if (m_control != null)
+			if (control != null)
 			{
-				m_control.Play(m_activeData.startNode);
+				control.Play(m_activeData.startNode);
 			}
 			else
 			{
-				m_runner.StartDialogue(m_activeData.startNode);
+				runner.StartDialogue(m_activeData.startNode);
 			}
 			m_remainingTime = m_activeData.nudgeType.delayTime;
 		}

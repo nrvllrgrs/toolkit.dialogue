@@ -40,11 +40,11 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 		{
 			if (flow.GetValue<bool>(value))
 			{
-				NudgeManager.Instance.Pause(flow.GetValue<object>(source));
+				NudgeManager.CastInstance.Pause(flow.GetValue<object>(source));
 			}
 			else
 			{
-				NudgeManager.Instance.Unpause(flow.GetValue<object>(source));
+				NudgeManager.CastInstance.Unpause(flow.GetValue<object>(source));
 			}
 			return exit;
 		}
