@@ -135,30 +135,109 @@ references:
   commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_dialogueType
   fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_dialogueType
   nameWithType: DialogueRunnerControlEditor.m_dialogueType
-- uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueComplete
-  name: m_onDialogueComplete
-  href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_onDialogueComplete
-  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueComplete
-  fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueComplete
-  nameWithType: DialogueRunnerControlEditor.m_onDialogueComplete
-- uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueStart
-  name: m_onDialogueStart
-  href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_onDialogueStart
-  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueStart
-  fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueStart
-  nameWithType: DialogueRunnerControlEditor.m_onDialogueStart
+- uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onCommand
+  name: m_onCommand
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_onCommand
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onCommand
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onCommand
+  nameWithType: DialogueRunnerControlEditor.m_onCommand
+- uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueCompleted
+  name: m_onDialogueCompleted
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_onDialogueCompleted
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueCompleted
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueCompleted
+  nameWithType: DialogueRunnerControlEditor.m_onDialogueCompleted
+- uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueStarted
+  name: m_onDialogueStarted
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_onDialogueStarted
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueStarted
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onDialogueStarted
+  nameWithType: DialogueRunnerControlEditor.m_onDialogueStarted
+- uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onNodeCompleted
+  name: m_onNodeCompleted
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_onNodeCompleted
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onNodeCompleted
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onNodeCompleted
+  nameWithType: DialogueRunnerControlEditor.m_onNodeCompleted
+- uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onNodeStarted
+  name: m_onNodeStarted
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_onNodeStarted
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onNodeStarted
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_onNodeStarted
+  nameWithType: DialogueRunnerControlEditor.m_onNodeStarted
 - uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_playOnStart
   name: m_playOnStart
   href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_playOnStart
   commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_playOnStart
   fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_playOnStart
   nameWithType: DialogueRunnerControlEditor.m_playOnStart
+- uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_replicateSettings
+  name: m_replicateSettings
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_replicateSettings
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_replicateSettings
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_replicateSettings
+  nameWithType: DialogueRunnerControlEditor.m_replicateSettings
 - uid: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_startNode
   name: m_startNode
   href: api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html#ToolkitEditor_Dialogue_DialogueRunnerControlEditor_m_startNode
   commentId: F:ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_startNode
   fullName: ToolkitEditor.Dialogue.DialogueRunnerControlEditor.m_startNode
   nameWithType: DialogueRunnerControlEditor.m_startNode
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor
+  name: DialogueRunnerSettingsEditor
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html
+  commentId: T:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor
+  nameWithType: DialogueRunnerSettingsEditor
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.DrawProperties
+  name: DrawProperties()
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html#ToolkitEditor_Dialogue_DialogueRunnerSettingsEditor_DrawProperties
+  commentId: M:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.DrawProperties
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.DrawProperties()
+  nameWithType: DialogueRunnerSettingsEditor.DrawProperties()
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.DrawProperties*
+  name: DrawProperties
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html#ToolkitEditor_Dialogue_DialogueRunnerSettingsEditor_DrawProperties_
+  commentId: Overload:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.DrawProperties
+  isSpec: "True"
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.DrawProperties
+  nameWithType: DialogueRunnerSettingsEditor.DrawProperties
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueCategory
+  name: m_dialogueCategory
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html#ToolkitEditor_Dialogue_DialogueRunnerSettingsEditor_m_dialogueCategory
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueCategory
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueCategory
+  nameWithType: DialogueRunnerSettingsEditor.m_dialogueCategory
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueType
+  name: m_dialogueType
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html#ToolkitEditor_Dialogue_DialogueRunnerSettingsEditor_m_dialogueType
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueType
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueType
+  nameWithType: DialogueRunnerSettingsEditor.m_dialogueType
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueViews
+  name: m_dialogueViews
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html#ToolkitEditor_Dialogue_DialogueRunnerSettingsEditor_m_dialogueViews
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueViews
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_dialogueViews
+  nameWithType: DialogueRunnerSettingsEditor.m_dialogueViews
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_lineProvider
+  name: m_lineProvider
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html#ToolkitEditor_Dialogue_DialogueRunnerSettingsEditor_m_lineProvider
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_lineProvider
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_lineProvider
+  nameWithType: DialogueRunnerSettingsEditor.m_lineProvider
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_registration
+  name: m_registration
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html#ToolkitEditor_Dialogue_DialogueRunnerSettingsEditor_m_registration
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_registration
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_registration
+  nameWithType: DialogueRunnerSettingsEditor.m_registration
+- uid: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_variableStorage
+  name: m_variableStorage
+  href: api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html#ToolkitEditor_Dialogue_DialogueRunnerSettingsEditor_m_variableStorage
+  commentId: F:ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_variableStorage
+  fullName: ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.m_variableStorage
+  nameWithType: DialogueRunnerSettingsEditor.m_variableStorage
 - uid: ToolkitEditor.Dialogue.DialogueTypeEditor
   name: DialogueTypeEditor
   href: api/ToolkitEditor.Dialogue.DialogueTypeEditor.html
@@ -244,6 +323,91 @@ references:
   commentId: F:ToolkitEditor.Dialogue.DialogueTypeEditor.m_skippable
   fullName: ToolkitEditor.Dialogue.DialogueTypeEditor.m_skippable
   nameWithType: DialogueTypeEditor.m_skippable
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor
+  name: NudgeTypeEditor
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html
+  commentId: T:ToolkitEditor.Dialogue.NudgeTypeEditor
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor
+  nameWithType: NudgeTypeEditor
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.DrawProperties
+  name: DrawProperties()
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_DrawProperties
+  commentId: M:ToolkitEditor.Dialogue.NudgeTypeEditor.DrawProperties
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.DrawProperties()
+  nameWithType: NudgeTypeEditor.DrawProperties()
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.DrawProperties*
+  name: DrawProperties
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_DrawProperties_
+  commentId: Overload:ToolkitEditor.Dialogue.NudgeTypeEditor.DrawProperties
+  isSpec: "True"
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.DrawProperties
+  nameWithType: NudgeTypeEditor.DrawProperties
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.GetNestedHeight
+  name: GetNestedHeight()
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_GetNestedHeight
+  commentId: M:ToolkitEditor.Dialogue.NudgeTypeEditor.GetNestedHeight
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.GetNestedHeight()
+  nameWithType: NudgeTypeEditor.GetNestedHeight()
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.GetNestedHeight*
+  name: GetNestedHeight
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_GetNestedHeight_
+  commentId: Overload:ToolkitEditor.Dialogue.NudgeTypeEditor.GetNestedHeight
+  isSpec: "True"
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.GetNestedHeight
+  nameWithType: NudgeTypeEditor.GetNestedHeight
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.OnEnable
+  name: OnEnable()
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_OnEnable
+  commentId: M:ToolkitEditor.Dialogue.NudgeTypeEditor.OnEnable
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.OnEnable()
+  nameWithType: NudgeTypeEditor.OnEnable()
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.OnEnable*
+  name: OnEnable
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_OnEnable_
+  commentId: Overload:ToolkitEditor.Dialogue.NudgeTypeEditor.OnEnable
+  isSpec: "True"
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.OnEnable
+  nameWithType: NudgeTypeEditor.OnEnable
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.OnNestedGUI(Rect@)
+  name: OnNestedGUI(ref Rect)
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_OnNestedGUI_Rect__
+  commentId: M:ToolkitEditor.Dialogue.NudgeTypeEditor.OnNestedGUI(Rect@)
+  name.vb: OnNestedGUI(Rect)
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.OnNestedGUI(ref Rect)
+  fullName.vb: ToolkitEditor.Dialogue.NudgeTypeEditor.OnNestedGUI(Rect)
+  nameWithType: NudgeTypeEditor.OnNestedGUI(ref Rect)
+  nameWithType.vb: NudgeTypeEditor.OnNestedGUI(Rect)
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.OnNestedGUI*
+  name: OnNestedGUI
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_OnNestedGUI_
+  commentId: Overload:ToolkitEditor.Dialogue.NudgeTypeEditor.OnNestedGUI
+  isSpec: "True"
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.OnNestedGUI
+  nameWithType: NudgeTypeEditor.OnNestedGUI
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.m_autoClear
+  name: m_autoClear
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_m_autoClear
+  commentId: F:ToolkitEditor.Dialogue.NudgeTypeEditor.m_autoClear
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.m_autoClear
+  nameWithType: NudgeTypeEditor.m_autoClear
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.m_delayTime
+  name: m_delayTime
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_m_delayTime
+  commentId: F:ToolkitEditor.Dialogue.NudgeTypeEditor.m_delayTime
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.m_delayTime
+  nameWithType: NudgeTypeEditor.m_delayTime
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.m_indexVarName
+  name: m_indexVarName
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_m_indexVarName
+  commentId: F:ToolkitEditor.Dialogue.NudgeTypeEditor.m_indexVarName
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.m_indexVarName
+  nameWithType: NudgeTypeEditor.m_indexVarName
+- uid: ToolkitEditor.Dialogue.NudgeTypeEditor.m_minDelayTime
+  name: m_minDelayTime
+  href: api/ToolkitEditor.Dialogue.NudgeTypeEditor.html#ToolkitEditor_Dialogue_NudgeTypeEditor_m_minDelayTime
+  commentId: F:ToolkitEditor.Dialogue.NudgeTypeEditor.m_minDelayTime
+  fullName: ToolkitEditor.Dialogue.NudgeTypeEditor.m_minDelayTime
+  nameWithType: NudgeTypeEditor.m_minDelayTime
 - uid: ToolkitEditor.Dialogue.VisualScripting
   name: ToolkitEditor.Dialogue.VisualScripting
   href: api/ToolkitEditor.Dialogue.VisualScripting.html
@@ -418,6 +582,24 @@ references:
   fullName.vb: ToolkitEngine.Dialogue.DialogueEventArgs.New(ToolkitEngine.Dialogue.DialogueRunnerControl)
   nameWithType: DialogueEventArgs.DialogueEventArgs(DialogueRunnerControl)
   nameWithType.vb: DialogueEventArgs.New(DialogueRunnerControl)
+- uid: ToolkitEngine.Dialogue.DialogueEventArgs.#ctor(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String)
+  name: DialogueEventArgs(DialogueRunnerControl, string)
+  href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs__ctor_ToolkitEngine_Dialogue_DialogueRunnerControl_System_String_
+  commentId: M:ToolkitEngine.Dialogue.DialogueEventArgs.#ctor(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String)
+  name.vb: New(DialogueRunnerControl, String)
+  fullName: ToolkitEngine.Dialogue.DialogueEventArgs.DialogueEventArgs(ToolkitEngine.Dialogue.DialogueRunnerControl, string)
+  fullName.vb: ToolkitEngine.Dialogue.DialogueEventArgs.New(ToolkitEngine.Dialogue.DialogueRunnerControl, String)
+  nameWithType: DialogueEventArgs.DialogueEventArgs(DialogueRunnerControl, string)
+  nameWithType.vb: DialogueEventArgs.New(DialogueRunnerControl, String)
+- uid: ToolkitEngine.Dialogue.DialogueEventArgs.#ctor(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String,System.String)
+  name: DialogueEventArgs(DialogueRunnerControl, string, string)
+  href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs__ctor_ToolkitEngine_Dialogue_DialogueRunnerControl_System_String_System_String_
+  commentId: M:ToolkitEngine.Dialogue.DialogueEventArgs.#ctor(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String,System.String)
+  name.vb: New(DialogueRunnerControl, String, String)
+  fullName: ToolkitEngine.Dialogue.DialogueEventArgs.DialogueEventArgs(ToolkitEngine.Dialogue.DialogueRunnerControl, string, string)
+  fullName.vb: ToolkitEngine.Dialogue.DialogueEventArgs.New(ToolkitEngine.Dialogue.DialogueRunnerControl, String, String)
+  nameWithType: DialogueEventArgs.DialogueEventArgs(DialogueRunnerControl, string, string)
+  nameWithType.vb: DialogueEventArgs.New(DialogueRunnerControl, String, String)
 - uid: ToolkitEngine.Dialogue.DialogueEventArgs.#ctor*
   name: DialogueEventArgs
   href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs__ctor_
@@ -428,6 +610,19 @@ references:
   fullName.vb: ToolkitEngine.Dialogue.DialogueEventArgs.New
   nameWithType: DialogueEventArgs.DialogueEventArgs
   nameWithType.vb: DialogueEventArgs.New
+- uid: ToolkitEngine.Dialogue.DialogueEventArgs.command
+  name: command
+  href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs_command
+  commentId: P:ToolkitEngine.Dialogue.DialogueEventArgs.command
+  fullName: ToolkitEngine.Dialogue.DialogueEventArgs.command
+  nameWithType: DialogueEventArgs.command
+- uid: ToolkitEngine.Dialogue.DialogueEventArgs.command*
+  name: command
+  href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs_command_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueEventArgs.command
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueEventArgs.command
+  nameWithType: DialogueEventArgs.command
 - uid: ToolkitEngine.Dialogue.DialogueEventArgs.control
   name: control
   href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs_control
@@ -441,6 +636,19 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueEventArgs.control
   nameWithType: DialogueEventArgs.control
+- uid: ToolkitEngine.Dialogue.DialogueEventArgs.nodeName
+  name: nodeName
+  href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs_nodeName
+  commentId: P:ToolkitEngine.Dialogue.DialogueEventArgs.nodeName
+  fullName: ToolkitEngine.Dialogue.DialogueEventArgs.nodeName
+  nameWithType: DialogueEventArgs.nodeName
+- uid: ToolkitEngine.Dialogue.DialogueEventArgs.nodeName*
+  name: nodeName
+  href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs_nodeName_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueEventArgs.nodeName
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueEventArgs.nodeName
+  nameWithType: DialogueEventArgs.nodeName
 - uid: ToolkitEngine.Dialogue.DialogueEventArgs.runner
   name: runner
   href: api/ToolkitEngine.Dialogue.DialogueEventArgs.html#ToolkitEngine_Dialogue_DialogueEventArgs_runner
@@ -473,19 +681,6 @@ references:
   commentId: T:ToolkitEngine.Dialogue.DialogueManager
   fullName: ToolkitEngine.Dialogue.DialogueManager
   nameWithType: DialogueManager
-- uid: ToolkitEngine.Dialogue.DialogueManager.Awake
-  name: Awake()
-  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Awake
-  commentId: M:ToolkitEngine.Dialogue.DialogueManager.Awake
-  fullName: ToolkitEngine.Dialogue.DialogueManager.Awake()
-  nameWithType: DialogueManager.Awake()
-- uid: ToolkitEngine.Dialogue.DialogueManager.Awake*
-  name: Awake
-  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Awake_
-  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.Awake
-  isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.DialogueManager.Awake
-  nameWithType: DialogueManager.Awake
 - uid: ToolkitEngine.Dialogue.DialogueManager.ClearQueue(ToolkitEngine.Dialogue.DialogueRunnerControl)
   name: ClearQueue(DialogueRunnerControl)
   href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_ClearQueue_ToolkitEngine_Dialogue_DialogueRunnerControl_
@@ -499,6 +694,12 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueManager.ClearQueue
   nameWithType: DialogueManager.ClearQueue
+- uid: ToolkitEngine.Dialogue.DialogueManager.Command
+  name: Command
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Command
+  commentId: E:ToolkitEngine.Dialogue.DialogueManager.Command
+  fullName: ToolkitEngine.Dialogue.DialogueManager.Command
+  nameWithType: DialogueManager.Command
 - uid: ToolkitEngine.Dialogue.DialogueManager.Dequeue(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String)
   name: Dequeue(DialogueRunnerControl, string)
   href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Dequeue_ToolkitEngine_Dialogue_DialogueRunnerControl_System_String_
@@ -515,6 +716,18 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueManager.Dequeue
   nameWithType: DialogueManager.Dequeue
+- uid: ToolkitEngine.Dialogue.DialogueManager.DialogueCompleted
+  name: DialogueCompleted
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_DialogueCompleted
+  commentId: E:ToolkitEngine.Dialogue.DialogueManager.DialogueCompleted
+  fullName: ToolkitEngine.Dialogue.DialogueManager.DialogueCompleted
+  nameWithType: DialogueManager.DialogueCompleted
+- uid: ToolkitEngine.Dialogue.DialogueManager.DialogueStarted
+  name: DialogueStarted
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_DialogueStarted
+  commentId: E:ToolkitEngine.Dialogue.DialogueManager.DialogueStarted
+  fullName: ToolkitEngine.Dialogue.DialogueManager.DialogueStarted
+  nameWithType: DialogueManager.DialogueStarted
 - uid: ToolkitEngine.Dialogue.DialogueManager.Enqueue(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String)
   name: Enqueue(DialogueRunnerControl, string)
   href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Enqueue_ToolkitEngine_Dialogue_DialogueRunnerControl_System_String_
@@ -557,19 +770,19 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueManager.GetQueueAge
   nameWithType: DialogueManager.GetQueueAge
-- uid: ToolkitEngine.Dialogue.DialogueManager.IsAnyDialogueRunning
-  name: IsAnyDialogueRunning
-  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_IsAnyDialogueRunning
-  commentId: P:ToolkitEngine.Dialogue.DialogueManager.IsAnyDialogueRunning
-  fullName: ToolkitEngine.Dialogue.DialogueManager.IsAnyDialogueRunning
-  nameWithType: DialogueManager.IsAnyDialogueRunning
-- uid: ToolkitEngine.Dialogue.DialogueManager.IsAnyDialogueRunning*
-  name: IsAnyDialogueRunning
-  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_IsAnyDialogueRunning_
-  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.IsAnyDialogueRunning
+- uid: ToolkitEngine.Dialogue.DialogueManager.Initialize
+  name: Initialize()
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Initialize
+  commentId: M:ToolkitEngine.Dialogue.DialogueManager.Initialize
+  fullName: ToolkitEngine.Dialogue.DialogueManager.Initialize()
+  nameWithType: DialogueManager.Initialize()
+- uid: ToolkitEngine.Dialogue.DialogueManager.Initialize*
+  name: Initialize
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Initialize_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.Initialize
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.DialogueManager.IsAnyDialogueRunning
-  nameWithType: DialogueManager.IsAnyDialogueRunning
+  fullName: ToolkitEngine.Dialogue.DialogueManager.Initialize
+  nameWithType: DialogueManager.Initialize
 - uid: ToolkitEngine.Dialogue.DialogueManager.IsDialogueCategoryRunning(ToolkitEngine.Dialogue.DialogueCategory)
   name: IsDialogueCategoryRunning(DialogueCategory)
   href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_IsDialogueCategoryRunning_ToolkitEngine_Dialogue_DialogueCategory_
@@ -583,6 +796,18 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueManager.IsDialogueCategoryRunning
   nameWithType: DialogueManager.IsDialogueCategoryRunning
+- uid: ToolkitEngine.Dialogue.DialogueManager.NodeCompleted
+  name: NodeCompleted
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_NodeCompleted
+  commentId: E:ToolkitEngine.Dialogue.DialogueManager.NodeCompleted
+  fullName: ToolkitEngine.Dialogue.DialogueManager.NodeCompleted
+  nameWithType: DialogueManager.NodeCompleted
+- uid: ToolkitEngine.Dialogue.DialogueManager.NodeStarted
+  name: NodeStarted
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_NodeStarted
+  commentId: E:ToolkitEngine.Dialogue.DialogueManager.NodeStarted
+  fullName: ToolkitEngine.Dialogue.DialogueManager.NodeStarted
+  nameWithType: DialogueManager.NodeStarted
 - uid: ToolkitEngine.Dialogue.DialogueManager.Play(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String)
   name: Play(DialogueRunnerControl, string)
   href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Play_ToolkitEngine_Dialogue_DialogueRunnerControl_System_String_
@@ -599,6 +824,32 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueManager.Play
   nameWithType: DialogueManager.Play
+- uid: ToolkitEngine.Dialogue.DialogueManager.Register(ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  name: Register(DialogueRunnerSettings)
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Register_ToolkitEngine_Dialogue_DialogueRunnerSettings_
+  commentId: M:ToolkitEngine.Dialogue.DialogueManager.Register(ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  fullName: ToolkitEngine.Dialogue.DialogueManager.Register(ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  nameWithType: DialogueManager.Register(DialogueRunnerSettings)
+- uid: ToolkitEngine.Dialogue.DialogueManager.Register*
+  name: Register
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Register_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.Register
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueManager.Register
+  nameWithType: DialogueManager.Register
+- uid: ToolkitEngine.Dialogue.DialogueManager.ReplicateSettings(ToolkitEngine.Dialogue.DialogueRunnerControl)
+  name: ReplicateSettings(DialogueRunnerControl)
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_ReplicateSettings_ToolkitEngine_Dialogue_DialogueRunnerControl_
+  commentId: M:ToolkitEngine.Dialogue.DialogueManager.ReplicateSettings(ToolkitEngine.Dialogue.DialogueRunnerControl)
+  fullName: ToolkitEngine.Dialogue.DialogueManager.ReplicateSettings(ToolkitEngine.Dialogue.DialogueRunnerControl)
+  nameWithType: DialogueManager.ReplicateSettings(DialogueRunnerControl)
+- uid: ToolkitEngine.Dialogue.DialogueManager.ReplicateSettings*
+  name: ReplicateSettings
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_ReplicateSettings_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.ReplicateSettings
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueManager.ReplicateSettings
+  nameWithType: DialogueManager.ReplicateSettings
 - uid: ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory
   name: DialogueManager.RuntimeDialogueCategory
   href: api/ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.html
@@ -676,6 +927,73 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.isDialogueRunning
   nameWithType: DialogueManager.RuntimeDialogueCategory.isDialogueRunning
+- uid: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory(ToolkitEngine.Dialogue.DialogueType,ToolkitEngine.Dialogue.DialogueCategory@)
+  name: TryGetDialogueCategory(DialogueType, out DialogueCategory)
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueCategory_ToolkitEngine_Dialogue_DialogueType_ToolkitEngine_Dialogue_DialogueCategory__
+  commentId: M:ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory(ToolkitEngine.Dialogue.DialogueType,ToolkitEngine.Dialogue.DialogueCategory@)
+  name.vb: TryGetDialogueCategory(DialogueType, DialogueCategory)
+  fullName: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory(ToolkitEngine.Dialogue.DialogueType, out ToolkitEngine.Dialogue.DialogueCategory)
+  fullName.vb: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory(ToolkitEngine.Dialogue.DialogueType, ToolkitEngine.Dialogue.DialogueCategory)
+  nameWithType: DialogueManager.TryGetDialogueCategory(DialogueType, out DialogueCategory)
+  nameWithType.vb: DialogueManager.TryGetDialogueCategory(DialogueType, DialogueCategory)
+- uid: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory*
+  name: TryGetDialogueCategory
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueCategory_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory
+  nameWithType: DialogueManager.TryGetDialogueCategory
+- uid: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueCategory,ToolkitEngine.Dialogue.DialogueRunnerSettings@)
+  name: TryGetDialogueRunnerSettings(DialogueCategory, out DialogueRunnerSettings)
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueRunnerSettings_ToolkitEngine_Dialogue_DialogueCategory_ToolkitEngine_Dialogue_DialogueRunnerSettings__
+  commentId: M:ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueCategory,ToolkitEngine.Dialogue.DialogueRunnerSettings@)
+  name.vb: TryGetDialogueRunnerSettings(DialogueCategory, DialogueRunnerSettings)
+  fullName: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueCategory, out ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  fullName.vb: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueCategory, ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  nameWithType: DialogueManager.TryGetDialogueRunnerSettings(DialogueCategory, out DialogueRunnerSettings)
+  nameWithType.vb: DialogueManager.TryGetDialogueRunnerSettings(DialogueCategory, DialogueRunnerSettings)
+- uid: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueType,ToolkitEngine.Dialogue.DialogueRunnerSettings@)
+  name: TryGetDialogueRunnerSettings(DialogueType, out DialogueRunnerSettings)
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueRunnerSettings_ToolkitEngine_Dialogue_DialogueType_ToolkitEngine_Dialogue_DialogueRunnerSettings__
+  commentId: M:ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueType,ToolkitEngine.Dialogue.DialogueRunnerSettings@)
+  name.vb: TryGetDialogueRunnerSettings(DialogueType, DialogueRunnerSettings)
+  fullName: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueType, out ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  fullName.vb: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueType, ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  nameWithType: DialogueManager.TryGetDialogueRunnerSettings(DialogueType, out DialogueRunnerSettings)
+  nameWithType.vb: DialogueManager.TryGetDialogueRunnerSettings(DialogueType, DialogueRunnerSettings)
+- uid: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings*
+  name: TryGetDialogueRunnerSettings
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueRunnerSettings_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings
+  nameWithType: DialogueManager.TryGetDialogueRunnerSettings
+- uid: ToolkitEngine.Dialogue.DialogueManager.Unregister(ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  name: Unregister(DialogueRunnerSettings)
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Unregister_ToolkitEngine_Dialogue_DialogueRunnerSettings_
+  commentId: M:ToolkitEngine.Dialogue.DialogueManager.Unregister(ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  fullName: ToolkitEngine.Dialogue.DialogueManager.Unregister(ToolkitEngine.Dialogue.DialogueRunnerSettings)
+  nameWithType: DialogueManager.Unregister(DialogueRunnerSettings)
+- uid: ToolkitEngine.Dialogue.DialogueManager.Unregister*
+  name: Unregister
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_Unregister_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.Unregister
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueManager.Unregister
+  nameWithType: DialogueManager.Unregister
+- uid: ToolkitEngine.Dialogue.DialogueManager.isAnyDialogueRunning
+  name: isAnyDialogueRunning
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_isAnyDialogueRunning
+  commentId: P:ToolkitEngine.Dialogue.DialogueManager.isAnyDialogueRunning
+  fullName: ToolkitEngine.Dialogue.DialogueManager.isAnyDialogueRunning
+  nameWithType: DialogueManager.isAnyDialogueRunning
+- uid: ToolkitEngine.Dialogue.DialogueManager.isAnyDialogueRunning*
+  name: isAnyDialogueRunning
+  href: api/ToolkitEngine.Dialogue.DialogueManager.html#ToolkitEngine_Dialogue_DialogueManager_isAnyDialogueRunning_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueManager.isAnyDialogueRunning
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueManager.isAnyDialogueRunning
+  nameWithType: DialogueManager.isAnyDialogueRunning
 - uid: ToolkitEngine.Dialogue.DialogueManagerConfig
   name: DialogueManagerConfig
   href: api/ToolkitEngine.Dialogue.DialogueManagerConfig.html
@@ -780,6 +1098,19 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.Play
   nameWithType: DialogueRunnerControl.Play
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.Set(DialogueRunner,ToolkitEngine.Dialogue.DialogueType)
+  name: Set(DialogueRunner, DialogueType)
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_Set_DialogueRunner_ToolkitEngine_Dialogue_DialogueType_
+  commentId: M:ToolkitEngine.Dialogue.DialogueRunnerControl.Set(DialogueRunner,ToolkitEngine.Dialogue.DialogueType)
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.Set(DialogueRunner, ToolkitEngine.Dialogue.DialogueType)
+  nameWithType: DialogueRunnerControl.Set(DialogueRunner, DialogueType)
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.Set*
+  name: Set
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_Set_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerControl.Set
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.Set
+  nameWithType: DialogueRunnerControl.Set
 - uid: ToolkitEngine.Dialogue.DialogueRunnerControl.Stop
   name: Stop()
   href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_Stop
@@ -832,32 +1163,173 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.dialogueType
   nameWithType: DialogueRunnerControl.dialogueType
-- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueComplete
-  name: onDialogueComplete
-  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueComplete
-  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueComplete
-  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueComplete
-  nameWithType: DialogueRunnerControl.onDialogueComplete
-- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueComplete*
-  name: onDialogueComplete
-  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueComplete_
-  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueComplete
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onCommand
+  name: onCommand
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onCommand
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerControl.onCommand
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onCommand
+  nameWithType: DialogueRunnerControl.onCommand
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onCommand*
+  name: onCommand
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onCommand_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerControl.onCommand
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueComplete
-  nameWithType: DialogueRunnerControl.onDialogueComplete
-- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStart
-  name: onDialogueStart
-  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueStart
-  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStart
-  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStart
-  nameWithType: DialogueRunnerControl.onDialogueStart
-- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStart*
-  name: onDialogueStart
-  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueStart_
-  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStart
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onCommand
+  nameWithType: DialogueRunnerControl.onCommand
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueCompleted
+  name: onDialogueCompleted
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueCompleted
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueCompleted
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueCompleted
+  nameWithType: DialogueRunnerControl.onDialogueCompleted
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueCompleted*
+  name: onDialogueCompleted
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueCompleted_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueCompleted
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStart
-  nameWithType: DialogueRunnerControl.onDialogueStart
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueCompleted
+  nameWithType: DialogueRunnerControl.onDialogueCompleted
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStarted
+  name: onDialogueStarted
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueStarted
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStarted
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStarted
+  nameWithType: DialogueRunnerControl.onDialogueStarted
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStarted*
+  name: onDialogueStarted
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueStarted_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStarted
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStarted
+  nameWithType: DialogueRunnerControl.onDialogueStarted
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeCompleted
+  name: onNodeCompleted
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onNodeCompleted
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeCompleted
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeCompleted
+  nameWithType: DialogueRunnerControl.onNodeCompleted
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeCompleted*
+  name: onNodeCompleted
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onNodeCompleted_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeCompleted
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeCompleted
+  nameWithType: DialogueRunnerControl.onNodeCompleted
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeStarted
+  name: onNodeStarted
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onNodeStarted
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeStarted
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeStarted
+  nameWithType: DialogueRunnerControl.onNodeStarted
+- uid: ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeStarted*
+  name: onNodeStarted
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerControl.html#ToolkitEngine_Dialogue_DialogueRunnerControl_onNodeStarted_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeStarted
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeStarted
+  nameWithType: DialogueRunnerControl.onNodeStarted
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings
+  name: DialogueRunnerSettings
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html
+  commentId: T:ToolkitEngine.Dialogue.DialogueRunnerSettings
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings
+  nameWithType: DialogueRunnerSettings
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode
+  name: DialogueRunnerSettings.RegistrationMode
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.html
+  commentId: T:ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode
+  nameWithType: DialogueRunnerSettings.RegistrationMode
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.Category
+  name: Category
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_RegistrationMode_Category
+  commentId: F:ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.Category
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.Category
+  nameWithType: DialogueRunnerSettings.RegistrationMode.Category
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.Type
+  name: Type
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_RegistrationMode_Type
+  commentId: F:ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.Type
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.Type
+  nameWithType: DialogueRunnerSettings.RegistrationMode.Type
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueCategory
+  name: dialogueCategory
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_dialogueCategory
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueCategory
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueCategory
+  nameWithType: DialogueRunnerSettings.dialogueCategory
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueCategory*
+  name: dialogueCategory
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_dialogueCategory_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueCategory
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueCategory
+  nameWithType: DialogueRunnerSettings.dialogueCategory
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueType
+  name: dialogueType
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_dialogueType
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueType
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueType
+  nameWithType: DialogueRunnerSettings.dialogueType
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueType*
+  name: dialogueType
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_dialogueType_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueType
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueType
+  nameWithType: DialogueRunnerSettings.dialogueType
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueViews
+  name: dialogueViews
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_dialogueViews
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueViews
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueViews
+  nameWithType: DialogueRunnerSettings.dialogueViews
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueViews*
+  name: dialogueViews
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_dialogueViews_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueViews
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.dialogueViews
+  nameWithType: DialogueRunnerSettings.dialogueViews
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.lineProvider
+  name: lineProvider
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_lineProvider
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerSettings.lineProvider
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.lineProvider
+  nameWithType: DialogueRunnerSettings.lineProvider
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.lineProvider*
+  name: lineProvider
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_lineProvider_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerSettings.lineProvider
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.lineProvider
+  nameWithType: DialogueRunnerSettings.lineProvider
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.registration
+  name: registration
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_registration
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerSettings.registration
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.registration
+  nameWithType: DialogueRunnerSettings.registration
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.registration*
+  name: registration
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_registration_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerSettings.registration
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.registration
+  nameWithType: DialogueRunnerSettings.registration
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.variableStorage
+  name: variableStorage
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_variableStorage
+  commentId: P:ToolkitEngine.Dialogue.DialogueRunnerSettings.variableStorage
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.variableStorage
+  nameWithType: DialogueRunnerSettings.variableStorage
+- uid: ToolkitEngine.Dialogue.DialogueRunnerSettings.variableStorage*
+  name: variableStorage
+  href: api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html#ToolkitEngine_Dialogue_DialogueRunnerSettings_variableStorage_
+  commentId: Overload:ToolkitEngine.Dialogue.DialogueRunnerSettings.variableStorage
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.DialogueRunnerSettings.variableStorage
+  nameWithType: DialogueRunnerSettings.variableStorage
 - uid: ToolkitEngine.Dialogue.DialogueType
   name: DialogueType
   href: api/ToolkitEngine.Dialogue.DialogueType.html
@@ -940,6 +1412,325 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.DialogueType.skippable
   nameWithType: DialogueType.skippable
+- uid: ToolkitEngine.Dialogue.NudgeManager
+  name: NudgeManager
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html
+  commentId: T:ToolkitEngine.Dialogue.NudgeManager
+  fullName: ToolkitEngine.Dialogue.NudgeManager
+  nameWithType: NudgeManager
+- uid: ToolkitEngine.Dialogue.NudgeManager.Clear(ToolkitEngine.Dialogue.NudgeType)
+  name: Clear(NudgeType)
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Clear_ToolkitEngine_Dialogue_NudgeType_
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.Clear(ToolkitEngine.Dialogue.NudgeType)
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Clear(ToolkitEngine.Dialogue.NudgeType)
+  nameWithType: NudgeManager.Clear(NudgeType)
+- uid: ToolkitEngine.Dialogue.NudgeManager.Clear*
+  name: Clear
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Clear_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.Clear
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Clear
+  nameWithType: NudgeManager.Clear
+- uid: ToolkitEngine.Dialogue.NudgeManager.ClearAll
+  name: ClearAll()
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_ClearAll
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.ClearAll
+  fullName: ToolkitEngine.Dialogue.NudgeManager.ClearAll()
+  nameWithType: NudgeManager.ClearAll()
+- uid: ToolkitEngine.Dialogue.NudgeManager.ClearAll*
+  name: ClearAll
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_ClearAll_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.ClearAll
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.ClearAll
+  nameWithType: NudgeManager.ClearAll
+- uid: ToolkitEngine.Dialogue.NudgeManager.ForceUnpause
+  name: ForceUnpause()
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_ForceUnpause
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.ForceUnpause
+  fullName: ToolkitEngine.Dialogue.NudgeManager.ForceUnpause()
+  nameWithType: NudgeManager.ForceUnpause()
+- uid: ToolkitEngine.Dialogue.NudgeManager.ForceUnpause*
+  name: ForceUnpause
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_ForceUnpause_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.ForceUnpause
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.ForceUnpause
+  nameWithType: NudgeManager.ForceUnpause
+- uid: ToolkitEngine.Dialogue.NudgeManager.Initialize
+  name: Initialize()
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Initialize
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.Initialize
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Initialize()
+  nameWithType: NudgeManager.Initialize()
+- uid: ToolkitEngine.Dialogue.NudgeManager.Initialize*
+  name: Initialize
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Initialize_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.Initialize
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Initialize
+  nameWithType: NudgeManager.Initialize
+- uid: ToolkitEngine.Dialogue.NudgeManager.Pause(System.Object)
+  name: Pause(object)
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Pause_System_Object_
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.Pause(System.Object)
+  name.vb: Pause(Object)
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Pause(object)
+  fullName.vb: ToolkitEngine.Dialogue.NudgeManager.Pause(Object)
+  nameWithType: NudgeManager.Pause(object)
+  nameWithType.vb: NudgeManager.Pause(Object)
+- uid: ToolkitEngine.Dialogue.NudgeManager.Pause*
+  name: Pause
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Pause_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.Pause
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Pause
+  nameWithType: NudgeManager.Pause
+- uid: ToolkitEngine.Dialogue.NudgeManager.PauseChanged
+  name: PauseChanged
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_PauseChanged
+  commentId: E:ToolkitEngine.Dialogue.NudgeManager.PauseChanged
+  fullName: ToolkitEngine.Dialogue.NudgeManager.PauseChanged
+  nameWithType: NudgeManager.PauseChanged
+- uid: ToolkitEngine.Dialogue.NudgeManager.Play
+  name: Play()
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Play
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.Play
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Play()
+  nameWithType: NudgeManager.Play()
+- uid: ToolkitEngine.Dialogue.NudgeManager.Play*
+  name: Play
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Play_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.Play
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Play
+  nameWithType: NudgeManager.Play
+- uid: ToolkitEngine.Dialogue.NudgeManager.ResetTimer
+  name: ResetTimer()
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_ResetTimer
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.ResetTimer
+  fullName: ToolkitEngine.Dialogue.NudgeManager.ResetTimer()
+  nameWithType: NudgeManager.ResetTimer()
+- uid: ToolkitEngine.Dialogue.NudgeManager.ResetTimer*
+  name: ResetTimer
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_ResetTimer_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.ResetTimer
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.ResetTimer
+  nameWithType: NudgeManager.ResetTimer
+- uid: ToolkitEngine.Dialogue.NudgeManager.Set(ToolkitEngine.Dialogue.NudgeType,YarnProject,System.String,System.Boolean)
+  name: Set(NudgeType, YarnProject, string, bool)
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Set_ToolkitEngine_Dialogue_NudgeType_YarnProject_System_String_System_Boolean_
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.Set(ToolkitEngine.Dialogue.NudgeType,YarnProject,System.String,System.Boolean)
+  name.vb: Set(NudgeType, YarnProject, String, Boolean)
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Set(ToolkitEngine.Dialogue.NudgeType, YarnProject, string, bool)
+  fullName.vb: ToolkitEngine.Dialogue.NudgeManager.Set(ToolkitEngine.Dialogue.NudgeType, YarnProject, String, Boolean)
+  nameWithType: NudgeManager.Set(NudgeType, YarnProject, string, bool)
+  nameWithType.vb: NudgeManager.Set(NudgeType, YarnProject, String, Boolean)
+- uid: ToolkitEngine.Dialogue.NudgeManager.Set*
+  name: Set
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Set_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.Set
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Set
+  nameWithType: NudgeManager.Set
+- uid: ToolkitEngine.Dialogue.NudgeManager.Terminate
+  name: Terminate()
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Terminate
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.Terminate
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Terminate()
+  nameWithType: NudgeManager.Terminate()
+- uid: ToolkitEngine.Dialogue.NudgeManager.Terminate*
+  name: Terminate
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Terminate_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.Terminate
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Terminate
+  nameWithType: NudgeManager.Terminate
+- uid: ToolkitEngine.Dialogue.NudgeManager.Unpause(System.Object)
+  name: Unpause(object)
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Unpause_System_Object_
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.Unpause(System.Object)
+  name.vb: Unpause(Object)
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Unpause(object)
+  fullName.vb: ToolkitEngine.Dialogue.NudgeManager.Unpause(Object)
+  nameWithType: NudgeManager.Unpause(object)
+  nameWithType.vb: NudgeManager.Unpause(Object)
+- uid: ToolkitEngine.Dialogue.NudgeManager.Unpause*
+  name: Unpause
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Unpause_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.Unpause
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Unpause
+  nameWithType: NudgeManager.Unpause
+- uid: ToolkitEngine.Dialogue.NudgeManager.Update
+  name: Update()
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Update
+  commentId: M:ToolkitEngine.Dialogue.NudgeManager.Update
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Update()
+  nameWithType: NudgeManager.Update()
+- uid: ToolkitEngine.Dialogue.NudgeManager.Update*
+  name: Update
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_Update_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.Update
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.Update
+  nameWithType: NudgeManager.Update
+- uid: ToolkitEngine.Dialogue.NudgeManager.control
+  name: control
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_control
+  commentId: P:ToolkitEngine.Dialogue.NudgeManager.control
+  fullName: ToolkitEngine.Dialogue.NudgeManager.control
+  nameWithType: NudgeManager.control
+- uid: ToolkitEngine.Dialogue.NudgeManager.control*
+  name: control
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_control_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.control
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.control
+  nameWithType: NudgeManager.control
+- uid: ToolkitEngine.Dialogue.NudgeManager.paused
+  name: paused
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_paused
+  commentId: P:ToolkitEngine.Dialogue.NudgeManager.paused
+  fullName: ToolkitEngine.Dialogue.NudgeManager.paused
+  nameWithType: NudgeManager.paused
+- uid: ToolkitEngine.Dialogue.NudgeManager.paused*
+  name: paused
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_paused_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.paused
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.paused
+  nameWithType: NudgeManager.paused
+- uid: ToolkitEngine.Dialogue.NudgeManager.runner
+  name: runner
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_runner
+  commentId: P:ToolkitEngine.Dialogue.NudgeManager.runner
+  fullName: ToolkitEngine.Dialogue.NudgeManager.runner
+  nameWithType: NudgeManager.runner
+- uid: ToolkitEngine.Dialogue.NudgeManager.runner*
+  name: runner
+  href: api/ToolkitEngine.Dialogue.NudgeManager.html#ToolkitEngine_Dialogue_NudgeManager_runner_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManager.runner
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManager.runner
+  nameWithType: NudgeManager.runner
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig
+  name: NudgeManagerConfig
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html
+  commentId: T:ToolkitEngine.Dialogue.NudgeManagerConfig
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig
+  nameWithType: NudgeManagerConfig
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig.GetManagerType
+  name: GetManagerType()
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html#ToolkitEngine_Dialogue_NudgeManagerConfig_GetManagerType
+  commentId: M:ToolkitEngine.Dialogue.NudgeManagerConfig.GetManagerType
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig.GetManagerType()
+  nameWithType: NudgeManagerConfig.GetManagerType()
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig.GetManagerType*
+  name: GetManagerType
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html#ToolkitEngine_Dialogue_NudgeManagerConfig_GetManagerType_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManagerConfig.GetManagerType
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig.GetManagerType
+  nameWithType: NudgeManagerConfig.GetManagerType
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig.GetPriority(ToolkitEngine.Dialogue.NudgeType)
+  name: GetPriority(NudgeType)
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html#ToolkitEngine_Dialogue_NudgeManagerConfig_GetPriority_ToolkitEngine_Dialogue_NudgeType_
+  commentId: M:ToolkitEngine.Dialogue.NudgeManagerConfig.GetPriority(ToolkitEngine.Dialogue.NudgeType)
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig.GetPriority(ToolkitEngine.Dialogue.NudgeType)
+  nameWithType: NudgeManagerConfig.GetPriority(NudgeType)
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig.GetPriority*
+  name: GetPriority
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html#ToolkitEngine_Dialogue_NudgeManagerConfig_GetPriority_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManagerConfig.GetPriority
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig.GetPriority
+  nameWithType: NudgeManagerConfig.GetPriority
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig.GetTemplate
+  name: GetTemplate()
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html#ToolkitEngine_Dialogue_NudgeManagerConfig_GetTemplate
+  commentId: M:ToolkitEngine.Dialogue.NudgeManagerConfig.GetTemplate
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig.GetTemplate()
+  nameWithType: NudgeManagerConfig.GetTemplate()
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig.GetTemplate*
+  name: GetTemplate
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html#ToolkitEngine_Dialogue_NudgeManagerConfig_GetTemplate_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManagerConfig.GetTemplate
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig.GetTemplate
+  nameWithType: NudgeManagerConfig.GetTemplate
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig.dialogueType
+  name: dialogueType
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html#ToolkitEngine_Dialogue_NudgeManagerConfig_dialogueType
+  commentId: P:ToolkitEngine.Dialogue.NudgeManagerConfig.dialogueType
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig.dialogueType
+  nameWithType: NudgeManagerConfig.dialogueType
+- uid: ToolkitEngine.Dialogue.NudgeManagerConfig.dialogueType*
+  name: dialogueType
+  href: api/ToolkitEngine.Dialogue.NudgeManagerConfig.html#ToolkitEngine_Dialogue_NudgeManagerConfig_dialogueType_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeManagerConfig.dialogueType
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeManagerConfig.dialogueType
+  nameWithType: NudgeManagerConfig.dialogueType
+- uid: ToolkitEngine.Dialogue.NudgeType
+  name: NudgeType
+  href: api/ToolkitEngine.Dialogue.NudgeType.html
+  commentId: T:ToolkitEngine.Dialogue.NudgeType
+  fullName: ToolkitEngine.Dialogue.NudgeType
+  nameWithType: NudgeType
+- uid: ToolkitEngine.Dialogue.NudgeType.autoClear
+  name: autoClear
+  href: api/ToolkitEngine.Dialogue.NudgeType.html#ToolkitEngine_Dialogue_NudgeType_autoClear
+  commentId: P:ToolkitEngine.Dialogue.NudgeType.autoClear
+  fullName: ToolkitEngine.Dialogue.NudgeType.autoClear
+  nameWithType: NudgeType.autoClear
+- uid: ToolkitEngine.Dialogue.NudgeType.autoClear*
+  name: autoClear
+  href: api/ToolkitEngine.Dialogue.NudgeType.html#ToolkitEngine_Dialogue_NudgeType_autoClear_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeType.autoClear
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeType.autoClear
+  nameWithType: NudgeType.autoClear
+- uid: ToolkitEngine.Dialogue.NudgeType.delayTime
+  name: delayTime
+  href: api/ToolkitEngine.Dialogue.NudgeType.html#ToolkitEngine_Dialogue_NudgeType_delayTime
+  commentId: P:ToolkitEngine.Dialogue.NudgeType.delayTime
+  fullName: ToolkitEngine.Dialogue.NudgeType.delayTime
+  nameWithType: NudgeType.delayTime
+- uid: ToolkitEngine.Dialogue.NudgeType.delayTime*
+  name: delayTime
+  href: api/ToolkitEngine.Dialogue.NudgeType.html#ToolkitEngine_Dialogue_NudgeType_delayTime_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeType.delayTime
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeType.delayTime
+  nameWithType: NudgeType.delayTime
+- uid: ToolkitEngine.Dialogue.NudgeType.indexVarName
+  name: indexVarName
+  href: api/ToolkitEngine.Dialogue.NudgeType.html#ToolkitEngine_Dialogue_NudgeType_indexVarName
+  commentId: P:ToolkitEngine.Dialogue.NudgeType.indexVarName
+  fullName: ToolkitEngine.Dialogue.NudgeType.indexVarName
+  nameWithType: NudgeType.indexVarName
+- uid: ToolkitEngine.Dialogue.NudgeType.indexVarName*
+  name: indexVarName
+  href: api/ToolkitEngine.Dialogue.NudgeType.html#ToolkitEngine_Dialogue_NudgeType_indexVarName_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeType.indexVarName
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeType.indexVarName
+  nameWithType: NudgeType.indexVarName
+- uid: ToolkitEngine.Dialogue.NudgeType.minDelayTime
+  name: minDelayTime
+  href: api/ToolkitEngine.Dialogue.NudgeType.html#ToolkitEngine_Dialogue_NudgeType_minDelayTime
+  commentId: P:ToolkitEngine.Dialogue.NudgeType.minDelayTime
+  fullName: ToolkitEngine.Dialogue.NudgeType.minDelayTime
+  nameWithType: NudgeType.minDelayTime
+- uid: ToolkitEngine.Dialogue.NudgeType.minDelayTime*
+  name: minDelayTime
+  href: api/ToolkitEngine.Dialogue.NudgeType.html#ToolkitEngine_Dialogue_NudgeType_minDelayTime_
+  commentId: Overload:ToolkitEngine.Dialogue.NudgeType.minDelayTime
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.NudgeType.minDelayTime
+  nameWithType: NudgeType.minDelayTime
 - uid: ToolkitEngine.Dialogue.Scoring
   name: ToolkitEngine.Dialogue.Scoring
   href: api/ToolkitEngine.Dialogue.Scoring.html
@@ -1132,109 +1923,122 @@ references:
   commentId: N:ToolkitEngine.Dialogue.VisualScripting
   fullName: ToolkitEngine.Dialogue.VisualScripting
   nameWithType: ToolkitEngine.Dialogue.VisualScripting
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit
-  name: BaseYarnEventUnit
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit
-  nameWithType: BaseYarnEventUnit
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.Definition
+- uid: ToolkitEngine.Dialogue.VisualScripting.BaseDialogueEventUnit
+  name: BaseDialogueEventUnit
+  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseDialogueEventUnit.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.BaseDialogueEventUnit
+  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseDialogueEventUnit
+  nameWithType: BaseDialogueEventUnit
+- uid: ToolkitEngine.Dialogue.VisualScripting.BaseFilteredDialogueEventUnit
+  name: BaseFilteredDialogueEventUnit
+  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseFilteredDialogueEventUnit.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.BaseFilteredDialogueEventUnit
+  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseFilteredDialogueEventUnit
+  nameWithType: BaseFilteredDialogueEventUnit
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges
+  name: ClearAllNudges
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges
+  nameWithType: ClearAllNudges
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.Definition
   name: Definition()
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_Definition
-  commentId: M:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.Definition
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.Definition()
-  nameWithType: BaseYarnEventUnit.Definition()
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.Definition*
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearAllNudges_Definition
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.Definition
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.Definition()
+  nameWithType: ClearAllNudges.Definition()
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.Definition*
   name: Definition
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_Definition_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.Definition
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearAllNudges_Definition_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.Definition
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.Definition
-  nameWithType: BaseYarnEventUnit.Definition
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.ShouldTrigger(Flow,System.String)
-  name: ShouldTrigger(Flow, string)
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_ShouldTrigger_Flow_System_String_
-  commentId: M:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.ShouldTrigger(Flow,System.String)
-  name.vb: ShouldTrigger(Flow, String)
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.ShouldTrigger(Flow, string)
-  fullName.vb: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.ShouldTrigger(Flow, String)
-  nameWithType: BaseYarnEventUnit.ShouldTrigger(Flow, string)
-  nameWithType.vb: BaseYarnEventUnit.ShouldTrigger(Flow, String)
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.ShouldTrigger*
-  name: ShouldTrigger
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_ShouldTrigger_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.ShouldTrigger
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.Definition
+  nameWithType: ClearAllNudges.Definition
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.enter
+  name: enter
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearAllNudges_enter
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.enter
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.enter
+  nameWithType: ClearAllNudges.enter
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.exit
+  name: exit
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearAllNudges_exit
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.exit
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.exit
+  nameWithType: ClearAllNudges.exit
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearNudges
+  name: ClearNudges
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.ClearNudges
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearNudges
+  nameWithType: ClearNudges
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.Definition
+  name: Definition()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearNudges_Definition
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.ClearNudges.Definition
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.Definition()
+  nameWithType: ClearNudges.Definition()
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.Definition*
+  name: Definition
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearNudges_Definition_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.ClearNudges.Definition
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.ShouldTrigger
-  nameWithType: BaseYarnEventUnit.ShouldTrigger
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.filtered
-  name: filtered
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_filtered
-  commentId: F:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.filtered
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.filtered
-  nameWithType: BaseYarnEventUnit.filtered
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.node
-  name: node
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_node
-  commentId: P:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.node
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.node
-  nameWithType: BaseYarnEventUnit.node
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.node*
-  name: node
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_node_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.node
-  isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.node
-  nameWithType: BaseYarnEventUnit.node
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.showEventArgs
-  name: showEventArgs
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_showEventArgs
-  commentId: P:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.showEventArgs
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.showEventArgs
-  nameWithType: BaseYarnEventUnit.showEventArgs
-- uid: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.showEventArgs*
-  name: showEventArgs
-  href: api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html#ToolkitEngine_Dialogue_VisualScripting_BaseYarnEventUnit_showEventArgs_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.showEventArgs
-  isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.showEventArgs
-  nameWithType: BaseYarnEventUnit.showEventArgs
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.Definition
+  nameWithType: ClearNudges.Definition
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.enter
+  name: enter
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearNudges_enter
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.ClearNudges.enter
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.enter
+  nameWithType: ClearNudges.enter
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.exit
+  name: exit
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearNudges_exit
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.ClearNudges.exit
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.exit
+  nameWithType: ClearNudges.exit
+- uid: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.nudgeType
+  name: nudgeType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html#ToolkitEngine_Dialogue_VisualScripting_ClearNudges_nudgeType
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.ClearNudges.nudgeType
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ClearNudges.nudgeType
+  nameWithType: ClearNudges.nudgeType
 - uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks
   name: EventHooks
   href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html
   commentId: T:ToolkitEngine.Dialogue.VisualScripting.EventHooks
   fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks
   nameWithType: EventHooks
+- uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnDialogueCompleted
+  name: OnDialogueCompleted
+  href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnDialogueCompleted
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnDialogueCompleted
+  fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnDialogueCompleted
+  nameWithType: EventHooks.OnDialogueCompleted
+- uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnDialogueStarted
+  name: OnDialogueStarted
+  href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnDialogueStarted
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnDialogueStarted
+  fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnDialogueStarted
+  nameWithType: EventHooks.OnDialogueStarted
+- uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnNodeCompleted
+  name: OnNodeCompleted
+  href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnNodeCompleted
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnNodeCompleted
+  fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnNodeCompleted
+  nameWithType: EventHooks.OnNodeCompleted
+- uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnNodeStarted
+  name: OnNodeStarted
+  href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnNodeStarted
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnNodeStarted
+  fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnNodeStarted
+  nameWithType: EventHooks.OnNodeStarted
 - uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnCommand
   name: OnYarnCommand
   href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnYarnCommand
   commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnCommand
   fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnCommand
   nameWithType: EventHooks.OnYarnCommand
-- uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnDialogueComplete
-  name: OnYarnDialogueComplete
-  href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnYarnDialogueComplete
-  commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnDialogueComplete
-  fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnDialogueComplete
-  nameWithType: EventHooks.OnYarnDialogueComplete
-- uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnDialogueStart
-  name: OnYarnDialogueStart
-  href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnYarnDialogueStart
-  commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnDialogueStart
-  fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnDialogueStart
-  nameWithType: EventHooks.OnYarnDialogueStart
-- uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnNodeComplete
-  name: OnYarnNodeComplete
-  href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnYarnNodeComplete
-  commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnNodeComplete
-  fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnNodeComplete
-  nameWithType: EventHooks.OnYarnNodeComplete
-- uid: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnNodeStart
-  name: OnYarnNodeStart
-  href: api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html#ToolkitEngine_Dialogue_VisualScripting_EventHooks_OnYarnNodeStart
-  commentId: F:ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnNodeStart
-  fullName: ToolkitEngine.Dialogue.VisualScripting.EventHooks.OnYarnNodeStart
-  nameWithType: EventHooks.OnYarnNodeStart
 - uid: ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable
   name: GetYarnVariable
   href: api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.html
@@ -1353,12 +2157,255 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.variableType
   nameWithType: GetYarnVariable.variableType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted
+  name: OnDialogueCompleted
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted
+  nameWithType: OnDialogueCompleted
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.MessageListenerType
+  name: MessageListenerType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueCompleted_MessageListenerType
+  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.MessageListenerType
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.MessageListenerType
+  nameWithType: OnDialogueCompleted.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.MessageListenerType*
+  name: MessageListenerType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueCompleted_MessageListenerType_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.MessageListenerType
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.MessageListenerType
+  nameWithType: OnDialogueCompleted.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StartListeningToManager
+  name: StartListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueCompleted_StartListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StartListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StartListeningToManager()
+  nameWithType: OnDialogueCompleted.StartListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StartListeningToManager*
+  name: StartListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueCompleted_StartListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StartListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StartListeningToManager
+  nameWithType: OnDialogueCompleted.StartListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StopListeningToManager
+  name: StopListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueCompleted_StopListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StopListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StopListeningToManager()
+  nameWithType: OnDialogueCompleted.StopListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StopListeningToManager*
+  name: StopListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueCompleted_StopListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StopListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.StopListeningToManager
+  nameWithType: OnDialogueCompleted.StopListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompletedMessageListener
+  name: OnDialogueCompletedMessageListener
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompletedMessageListener.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompletedMessageListener
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompletedMessageListener
+  nameWithType: OnDialogueCompletedMessageListener
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted
+  name: OnDialogueStarted
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted
+  nameWithType: OnDialogueStarted
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.MessageListenerType
+  name: MessageListenerType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueStarted_MessageListenerType
+  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.MessageListenerType
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.MessageListenerType
+  nameWithType: OnDialogueStarted.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.MessageListenerType*
+  name: MessageListenerType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueStarted_MessageListenerType_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.MessageListenerType
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.MessageListenerType
+  nameWithType: OnDialogueStarted.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StartListeningToManager
+  name: StartListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueStarted_StartListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StartListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StartListeningToManager()
+  nameWithType: OnDialogueStarted.StartListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StartListeningToManager*
+  name: StartListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueStarted_StartListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StartListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StartListeningToManager
+  nameWithType: OnDialogueStarted.StartListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StopListeningToManager
+  name: StopListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueStarted_StopListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StopListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StopListeningToManager()
+  nameWithType: OnDialogueStarted.StopListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StopListeningToManager*
+  name: StopListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnDialogueStarted_StopListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StopListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.StopListeningToManager
+  nameWithType: OnDialogueStarted.StopListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStartedMessageListener
+  name: OnDialogueStartedMessageListener
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStartedMessageListener.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnDialogueStartedMessageListener
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnDialogueStartedMessageListener
+  nameWithType: OnDialogueStartedMessageListener
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted
+  name: OnNodeCompleted
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted
+  nameWithType: OnNodeCompleted
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  name: GetFilterValue(DialogueEventArgs)
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeCompleted_GetFilterValue_ToolkitEngine_Dialogue_DialogueEventArgs_
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  nameWithType: OnNodeCompleted.GetFilterValue(DialogueEventArgs)
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.GetFilterValue*
+  name: GetFilterValue
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeCompleted_GetFilterValue_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.GetFilterValue
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.GetFilterValue
+  nameWithType: OnNodeCompleted.GetFilterValue
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.MessageListenerType
+  name: MessageListenerType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeCompleted_MessageListenerType
+  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.MessageListenerType
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.MessageListenerType
+  nameWithType: OnNodeCompleted.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.MessageListenerType*
+  name: MessageListenerType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeCompleted_MessageListenerType_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.MessageListenerType
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.MessageListenerType
+  nameWithType: OnNodeCompleted.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StartListeningToManager
+  name: StartListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeCompleted_StartListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StartListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StartListeningToManager()
+  nameWithType: OnNodeCompleted.StartListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StartListeningToManager*
+  name: StartListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeCompleted_StartListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StartListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StartListeningToManager
+  nameWithType: OnNodeCompleted.StartListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StopListeningToManager
+  name: StopListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeCompleted_StopListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StopListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StopListeningToManager()
+  nameWithType: OnNodeCompleted.StopListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StopListeningToManager*
+  name: StopListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeCompleted_StopListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StopListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.StopListeningToManager
+  nameWithType: OnNodeCompleted.StopListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompletedMessageListener
+  name: OnNodeCompletedMessageListener
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompletedMessageListener.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnNodeCompletedMessageListener
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeCompletedMessageListener
+  nameWithType: OnNodeCompletedMessageListener
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted
+  name: OnNodeStarted
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted
+  nameWithType: OnNodeStarted
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  name: GetFilterValue(DialogueEventArgs)
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeStarted_GetFilterValue_ToolkitEngine_Dialogue_DialogueEventArgs_
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  nameWithType: OnNodeStarted.GetFilterValue(DialogueEventArgs)
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.GetFilterValue*
+  name: GetFilterValue
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeStarted_GetFilterValue_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.GetFilterValue
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.GetFilterValue
+  nameWithType: OnNodeStarted.GetFilterValue
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.MessageListenerType
+  name: MessageListenerType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeStarted_MessageListenerType
+  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.MessageListenerType
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.MessageListenerType
+  nameWithType: OnNodeStarted.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.MessageListenerType*
+  name: MessageListenerType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeStarted_MessageListenerType_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.MessageListenerType
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.MessageListenerType
+  nameWithType: OnNodeStarted.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StartListeningToManager
+  name: StartListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeStarted_StartListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StartListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StartListeningToManager()
+  nameWithType: OnNodeStarted.StartListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StartListeningToManager*
+  name: StartListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeStarted_StartListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StartListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StartListeningToManager
+  nameWithType: OnNodeStarted.StartListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StopListeningToManager
+  name: StopListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeStarted_StopListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StopListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StopListeningToManager()
+  nameWithType: OnNodeStarted.StopListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StopListeningToManager*
+  name: StopListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html#ToolkitEngine_Dialogue_VisualScripting_OnNodeStarted_StopListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StopListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.StopListeningToManager
+  nameWithType: OnNodeStarted.StopListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnNodeStartedMessageListener
+  name: OnNodeStartedMessageListener
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStartedMessageListener.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnNodeStartedMessageListener
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnNodeStartedMessageListener
+  nameWithType: OnNodeStartedMessageListener
 - uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand
   name: OnYarnCommand
   href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html
   commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand
   fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand
   nameWithType: OnYarnCommand
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  name: GetFilterValue(DialogueEventArgs)
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnCommand_GetFilterValue_ToolkitEngine_Dialogue_DialogueEventArgs_
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.GetFilterValue(ToolkitEngine.Dialogue.DialogueEventArgs)
+  nameWithType: OnYarnCommand.GetFilterValue(DialogueEventArgs)
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.GetFilterValue*
+  name: GetFilterValue
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnCommand_GetFilterValue_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.GetFilterValue
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.GetFilterValue
+  nameWithType: OnYarnCommand.GetFilterValue
 - uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.MessageListenerType
   name: MessageListenerType
   href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnCommand_MessageListenerType
@@ -1372,135 +2419,195 @@ references:
   isSpec: "True"
   fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.MessageListenerType
   nameWithType: OnYarnCommand.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StartListeningToManager
+  name: StartListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnCommand_StartListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StartListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StartListeningToManager()
+  nameWithType: OnYarnCommand.StartListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StartListeningToManager*
+  name: StartListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnCommand_StartListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StartListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StartListeningToManager
+  nameWithType: OnYarnCommand.StartListeningToManager
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StopListeningToManager
+  name: StopListeningToManager()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnCommand_StopListeningToManager
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StopListeningToManager
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StopListeningToManager()
+  nameWithType: OnYarnCommand.StopListeningToManager()
+- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StopListeningToManager*
+  name: StopListeningToManager
+  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnCommand_StopListeningToManager_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StopListeningToManager
+  isSpec: "True"
+  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.StopListeningToManager
+  nameWithType: OnYarnCommand.StopListeningToManager
 - uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener
   name: OnYarnCommandMessageListener
   href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener.html
   commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener
   fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener
   nameWithType: OnYarnCommandMessageListener
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete
-  name: OnYarnDialogueComplete
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete
-  nameWithType: OnYarnDialogueComplete
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.MessageListenerType
-  name: MessageListenerType
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnDialogueComplete_MessageListenerType
-  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.MessageListenerType
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.MessageListenerType
-  nameWithType: OnYarnDialogueComplete.MessageListenerType
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.MessageListenerType*
-  name: MessageListenerType
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnDialogueComplete_MessageListenerType_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.MessageListenerType
+- uid: ToolkitEngine.Dialogue.VisualScripting.PauseNudges
+  name: PauseNudges
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.PauseNudges
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PauseNudges
+  nameWithType: PauseNudges
+- uid: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.Definition
+  name: Definition()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html#ToolkitEngine_Dialogue_VisualScripting_PauseNudges_Definition
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.PauseNudges.Definition
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.Definition()
+  nameWithType: PauseNudges.Definition()
+- uid: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.Definition*
+  name: Definition
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html#ToolkitEngine_Dialogue_VisualScripting_PauseNudges_Definition_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.PauseNudges.Definition
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.MessageListenerType
-  nameWithType: OnYarnDialogueComplete.MessageListenerType
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.showEventArgs
-  name: showEventArgs
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnDialogueComplete_showEventArgs
-  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.showEventArgs
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.showEventArgs
-  nameWithType: OnYarnDialogueComplete.showEventArgs
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.showEventArgs*
-  name: showEventArgs
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnDialogueComplete_showEventArgs_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.showEventArgs
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.Definition
+  nameWithType: PauseNudges.Definition
+- uid: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.enter
+  name: enter
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html#ToolkitEngine_Dialogue_VisualScripting_PauseNudges_enter
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.PauseNudges.enter
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.enter
+  nameWithType: PauseNudges.enter
+- uid: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.exit
+  name: exit
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html#ToolkitEngine_Dialogue_VisualScripting_PauseNudges_exit
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.PauseNudges.exit
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.exit
+  nameWithType: PauseNudges.exit
+- uid: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.source
+  name: source
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html#ToolkitEngine_Dialogue_VisualScripting_PauseNudges_source
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.PauseNudges.source
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.source
+  nameWithType: PauseNudges.source
+- uid: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.value
+  name: value
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html#ToolkitEngine_Dialogue_VisualScripting_PauseNudges_value
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.PauseNudges.value
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PauseNudges.value
+  nameWithType: PauseNudges.value
+- uid: ToolkitEngine.Dialogue.VisualScripting.PlayNudges
+  name: PlayNudges
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.PlayNudges
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PlayNudges
+  nameWithType: PlayNudges
+- uid: ToolkitEngine.Dialogue.VisualScripting.PlayNudges.Definition
+  name: Definition()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.html#ToolkitEngine_Dialogue_VisualScripting_PlayNudges_Definition
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.PlayNudges.Definition
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PlayNudges.Definition()
+  nameWithType: PlayNudges.Definition()
+- uid: ToolkitEngine.Dialogue.VisualScripting.PlayNudges.Definition*
+  name: Definition
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.html#ToolkitEngine_Dialogue_VisualScripting_PlayNudges_Definition_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.PlayNudges.Definition
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.showEventArgs
-  nameWithType: OnYarnDialogueComplete.showEventArgs
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener
-  name: OnYarnDialogueCompleteMessageListener
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener
-  nameWithType: OnYarnDialogueCompleteMessageListener
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart
-  name: OnYarnDialogueStart
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart
-  nameWithType: OnYarnDialogueStart
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.MessageListenerType
-  name: MessageListenerType
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnDialogueStart_MessageListenerType
-  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.MessageListenerType
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.MessageListenerType
-  nameWithType: OnYarnDialogueStart.MessageListenerType
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.MessageListenerType*
-  name: MessageListenerType
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnDialogueStart_MessageListenerType_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.MessageListenerType
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PlayNudges.Definition
+  nameWithType: PlayNudges.Definition
+- uid: ToolkitEngine.Dialogue.VisualScripting.PlayNudges.enter
+  name: enter
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.html#ToolkitEngine_Dialogue_VisualScripting_PlayNudges_enter
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.PlayNudges.enter
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PlayNudges.enter
+  nameWithType: PlayNudges.enter
+- uid: ToolkitEngine.Dialogue.VisualScripting.PlayNudges.exit
+  name: exit
+  href: api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.html#ToolkitEngine_Dialogue_VisualScripting_PlayNudges_exit
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.PlayNudges.exit
+  fullName: ToolkitEngine.Dialogue.VisualScripting.PlayNudges.exit
+  nameWithType: PlayNudges.exit
+- uid: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer
+  name: ResetNudgeTimer
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer
+  nameWithType: ResetNudgeTimer
+- uid: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.Definition
+  name: Definition()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.html#ToolkitEngine_Dialogue_VisualScripting_ResetNudgeTimer_Definition
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.Definition
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.Definition()
+  nameWithType: ResetNudgeTimer.Definition()
+- uid: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.Definition*
+  name: Definition
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.html#ToolkitEngine_Dialogue_VisualScripting_ResetNudgeTimer_Definition_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.Definition
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.MessageListenerType
-  nameWithType: OnYarnDialogueStart.MessageListenerType
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.showEventArgs
-  name: showEventArgs
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnDialogueStart_showEventArgs
-  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.showEventArgs
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.showEventArgs
-  nameWithType: OnYarnDialogueStart.showEventArgs
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.showEventArgs*
-  name: showEventArgs
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnDialogueStart_showEventArgs_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.showEventArgs
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.Definition
+  nameWithType: ResetNudgeTimer.Definition
+- uid: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.enter
+  name: enter
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.html#ToolkitEngine_Dialogue_VisualScripting_ResetNudgeTimer_enter
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.enter
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.enter
+  nameWithType: ResetNudgeTimer.enter
+- uid: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.exit
+  name: exit
+  href: api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.html#ToolkitEngine_Dialogue_VisualScripting_ResetNudgeTimer_exit
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.exit
+  fullName: ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.exit
+  nameWithType: ResetNudgeTimer.exit
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges
+  name: SetNudges
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html
+  commentId: T:ToolkitEngine.Dialogue.VisualScripting.SetNudges
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges
+  nameWithType: SetNudges
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges.Definition
+  name: Definition()
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html#ToolkitEngine_Dialogue_VisualScripting_SetNudges_Definition
+  commentId: M:ToolkitEngine.Dialogue.VisualScripting.SetNudges.Definition
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges.Definition()
+  nameWithType: SetNudges.Definition()
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges.Definition*
+  name: Definition
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html#ToolkitEngine_Dialogue_VisualScripting_SetNudges_Definition_
+  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.SetNudges.Definition
   isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.showEventArgs
-  nameWithType: OnYarnDialogueStart.showEventArgs
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener
-  name: OnYarnDialogueStartMessageListener
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener
-  nameWithType: OnYarnDialogueStartMessageListener
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete
-  name: OnYarnNodeComplete
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete
-  nameWithType: OnYarnNodeComplete
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.MessageListenerType
-  name: MessageListenerType
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnNodeComplete_MessageListenerType
-  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.MessageListenerType
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.MessageListenerType
-  nameWithType: OnYarnNodeComplete.MessageListenerType
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.MessageListenerType*
-  name: MessageListenerType
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnNodeComplete_MessageListenerType_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.MessageListenerType
-  isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.MessageListenerType
-  nameWithType: OnYarnNodeComplete.MessageListenerType
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener
-  name: OnYarnNodeCompleteMessageListener
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener
-  nameWithType: OnYarnNodeCompleteMessageListener
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart
-  name: OnYarnNodeStart
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart
-  nameWithType: OnYarnNodeStart
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.MessageListenerType
-  name: MessageListenerType
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnNodeStart_MessageListenerType
-  commentId: P:ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.MessageListenerType
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.MessageListenerType
-  nameWithType: OnYarnNodeStart.MessageListenerType
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.MessageListenerType*
-  name: MessageListenerType
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html#ToolkitEngine_Dialogue_VisualScripting_OnYarnNodeStart_MessageListenerType_
-  commentId: Overload:ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.MessageListenerType
-  isSpec: "True"
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.MessageListenerType
-  nameWithType: OnYarnNodeStart.MessageListenerType
-- uid: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener
-  name: OnYarnNodeStartMessageListener
-  href: api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.html
-  commentId: T:ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener
-  fullName: ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener
-  nameWithType: OnYarnNodeStartMessageListener
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges.Definition
+  nameWithType: SetNudges.Definition
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges.enter
+  name: enter
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html#ToolkitEngine_Dialogue_VisualScripting_SetNudges_enter
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.SetNudges.enter
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges.enter
+  nameWithType: SetNudges.enter
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges.exit
+  name: exit
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html#ToolkitEngine_Dialogue_VisualScripting_SetNudges_exit
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.SetNudges.exit
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges.exit
+  nameWithType: SetNudges.exit
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges.nudgeType
+  name: nudgeType
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html#ToolkitEngine_Dialogue_VisualScripting_SetNudges_nudgeType
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.SetNudges.nudgeType
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges.nudgeType
+  nameWithType: SetNudges.nudgeType
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges.playImmediately
+  name: playImmediately
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html#ToolkitEngine_Dialogue_VisualScripting_SetNudges_playImmediately
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.SetNudges.playImmediately
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges.playImmediately
+  nameWithType: SetNudges.playImmediately
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges.project
+  name: project
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html#ToolkitEngine_Dialogue_VisualScripting_SetNudges_project
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.SetNudges.project
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges.project
+  nameWithType: SetNudges.project
+- uid: ToolkitEngine.Dialogue.VisualScripting.SetNudges.startNode
+  name: startNode
+  href: api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html#ToolkitEngine_Dialogue_VisualScripting_SetNudges_startNode
+  commentId: F:ToolkitEngine.Dialogue.VisualScripting.SetNudges.startNode
+  fullName: ToolkitEngine.Dialogue.VisualScripting.SetNudges.startNode
+  nameWithType: SetNudges.startNode

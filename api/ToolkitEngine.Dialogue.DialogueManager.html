@@ -101,7 +101,7 @@ Class DialogueManager  <a class="header-action link-secondary" title="View sourc
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DialogueManager : Singleton&lt;DialogueManager&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class DialogueManager : ConfigurableSubsystem&lt;DialogueManager, DialogueManagerConfig&gt;</code></pre>
   </div>
 
 
@@ -127,11 +127,11 @@ Class DialogueManager  <a class="header-action link-secondary" title="View sourc
 </h2>
 
 
-  <a id="ToolkitEngine_Dialogue_DialogueManager_IsAnyDialogueRunning_" data-uid="ToolkitEngine.Dialogue.DialogueManager.IsAnyDialogueRunning*"></a>
+  <a id="ToolkitEngine_Dialogue_DialogueManager_isAnyDialogueRunning_" data-uid="ToolkitEngine.Dialogue.DialogueManager.isAnyDialogueRunning*"></a>
 
-  <h3 id="ToolkitEngine_Dialogue_DialogueManager_IsAnyDialogueRunning" data-uid="ToolkitEngine.Dialogue.DialogueManager.IsAnyDialogueRunning">
-  IsAnyDialogueRunning
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_isAnyDialogueRunning" data-uid="ToolkitEngine.Dialogue.DialogueManager.isAnyDialogueRunning">
+  isAnyDialogueRunning
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a value that indicates if the dialogue is actively
@@ -140,7 +140,7 @@ running.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsAnyDialogueRunning { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool isAnyDialogueRunning { get; }</code></pre>
   </div>
 
 
@@ -164,37 +164,11 @@ running.</p>
 </h2>
 
 
-  <a id="ToolkitEngine_Dialogue_DialogueManager_Awake_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Awake*"></a>
-
-  <h3 id="ToolkitEngine_Dialogue_DialogueManager_Awake" data-uid="ToolkitEngine.Dialogue.DialogueManager.Awake">
-  Awake()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L32"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Awake()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="ToolkitEngine_Dialogue_DialogueManager_ClearQueue_" data-uid="ToolkitEngine.Dialogue.DialogueManager.ClearQueue*"></a>
 
   <h3 id="ToolkitEngine_Dialogue_DialogueManager_ClearQueue_ToolkitEngine_Dialogue_DialogueRunnerControl_" data-uid="ToolkitEngine.Dialogue.DialogueManager.ClearQueue(ToolkitEngine.Dialogue.DialogueRunnerControl)">
   ClearQueue(DialogueRunnerControl)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -225,7 +199,7 @@ running.</p>
 
   <h3 id="ToolkitEngine_Dialogue_DialogueManager_Dequeue_ToolkitEngine_Dialogue_DialogueRunnerControl_System_String_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Dequeue(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String)">
   Dequeue(DialogueRunnerControl, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -258,7 +232,7 @@ running.</p>
 
   <h3 id="ToolkitEngine_Dialogue_DialogueManager_Enqueue_ToolkitEngine_Dialogue_DialogueRunnerControl_System_String_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Enqueue(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String)">
   Enqueue(DialogueRunnerControl, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -291,7 +265,7 @@ running.</p>
 
   <h3 id="ToolkitEngine_Dialogue_DialogueManager_GetPriority_ToolkitEngine_Dialogue_DialogueType_" data-uid="ToolkitEngine.Dialogue.DialogueManager.GetPriority(ToolkitEngine.Dialogue.DialogueType)">
   GetPriority(DialogueType)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L143"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -327,7 +301,7 @@ running.</p>
 
   <h3 id="ToolkitEngine_Dialogue_DialogueManager_GetQueueAge_ToolkitEngine_Dialogue_DialogueRunnerControl_" data-uid="ToolkitEngine.Dialogue.DialogueManager.GetQueueAge(ToolkitEngine.Dialogue.DialogueRunnerControl)">
   GetQueueAge(DialogueRunnerControl)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L150"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -359,11 +333,37 @@ running.</p>
 
 
 
+  <a id="ToolkitEngine_Dialogue_DialogueManager_Initialize_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Initialize*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_Initialize" data-uid="ToolkitEngine.Dialogue.DialogueManager.Initialize">
+  Initialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Initialize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="ToolkitEngine_Dialogue_DialogueManager_IsDialogueCategoryRunning_" data-uid="ToolkitEngine.Dialogue.DialogueManager.IsDialogueCategoryRunning*"></a>
 
   <h3 id="ToolkitEngine_Dialogue_DialogueManager_IsDialogueCategoryRunning_ToolkitEngine_Dialogue_DialogueCategory_" data-uid="ToolkitEngine.Dialogue.DialogueManager.IsDialogueCategoryRunning(ToolkitEngine.Dialogue.DialogueCategory)">
   IsDialogueCategoryRunning(DialogueCategory)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -399,7 +399,7 @@ running.</p>
 
   <h3 id="ToolkitEngine_Dialogue_DialogueManager_Play_ToolkitEngine_Dialogue_DialogueRunnerControl_System_String_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Play(ToolkitEngine.Dialogue.DialogueRunnerControl,System.String)">
   Play(DialogueRunnerControl, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -421,6 +421,372 @@ running.</p>
 
 
 
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueManager_Register_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Register*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_Register_ToolkitEngine_Dialogue_DialogueRunnerSettings_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Register(ToolkitEngine.Dialogue.DialogueRunnerSettings)">
+  Register(DialogueRunnerSettings)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Register(DialogueRunnerSettings settings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>settings</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueRunnerSettings.html">DialogueRunnerSettings</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueManager_ReplicateSettings_" data-uid="ToolkitEngine.Dialogue.DialogueManager.ReplicateSettings*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_ReplicateSettings_ToolkitEngine_Dialogue_DialogueRunnerControl_" data-uid="ToolkitEngine.Dialogue.DialogueManager.ReplicateSettings(ToolkitEngine.Dialogue.DialogueRunnerControl)">
+  ReplicateSettings(DialogueRunnerControl)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ReplicateSettings(DialogueRunnerControl control)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>control</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueRunnerControl.html">DialogueRunnerControl</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueCategory_" data-uid="ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueCategory_ToolkitEngine_Dialogue_DialogueType_ToolkitEngine_Dialogue_DialogueCategory__" data-uid="ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueCategory(ToolkitEngine.Dialogue.DialogueType,ToolkitEngine.Dialogue.DialogueCategory@)">
+  TryGetDialogueCategory(DialogueType, out DialogueCategory)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetDialogueCategory(DialogueType type, out DialogueCategory category)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>type</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueType.html">DialogueType</a></dt>
+    <dd></dd>
+    <dt><code>category</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueCategory.html">DialogueCategory</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueRunnerSettings_" data-uid="ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueRunnerSettings_ToolkitEngine_Dialogue_DialogueCategory_ToolkitEngine_Dialogue_DialogueRunnerSettings__" data-uid="ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueCategory,ToolkitEngine.Dialogue.DialogueRunnerSettings@)">
+  TryGetDialogueRunnerSettings(DialogueCategory, out DialogueRunnerSettings)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetDialogueRunnerSettings(DialogueCategory category, out DialogueRunnerSettings settings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>category</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueCategory.html">DialogueCategory</a></dt>
+    <dd></dd>
+    <dt><code>settings</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueRunnerSettings.html">DialogueRunnerSettings</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueRunnerSettings_" data-uid="ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_TryGetDialogueRunnerSettings_ToolkitEngine_Dialogue_DialogueType_ToolkitEngine_Dialogue_DialogueRunnerSettings__" data-uid="ToolkitEngine.Dialogue.DialogueManager.TryGetDialogueRunnerSettings(ToolkitEngine.Dialogue.DialogueType,ToolkitEngine.Dialogue.DialogueRunnerSettings@)">
+  TryGetDialogueRunnerSettings(DialogueType, out DialogueRunnerSettings)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L208"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetDialogueRunnerSettings(DialogueType type, out DialogueRunnerSettings settings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>type</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueType.html">DialogueType</a></dt>
+    <dd></dd>
+    <dt><code>settings</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueRunnerSettings.html">DialogueRunnerSettings</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueManager_Unregister_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Unregister*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_Unregister_ToolkitEngine_Dialogue_DialogueRunnerSettings_" data-uid="ToolkitEngine.Dialogue.DialogueManager.Unregister(ToolkitEngine.Dialogue.DialogueRunnerSettings)">
+  Unregister(DialogueRunnerSettings)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Unregister(DialogueRunnerSettings settings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>settings</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueRunnerSettings.html">DialogueRunnerSettings</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_Command" data-uid="ToolkitEngine.Dialogue.DialogueManager.Command">
+  Command
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DialogueEventArgs&gt; Command</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="ToolkitEngine.Dialogue.DialogueEventArgs.html">DialogueEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_DialogueCompleted" data-uid="ToolkitEngine.Dialogue.DialogueManager.DialogueCompleted">
+  DialogueCompleted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DialogueEventArgs&gt; DialogueCompleted</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="ToolkitEngine.Dialogue.DialogueEventArgs.html">DialogueEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_DialogueStarted" data-uid="ToolkitEngine.Dialogue.DialogueManager.DialogueStarted">
+  DialogueStarted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DialogueEventArgs&gt; DialogueStarted</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="ToolkitEngine.Dialogue.DialogueEventArgs.html">DialogueEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_NodeCompleted" data-uid="ToolkitEngine.Dialogue.DialogueManager.NodeCompleted">
+  NodeCompleted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DialogueEventArgs&gt; NodeCompleted</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="ToolkitEngine.Dialogue.DialogueEventArgs.html">DialogueEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueManager_NodeStarted" data-uid="ToolkitEngine.Dialogue.DialogueManager.NodeStarted">
+  NodeStarted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueManager.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;DialogueEventArgs&gt; NodeStarted</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.eventhandler-1">EventHandler</a>&lt;<a class="xref" href="ToolkitEngine.Dialogue.DialogueEventArgs.html">DialogueEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
 
 
 

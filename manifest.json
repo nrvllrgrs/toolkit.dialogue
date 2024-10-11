@@ -35,10 +35,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/ToolkitEditor.Dialogue.DialogueTypeEditor.yml",
       "output": {
         ".html": {
           "relative_path": "api/ToolkitEditor.Dialogue.DialogueTypeEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEditor.Dialogue.NudgeTypeEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEditor.Dialogue.NudgeTypeEditor.html"
         }
       },
       "version": ""
@@ -145,6 +165,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueRunnerSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/ToolkitEngine.Dialogue.DialogueType.InterruptRule.yml",
       "output": {
         ".html": {
@@ -159,6 +199,36 @@
       "output": {
         ".html": {
           "relative_path": "api/ToolkitEngine.Dialogue.DialogueType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.NudgeManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.NudgeManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.NudgeManagerConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.NudgeManagerConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.NudgeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.NudgeType.html"
         }
       },
       "version": ""
@@ -215,10 +285,40 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.yml",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.BaseDialogueEventUnit.yml",
       "output": {
         ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html"
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.BaseDialogueEventUnit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.BaseFilteredDialogueEventUnit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.BaseFilteredDialogueEventUnit.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html"
         }
       },
       "version": ""
@@ -255,6 +355,86 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompletedMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompletedMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStartedMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStartedMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompletedMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompletedMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStartedMessageListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStartedMessageListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.yml",
       "output": {
         ".html": {
@@ -275,80 +455,40 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.yml",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.yml",
       "output": {
         ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html"
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.yml",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.yml",
       "output": {
         ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.html"
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.yml",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html"
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.yml",
+      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.yml",
       "output": {
         ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.html"
+          "relative_path": "api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html"
         }
       },
       "version": ""
@@ -387,11 +527,11 @@
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
-        ".html": {
-          "relative_path": "api/toc.html"
-        },
         ".json": {
           "relative_path": "api/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/toc.html"
         }
       },
       "version": ""
@@ -420,11 +560,11 @@
       "type": "Toc",
       "source_relative_path": "license/toc.md",
       "output": {
-        ".html": {
-          "relative_path": "license/toc.html"
-        },
         ".json": {
           "relative_path": "license/toc.json"
+        },
+        ".html": {
+          "relative_path": "license/toc.html"
         }
       },
       "version": ""
@@ -443,11 +583,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".html": {
-          "relative_path": "toc.html"
-        },
         ".json": {
           "relative_path": "toc.json"
+        },
+        ".html": {
+          "relative_path": "toc.html"
         }
       },
       "version": ""

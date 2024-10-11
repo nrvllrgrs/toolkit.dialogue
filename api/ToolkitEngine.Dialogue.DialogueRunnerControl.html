@@ -89,7 +89,7 @@
 
 
   <h1 id="ToolkitEngine_Dialogue_DialogueRunnerControl" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl" class="text-break">
-Class DialogueRunnerControl  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L27"><i class="bi bi-code-slash"></i></a>
+Class DialogueRunnerControl  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L39"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -131,7 +131,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_age" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.age">
   age
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Time when DialogueRunner last started</p>
@@ -163,7 +163,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_dialogueRunner" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.dialogueRunner">
   dialogueRunner
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -194,7 +194,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_dialogueType" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.dialogueType">
   dialogueType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L89"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -221,18 +221,18 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
 
 
-  <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueComplete_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueComplete*"></a>
+  <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_onCommand_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onCommand*"></a>
 
-  <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueComplete" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueComplete">
-  onDialogueComplete
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_onCommand" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onCommand">
+  onCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UnityEvent&lt;DialogueEventArgs&gt; onDialogueComplete { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public UnityEvent&lt;DialogueEventArgs&gt; onCommand { get; }</code></pre>
   </div>
 
 
@@ -252,18 +252,111 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
 
 
-  <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueStart_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStart*"></a>
+  <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueCompleted_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueCompleted*"></a>
 
-  <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueStart" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStart">
-  onDialogueStart
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueCompleted" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueCompleted">
+  onDialogueCompleted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UnityEvent&lt;DialogueEventArgs&gt; onDialogueStart { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public UnityEvent&lt;DialogueEventArgs&gt; onDialogueCompleted { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">UnityEvent</span>&lt;<a class="xref" href="ToolkitEngine.Dialogue.DialogueEventArgs.html">DialogueEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueStarted_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStarted*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_onDialogueStarted" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onDialogueStarted">
+  onDialogueStarted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UnityEvent&lt;DialogueEventArgs&gt; onDialogueStarted { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">UnityEvent</span>&lt;<a class="xref" href="ToolkitEngine.Dialogue.DialogueEventArgs.html">DialogueEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_onNodeCompleted_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeCompleted*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_onNodeCompleted" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeCompleted">
+  onNodeCompleted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UnityEvent&lt;DialogueEventArgs&gt; onNodeCompleted { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">UnityEvent</span>&lt;<a class="xref" href="ToolkitEngine.Dialogue.DialogueEventArgs.html">DialogueEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_onNodeStarted_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeStarted*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_onNodeStarted" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.onNodeStarted">
+  onNodeStarted
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UnityEvent&lt;DialogueEventArgs&gt; onNodeStarted { get; }</code></pre>
   </div>
 
 
@@ -291,7 +384,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_ClearQueue" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.ClearQueue">
   ClearQueue()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L191"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -317,7 +410,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_Dequeue" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Dequeue">
   Dequeue()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L176"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -343,7 +436,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_Dequeue_System_String_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Dequeue(System.String)">
   Dequeue(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L182"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -374,7 +467,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_Enqueue" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Enqueue">
   Enqueue()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -400,7 +493,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_Enqueue_System_String_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Enqueue(System.String)">
   Enqueue(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L167"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -431,7 +524,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_Play" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Play">
   Play()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -457,7 +550,7 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_Play_System_String_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Play(System.String)">
   Play(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L143"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -484,11 +577,44 @@ Class DialogueRunnerControl  <a class="header-action link-secondary" title="View
 
 
 
+  <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_Set_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Set*"></a>
+
+  <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_Set_DialogueRunner_ToolkitEngine_Dialogue_DialogueType_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Set(DialogueRunner,ToolkitEngine.Dialogue.DialogueType)">
+  Set(DialogueRunner, DialogueType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Set(DialogueRunner runner, DialogueType dialogueType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>runner</code> <span class="xref">DialogueRunner</span></dt>
+    <dd></dd>
+    <dt><code>dialogueType</code> <a class="xref" href="ToolkitEngine.Dialogue.DialogueType.html">DialogueType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="ToolkitEngine_Dialogue_DialogueRunnerControl_Stop_" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Stop*"></a>
 
   <h3 id="ToolkitEngine_Dialogue_DialogueRunnerControl_Stop" data-uid="ToolkitEngine.Dialogue.DialogueRunnerControl.Stop">
   Stop()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/nrvllrgrs/toolkit.dialogue/blob/master/Runtime/DialogueRunnerControl.cs/#L197"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>

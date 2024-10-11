@@ -7,12 +7,22 @@
   "api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html": {
     "href": "api/ToolkitEditor.Dialogue.DialogueRunnerControlEditor.html",
     "title": "Class DialogueRunnerControlEditor | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class DialogueRunnerControlEditor Namespace ToolkitEditor.Dialogue public class DialogueRunnerControlEditor : BaseToolkitEditor Inheritance object DialogueRunnerControlEditor Fields m_dialogueType protected SerializedProperty m_dialogueType Field Value SerializedProperty m_onDialogueComplete protected SerializedProperty m_onDialogueComplete Field Value SerializedProperty m_onDialogueStart protected SerializedProperty m_onDialogueStart Field Value SerializedProperty m_playOnStart protected SerializedProperty m_playOnStart Field Value SerializedProperty m_startNode protected SerializedProperty m_startNode Field Value SerializedProperty Methods DrawEvents() protected override void DrawEvents() DrawProperties() protected override void DrawProperties()"
+    "keywords": "Class DialogueRunnerControlEditor Namespace ToolkitEditor.Dialogue public class DialogueRunnerControlEditor : BaseToolkitEditor Inheritance object DialogueRunnerControlEditor Fields m_dialogueType protected SerializedProperty m_dialogueType Field Value SerializedProperty m_onCommand protected SerializedProperty m_onCommand Field Value SerializedProperty m_onDialogueCompleted protected SerializedProperty m_onDialogueCompleted Field Value SerializedProperty m_onDialogueStarted protected SerializedProperty m_onDialogueStarted Field Value SerializedProperty m_onNodeCompleted protected SerializedProperty m_onNodeCompleted Field Value SerializedProperty m_onNodeStarted protected SerializedProperty m_onNodeStarted Field Value SerializedProperty m_playOnStart protected SerializedProperty m_playOnStart Field Value SerializedProperty m_replicateSettings protected SerializedProperty m_replicateSettings Field Value SerializedProperty m_startNode protected SerializedProperty m_startNode Field Value SerializedProperty Methods DrawEvents() protected override void DrawEvents() DrawProperties() protected override void DrawProperties()"
+  },
+  "api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html": {
+    "href": "api/ToolkitEditor.Dialogue.DialogueRunnerSettingsEditor.html",
+    "title": "Class DialogueRunnerSettingsEditor | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueRunnerSettingsEditor Namespace ToolkitEditor.Dialogue public class DialogueRunnerSettingsEditor : BaseToolkitEditor Inheritance object DialogueRunnerSettingsEditor Fields m_dialogueCategory protected SerializedProperty m_dialogueCategory Field Value SerializedProperty m_dialogueType protected SerializedProperty m_dialogueType Field Value SerializedProperty m_dialogueViews protected SerializedProperty m_dialogueViews Field Value SerializedProperty m_lineProvider protected SerializedProperty m_lineProvider Field Value SerializedProperty m_registration protected SerializedProperty m_registration Field Value SerializedProperty m_variableStorage protected SerializedProperty m_variableStorage Field Value SerializedProperty Methods DrawProperties() protected override void DrawProperties()"
   },
   "api/ToolkitEditor.Dialogue.DialogueTypeEditor.html": {
     "href": "api/ToolkitEditor.Dialogue.DialogueTypeEditor.html",
     "title": "Class DialogueTypeEditor | Dialogue Toolkit | 1.0.0",
     "keywords": "Class DialogueTypeEditor Namespace ToolkitEditor.Dialogue public class DialogueTypeEditor : BaseToolkitEditor, INestableEditor Inheritance object DialogueTypeEditor Implements INestableEditor Fields m_autoClearQueue protected SerializedProperty m_autoClearQueue Field Value SerializedProperty m_enqueueIfBlocked protected SerializedProperty m_enqueueIfBlocked Field Value SerializedProperty m_interruptPriority protected SerializedProperty m_interruptPriority Field Value SerializedProperty m_skippable protected SerializedProperty m_skippable Field Value SerializedProperty Methods DrawProperties() protected override void DrawProperties() GetNestedHeight() public float GetNestedHeight() Returns float OnEnable() protected virtual void OnEnable() OnNestedGUI(ref Rect) public void OnNestedGUI(ref Rect position) Parameters position Rect"
+  },
+  "api/ToolkitEditor.Dialogue.NudgeTypeEditor.html": {
+    "href": "api/ToolkitEditor.Dialogue.NudgeTypeEditor.html",
+    "title": "Class NudgeTypeEditor | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class NudgeTypeEditor Namespace ToolkitEditor.Dialogue public class NudgeTypeEditor : BaseToolkitEditor, INestableEditor Inheritance object NudgeTypeEditor Implements INestableEditor Fields m_autoClear protected SerializedProperty m_autoClear Field Value SerializedProperty m_delayTime protected SerializedProperty m_delayTime Field Value SerializedProperty m_indexVarName protected SerializedProperty m_indexVarName Field Value SerializedProperty m_minDelayTime protected SerializedProperty m_minDelayTime Field Value SerializedProperty Methods DrawProperties() protected override void DrawProperties() GetNestedHeight() public float GetNestedHeight() Returns float OnEnable() protected virtual void OnEnable() OnNestedGUI(ref Rect) public void OnNestedGUI(ref Rect position) Parameters position Rect"
   },
   "api/ToolkitEditor.Dialogue.VisualScripting.Setup.html": {
     "href": "api/ToolkitEditor.Dialogue.VisualScripting.Setup.html",
@@ -27,7 +37,7 @@
   "api/ToolkitEditor.Dialogue.html": {
     "href": "api/ToolkitEditor.Dialogue.html",
     "title": "Namespace ToolkitEditor.Dialogue | Dialogue Toolkit | 1.0.0",
-    "keywords": "Namespace ToolkitEditor.Dialogue Classes DialogueCategoryEditor DialogueRunnerControlEditor DialogueTypeEditor"
+    "keywords": "Namespace ToolkitEditor.Dialogue Classes DialogueCategoryEditor DialogueRunnerControlEditor DialogueRunnerSettingsEditor DialogueTypeEditor NudgeTypeEditor"
   },
   "api/ToolkitEngine.Dialogue.AssetReferenceYarnProject.html": {
     "href": "api/ToolkitEngine.Dialogue.AssetReferenceYarnProject.html",
@@ -42,7 +52,7 @@
   "api/ToolkitEngine.Dialogue.DialogueEventArgs.html": {
     "href": "api/ToolkitEngine.Dialogue.DialogueEventArgs.html",
     "title": "Class DialogueEventArgs | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class DialogueEventArgs Namespace ToolkitEngine.Dialogue public class DialogueEventArgs : EventArgs Inheritance object EventArgs DialogueEventArgs Inherited Members EventArgs.Empty object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors DialogueEventArgs(DialogueRunnerControl) public DialogueEventArgs(DialogueRunnerControl control) Parameters control DialogueRunnerControl Properties control public DialogueRunnerControl control { get; } Property Value DialogueRunnerControl runner public DialogueRunner runner { get; } Property Value DialogueRunner type public DialogueType type { get; } Property Value DialogueType"
+    "keywords": "Class DialogueEventArgs Namespace ToolkitEngine.Dialogue public class DialogueEventArgs : EventArgs Inheritance object EventArgs DialogueEventArgs Inherited Members EventArgs.Empty object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors DialogueEventArgs(DialogueRunnerControl) public DialogueEventArgs(DialogueRunnerControl control) Parameters control DialogueRunnerControl DialogueEventArgs(DialogueRunnerControl, string) public DialogueEventArgs(DialogueRunnerControl control, string nodeName) Parameters control DialogueRunnerControl nodeName string DialogueEventArgs(DialogueRunnerControl, string, string) public DialogueEventArgs(DialogueRunnerControl control, string nodeName, string command) Parameters control DialogueRunnerControl nodeName string command string Properties command public string command { get; } Property Value string control public DialogueRunnerControl control { get; } Property Value DialogueRunnerControl nodeName public string nodeName { get; } Property Value string runner public DialogueRunner runner { get; } Property Value DialogueRunner type public DialogueType type { get; } Property Value DialogueType"
   },
   "api/ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.html": {
     "href": "api/ToolkitEngine.Dialogue.DialogueManager.RuntimeDialogueCategory.html",
@@ -52,7 +62,7 @@
   "api/ToolkitEngine.Dialogue.DialogueManager.html": {
     "href": "api/ToolkitEngine.Dialogue.DialogueManager.html",
     "title": "Class DialogueManager | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class DialogueManager Namespace ToolkitEngine.Dialogue public class DialogueManager : Singleton<DialogueManager> Inheritance object DialogueManager Properties IsAnyDialogueRunning Gets a value that indicates if the dialogue is actively running. public bool IsAnyDialogueRunning { get; } Property Value bool Methods Awake() protected override void Awake() ClearQueue(DialogueRunnerControl) public void ClearQueue(DialogueRunnerControl control) Parameters control DialogueRunnerControl Dequeue(DialogueRunnerControl, string) public void Dequeue(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string Enqueue(DialogueRunnerControl, string) public void Enqueue(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string GetPriority(DialogueType) public int GetPriority(DialogueType dialogueType) Parameters dialogueType DialogueType Returns int GetQueueAge(DialogueRunnerControl) public float GetQueueAge(DialogueRunnerControl control) Parameters control DialogueRunnerControl Returns float IsDialogueCategoryRunning(DialogueCategory) public bool IsDialogueCategoryRunning(DialogueCategory category) Parameters category DialogueCategory Returns bool Play(DialogueRunnerControl, string) public void Play(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string"
+    "keywords": "Class DialogueManager Namespace ToolkitEngine.Dialogue public class DialogueManager : ConfigurableSubsystem<DialogueManager, DialogueManagerConfig> Inheritance object DialogueManager Properties isAnyDialogueRunning Gets a value that indicates if the dialogue is actively running. public bool isAnyDialogueRunning { get; } Property Value bool Methods ClearQueue(DialogueRunnerControl) public void ClearQueue(DialogueRunnerControl control) Parameters control DialogueRunnerControl Dequeue(DialogueRunnerControl, string) public void Dequeue(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string Enqueue(DialogueRunnerControl, string) public void Enqueue(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string GetPriority(DialogueType) public int GetPriority(DialogueType dialogueType) Parameters dialogueType DialogueType Returns int GetQueueAge(DialogueRunnerControl) public float GetQueueAge(DialogueRunnerControl control) Parameters control DialogueRunnerControl Returns float Initialize() protected override void Initialize() IsDialogueCategoryRunning(DialogueCategory) public bool IsDialogueCategoryRunning(DialogueCategory category) Parameters category DialogueCategory Returns bool Play(DialogueRunnerControl, string) public void Play(DialogueRunnerControl control, string startNode) Parameters control DialogueRunnerControl startNode string Register(DialogueRunnerSettings) public void Register(DialogueRunnerSettings settings) Parameters settings DialogueRunnerSettings ReplicateSettings(DialogueRunnerControl) public bool ReplicateSettings(DialogueRunnerControl control) Parameters control DialogueRunnerControl Returns bool TryGetDialogueCategory(DialogueType, out DialogueCategory) public bool TryGetDialogueCategory(DialogueType type, out DialogueCategory category) Parameters type DialogueType category DialogueCategory Returns bool TryGetDialogueRunnerSettings(DialogueCategory, out DialogueRunnerSettings) public bool TryGetDialogueRunnerSettings(DialogueCategory category, out DialogueRunnerSettings settings) Parameters category DialogueCategory settings DialogueRunnerSettings Returns bool TryGetDialogueRunnerSettings(DialogueType, out DialogueRunnerSettings) public bool TryGetDialogueRunnerSettings(DialogueType type, out DialogueRunnerSettings settings) Parameters type DialogueType settings DialogueRunnerSettings Returns bool Unregister(DialogueRunnerSettings) public void Unregister(DialogueRunnerSettings settings) Parameters settings DialogueRunnerSettings Events Command public event EventHandler<DialogueEventArgs> Command Event Type EventHandler<DialogueEventArgs> DialogueCompleted public event EventHandler<DialogueEventArgs> DialogueCompleted Event Type EventHandler<DialogueEventArgs> DialogueStarted public event EventHandler<DialogueEventArgs> DialogueStarted Event Type EventHandler<DialogueEventArgs> NodeCompleted public event EventHandler<DialogueEventArgs> NodeCompleted Event Type EventHandler<DialogueEventArgs> NodeStarted public event EventHandler<DialogueEventArgs> NodeStarted Event Type EventHandler<DialogueEventArgs>"
   },
   "api/ToolkitEngine.Dialogue.DialogueManagerConfig.html": {
     "href": "api/ToolkitEngine.Dialogue.DialogueManagerConfig.html",
@@ -62,7 +72,17 @@
   "api/ToolkitEngine.Dialogue.DialogueRunnerControl.html": {
     "href": "api/ToolkitEngine.Dialogue.DialogueRunnerControl.html",
     "title": "Class DialogueRunnerControl | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class DialogueRunnerControl Namespace ToolkitEngine.Dialogue public class DialogueRunnerControl : MonoBehaviour Inheritance object DialogueRunnerControl Properties age Time when DialogueRunner last started public float age { get; } Property Value float dialogueRunner public DialogueRunner dialogueRunner { get; } Property Value DialogueRunner dialogueType public DialogueType dialogueType { get; } Property Value DialogueType onDialogueComplete public UnityEvent<DialogueEventArgs> onDialogueComplete { get; } Property Value UnityEvent<DialogueEventArgs> onDialogueStart public UnityEvent<DialogueEventArgs> onDialogueStart { get; } Property Value UnityEvent<DialogueEventArgs> Methods ClearQueue() public void ClearQueue() Dequeue() public void Dequeue() Dequeue(string) public void Dequeue(string startNode) Parameters startNode string Enqueue() public void Enqueue() Enqueue(string) public void Enqueue(string startNode) Parameters startNode string Play() public void Play() Play(string) public void Play(string startNode) Parameters startNode string Stop() public void Stop()"
+    "keywords": "Class DialogueRunnerControl Namespace ToolkitEngine.Dialogue public class DialogueRunnerControl : MonoBehaviour Inheritance object DialogueRunnerControl Properties age Time when DialogueRunner last started public float age { get; } Property Value float dialogueRunner public DialogueRunner dialogueRunner { get; } Property Value DialogueRunner dialogueType public DialogueType dialogueType { get; } Property Value DialogueType onCommand public UnityEvent<DialogueEventArgs> onCommand { get; } Property Value UnityEvent<DialogueEventArgs> onDialogueCompleted public UnityEvent<DialogueEventArgs> onDialogueCompleted { get; } Property Value UnityEvent<DialogueEventArgs> onDialogueStarted public UnityEvent<DialogueEventArgs> onDialogueStarted { get; } Property Value UnityEvent<DialogueEventArgs> onNodeCompleted public UnityEvent<DialogueEventArgs> onNodeCompleted { get; } Property Value UnityEvent<DialogueEventArgs> onNodeStarted public UnityEvent<DialogueEventArgs> onNodeStarted { get; } Property Value UnityEvent<DialogueEventArgs> Methods ClearQueue() public void ClearQueue() Dequeue() public void Dequeue() Dequeue(string) public void Dequeue(string startNode) Parameters startNode string Enqueue() public void Enqueue() Enqueue(string) public void Enqueue(string startNode) Parameters startNode string Play() public void Play() Play(string) public void Play(string startNode) Parameters startNode string Set(DialogueRunner, DialogueType) public void Set(DialogueRunner runner, DialogueType dialogueType) Parameters runner DialogueRunner dialogueType DialogueType Stop() public void Stop()"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueRunnerSettings.RegistrationMode.html",
+    "title": "Enum DialogueRunnerSettings.RegistrationMode | Dialogue Toolkit | 1.0.0",
+    "keywords": "Enum DialogueRunnerSettings.RegistrationMode Namespace ToolkitEngine.Dialogue public enum DialogueRunnerSettings.RegistrationMode Fields Category = 0 Type = 1"
+  },
+  "api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html": {
+    "href": "api/ToolkitEngine.Dialogue.DialogueRunnerSettings.html",
+    "title": "Class DialogueRunnerSettings | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class DialogueRunnerSettings Namespace ToolkitEngine.Dialogue public class DialogueRunnerSettings : MonoBehaviour Inheritance object DialogueRunnerSettings Properties dialogueCategory public DialogueCategory dialogueCategory { get; } Property Value DialogueCategory dialogueType public DialogueType dialogueType { get; } Property Value DialogueType dialogueViews public DialogueViewBase[] dialogueViews { get; } Property Value DialogueViewBase[] lineProvider public LineProviderBehaviour lineProvider { get; } Property Value LineProviderBehaviour registration public DialogueRunnerSettings.RegistrationMode registration { get; } Property Value DialogueRunnerSettings.RegistrationMode variableStorage public VariableStorageBehaviour variableStorage { get; } Property Value VariableStorageBehaviour"
   },
   "api/ToolkitEngine.Dialogue.DialogueType.InterruptRule.html": {
     "href": "api/ToolkitEngine.Dialogue.DialogueType.InterruptRule.html",
@@ -73,6 +93,21 @@
     "href": "api/ToolkitEngine.Dialogue.DialogueType.html",
     "title": "Class DialogueType | Dialogue Toolkit | 1.0.0",
     "keywords": "Class DialogueType Namespace ToolkitEngine.Dialogue public class DialogueType : ScriptableObject Inheritance object DialogueType Properties autoClearQueue public bool autoClearQueue { get; } Property Value bool enqueueIfBlocked public bool enqueueIfBlocked { get; } Property Value bool interruptPriority public DialogueType.InterruptRule interruptPriority { get; } Property Value DialogueType.InterruptRule skippable public bool skippable { get; } Property Value bool"
+  },
+  "api/ToolkitEngine.Dialogue.NudgeManager.html": {
+    "href": "api/ToolkitEngine.Dialogue.NudgeManager.html",
+    "title": "Class NudgeManager | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class NudgeManager Namespace ToolkitEngine.Dialogue public class NudgeManager : InstantiableSubsystem<NudgeManager, NudgeManagerConfig> Inheritance object NudgeManager Properties control protected DialogueRunnerControl control { get; } Property Value DialogueRunnerControl paused public bool paused { get; } Property Value bool runner protected DialogueRunner runner { get; } Property Value DialogueRunner Methods Clear(NudgeType) public void Clear(NudgeType nudgeType) Parameters nudgeType NudgeType ClearAll() public void ClearAll() ForceUnpause() public void ForceUnpause() Initialize() protected override void Initialize() Pause(object) public void Pause(object source) Parameters source object Play() Force active nudge to play, ignoring timer public void Play() ResetTimer() public void ResetTimer() Set(NudgeType, YarnProject, string, bool) public void Set(NudgeType nudgeType, YarnProject project, string startNode = \"Start\", bool playImmediately = false) Parameters nudgeType NudgeType project YarnProject startNode string playImmediately bool Terminate() protected override void Terminate() Unpause(object) public void Unpause(object source) Parameters source object Update() public override void Update() Events PauseChanged public event EventHandler<bool> PauseChanged Event Type EventHandler<bool>"
+  },
+  "api/ToolkitEngine.Dialogue.NudgeManagerConfig.html": {
+    "href": "api/ToolkitEngine.Dialogue.NudgeManagerConfig.html",
+    "title": "Class NudgeManagerConfig | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class NudgeManagerConfig Namespace ToolkitEngine.Dialogue public class NudgeManagerConfig : ScriptableObject, IInstantiableSubsystemConfig Inheritance object NudgeManagerConfig Implements IInstantiableSubsystemConfig Properties dialogueType public DialogueType dialogueType { get; } Property Value DialogueType Methods GetManagerType() public Type GetManagerType() Returns Type GetPriority(NudgeType) public int GetPriority(NudgeType nudgeType) Parameters nudgeType NudgeType Returns int GetTemplate() public GameObject GetTemplate() Returns GameObject"
+  },
+  "api/ToolkitEngine.Dialogue.NudgeType.html": {
+    "href": "api/ToolkitEngine.Dialogue.NudgeType.html",
+    "title": "Class NudgeType | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class NudgeType Namespace ToolkitEngine.Dialogue public class NudgeType : ScriptableObject Inheritance object NudgeType Properties autoClear Indicates whether nudge collection should clear stack when set. public bool autoClear { get; } Property Value bool delayTime Seconds to wait between nudges. public float delayTime { get; } Property Value float indexVarName Name of index variable used to increment nudges. Automatically reset when new nudge started. public string indexVarName { get; } Property Value string minDelayTime Minimum seconds to wait after unpaused. public float minDelayTime { get; } Property Value float"
   },
   "api/ToolkitEngine.Dialogue.Scoring.DialogueAgeEvaluator.html": {
     "href": "api/ToolkitEngine.Dialogue.Scoring.DialogueAgeEvaluator.html",
@@ -99,15 +134,30 @@
     "title": "Namespace ToolkitEngine.Dialogue.Scoring | Dialogue Toolkit | 1.0.0",
     "keywords": "Namespace ToolkitEngine.Dialogue.Scoring Classes DialogueAgeEvaluator DialogueDistanceEvaluator DialoguePriorityEvaluator DialogueQueueAgeEvaluator"
   },
-  "api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.BaseYarnEventUnit.html",
-    "title": "Class BaseYarnEventUnit | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class BaseYarnEventUnit Namespace ToolkitEngine.Dialogue.VisualScripting public abstract class BaseYarnEventUnit : BaseEventUnit<string> Inheritance object BaseYarnEventUnit Derived OnYarnNodeComplete OnYarnNodeStart Fields filtered public bool filtered Field Value bool Properties node public ValueInput node { get; set; } Property Value ValueInput showEventArgs protected override bool showEventArgs { get; } Property Value bool Methods Definition() protected override void Definition() ShouldTrigger(Flow, string) protected override bool ShouldTrigger(Flow flow, string args) Parameters flow Flow args string Returns bool"
+  "api/ToolkitEngine.Dialogue.VisualScripting.BaseDialogueEventUnit.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.BaseDialogueEventUnit.html",
+    "title": "Class BaseDialogueEventUnit | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class BaseDialogueEventUnit Namespace ToolkitEngine.Dialogue.VisualScripting public abstract class BaseDialogueEventUnit : TargetEventUnit<DialogueEventArgs> Inheritance object BaseDialogueEventUnit Derived OnDialogueCompleted OnDialogueStarted"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.BaseFilteredDialogueEventUnit.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.BaseFilteredDialogueEventUnit.html",
+    "title": "Class BaseFilteredDialogueEventUnit | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class BaseFilteredDialogueEventUnit Namespace ToolkitEngine.Dialogue.VisualScripting public abstract class BaseFilteredDialogueEventUnit : FilteredTargetEventUnit<DialogueEventArgs, string> Inheritance object BaseFilteredDialogueEventUnit Derived OnNodeCompleted OnNodeStarted OnYarnCommand"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.ClearAllNudges.html",
+    "title": "Class ClearAllNudges | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class ClearAllNudges Namespace ToolkitEngine.Dialogue.VisualScripting public class ClearAllNudges : Unit Inheritance object ClearAllNudges Fields enter public ControlInput enter Field Value ControlInput exit public ControlOutput exit Field Value ControlOutput Methods Definition() protected override void Definition()"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.ClearNudges.html",
+    "title": "Class ClearNudges | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class ClearNudges Namespace ToolkitEngine.Dialogue.VisualScripting public class ClearNudges : Unit Inheritance object ClearNudges Fields enter public ControlInput enter Field Value ControlInput exit public ControlOutput exit Field Value ControlOutput nudgeType public ValueInput nudgeType Field Value ValueInput Methods Definition() protected override void Definition()"
   },
   "api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html": {
     "href": "api/ToolkitEngine.Dialogue.VisualScripting.EventHooks.html",
     "title": "Class EventHooks | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class EventHooks Namespace ToolkitEngine.Dialogue.VisualScripting public static class EventHooks Inheritance object EventHooks Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Fields OnYarnCommand public const string OnYarnCommand = \"OnYarnCommand\" Field Value string OnYarnDialogueComplete public const string OnYarnDialogueComplete = \"OnYarnDialogueComplete\" Field Value string OnYarnDialogueStart public const string OnYarnDialogueStart = \"OnYarnDialogueStart\" Field Value string OnYarnNodeComplete public const string OnYarnNodeComplete = \"OnYarnNodeComplete\" Field Value string OnYarnNodeStart public const string OnYarnNodeStart = \"OnYarnNodeStart\" Field Value string"
+    "keywords": "Class EventHooks Namespace ToolkitEngine.Dialogue.VisualScripting public static class EventHooks Inheritance object EventHooks Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Fields OnDialogueCompleted public const string OnDialogueCompleted = \"OnDialogueCompleted\" Field Value string OnDialogueStarted public const string OnDialogueStarted = \"OnDialogueStarted\" Field Value string OnNodeCompleted public const string OnNodeCompleted = \"OnNodeCompleted\" Field Value string OnNodeStarted public const string OnNodeStarted = \"OnNodeStarted\" Field Value string OnYarnCommand public const string OnYarnCommand = \"OnYarnCommand\" Field Value string"
   },
   "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.VariableType.html": {
     "href": "api/ToolkitEngine.Dialogue.VisualScripting.GetYarnVariable.VariableType.html",
@@ -119,65 +169,85 @@
     "title": "Class GetYarnVariable | Dialogue Toolkit | 1.0.0",
     "keywords": "Class GetYarnVariable Namespace ToolkitEngine.Dialogue.VisualScripting public class GetYarnVariable : Unit Inheritance object GetYarnVariable Fields asBool public ValueOutput asBool Field Value ValueOutput asFloat public ValueOutput asFloat Field Value ValueOutput asInt public ValueOutput asInt Field Value ValueOutput contains public ValueOutput contains Field Value ValueOutput dialogueRunner public ValueInput dialogueRunner Field Value ValueInput variableName public ValueInput variableName Field Value ValueInput Properties enter public ControlInput enter { get; } Property Value ControlInput exit public ControlOutput exit { get; } Property Value ControlOutput variableType public GetYarnVariable.VariableType variableType { get; set; } Property Value GetYarnVariable.VariableType Methods Definition() protected override void Definition()"
   },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompleted.html",
+    "title": "Class OnDialogueCompleted | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnDialogueCompleted Namespace ToolkitEngine.Dialogue.VisualScripting public class OnDialogueCompleted : BaseDialogueEventUnit Inheritance object BaseDialogueEventUnit OnDialogueCompleted Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type Methods StartListeningToManager() protected override void StartListeningToManager() StopListeningToManager() protected override void StopListeningToManager()"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompletedMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueCompletedMessageListener.html",
+    "title": "Class OnDialogueCompletedMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnDialogueCompletedMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnDialogueCompletedMessageListener : MessageListener Inheritance object OnDialogueCompletedMessageListener"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStarted.html",
+    "title": "Class OnDialogueStarted | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnDialogueStarted Namespace ToolkitEngine.Dialogue.VisualScripting public class OnDialogueStarted : BaseDialogueEventUnit Inheritance object BaseDialogueEventUnit OnDialogueStarted Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type Methods StartListeningToManager() protected override void StartListeningToManager() StopListeningToManager() protected override void StopListeningToManager()"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStartedMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnDialogueStartedMessageListener.html",
+    "title": "Class OnDialogueStartedMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnDialogueStartedMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnDialogueStartedMessageListener : MessageListener Inheritance object OnDialogueStartedMessageListener"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompleted.html",
+    "title": "Class OnNodeCompleted | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnNodeCompleted Namespace ToolkitEngine.Dialogue.VisualScripting public class OnNodeCompleted : BaseFilteredDialogueEventUnit Inheritance object BaseFilteredDialogueEventUnit OnNodeCompleted Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type Methods GetFilterValue(DialogueEventArgs) protected override string GetFilterValue(DialogueEventArgs args) Parameters args DialogueEventArgs Returns string StartListeningToManager() protected override void StartListeningToManager() StopListeningToManager() protected override void StopListeningToManager()"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompletedMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeCompletedMessageListener.html",
+    "title": "Class OnNodeCompletedMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnNodeCompletedMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnNodeCompletedMessageListener : MessageListener Inheritance object OnNodeCompletedMessageListener"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStarted.html",
+    "title": "Class OnNodeStarted | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnNodeStarted Namespace ToolkitEngine.Dialogue.VisualScripting public class OnNodeStarted : BaseFilteredDialogueEventUnit Inheritance object BaseFilteredDialogueEventUnit OnNodeStarted Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type Methods GetFilterValue(DialogueEventArgs) protected override string GetFilterValue(DialogueEventArgs args) Parameters args DialogueEventArgs Returns string StartListeningToManager() protected override void StartListeningToManager() StopListeningToManager() protected override void StopListeningToManager()"
+  },
+  "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStartedMessageListener.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnNodeStartedMessageListener.html",
+    "title": "Class OnNodeStartedMessageListener | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class OnNodeStartedMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnNodeStartedMessageListener : MessageListener Inheritance object OnNodeStartedMessageListener"
+  },
   "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html": {
     "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommand.html",
     "title": "Class OnYarnCommand | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnCommand Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnCommand : BaseEventUnit<string> Inheritance object OnYarnCommand Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type"
+    "keywords": "Class OnYarnCommand Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnCommand : BaseFilteredDialogueEventUnit Inheritance object BaseFilteredDialogueEventUnit OnYarnCommand Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type Methods GetFilterValue(DialogueEventArgs) protected override string GetFilterValue(DialogueEventArgs args) Parameters args DialogueEventArgs Returns string StartListeningToManager() protected override void StartListeningToManager() StopListeningToManager() protected override void StopListeningToManager()"
   },
   "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener.html": {
     "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnCommandMessageListener.html",
     "title": "Class OnYarnCommandMessageListener | Dialogue Toolkit | 1.0.0",
     "keywords": "Class OnYarnCommandMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnCommandMessageListener : MessageListener Inheritance object OnYarnCommandMessageListener"
   },
-  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueComplete.html",
-    "title": "Class OnYarnDialogueComplete | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnDialogueComplete Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnDialogueComplete : BaseEventUnit<EmptyEventArgs> Inheritance object OnYarnDialogueComplete Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type showEventArgs protected override bool showEventArgs { get; } Property Value bool"
+  "api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.PauseNudges.html",
+    "title": "Class PauseNudges | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class PauseNudges Namespace ToolkitEngine.Dialogue.VisualScripting public class PauseNudges : Unit Inheritance object PauseNudges Fields enter public ControlInput enter Field Value ControlInput exit public ControlOutput exit Field Value ControlOutput source public ValueInput source Field Value ValueInput value public ValueInput value Field Value ValueInput Methods Definition() protected override void Definition()"
   },
-  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueCompleteMessageListener.html",
-    "title": "Class OnYarnDialogueCompleteMessageListener | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnDialogueCompleteMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnDialogueCompleteMessageListener : MessageListener Inheritance object OnYarnDialogueCompleteMessageListener"
+  "api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.PlayNudges.html",
+    "title": "Class PlayNudges | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class PlayNudges Namespace ToolkitEngine.Dialogue.VisualScripting public class PlayNudges : Unit Inheritance object PlayNudges Fields enter public ControlInput enter Field Value ControlInput exit public ControlOutput exit Field Value ControlOutput Methods Definition() protected override void Definition()"
   },
-  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStart.html",
-    "title": "Class OnYarnDialogueStart | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnDialogueStart Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnDialogueStart : BaseEventUnit<EmptyEventArgs> Inheritance object OnYarnDialogueStart Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type showEventArgs protected override bool showEventArgs { get; } Property Value bool"
+  "api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.ResetNudgeTimer.html",
+    "title": "Class ResetNudgeTimer | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class ResetNudgeTimer Namespace ToolkitEngine.Dialogue.VisualScripting public class ResetNudgeTimer : Unit Inheritance object ResetNudgeTimer Fields enter public ControlInput enter Field Value ControlInput exit public ControlOutput exit Field Value ControlOutput Methods Definition() protected override void Definition()"
   },
-  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnDialogueStartMessageListener.html",
-    "title": "Class OnYarnDialogueStartMessageListener | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnDialogueStartMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnDialogueStartMessageListener : MessageListener Inheritance object OnYarnDialogueStartMessageListener"
-  },
-  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeComplete.html",
-    "title": "Class OnYarnNodeComplete | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnNodeComplete Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnNodeComplete : BaseYarnEventUnit Inheritance object BaseYarnEventUnit OnYarnNodeComplete Inherited Members BaseYarnEventUnit.filtered BaseYarnEventUnit.node BaseYarnEventUnit.showEventArgs BaseYarnEventUnit.Definition() BaseYarnEventUnit.ShouldTrigger(Flow, string) Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type"
-  },
-  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeCompleteMessageListener.html",
-    "title": "Class OnYarnNodeCompleteMessageListener | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnNodeCompleteMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnNodeCompleteMessageListener : MessageListener Inheritance object OnYarnNodeCompleteMessageListener"
-  },
-  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStart.html",
-    "title": "Class OnYarnNodeStart | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnNodeStart Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnNodeStart : BaseYarnEventUnit Inheritance object BaseYarnEventUnit OnYarnNodeStart Inherited Members BaseYarnEventUnit.filtered BaseYarnEventUnit.node BaseYarnEventUnit.showEventArgs BaseYarnEventUnit.Definition() BaseYarnEventUnit.ShouldTrigger(Flow, string) Properties MessageListenerType public override Type MessageListenerType { get; } Property Value Type"
-  },
-  "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.html": {
-    "href": "api/ToolkitEngine.Dialogue.VisualScripting.OnYarnNodeStartMessageListener.html",
-    "title": "Class OnYarnNodeStartMessageListener | Dialogue Toolkit | 1.0.0",
-    "keywords": "Class OnYarnNodeStartMessageListener Namespace ToolkitEngine.Dialogue.VisualScripting public class OnYarnNodeStartMessageListener : MessageListener Inheritance object OnYarnNodeStartMessageListener"
+  "api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html": {
+    "href": "api/ToolkitEngine.Dialogue.VisualScripting.SetNudges.html",
+    "title": "Class SetNudges | Dialogue Toolkit | 1.0.0",
+    "keywords": "Class SetNudges Namespace ToolkitEngine.Dialogue.VisualScripting public class SetNudges : Unit Inheritance object SetNudges Fields enter public ControlInput enter Field Value ControlInput exit public ControlOutput exit Field Value ControlOutput nudgeType public ValueInput nudgeType Field Value ValueInput playImmediately public ValueInput playImmediately Field Value ValueInput project public ValueInput project Field Value ValueInput startNode public ValueInput startNode Field Value ValueInput Methods Definition() protected override void Definition()"
   },
   "api/ToolkitEngine.Dialogue.VisualScripting.html": {
     "href": "api/ToolkitEngine.Dialogue.VisualScripting.html",
     "title": "Namespace ToolkitEngine.Dialogue.VisualScripting | Dialogue Toolkit | 1.0.0",
-    "keywords": "Namespace ToolkitEngine.Dialogue.VisualScripting Classes BaseYarnEventUnit EventHooks GetYarnVariable OnYarnCommand OnYarnCommandMessageListener OnYarnDialogueComplete OnYarnDialogueCompleteMessageListener OnYarnDialogueStart OnYarnDialogueStartMessageListener OnYarnNodeComplete OnYarnNodeCompleteMessageListener OnYarnNodeStart OnYarnNodeStartMessageListener Enums GetYarnVariable.VariableType"
+    "keywords": "Namespace ToolkitEngine.Dialogue.VisualScripting Classes BaseDialogueEventUnit BaseFilteredDialogueEventUnit ClearAllNudges ClearNudges EventHooks GetYarnVariable OnDialogueCompleted OnDialogueCompletedMessageListener OnDialogueStarted OnDialogueStartedMessageListener OnNodeCompleted OnNodeCompletedMessageListener OnNodeStarted OnNodeStartedMessageListener OnYarnCommand OnYarnCommandMessageListener PauseNudges PlayNudges ResetNudgeTimer SetNudges Enums GetYarnVariable.VariableType"
   },
   "api/ToolkitEngine.Dialogue.html": {
     "href": "api/ToolkitEngine.Dialogue.html",
     "title": "Namespace ToolkitEngine.Dialogue | Dialogue Toolkit | 1.0.0",
-    "keywords": "Namespace ToolkitEngine.Dialogue Classes AssetReferenceYarnProject DialogueCategory DialogueEventArgs DialogueManager DialogueManager.RuntimeDialogueCategory DialogueManagerConfig DialogueRunnerControl DialogueType Enums DialogueType.InterruptRule"
+    "keywords": "Namespace ToolkitEngine.Dialogue Classes AssetReferenceYarnProject DialogueCategory DialogueEventArgs DialogueManager DialogueManager.RuntimeDialogueCategory DialogueManagerConfig DialogueRunnerControl DialogueRunnerSettings DialogueType NudgeManager NudgeManagerConfig NudgeType Enums DialogueRunnerSettings.RegistrationMode DialogueType.InterruptRule"
   },
   "api/index.html": {
     "href": "api/index.html",
