@@ -71,12 +71,12 @@ namespace ToolkitEngine.Dialogue
 				: false;
 		}
 
-		public void Play(DialogueRunnerControl control, string startNode)
+		public bool Play(DialogueRunnerControl control, string startNode)
 		{
 			if (!TryGetRuntimeDialogueCategory(control, out var runtimeCategory))
-				return;
+				return false;
 
-			runtimeCategory.Play(control, startNode);
+			return runtimeCategory.Play(control, startNode);
 		}
 
 		public void Enqueue(DialogueRunnerControl control, string startNode)
@@ -314,12 +314,13 @@ namespace ToolkitEngine.Dialogue
 
 			#region Methods
 
-			internal void Play(DialogueRunnerControl control, string startNode)
+			internal bool Play(DialogueRunnerControl control, string startNode)
 			{
 				// Under allowed simultaneous runners
 				if (dialogueCategory.infiniteSimultaneous || m_activeRunnerControls.Count < dialogueCategory.maxSimultaneous)
 				{
 					PlayInternal(control, startNode);
+					return true;
 				}
 				else
 				{
@@ -329,14 +330,16 @@ namespace ToolkitEngine.Dialogue
 					{
 						m_interrupted = true;
 						interruptable.Stop();
-						Play(control, startNode);
+						return Play(control, startNode);
 					}
 					// Determine if enqueuing should occur
 					else if (dialogueCategory.queueable && control.dialogueType.enqueueIfBlocked)
 					{
 						Enqueue(control, startNode);
+						return true;
 					}
 				}
+				return false;
 			}
 
 			private DialogueRunnerControl GetInterruptable(DialogueCategory category, DialogueRunnerControl control)

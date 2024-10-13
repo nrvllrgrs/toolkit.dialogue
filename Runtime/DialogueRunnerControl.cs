@@ -135,18 +135,18 @@ namespace ToolkitEngine.Dialogue
 		}
 
 		[ContextMenu("Play")]
-		public void Play()
+		public bool Play()
 		{
-			Play(m_startNode);
+			return Play(m_startNode);
 		}
 
-		public void Play(string startNode)
+		public bool Play(string startNode)
 		{
 			// Node doesn't exist, skip
 			if (!m_dialogueRunner.NodeExists(startNode))
-				return;
+				return false;
 
-			DialogueManager.CastInstance.Play(this, startNode);
+			return DialogueManager.CastInstance.Play(this, startNode);
 		}
 
 		internal void PlayInternal(string startNode)
