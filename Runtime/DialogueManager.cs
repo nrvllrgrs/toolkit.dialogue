@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue
 {
@@ -62,6 +63,28 @@ namespace ToolkitEngine.Dialogue
 
 				m_runtimeMap.Add(category, runtimeCategory);
 			}
+
+			// Any instantiated DialogueRunners should automatically be cleared by PoolItemManager
+		}
+
+		private void DialogueSpawned(GameObject obj, params object[] args)
+		{
+			var control = obj.GetComponent<DialogueRunnerControl>();
+			if (control == null)
+				return;
+
+			var runtimeCategory = args[0] as RuntimeDialogueCategory;
+			control.dialogueRunner.SetProject(args[1] as YarnProject);
+
+			// Play versus enqueue
+			if ((bool)args[3])
+			{
+				runtimeCategory.Play(control, args[2] as string);
+			}
+			else
+			{
+				runtimeCategory.Enqueue(control, args[2] as string);
+			}
 		}
 
 		public bool IsDialogueCategoryRunning(DialogueCategory category)
@@ -71,12 +94,30 @@ namespace ToolkitEngine.Dialogue
 				: false;
 		}
 
+		public bool Play(DialogueType dialogueType, YarnProject project, string startNode)
+		{
+			if (!TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory))
+				return false;
+
+			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, project, startNode, true);
+			return false;
+		}
+
 		public bool Play(DialogueRunnerControl control, string startNode)
 		{
 			if (!TryGetRuntimeDialogueCategory(control, out var runtimeCategory))
 				return false;
 
 			return runtimeCategory.Play(control, startNode);
+		}
+
+		public bool Enqueue(DialogueType dialogueType, YarnProject project, string startNode)
+		{
+			if (!TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory))
+				return false;
+
+			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, project, startNode, false);
+			return false;
 		}
 
 		public void Enqueue(DialogueRunnerControl control, string startNode)
@@ -93,6 +134,14 @@ namespace ToolkitEngine.Dialogue
 				return;
 
 			runtimeCategory.Dequeue(control);
+		}
+
+		public void ClearQueue(DialogueType dialogueType)
+		{
+			if (!TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory))
+				return;
+
+			runtimeCategory.ClearQueue();
 		}
 
 		public void ClearQueue(DialogueRunnerControl control)

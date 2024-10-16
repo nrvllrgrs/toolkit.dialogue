@@ -87,7 +87,9 @@ namespace ToolkitEngine.Dialogue
 
 		public DialogueRunner dialogueRunner => m_dialogueRunner;
 		public DialogueType dialogueType => m_dialogueType;
-		
+
+		public bool isDialogueRunning => m_dialogueRunner.IsDialogueRunning;
+
 		/// <summary>
 		/// Time when DialogueRunner last started
 		/// </summary>

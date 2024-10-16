@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Yarn;
 
 namespace ToolkitEngine.Dialogue
 {
@@ -12,11 +11,16 @@ namespace ToolkitEngine.Dialogue
 		[SerializeField, Nested]
 		private List<DialogueCategory> m_categories = new();
 
+		[SerializeField]
+		private Spawner m_spawner;
+
 		#endregion
 
 		#region Properties
 
 		public DialogueCategory[] categories => m_categories.ToArray();
+
+		public Spawner dialogueSpawner => m_spawner;
 
 		#endregion
 	}
