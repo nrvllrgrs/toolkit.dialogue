@@ -69,6 +69,7 @@ namespace ToolkitEngine.Dialogue
 		private UnityEvent<DialogueEventArgs> m_onCommand;
 
 		private DialogueRunner m_dialogueRunner;
+		private bool m_isDialogueRunning = false;
 		private float m_startTime = Mathf.NegativeInfinity;
 
 		#endregion
@@ -81,14 +82,24 @@ namespace ToolkitEngine.Dialogue
 		public UnityEvent<DialogueEventArgs> onNodeCompleted => m_onNodeCompleted;
 		public UnityEvent<DialogueEventArgs> onCommand => m_onCommand;
 
+		/// <summary>
+		/// Used by DialogueManager to cleanup active runners before other subscribers are notified
+		/// </summary>
+		internal event System.EventHandler<DialogueEventArgs> DialogueCompleting;
+
+		/// <summary>
+		/// Used by DialogueManager to cleanup pooled runners after other subscribers are notified
+		/// </summary>
+		internal event System.EventHandler<DialogueEventArgs> DialogueLateCompleted;
+
 		#endregion
 
 		#region Properties
 
 		public DialogueRunner dialogueRunner => m_dialogueRunner;
-		public DialogueType dialogueType => m_dialogueType;
+		public DialogueType dialogueType { get => m_dialogueType; set => m_dialogueType = value; }
 
-		public bool isDialogueRunning => m_dialogueRunner.IsDialogueRunning;
+		public bool isDialogueRunning => m_isDialogueRunning;
 
 		/// <summary>
 		/// Time when DialogueRunner last started
@@ -199,6 +210,9 @@ namespace ToolkitEngine.Dialogue
 		[ContextMenu("Stop")]
 		public void Stop()
 		{
+			if (!m_isDialogueRunning)
+				return;
+
 			m_dialogueRunner.Stop();
 		}
 
@@ -209,12 +223,18 @@ namespace ToolkitEngine.Dialogue
 		private void DialogueRunner_DialogueStart()
 		{
 			m_startTime = Time.time;
+			m_isDialogueRunning = true;
 			m_onDialogueStarted?.Invoke(new DialogueEventArgs(this));
 		}
 
 		private void DialogueRunner_DialogueComplete()
 		{
-			m_onDialogueCompleted?.Invoke(new DialogueEventArgs(this));
+			m_isDialogueRunning = false;
+
+			var e = new DialogueEventArgs(this);
+			DialogueCompleting?.Invoke(this, e);
+			m_onDialogueCompleted?.Invoke(e);
+			DialogueLateCompleted?.Invoke(this, e);
 		}
 
 		private void DialogueRunner_NodeStart(string nodeName)

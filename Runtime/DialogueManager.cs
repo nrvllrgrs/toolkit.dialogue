@@ -16,6 +16,11 @@ namespace ToolkitEngine.Dialogue
 		private Dictionary<DialogueCategory, DialogueRunnerSettings> m_settingsByCategory;
 		private Dictionary<DialogueType, DialogueRunnerSettings> m_settingsByType;
 
+		private Dictionary<Tuple<DialogueType, YarnProject, string>, DialogueRunnerControl> m_spawnsMap = new();
+
+#if UNITY_EDITOR
+		private static GameObject s_container;
+#endif
 		#endregion
 
 		#region Events
@@ -36,6 +41,20 @@ namespace ToolkitEngine.Dialogue
 		/// </summary>
 		public bool isAnyDialogueRunning => m_runtimeMap.Any(x => x.Value.isDialogueRunning);
 
+#if UNITY_EDITOR
+		private static Transform container
+		{
+			get
+			{
+				if (s_container == null)
+				{
+					s_container = new GameObject("Dialogues");
+					UnityEngine.Object.DontDestroyOnLoad(s_container);
+				}
+				return s_container.transform;
+			}
+		}
+#endif
 		#endregion
 
 		#region Methods
@@ -67,25 +86,9 @@ namespace ToolkitEngine.Dialogue
 			// Any instantiated DialogueRunners should automatically be cleared by PoolItemManager
 		}
 
-		private void DialogueSpawned(GameObject obj, params object[] args)
-		{
-			var control = obj.GetComponent<DialogueRunnerControl>();
-			if (control == null)
-				return;
+		#endregion
 
-			var runtimeCategory = args[0] as RuntimeDialogueCategory;
-			control.dialogueRunner.SetProject(args[1] as YarnProject);
-
-			// Play versus enqueue
-			if ((bool)args[3])
-			{
-				runtimeCategory.Play(control, args[2] as string);
-			}
-			else
-			{
-				runtimeCategory.Enqueue(control, args[2] as string);
-			}
-		}
+		#region Control Methods
 
 		public bool IsDialogueCategoryRunning(DialogueCategory category)
 		{
@@ -99,7 +102,7 @@ namespace ToolkitEngine.Dialogue
 			if (!TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory))
 				return false;
 
-			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, project, startNode, true);
+			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, dialogueType, project, startNode, true);
 			return false;
 		}
 
@@ -116,7 +119,7 @@ namespace ToolkitEngine.Dialogue
 			if (!TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory))
 				return false;
 
-			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, project, startNode, false);
+			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, dialogueType, project, startNode, false);
 			return false;
 		}
 
@@ -291,6 +294,64 @@ namespace ToolkitEngine.Dialogue
 
 		#endregion
 
+		#region Spawner Methods
+
+		private void DialogueSpawned(GameObject obj, params object[] args)
+		{
+			UnityEngine.Object.DontDestroyOnLoad(obj);
+
+#if UNITY_EDITOR
+			obj.transform.SetParent(container);
+#endif
+
+			var control = obj.GetComponent<DialogueRunnerControl>();
+			if (control == null)
+				return;
+
+			control.dialogueType = args[1] as DialogueType;
+			control.dialogueRunner.SetProject(args[2] as YarnProject);
+			string startNode = args[3] as string;
+
+			// Map parameters to spawned object so it can be referenced
+			var key = new Tuple<DialogueType, YarnProject, string>(control.dialogueType, control.dialogueRunner.yarnProject, startNode);
+			m_spawnsMap.Add(key, control);
+
+			// Control may have been been able to play (e.g. blocked by simultaneous limit, "forgotten" in queue)
+			// Unsubscribe before subscribing to release pool item
+			control.DialogueLateCompleted -= Instance_DialogueLateCompleted;
+			control.DialogueLateCompleted += Instance_DialogueLateCompleted;
+
+			// Play versus enqueue
+			var runtimeCategory = args[0] as RuntimeDialogueCategory;
+			if ((bool)args[4])
+			{
+				runtimeCategory.Play(control, startNode);
+			}
+			else
+			{
+				runtimeCategory.Enqueue(control, startNode);
+			}
+		}
+
+		private void Instance_DialogueLateCompleted(object sender, DialogueEventArgs e)
+		{
+			if (e?.control == null)
+				return;
+
+			e.control.DialogueLateCompleted -= Instance_DialogueLateCompleted;
+			PoolItem.Destroy(e.control.gameObject);
+		}
+
+		public DialogueRunnerControl GetDialogueRunnerControl(DialogueType dialogueType, YarnProject project, string startNode)
+		{
+			var key = new Tuple<DialogueType, YarnProject, string>(dialogueType, project, startNode);
+			return m_spawnsMap.TryGetValue(key, out var control)
+				? control
+				: null;
+		}
+
+		#endregion
+
 		#region Callbacks
 
 		private void RuntimeCategory_DialogueStart(object sender, DialogueEventArgs e)
@@ -378,7 +439,12 @@ namespace ToolkitEngine.Dialogue
 					if (interruptable != null)
 					{
 						m_interrupted = true;
-						interruptable.Stop();
+						if (interruptable.dialogueRunner.IsDialogueRunning)
+						{
+							interruptable.Stop();
+						}
+						Remove(interruptable);
+
 						return Play(control, startNode);
 					}
 					// Determine if enqueuing should occur
@@ -418,8 +484,9 @@ namespace ToolkitEngine.Dialogue
 
 			private void PlayInternal(DialogueRunnerControl control, string startNode)
 			{
-				control.onDialogueStarted.AddListener(DialogueRunnerControl_DialogueStart);
-				control.onDialogueCompleted.AddListener(DialogueRunnerControl_DialogueComplete);
+				control.DialogueCompleting += DialogueRunnerControl_DialogueCompleting;
+				control.onDialogueStarted.AddListener(DialogueRunnerControl_DialogueStarted);
+				control.onDialogueCompleted.AddListener(DialogueRunnerControl_DialogueCompleted);
 				control.onNodeStarted.AddListener(DialogueRunnerControl_NodeStarted);
 				control.onNodeCompleted.AddListener(DialogueRunnerControl_NodeCompleted);
 				control.onCommand.AddListener(DialogueRunnerControl_Command);
@@ -472,37 +539,50 @@ namespace ToolkitEngine.Dialogue
 					: float.PositiveInfinity;
 			}
 
+			private void Remove(DialogueRunnerControl control)
+			{
+				if (!m_activeRunnerControls.Contains(control))
+					return;
+
+				m_activeRunnerControls.Remove(control);
+			}
+
 			#endregion
 
 			#region Callbacks
 
-			private bool IsActiveDialogueRunnerControl(DialogueEventArgs args)
+			private bool IsActiveDialogueRunnerControl(DialogueEventArgs e)
 			{
-				return args.control != null && m_activeRunnerControls.Contains(args.control);
+				return e.control != null && m_activeRunnerControls.Contains(e.control);
 			}
 
-			private void DialogueRunnerControl_DialogueStart(DialogueEventArgs args)
+			private void DialogueRunnerControl_DialogueStarted(DialogueEventArgs e)
 			{
-				if (!IsActiveDialogueRunnerControl(args))
+				if (!IsActiveDialogueRunnerControl(e))
 					return;
 
-				DialogueStarted?.Invoke(this, args);
+				DialogueStarted?.Invoke(this, e);
 			}
 
-			private void DialogueRunnerControl_DialogueComplete(DialogueEventArgs args)
+			private void DialogueRunnerControl_DialogueCompleting(object sender, DialogueEventArgs e)
 			{
-				if (!IsActiveDialogueRunnerControl(args))
+				if (!IsActiveDialogueRunnerControl(e))
 					return;
 
-				args.control.onDialogueStarted.RemoveListener(DialogueRunnerControl_DialogueStart);
-				args.control.onDialogueCompleted.RemoveListener(DialogueRunnerControl_DialogueComplete);
-				args.control.onNodeStarted.AddListener(DialogueRunnerControl_NodeStarted);
-				args.control.onNodeCompleted.AddListener(DialogueRunnerControl_NodeCompleted);
-				args.control.onCommand.AddListener(DialogueRunnerControl_Command);
+				e.control.DialogueCompleting -= DialogueRunnerControl_DialogueCompleting;
+				e.control.onDialogueStarted.RemoveListener(DialogueRunnerControl_DialogueStarted);
+				e.control.onDialogueCompleted.RemoveListener(DialogueRunnerControl_DialogueCompleted);
+				e.control.onNodeStarted.AddListener(DialogueRunnerControl_NodeStarted);
+				e.control.onNodeCompleted.AddListener(DialogueRunnerControl_NodeCompleted);
+				e.control.onCommand.AddListener(DialogueRunnerControl_Command);
 
-				m_activeRunnerControls.Remove(args.control);
+				Remove(e.control);
+				DialogueRunnerControl_DialogueCompleted(e);
+			}
 
-				DialogueCompleted?.Invoke(this, args);
+			private void DialogueRunnerControl_DialogueCompleted(DialogueEventArgs e)
+			{
+				DialogueCompleted?.Invoke(this, e);
 
 				// Check if dialogue is queued and start next
 				// But if interrupted, skip
@@ -527,28 +607,28 @@ namespace ToolkitEngine.Dialogue
 				m_interrupted = false;
 			}
 
-			private void DialogueRunnerControl_NodeStarted(DialogueEventArgs args)
+			private void DialogueRunnerControl_NodeStarted(DialogueEventArgs e)
 			{
-				if (!IsActiveDialogueRunnerControl(args))
+				if (!IsActiveDialogueRunnerControl(e))
 					return;
 
-				NodeStarted?.Invoke(this, args);
+				NodeStarted?.Invoke(this, e);
 			}
 
-			private void DialogueRunnerControl_NodeCompleted(DialogueEventArgs args)
+			private void DialogueRunnerControl_NodeCompleted(DialogueEventArgs e)
 			{
-				if (!IsActiveDialogueRunnerControl(args))
+				if (!IsActiveDialogueRunnerControl(e))
 					return;
 
-				NodeCompleted?.Invoke(this, args);
+				NodeCompleted?.Invoke(this, e);
 			}
 
-			private void DialogueRunnerControl_Command(DialogueEventArgs args)
+			private void DialogueRunnerControl_Command(DialogueEventArgs e)
 			{
-				if (!IsActiveDialogueRunnerControl(args))
+				if (!IsActiveDialogueRunnerControl(e))
 					return;
 
-				Command?.Invoke(this, args);
+				Command?.Invoke(this, e);
 			}
 
 			#endregion
