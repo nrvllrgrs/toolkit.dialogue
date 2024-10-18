@@ -51,7 +51,10 @@ namespace ToolkitEngine.Dialogue
 		private bool m_playOnStart;
 
 		[SerializeField]
-		private bool m_replicateSettings = true;
+		private bool m_replicateSettings = false;
+
+		[SerializeField]
+		private bool m_appendDialogueViews = false;
 
 		[SerializeField]
 		private UnityEvent<DialogueEventArgs> m_onDialogueStarted;
@@ -166,7 +169,7 @@ namespace ToolkitEngine.Dialogue
 		{
 			if (m_replicateSettings)
 			{
-				DialogueManager.CastInstance.ReplicateSettings(this);
+				DialogueManager.CastInstance.ReplicateSettings(this, m_appendDialogueViews);
 			}
 			m_dialogueRunner.StartDialogue(startNode);
 		}

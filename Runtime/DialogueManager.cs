@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue
@@ -16,7 +17,9 @@ namespace ToolkitEngine.Dialogue
 		private Dictionary<DialogueCategory, DialogueRunnerSettings> m_settingsByCategory;
 		private Dictionary<DialogueType, DialogueRunnerSettings> m_settingsByType;
 
-		private Dictionary<Tuple<DialogueType, YarnProject, string>, DialogueRunnerControl> m_spawnsMap = new();
+		private Dictionary<Tuple<DialogueType, YarnProject, string>, DialogueRunnerControl> m_spawnMap = new();
+		private Dictionary<DialogueSpeakerType, HashSet<DialogueSpeaker>> m_speakerMap = new();
+		private Dictionary<string, DialogueSpeakerType> m_characterNameToSpeakerTypeMap = new();
 
 #if UNITY_EDITOR
 		private static GameObject s_container;
@@ -65,6 +68,9 @@ namespace ToolkitEngine.Dialogue
 			m_runtimeMap = new();
 			m_settingsByCategory = new();
 			m_settingsByType = new();
+			m_spawnMap = new();
+			m_speakerMap = new();
+			m_characterNameToSpeakerTypeMap = new();
 
 			foreach (var category in Config.categories)
 			{
@@ -266,13 +272,33 @@ namespace ToolkitEngine.Dialogue
 				&& TryGetDialogueRunnerSettings(category, out settings);
 		}
 
-		public bool ReplicateSettings(DialogueRunnerControl control)
+		public bool ReplicateSettings(DialogueRunnerControl control, bool appendDialogueViews)
 		{
 			if (TryGetDialogueRunnerSettings(control.dialogueType, out var settings))
 			{
 				if (settings != null)
 				{
-					control.dialogueRunner.dialogueViews = settings.dialogueViews;
+					if (!appendDialogueViews)
+					{
+						control.dialogueRunner.dialogueViews = settings.dialogueViews;
+					}
+					else
+					{
+						// Going to append, skipping DialogueViews of the same type
+						var existingTypes = control.dialogueRunner.dialogueViews.Select(x => x.GetType()).ToHashSet();
+
+						// Appended list
+						var list = new List<DialogueViewBase>(control.dialogueRunner.dialogueViews);
+						foreach (var dialogueView in settings.dialogueViews)
+						{
+							if (existingTypes.Contains(dialogueView.GetType()))
+								continue;
+
+							list.Add(dialogueView);
+						}
+
+						control.dialogueRunner.dialogueViews = list.ToArray();
+					}
 				}
 
 				if (settings.lineProvider != null)
@@ -314,7 +340,7 @@ namespace ToolkitEngine.Dialogue
 
 			// Map parameters to spawned object so it can be referenced
 			var key = new Tuple<DialogueType, YarnProject, string>(control.dialogueType, control.dialogueRunner.yarnProject, startNode);
-			m_spawnsMap.Add(key, control);
+			m_spawnMap.Add(key, control);
 
 			// Control may have been been able to play (e.g. blocked by simultaneous limit, "forgotten" in queue)
 			// Unsubscribe before subscribing to release pool item
@@ -345,9 +371,60 @@ namespace ToolkitEngine.Dialogue
 		public DialogueRunnerControl GetDialogueRunnerControl(DialogueType dialogueType, YarnProject project, string startNode)
 		{
 			var key = new Tuple<DialogueType, YarnProject, string>(dialogueType, project, startNode);
-			return m_spawnsMap.TryGetValue(key, out var control)
+			return m_spawnMap.TryGetValue(key, out var control)
 				? control
 				: null;
+		}
+
+		#endregion
+
+		#region Speaker Methods
+
+		public void Register(DialogueSpeaker speaker)
+		{
+			Assert.IsNotNull(speaker);
+			Assert.IsNotNull(speaker.speakerType);
+
+			if (!m_speakerMap.TryGetValue(speaker.speakerType, out var set))
+			{
+				set = new();
+				m_speakerMap.Add(speaker.speakerType, set);
+			}
+
+			set.Add(speaker);
+
+			if (!m_characterNameToSpeakerTypeMap.ContainsKey(speaker.speakerType.characterName))
+			{
+				m_characterNameToSpeakerTypeMap.Add(speaker.speakerType.characterName, speaker.speakerType);
+			}
+		}
+
+		public void Unregister(DialogueSpeaker speaker)
+		{
+			Assert.IsNotNull(speaker);
+			Assert.IsNotNull(speaker.speakerType);
+
+			if (!m_speakerMap.TryGetValue(speaker.speakerType, out var set))
+				return;
+
+			set.Remove(speaker);
+
+			if (m_characterNameToSpeakerTypeMap.ContainsKey(speaker.speakerType.characterName))
+			{
+				m_characterNameToSpeakerTypeMap.Remove(speaker.speakerType.characterName);
+			}
+		}
+
+		public bool TryGetDialogueSpeakers(DialogueSpeakerType speakerType, out HashSet<DialogueSpeaker> speakers)
+		{
+			return m_speakerMap.TryGetValue(speakerType, out speakers);
+		}
+
+		public bool TryGetDialogueSpeakersByCharacterName(string characterName, out HashSet<DialogueSpeaker> speakers)
+		{
+			speakers = null;
+			return m_characterNameToSpeakerTypeMap.TryGetValue(characterName, out var speakerType)
+				&& TryGetDialogueSpeakers(speakerType, out speakers);
 		}
 
 		#endregion
