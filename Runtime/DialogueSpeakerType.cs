@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ToolkitEngine.Dialogue
 {
-	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Speaker")]
+	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Dialogue Speaker")]
 	public class DialogueSpeakerType : ScriptableObject
     {
 		#region Fields
