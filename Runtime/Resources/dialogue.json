@@ -1,0 +1,5 @@
+[
+    "ToolkitEngine.Dialogue.DialogueManager, ToolkitEngine.Dialogue, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "ToolkitEngine.Dialogue.CinematicManager, ToolkitEngine.Dialogue, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "ToolkitEngine.Dialogue.NudgeManager, ToolkitEngine.Dialogue, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+]

@@ -73,6 +73,7 @@ namespace ToolkitEngine.Dialogue
 
 		private DialogueRunner m_dialogueRunner;
 		private bool m_isDialogueRunning = false;
+		private bool m_isSkipping = false;
 		private float m_startTime = Mathf.NegativeInfinity;
 
 		#endregion
@@ -213,9 +214,15 @@ namespace ToolkitEngine.Dialogue
 		[ContextMenu("Stop")]
 		public void Stop()
 		{
+			Stop(false);
+		}
+
+		public void Stop(bool skipping)
+		{
 			if (!m_isDialogueRunning)
 				return;
 
+			m_isSkipping = skipping;
 			m_dialogueRunner.Stop();
 		}
 
@@ -225,6 +232,14 @@ namespace ToolkitEngine.Dialogue
 
 		private void DialogueRunner_DialogueStart()
 		{
+			// Skipping is not officially completing...
+			if (m_isSkipping)
+			{
+				// ...we've skipped, so don't invoke events
+				m_isSkipping = false;
+				return;
+			}
+
 			m_startTime = Time.time;
 			m_isDialogueRunning = true;
 			m_onDialogueStarted?.Invoke(new DialogueEventArgs(this));
@@ -232,6 +247,10 @@ namespace ToolkitEngine.Dialogue
 
 		private void DialogueRunner_DialogueComplete()
 		{
+			// Skipping is not officially completing, skip
+			if (m_isSkipping)
+				return;
+
 			m_isDialogueRunning = false;
 
 			var e = new DialogueEventArgs(this);

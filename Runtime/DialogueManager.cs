@@ -92,6 +92,15 @@ namespace ToolkitEngine.Dialogue
 			// Any instantiated DialogueRunners should automatically be cleared by PoolItemManager
 		}
 
+		protected override void Terminate()
+		{
+			foreach (var runtimeCategory in m_runtimeMap.Values)
+			{
+				runtimeCategory.Dispose();
+			}
+			m_runtimeMap = null;
+		}
+
 		#endregion
 
 		#region Control Methods
@@ -461,13 +470,15 @@ namespace ToolkitEngine.Dialogue
 		#region Structures
 
 		[Serializable]
-		public class RuntimeDialogueCategory
+		public class RuntimeDialogueCategory : IDisposable
 		{
 			#region Fields
 
 			private List<DialogueRunnerControl> m_activeRunnerControls = new();
 			private Dictionary<DialogueRunnerControl, Tuple<string, float>> m_queue = new();
 			private bool m_interrupted = false;
+
+			private bool m_disposed;
 
 			#endregion
 
@@ -706,6 +717,31 @@ namespace ToolkitEngine.Dialogue
 					return;
 
 				Command?.Invoke(this, e);
+			}
+
+			#endregion
+
+			#region IDisposable Methods
+
+			~RuntimeDialogueCategory()
+			{
+				Dispose(false);
+			}
+
+			public void Dispose()
+			{
+				Dispose(true);
+				GC.SuppressFinalize(this);
+			}
+
+			protected virtual void Dispose(bool disposing)
+			{
+				if (m_disposed)
+					return;
+
+				m_activeRunnerControls = null;
+				m_queue = null;
+				m_disposed = true;
 			}
 
 			#endregion
