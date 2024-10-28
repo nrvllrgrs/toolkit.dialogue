@@ -29,9 +29,6 @@ namespace ToolkitEngine.Dialogue
 		[SerializeField, Tooltip("Indicates whether queue should be cleared when DialogueType is played.")]
 		private bool m_autoClearQueue = false;
 
-		[SerializeField]
-		private bool m_skippable = false;
-
 		#endregion
 
 		#region Properties
@@ -39,7 +36,6 @@ namespace ToolkitEngine.Dialogue
 		public InterruptRule interruptPriority => m_interruptPriority;
 		public bool enqueueIfBlocked => m_enqueueIfBlocked;
 		public bool autoClearQueue => m_autoClearQueue;
-		public bool skippable => m_skippable;
 
 		#endregion
 	}
