@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Yarn.Unity;
@@ -18,15 +19,34 @@ namespace ToolkitEngine.Dialogue
 
 		#endregion
 
+		#region Events
+
+		public event EventHandler<bool> SkippableChanged;
+
+		#endregion
+
 		#region Properties
 
 		public string skipDestination
 		{
 			get => m_skipDestination;
-			private set => m_skipDestination = value;
+			private set
+			{
+				// No change, skip
+				if (m_skipDestination == value)
+					return;
+
+				bool wasSkippable = skippable;
+				m_skipDestination = value;
+
+				if (wasSkippable != skippable)
+				{
+					SkippableChanged?.Invoke(this, !wasSkippable);
+				}
+			}
 		}
 
-		public bool canSkip => !string.IsNullOrWhiteSpace(m_skipDestination);
+		public bool skippable => !string.IsNullOrWhiteSpace(m_skipDestination);
 
 		public float remainingTime => m_remainingTime;
 		public float normalizedRemainingTime => m_remainingTime / m_timeout;
@@ -47,7 +67,7 @@ namespace ToolkitEngine.Dialogue
 
 		public void Skip()
 		{
-			if (!canSkip || m_cinematicControl == null)
+			if (!skippable || m_cinematicControl == null)
 				return;
 
 			m_cinematicControl.Stop(true);
