@@ -104,6 +104,7 @@ namespace ToolkitEngine.Dialogue
 		public DialogueType dialogueType { get => m_dialogueType; set => m_dialogueType = value; }
 
 		public bool isDialogueRunning => m_isDialogueRunning;
+		public bool startNodeExists => !string.IsNullOrWhiteSpace(m_startNode) && m_dialogueRunner.NodeExists(m_startNode);
 
 		/// <summary>
 		/// Time when DialogueRunner last started
@@ -151,6 +152,16 @@ namespace ToolkitEngine.Dialogue
 			}
 		}
 
+		public void QuickPlay()
+		{
+			Play();
+		}
+
+		public void QuickPlay(string startNode)
+		{
+			Play(startNode);
+		}
+
 		[ContextMenu("Play")]
 		public bool Play()
 		{
@@ -160,7 +171,7 @@ namespace ToolkitEngine.Dialogue
 		public bool Play(string startNode)
 		{
 			// Node doesn't exist, skip
-			if (!m_dialogueRunner.NodeExists(startNode))
+			if (!startNodeExists)
 				return false;
 
 			return DialogueManager.CastInstance.Play(this, startNode);
