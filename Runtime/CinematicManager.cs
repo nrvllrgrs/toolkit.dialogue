@@ -87,6 +87,9 @@ namespace ToolkitEngine.Dialogue
 
 		private void DialogueManager_DialogueStarted(object sender, DialogueEventArgs e)
 		{
+			if (Config == null)
+				return;
+
 			if (e.control.dialogueType != Config.dialogueType)
 				return;
 
