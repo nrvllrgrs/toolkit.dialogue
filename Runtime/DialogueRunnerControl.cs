@@ -171,7 +171,7 @@ namespace ToolkitEngine.Dialogue
 		public bool Play(string startNode)
 		{
 			// Node doesn't exist, skip
-			if (!startNodeExists)
+			if (!m_dialogueRunner.NodeExists(startNode))
 				return false;
 
 			return DialogueManager.CastInstance.Play(this, startNode);
