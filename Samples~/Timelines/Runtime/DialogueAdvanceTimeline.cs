@@ -67,7 +67,7 @@ namespace ToolkitEngine.Dialogue
 				&& notification is SignalEmitter signal
 				&& Equals(signal?.asset, m_signal))
 			{
-				m_lineView.Resume();
+				m_lineView?.Resume();
 			}
 		}
 
