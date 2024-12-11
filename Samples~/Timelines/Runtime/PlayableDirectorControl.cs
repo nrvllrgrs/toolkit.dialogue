@@ -2,7 +2,7 @@ using ToolkitEngine;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace Mobula
+namespace ToolkitEngine.Dialogue
 {
 	[RequireComponent(typeof(PlayableDirector))]
 	[RequireComponent(typeof(TimedCurve))]
