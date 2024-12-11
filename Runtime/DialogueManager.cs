@@ -289,7 +289,7 @@ namespace ToolkitEngine.Dialogue
 				{
 					if (!appendDialogueViews)
 					{
-						control.dialogueRunner.dialogueViews = settings.dialogueViews;
+						control.dialogueRunner.SetDialogueViews(settings.dialogueViews);
 					}
 					else
 					{
@@ -306,7 +306,7 @@ namespace ToolkitEngine.Dialogue
 							list.Add(dialogueView);
 						}
 
-						control.dialogueRunner.dialogueViews = list.ToArray();
+						control.dialogueRunner.SetDialogueViews(list.ToArray());
 					}
 				}
 

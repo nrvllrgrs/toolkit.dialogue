@@ -18,7 +18,12 @@
       "displayName": "Visual Scripting",
       "description": "Visual Scripting components",
       "path": "Samples~/Visual Scripting"
+    },
+	 {
+      "displayName": "Timelines",
+      "description": "Timeline components",
+      "path": "Samples~/Timelines"
     }
   ],
-  "_fingerprint": "d1c3072cd62d75d18a62fe852bc7b5df102dc7f1"
+  "_fingerprint": "69bc991dd50086ac61018f46084dbb277236e9d8"
 }
