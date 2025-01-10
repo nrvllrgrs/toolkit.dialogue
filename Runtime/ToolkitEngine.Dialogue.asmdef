@@ -5,7 +5,8 @@
         "ToolkitEngine",
         "YarnSpinner.Unity",
         "NaughtyAttributes.Core",
-        "Unity.Addressables"
+        "Unity.Addressables",
+		"GUID:8bbcefc153e1f1b4a98680670797dd16"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
