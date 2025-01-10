@@ -19,10 +19,15 @@
       "description": "Visual Scripting components",
       "path": "Samples~/Visual Scripting"
     },
-	 {
+    {
       "displayName": "Timelines",
       "description": "Timeline components",
       "path": "Samples~/Timelines"
+    },
+    {
+      "displayName": "Meta Voice",
+      "description": "Meta Voice integration",
+      "path": "Samples~/Meta Voice"
     }
   ],
   "_fingerprint": "69bc991dd50086ac61018f46084dbb277236e9d8"
