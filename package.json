@@ -28,6 +28,11 @@
       "displayName": "Meta Voice",
       "description": "Meta Voice integration",
       "path": "Samples~/Meta Voice"
+    },
+	{
+      "displayName": "Fountain",
+      "description": "Fountain is a simple markup syntax for writing, editing and sharing screenplays in plain, human-readable text.",
+      "path": "Samples~/Fountain"
     }
   ],
   "_fingerprint": "69bc991dd50086ac61018f46084dbb277236e9d8"
