@@ -9,27 +9,35 @@ namespace ToolkitEngine.Dialogue
     {
 		#region Fields
 
-		[SerializeField]
-		private string m_key;
-
 		private PlayableDirector m_playableDirector;
 
 		#endregion
 
 		#region Properties
 
-		public string key => m_key;
+		public string key
+		{
+			get
+			{
+#if UNITY_EDITOR
+				return (Application.isPlaying ? m_playableDirector : GetComponent<PlayableDirector>())?.playableAsset.name;
+#else
+				return m_playableDirector.playableAsset.name;
+#endif
+			}
+		}
+
 
 		public PlayableDirector playableDirector => m_playableDirector;
 
-		#endregion
+#endregion
 
 		#region Methods
 
 		protected void Awake()
 		{
-			Assert.IsTrue(!string.IsNullOrWhiteSpace(m_key));
 			m_playableDirector = GetComponent<PlayableDirector>();
+			Assert.IsNotNull(m_playableDirector.playableAsset);
 		}
 
 		protected void OnEnable()

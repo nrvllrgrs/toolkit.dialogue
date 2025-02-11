@@ -20,20 +20,15 @@
       "path": "Samples~/Visual Scripting"
     },
     {
-      "displayName": "Timelines",
-      "description": "Timeline components",
-      "path": "Samples~/Timelines"
-    },
-    {
       "displayName": "Meta Voice",
       "description": "Meta Voice integration",
       "path": "Samples~/Meta Voice"
     },
-	{
+    {
       "displayName": "Fountain",
       "description": "Fountain is a simple markup syntax for writing, editing and sharing screenplays in plain, human-readable text.",
       "path": "Samples~/Fountain"
     }
   ],
-  "_fingerprint": "69bc991dd50086ac61018f46084dbb277236e9d8"
+  "_fingerprint": "4273bde796d36549ca5ad4bc574013d3af35eb14"
 }

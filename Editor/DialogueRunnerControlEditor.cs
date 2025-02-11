@@ -24,7 +24,7 @@ namespace ToolkitEditor.Dialogue
 
 		#region Methods
 
-		private void OnEnable()
+		protected virtual void OnEnable()
 		{
 			m_dialogueType = serializedObject.FindProperty(nameof(m_dialogueType));
 			m_playOnStart = serializedObject.FindProperty(nameof (m_playOnStart));
@@ -64,6 +64,8 @@ namespace ToolkitEditor.Dialogue
 
 				EditorGUILayout.LabelField("Command", EditorStyles.boldLabel);
 				EditorGUILayout.PropertyField(m_onCommand);
+
+				DrawNestedEvents();
 			}
 		}
 

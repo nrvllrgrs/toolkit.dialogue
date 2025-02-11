@@ -10,6 +10,7 @@ using Meta.WitAi.Json;
 using Meta.WitAi.Data.Intents;
 using Meta.WitAi.Data;
 using Meta.WitAi.Requests;
+using System.Linq;
 
 namespace ToolkitEngine.Dialogue.Voice
 {
@@ -184,21 +185,21 @@ namespace ToolkitEngine.Dialogue.Voice
 					continue;
 				}
 
-				optionView.gameObject.SetActive(true);
+				optionView.gameObject.SetActive(option.Line.Metadata == null || !option.Line.Metadata.Contains("hidden"));
 
 				optionView.palette = this.m_palette;
 				optionView.Option = option;
 
 				// Add to map AFTER option (and line) has been assigned
 				string key = option.Line.TextWithoutCharacterName.Text.ToLower();
-				key = Regex.Replace(key, @"[^a-z ]", string.Empty);
-				if (key != m_fallbackOption)
+				if (key == m_fallbackOption)
 				{
-					m_optionMap.Add(key, optionView);
+					m_fallbackOptionView = optionView;
 				}
 				else
 				{
-					m_fallbackOptionView = optionView;
+					key = Regex.Replace(key.ToLower(), @"[^a-z ]", string.Empty);
+					m_optionMap.Add(key, optionView);
 				}
 
 				// The first available option is selected by default

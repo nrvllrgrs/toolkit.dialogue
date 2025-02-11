@@ -6,7 +6,8 @@
         "YarnSpinner.Unity",
         "NaughtyAttributes.Core",
         "Unity.Addressables",
-		"GUID:8bbcefc153e1f1b4a98680670797dd16"
+		"GUID:8bbcefc153e1f1b4a98680670797dd16",
+		"GUID:f06555f75b070af458a003d92f9efb00"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,21 +1,14 @@
-using Unity.VisualScripting;
+using UnityEngine;
 using Yarn.Unity;
+using System;
 
 namespace ToolkitEngine.Dialogue.VisualScripting
 {
 	public class PlayDialogue : BasePlayDialogueUnit
     {
-		#region Methods
+		#region Properties
 
-		protected override ControlOutput Trigger(Flow flow)
-		{
-			DialogueManager.CastInstance.Play(
-				flow.GetValue<DialogueType>(dialogueType),
-				flow.GetValue<YarnProject>(yarnProject),
-				flow.GetValue<string>(startNode));
-
-			return exit;
-		}
+		public override Func<DialogueType, YarnProject, string, Action<GameObject>, bool> trigger => DialogueManager.CastInstance.Play;
 
 		#endregion
 	}

@@ -23,7 +23,7 @@ namespace ToolkitEditor.Dialogue
 
 		#region Fountain Methods
 
-		[MenuItem("Assets/Yarn Spinner/Export to Fountain...")]
+		//[MenuItem("Assets/Yarn Spinner/Export to Fountain...")]
         private static void ExportSelectedToFountain()
         {
             foreach (var project in Selection.objects.Cast<YarnProject>())
@@ -54,16 +54,23 @@ namespace ToolkitEditor.Dialogue
 
 				foreach (var entry in entries)
 				{
-					IEnumerable<string> tags = dialogue.GetTagsForNode(entry.Node);
+					IEnumerable<string> nodeTags = dialogue.GetTagsForNode(entry.Node);
+					IEnumerable<string> lineTags = project.lineMetadata.GetMetadata(entry.ID);
 
 					// Add scene header
-					AttemptWriteLine(processedScenes, entry, tags, SCENE_TAG, (scene) =>
+					AttemptWriteLine(processedScenes, entry, nodeTags, SCENE_TAG, (scene) =>
 					{
 						writer.WriteLine($".{scene.ToUpper()}\n");
 					});
 
-					// Add action
-					AttemptWriteLine(processedActions, entry, tags, ACTION_TAG, (action) =>
+					// Add action from node
+					AttemptWriteLine(processedActions, entry, nodeTags, ACTION_TAG, (action) =>
+					{
+						writer.WriteLine($"{action}\n");
+					});
+
+					// Add action from line metadata
+					AttemptWriteLine(null, entry, lineTags, ACTION_TAG, (action) =>
 					{
 						writer.WriteLine($"{action}\n");
 					});
@@ -90,15 +97,21 @@ namespace ToolkitEditor.Dialogue
 
         private static void AttemptWriteLine(HashSet<string> set, StringTableEntry entry, IEnumerable<string> tags, string key, Action<string> lineWriter)
         {
-            if (!set.Contains(entry.Node) && TryGetTag(tags, key, out string value))
+            if ((set == null || !set.Contains(entry.Node)) && TryGetTag(tags, key, out string value))
             {
                 lineWriter.Invoke(value);
-                set.Add(entry.Node);
+                set?.Add(entry.Node);
             }
         }
 
         private static bool TryGetTag(IEnumerable<string> tags, string key, out string value)
         {
+			if (tags == null || !tags.Any())
+			{
+				value = default;
+				return false;
+			}
+
 			value = tags.FirstOrDefault(x => x.StartsWith($"{key}:"));
 			if (string.IsNullOrWhiteSpace(value))
                 return false;
@@ -143,6 +156,8 @@ namespace ToolkitEditor.Dialogue
 					writer.Transform(new DefaultParserModule().Transform(reader), stream);
 				}
 			}
+
+			File.Delete(fountainPath);
 
 			AssetDatabase.Refresh();
 			return path;

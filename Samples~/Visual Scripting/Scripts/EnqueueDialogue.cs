@@ -1,21 +1,14 @@
-using Unity.VisualScripting;
+using System;
+using UnityEngine;
 using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue.VisualScripting
 {
 	public class EnqueueDialogue : BasePlayDialogueUnit
 	{
-		#region Methods
+		#region Properties
 
-		protected override ControlOutput Trigger(Flow flow)
-		{
-			DialogueManager.CastInstance.Enqueue(
-				flow.GetValue<DialogueType>(dialogueType),
-				flow.GetValue<YarnProject>(yarnProject),
-				flow.GetValue<string>(startNode));
-
-			return exit;
-		}
+		public override Func<DialogueType, YarnProject, string, Action<GameObject>, bool> trigger => DialogueManager.CastInstance.Enqueue;
 
 		#endregion
 	}

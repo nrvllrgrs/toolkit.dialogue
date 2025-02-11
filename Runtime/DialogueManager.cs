@@ -112,12 +112,12 @@ namespace ToolkitEngine.Dialogue
 				: false;
 		}
 
-		public bool Play(DialogueType dialogueType, YarnProject project, string startNode)
+		public bool Play(DialogueType dialogueType, YarnProject project, string startNode, Action<GameObject> onSpawned = null)
 		{
 			if (!TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory))
 				return false;
 
-			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, dialogueType, project, startNode, true);
+			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, dialogueType, project, startNode, true, onSpawned);
 			return false;
 		}
 
@@ -129,12 +129,12 @@ namespace ToolkitEngine.Dialogue
 			return runtimeCategory.Play(control, startNode);
 		}
 
-		public bool Enqueue(DialogueType dialogueType, YarnProject project, string startNode)
+		public bool Enqueue(DialogueType dialogueType, YarnProject project, string startNode, Action<GameObject> onSpawned = null)
 		{
 			if (!TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory))
 				return false;
 
-			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, dialogueType, project, startNode, false);
+			Config.dialogueSpawner.Instantiate(DialogueSpawned, runtimeCategory, dialogueType, project, startNode, false, onSpawned);
 			return false;
 		}
 
@@ -350,6 +350,8 @@ namespace ToolkitEngine.Dialogue
 			// Map parameters to spawned object so it can be referenced
 			var key = new Tuple<DialogueType, YarnProject, string>(control.dialogueType, control.dialogueRunner.yarnProject, startNode);
 			m_spawnMap.Add(key, control);
+
+			(args[5] as Action<GameObject>)?.Invoke(obj);
 
 			// Control may have been been able to play (e.g. blocked by simultaneous limit, "forgotten" in queue)
 			// Unsubscribe before subscribing to release pool item

@@ -42,39 +42,39 @@ namespace ToolkitEngine.Dialogue
 		#region Fields
 
 		[SerializeField]
-		private DialogueType m_dialogueType;
+		protected DialogueType m_dialogueType;
 
 		[SerializeField]
-		private string m_startNode = "Start";
+		protected string m_startNode = "Start";
 
 		[SerializeField]
-		private bool m_playOnStart;
+		protected bool m_playOnStart;
 
 		[SerializeField]
-		private bool m_replicateSettings = false;
+		protected bool m_replicateSettings = false;
 
 		[SerializeField]
-		private bool m_appendDialogueViews = false;
+		protected bool m_appendDialogueViews = false;
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onDialogueStarted;
+		protected UnityEvent<DialogueEventArgs> m_onDialogueStarted;
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onDialogueCompleted;
+		protected UnityEvent<DialogueEventArgs> m_onDialogueCompleted;
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onNodeStarted;
+		protected UnityEvent<DialogueEventArgs> m_onNodeStarted;
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onNodeCompleted;
+		protected UnityEvent<DialogueEventArgs> m_onNodeCompleted;
 
 		[SerializeField]
-		private UnityEvent<DialogueEventArgs> m_onCommand;
+		protected UnityEvent<DialogueEventArgs> m_onCommand;
 
 		private DialogueRunner m_dialogueRunner;
 		private bool m_isDialogueRunning = false;
-		private bool m_isSkipping = false;
 		private float m_startTime = Mathf.NegativeInfinity;
+		protected bool m_isSkipping = false;
 
 		#endregion
 
@@ -115,7 +115,7 @@ namespace ToolkitEngine.Dialogue
 
 		#region Methods
 
-		private void Awake()
+		protected virtual void Awake()
 		{
 			m_dialogueRunner = GetComponent<DialogueRunner>();
 		}
@@ -228,7 +228,7 @@ namespace ToolkitEngine.Dialogue
 			Stop(false);
 		}
 
-		public void Stop(bool skipping)
+		public virtual void Stop(bool skipping)
 		{
 			if (!m_isDialogueRunning)
 				return;

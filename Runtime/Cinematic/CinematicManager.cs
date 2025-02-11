@@ -9,6 +9,7 @@ namespace ToolkitEngine.Dialogue
     {
 		#region Fields
 
+		private bool m_skippable = false;
 		private string m_skipDestination = null;
 		private bool m_waiting = false;
 
@@ -36,8 +37,22 @@ namespace ToolkitEngine.Dialogue
 				if (m_skipDestination == value)
 					return;
 
-				bool wasSkippable = skippable;
 				m_skipDestination = value;
+				skippable = !string.IsNullOrWhiteSpace(m_skipDestination);
+			}
+		}
+
+		public bool skippable
+		{
+			get => m_skippable;
+			private set
+			{
+				// No change, skip
+				if (m_skippable == value)
+					return;
+
+				bool wasSkippable = skippable;
+				m_skippable = value;
 
 				if (wasSkippable != skippable)
 				{
@@ -45,8 +60,6 @@ namespace ToolkitEngine.Dialogue
 				}
 			}
 		}
-
-		public bool skippable => !string.IsNullOrWhiteSpace(m_skipDestination);
 
 		public float remainingTime => m_remainingTime;
 		public float normalizedRemainingTime => m_remainingTime / m_timeout;
@@ -71,8 +84,11 @@ namespace ToolkitEngine.Dialogue
 				return;
 
 			m_cinematicControl.Stop(true);
-			m_cinematicControl.Play(skipDestination);
-			skipDestination = null;
+			if (!string.IsNullOrWhiteSpace(m_skipDestination))
+			{
+				m_cinematicControl.Play(skipDestination);
+				skipDestination = null;
+			}
 		}
 
 		public void Continue()
@@ -100,6 +116,15 @@ namespace ToolkitEngine.Dialogue
 		#endregion
 
 		#region Skip
+
+		[YarnCommand("skipAndEnd")]
+		public static void SetupSkipAndEnd()
+		{
+			CleanupSkip();
+			CastInstance.skippable = true;
+
+			DialogueManager.CastInstance.DialogueCompleted += Skip_DialogueCompleted;
+		}
 
 		[YarnCommand("skip")]
 		public static void SetupSkip(string destinationNode)
