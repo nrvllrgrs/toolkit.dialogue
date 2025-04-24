@@ -87,15 +87,22 @@ namespace ToolkitEditor.Dialogue
 						entry = entry,
 					};
 
+					if (importer.UseUnityLocalisationSystem)
+					{
 #if USE_UNITY_LOCALIZATION
-					var locale = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale();
-					var record = s_stringTableCollections.Select(x => x.GetTable(locale.Identifier) as StringTable)
-					.Select(x => x.GetEntry(entry.ID))
-						.Where(x => x != null)
-						.FirstOrDefault();
-					yarnEntry.stringInTable = !string.IsNullOrWhiteSpace(record?.Value);
-					yarnEntry.audioInTable = GetPreviewClip(yarnEntry, locale.Identifier.Code) != null;
+						var locale = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale();
+						if (locale != null)
+						{
+							var record = s_stringTableCollections.Select(x => x.GetTable(locale.Identifier) as StringTable)
+								.Select(x => x.GetEntry(entry.ID))
+								.Where(x => x != null)
+								.FirstOrDefault();
+							yarnEntry.stringInTable = !string.IsNullOrWhiteSpace(record?.Value);
+							yarnEntry.audioInTable = GetPreviewClip(yarnEntry, locale.Identifier.Code) != null;
+						}
 #endif
+					}
+
 					s_entries.Add(yarnEntry);
 				}
 			}
@@ -151,21 +158,21 @@ namespace ToolkitEditor.Dialogue
 
 			AddColumn("ID", true, null, null, (element, index) =>
 			{
-				(element as Label).text = YarnParserUtility.GetID(s_filteredEntries[index].entry);
+				(element as Label).text = YarnParserUtil.GetID(s_filteredEntries[index].entry);
 			});
 			AddColumn("Speaker", true, null, null, (element, index) =>
 			{
-				YarnParserUtility.TryGetSpeakerAndText(s_filteredEntries[index].entry, out string speaker, out string text);
+				YarnParserUtil.TryGetSpeakerAndText(s_filteredEntries[index].entry, out string speaker, out string text);
 				(element as Label).text = speaker;
 			});
 			AddColumn("Text", true, null, null, (element, index) =>
 			{
-				YarnParserUtility.TryGetSpeakerAndText(s_filteredEntries[index].entry, out string speaker, out string text);
+				YarnParserUtil.TryGetSpeakerAndText(s_filteredEntries[index].entry, out string speaker, out string text);
 				(element as Label).text = text;
 			});
 			AddColumn("Metadata", true, null, null, (element, index) =>
 			{
-				(element as Label).text = YarnParserUtility.GetMetadata(s_filteredEntries[index].entry);
+				(element as Label).text = YarnParserUtil.GetMetadata(s_filteredEntries[index].entry);
 			});
 			AddColumn("Preview", false, null, GetPreviewButton, (element, index) =>
 			{
@@ -190,14 +197,17 @@ namespace ToolkitEditor.Dialogue
 			});
 #if USE_UNITY_LOCALIZATION
 			var locale = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale();
-			AddColumn($"{locale.Identifier.Code} - Text", true, null, GetToggle, (element, index) =>
+			if (locale != null)
 			{
-				(element as Toggle).value = s_filteredEntries[index].stringInTable;
-			});
-			AddColumn($"{locale.Identifier.Code} - Audio", true, null, GetToggle, (element, index) =>
-			{
-				(element as Toggle).value = s_filteredEntries[index].audioInTable;
-			});
+				AddColumn($"{locale.Identifier.Code} - Text", true, null, GetToggle, (element, index) =>
+				{
+					(element as Toggle).value = s_filteredEntries[index].stringInTable;
+				});
+				AddColumn($"{locale.Identifier.Code} - Audio", true, null, GetToggle, (element, index) =>
+				{
+					(element as Toggle).value = s_filteredEntries[index].audioInTable;
+				});
+			}
 #endif
 
 			root.Add(s_columnListView);
@@ -322,6 +332,9 @@ namespace ToolkitEditor.Dialogue
 		{
 			StopAllPreviewClips();
 
+			if (audioClip == null)
+				return;
+
 			Assembly unityEditorAssembly = typeof(AudioImporter).Assembly;
 			Type audioUtilClass = unityEditorAssembly.GetType("UnityEditor.AudioUtil");
 
@@ -423,7 +436,7 @@ namespace ToolkitEditor.Dialogue
 			{
 				foreach (var x in s_entries)
 				{
-					YarnParserUtility.TryGetSpeakerAndText(x.entry, out string speaker, out string text);
+					YarnParserUtil.TryGetSpeakerAndText(x.entry, out string speaker, out string text);
 					string line = Regex.Replace(value, @"\w:\w*", string.Empty).Trim();
 
 					if (text.Contains(line, StringComparison.InvariantCultureIgnoreCase)
@@ -432,7 +445,7 @@ namespace ToolkitEditor.Dialogue
 						&& IsMatch('f', value, Path.GetFileNameWithoutExtension(x.entry.File))
 						&& IsMatch('p', value, x.project.name)
 						&& IsMatch('i', value, x.entry.ID)
-						&& IsMatch('d', value, YarnParserUtility.GetMetadata(x.entry)))
+						&& IsMatch('d', value, YarnParserUtil.GetMetadata(x.entry)))
 					{
 						s_filteredEntries.Add(x);
 					}

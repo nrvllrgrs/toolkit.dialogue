@@ -20,7 +20,7 @@ namespace ToolkitEngine.Dialogue
 
 		private Dictionary<Tuple<DialogueType, YarnProject, string>, DialogueRunnerControl> m_spawnMap = new();
 		private Dictionary<DialogueSpeakerType, HashSet<DialogueSpeaker>> m_speakerMap = new();
-		private Dictionary<string, DialogueSpeakerType> m_characterNameToSpeakerTypeMap = new();
+		private Dictionary<string, DialogueSpeakerType> m_characterNameToSpeakerTypeMap = new Dictionary<string, DialogueSpeakerType>(StringComparer.OrdinalIgnoreCase);
 
 #if UNITY_EDITOR
 		private static GameObject s_container;
@@ -71,7 +71,7 @@ namespace ToolkitEngine.Dialogue
 			m_settingsByType = new();
 			m_spawnMap = new();
 			m_speakerMap = new();
-			m_characterNameToSpeakerTypeMap = new();
+			m_characterNameToSpeakerTypeMap = new Dictionary<string, DialogueSpeakerType>(StringComparer.OrdinalIgnoreCase);
 
 			int categoryPriority = Config.categories.Length;
 			foreach (var category in Config.categories)

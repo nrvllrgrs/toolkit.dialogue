@@ -77,7 +77,7 @@ namespace Yarn.Unity
 		/// </remarks>
 		private Action m_completionHandler;
 
-		private Dictionary<string, DialogueSpeaker> m_map = new();
+		private Dictionary<string, DialogueSpeaker> m_map = new Dictionary<string, DialogueSpeaker>(StringComparer.OrdinalIgnoreCase);
 
 		private HashSet<AudioSource> m_activeAudioSources = new();
 		private float m_volume = 0f;
@@ -125,13 +125,13 @@ namespace Yarn.Unity
 
 			foreach (var speaker in m_speakers)
 			{
-				if (!m_map.ContainsKey(speaker.speakerType.characterName))
+				if (!m_map.ContainsKey(speaker.speakerType.name))
 				{
-					m_map.Add(speaker.speakerType.characterName, speaker);
+					m_map.Add(speaker.speakerType.name, speaker);
 				}
 				else
 				{
-					Debug.LogError($"Speaker {speaker.speakerType.characterName} already exists! Cannot have speakers with the same name.");
+					Debug.LogError($"Speaker {speaker.speakerType.name} already exists! Cannot have speakers with the same name.");
 					enabled = false;
 				}
 			}
@@ -394,7 +394,7 @@ namespace Yarn.Unity
 			if (m_speakers.Contains(speaker))
 				return;
 
-			m_map.Add(speaker.speakerType.characterName, speaker);
+			m_map.Add(speaker.speakerType.name, speaker);
 			m_speakers.Add(speaker);
 		}
 
@@ -404,7 +404,7 @@ namespace Yarn.Unity
 				return;
 
 			m_speakers.Remove(speaker);
-			m_map.Remove(speaker.speakerType.characterName);
+			m_map.Remove(speaker.speakerType.name);
 		}
 
 		#endregion

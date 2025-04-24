@@ -1,7 +1,7 @@
 using UnityEngine;
 
-#if UNITY_EDITOR && META_VOICE
-using Meta.WitAi.TTS.Integrations;
+#if USE_UNITY_LOCALIZATION
+using UnityEngine.Localization;
 #endif
 
 namespace ToolkitEngine.Dialogue
@@ -11,21 +11,48 @@ namespace ToolkitEngine.Dialogue
     {
 		#region Fields
 
-		[SerializeField, Tooltip("Name of character that is speaking.")]
-		private string m_characterName;
-
-#if UNITY_EDITOR && META_VOICE
+#if USE_UNITY_LOCALIZATION
+		[SerializeField, Tooltip("Name of speaking character.")]
+		private LocalizedString m_displayName;
+#endif
 
 		[SerializeField]
-		public TTSWitVoiceSettings voiceSettings;
+		private Color m_color = Color.white;
 
+		[SerializeField]
+		private AnimationSet m_animationSet;
+
+#if UNITY_EDITOR
+		[SerializeField]
+		private TTSVoice m_ttsVoice;
 #endif
+
 		#endregion
 
 		#region Properties
 
-		public string characterName => m_characterName;
+		public string displayName
+		{
+			get
+			{
+#if USE_UNITY_LOCALIZATION
+				try
+				{
+					return m_displayName.GetLocalizedString();
+				}
+				catch { }
+#else
+#endif
+				return name;
+			}
+		}
 
+		public Color color => m_color;
+		public AnimationSet animationSet => m_animationSet;
+
+#if UNITY_EDITOR
+		public TTSVoice ttsVoice => m_ttsVoice;
+#endif
 		#endregion
 	}
 }

@@ -3,14 +3,16 @@ using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue
 {
-	public static class YarnParserUtility
+	public static class YarnParserUtil
     {
 		private const string LINE_PREFIX = "line:";
 		private const string METADATA_PREFIX = "Line metadata: ";
 
 		public static string GetID(StringTableEntry entry)
 		{
-			return entry.ID.Substring(LINE_PREFIX.Length);
+			return entry.ID.StartsWith(LINE_PREFIX)
+				? entry.ID.Substring(LINE_PREFIX.Length)
+				: entry.ID;
 		}
 
 		public static bool TryGetSpeakerAndText(StringTableEntry entry, out string speaker, out string text)
