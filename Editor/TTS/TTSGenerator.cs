@@ -1,12 +1,17 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using ToolkitEngine.Dialogue;
+using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEngine;
 using Yarn.Unity;
 
 namespace ToolkitEditor.Dialogue
 {
-    public abstract class TTSGenerator : ScriptableObject
-    {
+	public abstract class TTSGenerator : ScriptableObject
+	{
 		#region Fields
 
 		[SerializeField]
@@ -19,7 +24,65 @@ namespace ToolkitEditor.Dialogue
 
 		#region Methods
 
-		public abstract void Generate(YarnProject project, IEnumerable<StringTableEntry> entries);
+		public void Generate(YarnProject project, IEnumerable<StringTableEntry> entries)
+		{
+			EditorCoroutineUtility.StartCoroutine(AsyncGenerate(project, entries), this);
+		}
+
+		protected abstract IEnumerator AsyncGenerate(YarnProject project, IEnumerable<StringTableEntry> entries);
+
+		#endregion
+	}
+
+	public abstract class TTSGenerator<T> : TTSGenerator
+		where T : TTSVoice
+    {
+		#region Methods
+
+		protected override IEnumerator AsyncGenerate(
+			YarnProject project,
+			IEnumerable<StringTableEntry> entries)
+		{
+			Dictionary<string, DialogueSpeakerType> speakerTypeMap = new Dictionary<string, DialogueSpeakerType>(StringComparer.OrdinalIgnoreCase);
+			foreach (var speakerType in YarnEditorUtil.GetDialogueSpeakerTypes())
+			{
+				speakerTypeMap.Add(speakerType.name, speakerType);
+			}
+
+			// Create dialogue to parse markup
+			var dialogue = YarnEditorUtil.GetDialogue(project);
+
+			int i = 0;
+			float total = entries.Count();
+			foreach (var entry in entries)
+			{
+				ProgressBarUtil.DisplayProgressBar(
+					$"Generating {typeof(T).Name}...",
+					$"{entry.Text}...{i + 1}/{(int)total}...",
+					i++ / total);
+
+				if (YarnParserUtil.TryGetSpeakerAndText(entry, out var speaker, out var text)
+					&& speakerTypeMap.TryGetValue(speaker, out var speakerType)
+					&& speakerType.ttsVoice is T ttSVoice)
+				{
+					// Strip attributes for TTS generation
+					var result = dialogue.ParseMarkup(text);
+
+					yield return AsyncGenerate(project, dialogue, entry, result.Text, ttSVoice, (path) =>
+					{
+						// Use Voice asset name because separate speakers may have different post-processing
+						// ...but could reference the same asset
+						// Want to include attributes in metadata
+						DialogueSettings.SetSpeakerAndTextTags(path, ttSVoice.name, text);
+						Debug.Log($"Generated {path.Replace("\\", "/")}");
+					});
+				}
+			}
+
+			ProgressBarUtil.ClearProgressBar();
+		}
+
+		protected abstract IEnumerator AsyncGenerate(YarnProject project, Yarn.Dialogue dialogue, StringTableEntry entry, string text, T ttsVoice, Action<string> callback);
 
 		#endregion
 	}

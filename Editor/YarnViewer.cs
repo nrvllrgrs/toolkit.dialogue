@@ -1,9 +1,7 @@
-using Gilzoide.EasyProjectSettings;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using ToolkitEngine.Dialogue;
 using UnityEditor;
@@ -97,7 +95,7 @@ namespace ToolkitEditor.Dialogue
 								.Where(x => x != null)
 								.FirstOrDefault();
 							yarnEntry.stringInTable = !string.IsNullOrWhiteSpace(record?.Value);
-							yarnEntry.audioInTable = GetPreviewClip(yarnEntry, locale.Identifier.Code) != null;
+							yarnEntry.audioInTable = YarnEditorUtil.GetPreviewClip(yarnEntry.project, yarnEntry.entry, locale.Identifier.Code) != null;
 						}
 #endif
 					}
@@ -116,7 +114,7 @@ namespace ToolkitEditor.Dialogue
 
 		private void OnDestroy()
 		{
-			StopAllPreviewClips();
+			AudioUtil.StopAllPreviewClips();
 			s_window = null;
 		}
 
@@ -279,87 +277,8 @@ namespace ToolkitEditor.Dialogue
 
 		private void PreviewButtonClicked(ClickEvent e)
 		{
-			PlayPreviewClip(GetPreviewClip(s_filteredEntries[(int)(e.target as Button).userData]));
-		}
-
-		private static AudioClip GetPreviewClip(YarnStringEntry value)
-		{
-			string localeCode = string.Empty;
-			switch (value.project.localizationType)
-			{
-				case LocalizationType.YarnInternal:
-					localeCode = value.project.baseLocalization?.LocaleCode;
-					break;
-
-#if USE_UNITY_LOCALIZATION
-				case LocalizationType.Unity:
-					localeCode = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale()?.Identifier.Code;
-					break;
-#endif
-			}
-			return GetPreviewClip(value, localeCode);
-		}
-
-		private static AudioClip GetPreviewClip(YarnStringEntry value, string localeCode)
-		{
-			AudioClip clip = null;
-			switch (value.project.localizationType)
-			{
-				case LocalizationType.YarnInternal:
-					clip = value.project.GetLocalization(localeCode)?.GetLocalizedObject<AudioClip>(value.entry.ID);
-					break;
-
-#if USE_UNITY_LOCALIZATION
-				case LocalizationType.Unity:
-					var activeLocalization = LocalizationEditorSettings.ActiveLocalizationSettings;
-					var record = s_assetTableCollections.Select(x => x.GetTable(localeCode) as AssetTable)
-						.Select(x => x.GetEntry(value.entry.ID))
-						.Where(x => x != null)
-						.FirstOrDefault();
-
-					if (record != null)
-					{
-						clip = activeLocalization.GetAssetDatabase()?.GetLocalizedAsset<AudioClip>(record.Table.TableCollectionName, record.KeyId);
-					}
-					break;
-#endif
-			}
-			return clip;
-		}
-
-		private static void PlayPreviewClip(AudioClip audioClip)
-		{
-			StopAllPreviewClips();
-
-			if (audioClip == null)
-				return;
-
-			Assembly unityEditorAssembly = typeof(AudioImporter).Assembly;
-			Type audioUtilClass = unityEditorAssembly.GetType("UnityEditor.AudioUtil");
-
-			MethodInfo method = audioUtilClass.GetMethod(
-				"PlayPreviewClip",
-				BindingFlags.Static | BindingFlags.Public,
-				null,
-				new Type[] { typeof(AudioClip), typeof(int), typeof(bool) },
-				null
-			);
-			method?.Invoke(null, new object[] { audioClip, 0, false });
-		}
-
-		private static void StopAllPreviewClips()
-		{
-			Assembly unityEditorAssembly = typeof(AudioImporter).Assembly;
-			Type audioUtilClass = unityEditorAssembly.GetType("UnityEditor.AudioUtil");
-
-			MethodInfo method = audioUtilClass.GetMethod(
-				"StopAllPreviewClips",
-				BindingFlags.Static | BindingFlags.Public,
-				null,
-				new Type[] { },
-				null
-			);
-			method?.Invoke(null, new object[] { });
+			var value = s_filteredEntries[(int)(e.target as Button).userData];
+			AudioUtil.PlayPreviewClip(YarnEditorUtil.GetPreviewClip(value.project, value.entry));
 		}
 
 #endregion
@@ -369,7 +288,7 @@ namespace ToolkitEditor.Dialogue
 		private void GenerateButtonClicked(ClickEvent e)
 		{
 			var value = s_filteredEntries[(int)(e.target as Button).userData];
-			var clip = GetPreviewClip(value);
+			var clip = YarnEditorUtil.GetPreviewClip(value.project, value.entry);
 			if (clip != null && !EditorUtility.DisplayDialog(
 				"Generate AudioClip",
 				$"This action will override {clip.name}. Are you sure that you want to perform this action?",
@@ -379,7 +298,7 @@ namespace ToolkitEditor.Dialogue
 				return;
 			}
 
-			ProjectSettings.Load<DialogueSettings>().Generate(value.project, value.entry);
+			DialogueSettings.Generate(value.project, value.entry);
 		}
 
 		private void GenerateAllButtonClicked(ClickEvent e)
@@ -390,7 +309,7 @@ namespace ToolkitEditor.Dialogue
 			{
 				if (!overrideAll)
 				{
-					var clip = GetPreviewClip(value);
+					var clip = YarnEditorUtil.GetPreviewClip(value.project, value.entry);
 					if (clip != null)
 					{
 						int result = EditorUtility.DisplayDialogComplex(
@@ -408,10 +327,9 @@ namespace ToolkitEditor.Dialogue
 				entries.Add(value);
 			}
 
-			var settings = ProjectSettings.Load<DialogueSettings>();
 			foreach (var g in entries.GroupBy(x => x.project))
 			{
-				settings.Generate(g.Key, g.Select(x => x.entry));
+				DialogueSettings.Generate(g.Key, g.Select(x => x.entry));
 			}
 		}
 

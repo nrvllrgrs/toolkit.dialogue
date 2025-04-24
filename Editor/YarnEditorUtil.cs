@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using ToolkitEngine.Dialogue;
-using Yarn;
+using UnityEditor.Localization;
+using UnityEngine;
 using Yarn.Unity;
+using Yarn.Unity.Editor;
 
 namespace ToolkitEditor.Dialogue
 {
@@ -17,5 +19,71 @@ namespace ToolkitEditor.Dialogue
 
             return dialogue;
 		}
-    }
+
+        public static YarnProject FindYarnProject(TextAsset script)
+        {
+            foreach (var project in GetYarnProjects())
+            {
+                var importer = AssetUtil.LoadImporter<YarnProjectImporter>(project);
+                if (importer == null)
+                    continue;
+
+                if (importer.ImportData.yarnFiles.Contains(script))
+                    return project;
+            }
+
+            return null;
+        }
+
+		#region Audio Methods
+
+		public static AudioClip GetPreviewClip(YarnProject project, StringTableEntry entry)
+		{
+			string localeCode = string.Empty;
+			switch (project.localizationType)
+			{
+				case LocalizationType.YarnInternal:
+					localeCode = project.baseLocalization?.LocaleCode;
+					break;
+
+#if USE_UNITY_LOCALIZATION
+				case LocalizationType.Unity:
+					localeCode = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale()?.Identifier.Code;
+					break;
+#endif
+			}
+			return GetPreviewClip(project, entry, localeCode);
+		}
+
+		public static AudioClip GetPreviewClip(YarnProject project, StringTableEntry entry, string localeCode)
+		{
+			AudioClip clip = null;
+			switch (project.localizationType)
+			{
+				case LocalizationType.YarnInternal:
+					clip = project.GetLocalization(localeCode)?.GetLocalizedObject<AudioClip>(entry.ID);
+					break;
+
+#if USE_UNITY_LOCALIZATION
+				case LocalizationType.Unity:
+					var activeLocalization = LocalizationEditorSettings.ActiveLocalizationSettings;
+
+
+					//var record = s_assetTableCollections.Select(x => x.GetTable(localeCode) as AssetTable)
+					//	.Select(x => x.GetEntry(value.entry.ID))
+					//	.Where(x => x != null)
+					//	.FirstOrDefault();
+
+					//if (record != null)
+					//{
+					//	clip = activeLocalization.GetAssetDatabase()?.GetLocalizedAsset<AudioClip>(record.Table.TableCollectionName, record.KeyId);
+					//}
+					break;
+#endif
+			}
+			return clip;
+		}
+
+		#endregion
+	}
 }
