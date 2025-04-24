@@ -58,8 +58,7 @@ namespace ToolkitEditor.Dialogue
 			s_assetTableCollections.Clear();
 #endif
 
-			foreach (var project in AssetDatabase.FindAssets("t:YarnProject")
-				.Select(x => AssetDatabase.LoadAssetAtPath<YarnProject>(AssetDatabase.GUIDToAssetPath(x))))
+			foreach (var project in YarnEditorUtil.GetYarnProjects())
 			{
 				var importer = GetImporter(project);
 				if (importer == null)
@@ -462,8 +461,8 @@ namespace ToolkitEditor.Dialogue
 				return true;
 
 			string search = match.Groups["value"].Value;
-			if (!string.IsNullOrWhiteSpace(search))
-				return true;
+			if (string.IsNullOrWhiteSpace(search))
+				return false;
 
 			return find.Contains(search, StringComparison.InvariantCultureIgnoreCase);
 		}
