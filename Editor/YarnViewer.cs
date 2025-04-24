@@ -50,6 +50,7 @@ namespace ToolkitEditor.Dialogue
 		private static void RefreshEntries()
 		{
 			s_entries.Clear();
+			s_filteredEntries.Clear();
 
 #if USE_UNITY_LOCALIZATION
 			s_stringTableCollections.Clear();
@@ -173,7 +174,11 @@ namespace ToolkitEditor.Dialogue
 			});
 			AddColumn("Preview", false, null, GetPreviewButton, (element, index) =>
 			{
-				(element as Button).userData = index;
+				var button = element as Button;
+				button.userData = index;
+
+				var value = s_filteredEntries[index];
+				button.SetEnabled(YarnEditorUtil.GetPreviewClip(value.project, value.entry) != null);
 			});
 			AddColumn("Generate", false, null, GetGenerateButton, (element, index) =>
 			{
