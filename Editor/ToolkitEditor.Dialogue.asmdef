@@ -2,16 +2,16 @@
     "name": "ToolkitEditor.Dialogue",
     "rootNamespace": "",
     "references": [
-		"ToolkitEngine",
-        "GUID:34aa492b82754644eac2f903cd496268",
         "GUID:3cb24a45c22d8e045a5ef8a019b8a1b8",
+        "GUID:0b2b191acd5ecdb4da1dd2e73cbe1d45",
         "GUID:4f6675837be5f1d45a32fb1920bd0217",
+        "GUID:34aa492b82754644eac2f903cd496268",
         "GUID:3a299c53e4c683b4eb4a04c9ad9e648f",
-		"GUID:1c28d8b71ced07540b7c271537363cc6",
-		"GUID:8bbcefc153e1f1b4a98680670797dd16",
-		"GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
+        "GUID:1c28d8b71ced07540b7c271537363cc6",
+        "GUID:8bbcefc153e1f1b4a98680670797dd16",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5",
         "GUID:2e77701fe0ceda44fb763f03ee704c37",
-		"GUID:9edf6d04eabfd482385646eaba23fdfc",
+        "GUID:9edf6d04eabfd482385646eaba23fdfc",
         "GUID:c9d5a7836948f4e5ab18cc2530af11a5"
     ],
     "includePlatforms": [

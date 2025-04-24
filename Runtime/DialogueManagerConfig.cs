@@ -12,15 +12,26 @@ namespace ToolkitEngine.Dialogue
 		private List<DialogueCategory> m_categories = new();
 
 		[SerializeField]
+		private List<DialogueSpeakerType> m_speakers = new();
+
+		[SerializeField]
 		private Spawner m_spawner;
 
+#if USE_UNITY_LOCALIZATION
+		[SerializeField]
+		private LocalizedTableMap m_tableMap;
+#endif
 		#endregion
 
 		#region Properties
 
 		public DialogueCategory[] categories => m_categories.ToArray();
-
+		public DialogueSpeakerType[] speakers => m_speakers.ToArray();
 		public Spawner dialogueSpawner => m_spawner;
+
+#if USE_UNITY_LOCALIZATION
+		public LocalizedTableMap tableMap => m_tableMap;
+#endif
 
 		#endregion
 	}

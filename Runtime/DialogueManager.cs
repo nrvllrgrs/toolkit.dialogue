@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Yarn.Unity;
+using Yarn.Unity.UnityLocalization;
 
 namespace ToolkitEngine.Dialogue
 {
@@ -72,6 +73,7 @@ namespace ToolkitEngine.Dialogue
 			m_speakerMap = new();
 			m_characterNameToSpeakerTypeMap = new();
 
+			int categoryPriority = Config.categories.Length;
 			foreach (var category in Config.categories)
 			{
 				foreach (var priority in category.priorities)
@@ -79,7 +81,7 @@ namespace ToolkitEngine.Dialogue
 					m_priorityToCategoryMap.Add(priority, category);
 				}
 
-				var runtimeCategory = new RuntimeDialogueCategory(category);
+				var runtimeCategory = new RuntimeDialogueCategory(category, categoryPriority--);
 				runtimeCategory.DialogueStarted += RuntimeCategory_DialogueStart;
 				runtimeCategory.DialogueCompleted += RuntimeCategory_DialogueComplete;
 				runtimeCategory.NodeStarted += RuntimeCategory_NodeStarted;
@@ -87,6 +89,14 @@ namespace ToolkitEngine.Dialogue
 				runtimeCategory.Command += RuntimeCategory_Command;
 
 				m_runtimeMap.Add(category, runtimeCategory);
+			}
+
+			foreach (var speaker in Config.speakers)
+			{
+				if (!m_characterNameToSpeakerTypeMap.ContainsKey(speaker.name))
+				{
+					m_characterNameToSpeakerTypeMap.Add(speaker.name, speaker);
+				}
 			}
 
 			// Any instantiated DialogueRunners should automatically be cleared by PoolItemManager
@@ -207,6 +217,13 @@ namespace ToolkitEngine.Dialogue
 			return true;
 		}
 
+		public int GetCategoryPriority(DialogueCategory category)
+		{
+			return m_runtimeMap.TryGetValue(category, out var runtimeCategory)
+				? runtimeCategory.priority
+				: -1;
+		}
+
 		public int GetPriority(DialogueType dialogueType)
 		{
 			return TryGetRuntimeDialogueCategory(dialogueType, out var runtimeCategory)
@@ -289,7 +306,7 @@ namespace ToolkitEngine.Dialogue
 				{
 					if (!appendDialogueViews)
 					{
-						control.dialogueRunner.SetDialogueViews(settings.dialogueViews);
+						control.dialogueRunner.dialogueViews = settings.dialogueViews;
 					}
 					else
 					{
@@ -306,20 +323,13 @@ namespace ToolkitEngine.Dialogue
 							list.Add(dialogueView);
 						}
 
-						control.dialogueRunner.SetDialogueViews(list.ToArray());
+						control.dialogueRunner.dialogueViews = list.ToArray();
 					}
-				}
-
-				if (settings.lineProvider != null)
-				{
-					control.dialogueRunner.lineProvider = settings.lineProvider;
-					control.dialogueRunner.lineProvider.YarnProject = control.dialogueRunner.yarnProject;
 				}
 
 				if (settings.variableStorage != null)
 				{
 					control.dialogueRunner.VariableStorage = settings.variableStorage;
-					control.dialogueRunner.SetInitialVariables();
 				}
 
 				return true;
@@ -330,6 +340,19 @@ namespace ToolkitEngine.Dialogue
 		#endregion
 
 		#region Spawner Methods
+
+		internal static void UpdateLineProvider(DialogueRunnerControl control)
+		{
+#if USE_UNITY_LOCALIZATION
+			if (control.dialogueRunner.yarnProject.localizationType == LocalizationType.Unity
+				&& control.dialogueRunner.lineProvider is UnityLocalisedLineProvider localizedLineProvider
+				&& (CastInstance.Config.tableMap?.TryGetTables(control.dialogueRunner.yarnProject, out var tables) ?? false))
+			{
+				ReflectionUtil.TrySetFieldValue(localizedLineProvider, "stringsTable", tables.stringTable);
+				ReflectionUtil.TrySetFieldValue(localizedLineProvider, "assetTable", tables.audioTable);
+			}
+#endif
+		}
 
 		private void DialogueSpawned(GameObject obj, params object[] args)
 		{
@@ -351,6 +374,9 @@ namespace ToolkitEngine.Dialogue
 			var key = new Tuple<DialogueType, YarnProject, string>(control.dialogueType, control.dialogueRunner.yarnProject, startNode);
 			m_spawnMap.Add(key, control);
 
+			UpdateLineProvider(control);
+
+			// Notify custom behaviour that DialogueRunnerControl has been spawned
 			(args[5] as Action<GameObject>)?.Invoke(obj);
 
 			// Control may have been been able to play (e.g. blocked by simultaneous limit, "forgotten" in queue)
@@ -403,11 +429,6 @@ namespace ToolkitEngine.Dialogue
 			}
 
 			set.Add(speaker);
-
-			if (!m_characterNameToSpeakerTypeMap.ContainsKey(speaker.speakerType.characterName))
-			{
-				m_characterNameToSpeakerTypeMap.Add(speaker.speakerType.characterName, speaker.speakerType);
-			}
 		}
 
 		public void Unregister(DialogueSpeaker speaker)
@@ -419,22 +440,24 @@ namespace ToolkitEngine.Dialogue
 				return;
 
 			set.Remove(speaker);
-
-			if (m_characterNameToSpeakerTypeMap.ContainsKey(speaker.speakerType.characterName))
-			{
-				m_characterNameToSpeakerTypeMap.Remove(speaker.speakerType.characterName);
-			}
 		}
 
 		public bool TryGetDialogueSpeakers(DialogueSpeakerType speakerType, out HashSet<DialogueSpeaker> speakers)
 		{
-			return m_speakerMap.TryGetValue(speakerType, out speakers);
+			speakers = null;
+			return speakerType != null && m_speakerMap.TryGetValue(speakerType, out speakers);
+		}
+
+		public bool TryGetDialogueSpeakerTypeByCharacterName(string characterName, out DialogueSpeakerType speakerType)
+		{
+			speakerType = null;
+			return characterName != null && m_characterNameToSpeakerTypeMap.TryGetValue(characterName, out speakerType);
 		}
 
 		public bool TryGetDialogueSpeakersByCharacterName(string characterName, out HashSet<DialogueSpeaker> speakers)
 		{
 			speakers = null;
-			return m_characterNameToSpeakerTypeMap.TryGetValue(characterName, out var speakerType)
+			return TryGetDialogueSpeakerTypeByCharacterName(characterName, out var speakerType)
 				&& TryGetDialogueSpeakers(speakerType, out speakers);
 		}
 
@@ -497,6 +520,7 @@ namespace ToolkitEngine.Dialogue
 			#region Properties
 
 			public DialogueCategory dialogueCategory { get; private set; }
+			public int priority { get; private set; }
 			public bool isDialogueRunning => m_activeRunnerControls.Count > 0;
 			public int dialogueRunningCount => m_activeRunnerControls.Count;
 			public DialogueRunnerControl[] activeRunnerControls => m_activeRunnerControls.ToArray();
@@ -505,9 +529,10 @@ namespace ToolkitEngine.Dialogue
 
 			#region Constructors
 
-			public RuntimeDialogueCategory(DialogueCategory category)
+			public RuntimeDialogueCategory(DialogueCategory category, int priority)
 			{
 				dialogueCategory = category;
+				this.priority = priority;
 			}
 
 			#endregion

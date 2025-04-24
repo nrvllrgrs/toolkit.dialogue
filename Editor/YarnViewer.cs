@@ -7,14 +7,16 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using ToolkitEngine.Dialogue;
 using UnityEditor;
-using UnityEditor.Localization;
 using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Tables;
 using UnityEngine.UIElements;
 using Yarn.Unity;
 using Yarn.Unity.Editor;
+
+#if USE_UNITY_LOCALIZATION
+using UnityEditor.Localization;
+using UnityEngine.Localization.Tables;
+#endif
 
 namespace ToolkitEditor.Dialogue
 {
@@ -25,14 +27,16 @@ namespace ToolkitEditor.Dialogue
 		private static HashSet<YarnStringEntry> s_entries = new();
 		private static List<YarnStringEntry> s_filteredEntries = new();
 
+#if USE_UNITY_LOCALIZATION
 		private static HashSet<StringTableCollection> s_stringTableCollections = new();
 		private static HashSet<AssetTableCollection> s_assetTableCollections = new();
+#endif
 
 		private static YarnViewer s_window;
 		private static ToolbarSearchField s_searchField;
 		private static MultiColumnListView s_columnListView;
 
-		#endregion
+#endregion
 
 		#region Methods
 
@@ -48,8 +52,11 @@ namespace ToolkitEditor.Dialogue
 		private static void RefreshEntries()
 		{
 			s_entries.Clear();
+
+#if USE_UNITY_LOCALIZATION
 			s_stringTableCollections.Clear();
 			s_assetTableCollections.Clear();
+#endif
 
 			foreach (var project in AssetDatabase.FindAssets("t:YarnProject")
 				.Select(x => AssetDatabase.LoadAssetAtPath<YarnProject>(AssetDatabase.GUIDToAssetPath(x))))
@@ -57,15 +64,6 @@ namespace ToolkitEditor.Dialogue
 				var importer = GetImporter(project);
 				if (importer == null)
 					continue;
-
-				foreach (var entry in importer.GenerateStringsTable())
-				{
-					s_entries.Add(new YarnStringEntry()
-					{
-						project = project,
-						entry = entry,
-					});
-				}
 
 #if USE_UNITY_LOCALIZATION
 				if (importer.UseUnityLocalisationSystem)
@@ -80,6 +78,26 @@ namespace ToolkitEditor.Dialogue
 					}
 				}
 #endif
+
+				foreach (var entry in importer.GenerateStringsTable())
+				{
+					var yarnEntry = new YarnStringEntry()
+					{
+						project = project,
+						entry = entry,
+					};
+
+#if USE_UNITY_LOCALIZATION
+					var locale = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale();
+					var record = s_stringTableCollections.Select(x => x.GetTable(locale.Identifier) as StringTable)
+					.Select(x => x.GetEntry(entry.ID))
+						.Where(x => x != null)
+						.FirstOrDefault();
+					yarnEntry.stringInTable = !string.IsNullOrWhiteSpace(record?.Value);
+					yarnEntry.audioInTable = GetPreviewClip(yarnEntry, locale.Identifier.Code) != null;
+#endif
+					s_entries.Add(yarnEntry);
+				}
 			}
 
 			Search(s_searchField?.value ?? string.Empty);
@@ -171,27 +189,15 @@ namespace ToolkitEditor.Dialogue
 				(element as Label).text = s_filteredEntries[index].entry.Node;
 			});
 #if USE_UNITY_LOCALIZATION
-			foreach (var locale in LocalizationEditorSettings.GetLocales())
+			var locale = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale();
+			AddColumn($"{locale.Identifier.Code} - Text", true, null, GetToggle, (element, index) =>
 			{
-				AddColumn($"{locale.Identifier.Code} - Text", true, null, GetToggle, (element, index) =>
-				{
-					var value = s_filteredEntries[index];
-					var record = s_stringTableCollections.Select(x => x.GetTable(locale.Identifier) as StringTable)
-						.Select(x => x.GetEntry(value.entry.ID))
-						.Where(x => x != null)
-						.FirstOrDefault();
-					(element as Toggle).value = !string.IsNullOrWhiteSpace(record?.Value);
-				});
-				AddColumn($"{locale.Identifier.Code} - Audio", true, null, GetToggle, (element, index) =>
-				{
-					var value = s_filteredEntries[index];
-					var record = s_stringTableCollections.Select(x => x.GetTable(locale.Identifier) as StringTable)
-						.Select(x => x.GetEntry(value.entry.ID))
-						.Where(x => x != null)
-						.FirstOrDefault();
-					(element as Toggle).value = GetPreviewClip(s_filteredEntries[index], locale.Identifier) != null;
-				});
-			}
+				(element as Toggle).value = s_filteredEntries[index].stringInTable;
+			});
+			AddColumn($"{locale.Identifier.Code} - Audio", true, null, GetToggle, (element, index) =>
+			{
+				(element as Toggle).value = s_filteredEntries[index].audioInTable;
+			});
 #endif
 
 			root.Add(s_columnListView);
@@ -258,7 +264,7 @@ namespace ToolkitEditor.Dialogue
 			return element;
 		}
 
-		#endregion
+#endregion
 
 		#region Preview Methods
 
@@ -267,34 +273,37 @@ namespace ToolkitEditor.Dialogue
 			PlayPreviewClip(GetPreviewClip(s_filteredEntries[(int)(e.target as Button).userData]));
 		}
 
-		private AudioClip GetPreviewClip(YarnStringEntry value)
+		private static AudioClip GetPreviewClip(YarnStringEntry value)
 		{
-			LocaleIdentifier identifier;
+			string localeCode = string.Empty;
 			switch (value.project.localizationType)
 			{
 				case LocalizationType.YarnInternal:
-					identifier = value.project.baseLocalization?.LocaleCode;
+					localeCode = value.project.baseLocalization?.LocaleCode;
 					break;
 
+#if USE_UNITY_LOCALIZATION
 				case LocalizationType.Unity:
-					identifier = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale().Identifier;
+					localeCode = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale()?.Identifier.Code;
 					break;
+#endif
 			}
-			return GetPreviewClip(value, identifier);
+			return GetPreviewClip(value, localeCode);
 		}
 
-		private AudioClip GetPreviewClip(YarnStringEntry value, LocaleIdentifier identifier)
+		private static AudioClip GetPreviewClip(YarnStringEntry value, string localeCode)
 		{
 			AudioClip clip = null;
 			switch (value.project.localizationType)
 			{
 				case LocalizationType.YarnInternal:
-					clip = value.project.GetLocalization(identifier.Code)?.GetLocalizedObject<AudioClip>(value.entry.ID);
+					clip = value.project.GetLocalization(localeCode)?.GetLocalizedObject<AudioClip>(value.entry.ID);
 					break;
 
+#if USE_UNITY_LOCALIZATION
 				case LocalizationType.Unity:
 					var activeLocalization = LocalizationEditorSettings.ActiveLocalizationSettings;
-					var record = s_assetTableCollections.Select(x => x.GetTable(identifier) as AssetTable)
+					var record = s_assetTableCollections.Select(x => x.GetTable(localeCode) as AssetTable)
 						.Select(x => x.GetEntry(value.entry.ID))
 						.Where(x => x != null)
 						.FirstOrDefault();
@@ -304,11 +313,12 @@ namespace ToolkitEditor.Dialogue
 						clip = activeLocalization.GetAssetDatabase()?.GetLocalizedAsset<AudioClip>(record.Table.TableCollectionName, record.KeyId);
 					}
 					break;
+#endif
 			}
 			return clip;
 		}
 
-		private void PlayPreviewClip(AudioClip audioClip)
+		private static void PlayPreviewClip(AudioClip audioClip)
 		{
 			StopAllPreviewClips();
 
@@ -325,7 +335,7 @@ namespace ToolkitEditor.Dialogue
 			method?.Invoke(null, new object[] { audioClip, 0, false });
 		}
 
-		private void StopAllPreviewClips()
+		private static void StopAllPreviewClips()
 		{
 			Assembly unityEditorAssembly = typeof(AudioImporter).Assembly;
 			Type audioUtilClass = unityEditorAssembly.GetType("UnityEditor.AudioUtil");
@@ -340,7 +350,7 @@ namespace ToolkitEditor.Dialogue
 			method?.Invoke(null, new object[] { });
 		}
 
-		#endregion
+#endregion
 
 		#region Generate Methods
 
@@ -453,6 +463,11 @@ namespace ToolkitEditor.Dialogue
 		{
 			public YarnProject project;
 			public Yarn.Unity.StringTableEntry entry;
+
+#if USE_UNITY_LOCALIZATION
+			public bool stringInTable;
+			public bool audioInTable;
+#endif
 		}
 
 		#endregion
