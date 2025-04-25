@@ -1,6 +1,8 @@
 using UnityEditor;
 using ToolkitEngine.Dialogue;
 using Yarn.Unity;
+using UnityEngine;
+using Yarn.Unity.UnityLocalization;
 
 namespace ToolkitEditor.Dialogue
 {
@@ -86,7 +88,50 @@ namespace ToolkitEditor.Dialogue
 				EditorGUILayout.PropertyField(m_keepVariableStorage);
 				--EditorGUI.indentLevel;
 			}
+
+			EditorGUILayout.Separator();
+			DrawCustomProperties();
+
+			EditorGUILayout.Separator();
+
+			var project = m_dialogueRunner?.yarnProject;
+			EditorGUI.BeginDisabledGroup(project == null || Application.isPlaying);
+			{
+				if (GUILayout.Button("Setup Line Provider"))
+				{
+					switch (project.localizationType)
+					{
+						case LocalizationType.YarnInternal:
+							if (m_dialogueRunner.lineProvider is not AudioLineProvider)
+							{
+								m_dialogueRunner.lineProvider = m_dialogueRunner.gameObject.AddComponent<AudioLineProvider>();
+							}
+							break;
+
+#if USE_UNITY_LOCALIZATION
+						case LocalizationType.Unity:
+							var localizedLineProvider = m_dialogueRunner.lineProvider as UnityLocalisedLineProvider;
+							if (localizedLineProvider == null)
+							{
+								localizedLineProvider = m_dialogueRunner.gameObject.AddComponent<UnityLocalisedLineProvider>();
+								m_dialogueRunner.lineProvider = localizedLineProvider;
+							}
+
+							if (DialogueManager.CastInstance.Config.tableMap?.TryGetTables(project, out var tables) ?? false)
+							{
+								ReflectionUtil.TrySetFieldValue(localizedLineProvider, "stringsTable", tables.stringTable);
+								ReflectionUtil.TrySetFieldValue(localizedLineProvider, "assetTable", tables.audioTable);
+							}
+							break;
+#endif
+					}
+				}
+			}
+			EditorGUI.EndDisabledGroup();
 		}
+
+		protected virtual void DrawCustomProperties()
+		{ }
 
 		protected override void DrawEvents()
 		{

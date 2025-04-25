@@ -34,9 +34,16 @@ namespace ToolkitEngine.Dialogue
 		private ActionInfo m_dismissal = new();
 		private ActionInfo m_runLine = new();
 
+		private TimelineRunnerControl m_timelineRunnerControl = null;
+
 		#endregion
 
 		#region Methods
+
+		public void StartDialogue(TimelineRunnerControl dialogueRunnerControl)
+		{
+			m_timelineRunnerControl = dialogueRunnerControl; 
+		}
 
 		private IEnumerator ProcessInternal(ActionInfo info, Action<DialogueViewBase> viewAction, Action onCompleted)
 		{

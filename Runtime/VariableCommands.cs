@@ -24,7 +24,7 @@ namespace ToolkitEngine.Dialogue
 		[YarnCommand("waitWhile")]
 		public IEnumerator WaitWhileVariable(string variableName)
 		{
-			if (!m_variableStorage.TryGetValue(variableName, out bool value))
+			if (!m_variableStorage.TryGetValue(variableName, out bool value) || !value)
 				yield break;
 
 			yield return new WaitWhile(() =>
@@ -36,7 +36,7 @@ namespace ToolkitEngine.Dialogue
 		[YarnCommand("waitUntil")]
 		public IEnumerator WaitUntilVariable(string variableName)
 		{
-			if (!m_variableStorage.TryGetValue(variableName, out bool value))
+			if (!m_variableStorage.TryGetValue(variableName, out bool value) || value)
 				yield break;
 
 			yield return new WaitUntil(() =>

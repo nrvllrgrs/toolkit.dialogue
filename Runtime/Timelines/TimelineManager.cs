@@ -19,6 +19,9 @@ namespace ToolkitEngine.Dialogue
 		public event EventHandler<PlayableDirector> PlayableDirectorTracked;
 		public event EventHandler<PlayableDirector> PlayableDirectorUntracked;
 
+#if UNITY_EDITOR
+		public Action<FrameData> DialoguePreviewClipPlayed;
+#endif
 		#endregion
 
 		#region Methods

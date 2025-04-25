@@ -188,7 +188,7 @@ namespace ToolkitEngine.Dialogue
 			return Play(node.name);
 		}
 
-		internal void PlayInternal(string startNode)
+		internal virtual void PlayInternal(string startNode)
 		{
 			if (m_replicateSettings)
 			{
