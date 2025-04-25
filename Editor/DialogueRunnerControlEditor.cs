@@ -1,5 +1,6 @@
 using UnityEditor;
 using ToolkitEngine.Dialogue;
+using Yarn.Unity;
 
 namespace ToolkitEditor.Dialogue
 {
@@ -8,11 +9,16 @@ namespace ToolkitEditor.Dialogue
     {
 		#region Fields
 
+		protected DialogueRunner m_dialogueRunner;
+		protected SerializedObject m_serializedDialogueRunner;
+		protected SerializedProperty m_yarnProject;
+
 		protected SerializedProperty m_dialogueType;
 		protected SerializedProperty m_playOnStart;
 		protected SerializedProperty m_startNode;
 		protected SerializedProperty m_replicateSettings;
 		protected SerializedProperty m_appendDialogueViews;
+		protected SerializedProperty m_keepVariableStorage;
 
 		protected SerializedProperty m_onDialogueStarted;
 		protected SerializedProperty m_onDialogueCompleted;
@@ -26,11 +32,24 @@ namespace ToolkitEditor.Dialogue
 
 		protected virtual void OnEnable()
 		{
+			m_dialogueRunner = (target as DialogueRunnerControl).GetComponent<DialogueRunner>();
+			m_serializedDialogueRunner = new SerializedObject(m_dialogueRunner);
+			
+			// DialogueRunner edits need to go through DialogueRunnerControl
+			m_dialogueRunner.hideFlags |= UnityEngine.HideFlags.NotEditable;
+
+			// Need to make sure DialogueRunner does not start automatically
+			m_dialogueRunner.startAutomatically = false;
+			m_serializedDialogueRunner.ApplyModifiedProperties();
+
+			m_yarnProject = m_serializedDialogueRunner.FindProperty("yarnProject");
+
 			m_dialogueType = serializedObject.FindProperty(nameof(m_dialogueType));
 			m_playOnStart = serializedObject.FindProperty(nameof (m_playOnStart));
 			m_startNode = serializedObject.FindProperty(nameof(m_startNode));
 			m_replicateSettings = serializedObject.FindProperty(nameof(m_replicateSettings));
 			m_appendDialogueViews = serializedObject.FindProperty(nameof(m_appendDialogueViews));
+			m_keepVariableStorage = serializedObject.FindProperty(nameof(m_keepVariableStorage));
 
 			m_onDialogueStarted = serializedObject.FindProperty(nameof (m_onDialogueStarted));
 			m_onDialogueCompleted = serializedObject.FindProperty(nameof(m_onDialogueCompleted));
@@ -39,15 +58,45 @@ namespace ToolkitEditor.Dialogue
 			m_onCommand = serializedObject.FindProperty(nameof(m_onCommand));
 		}
 
+		protected virtual void OnDisable()
+		{
+			m_dialogueRunner.hideFlags &= ~UnityEngine.HideFlags.NotEditable;
+		}
+
 		protected override void DrawProperties()
 		{
 			EditorGUILayout.PropertyField(m_dialogueType);
-			EditorGUILayout.PropertyField(m_startNode);
+			EditorGUI.BeginChangeCheck();
+			{
+				EditorGUILayout.PropertyField(m_startNode);
+			}
+			if (EditorGUI.EndChangeCheck())
+			{
+				m_yarnProject.objectReferenceValue = (m_startNode.boxedValue as YarnNode)?.project;
+				m_serializedDialogueRunner.ApplyModifiedProperties();
+
+				// DialogueRunner edits need to go through DialogueRunnerControl
+				m_dialogueRunner.hideFlags |= UnityEngine.HideFlags.NotEditable;
+			}
+
 			EditorGUILayout.PropertyField(m_playOnStart);
 
 			EditorGUILayout.Separator();
-			EditorGUILayout.PropertyField(m_replicateSettings);
-			EditorGUILayout.PropertyField(m_appendDialogueViews);
+
+			EditorGUI.BeginDisabledGroup(m_appendDialogueViews.boolValue
+				|| m_keepVariableStorage.boolValue);
+			{
+				EditorGUILayout.PropertyField(m_replicateSettings);
+			}
+			EditorGUI.EndDisabledGroup();
+
+			if (m_replicateSettings.boolValue)
+			{
+				++EditorGUI.indentLevel;
+				EditorGUILayout.PropertyField(m_appendDialogueViews);
+				EditorGUILayout.PropertyField(m_keepVariableStorage);
+				--EditorGUI.indentLevel;
+			}
 		}
 
 		protected override void DrawEvents()

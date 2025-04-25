@@ -174,10 +174,9 @@ namespace ToolkitEditor.Dialogue
 			});
 			AddColumn("Preview", false, null, GetPreviewButton, (element, index) =>
 			{
+				var value = s_filteredEntries[index];
 				var button = element as Button;
 				button.userData = index;
-
-				var value = s_filteredEntries[index];
 				button.SetEnabled(YarnEditorUtil.GetPreviewClip(value.project, value.entry) != null);
 			});
 			AddColumn("Generate", false, null, GetGenerateButton, (element, index) =>

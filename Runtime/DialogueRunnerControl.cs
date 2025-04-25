@@ -45,7 +45,7 @@ namespace ToolkitEngine.Dialogue
 		protected DialogueType m_dialogueType;
 
 		[SerializeField]
-		protected string m_startNode = "Start";
+		protected YarnNode m_startNode;
 
 		[SerializeField]
 		protected bool m_playOnStart;
@@ -55,6 +55,9 @@ namespace ToolkitEngine.Dialogue
 
 		[SerializeField]
 		protected bool m_appendDialogueViews = false;
+
+		[SerializeField]
+		protected bool m_keepVariableStorage = false;
 
 		[SerializeField]
 		protected UnityEvent<DialogueEventArgs> m_onDialogueStarted;
@@ -104,7 +107,7 @@ namespace ToolkitEngine.Dialogue
 		public DialogueType dialogueType { get => m_dialogueType; set => m_dialogueType = value; }
 
 		public bool isDialogueRunning => m_isDialogueRunning;
-		public bool startNodeExists => !string.IsNullOrWhiteSpace(m_startNode) && m_dialogueRunner.NodeExists(m_startNode);
+		public bool startNodeExists => !string.IsNullOrWhiteSpace(m_startNode?.name) && m_dialogueRunner.NodeExists(m_startNode?.name);
 
 		/// <summary>
 		/// Time when DialogueRunner last started
@@ -165,23 +168,32 @@ namespace ToolkitEngine.Dialogue
 		[ContextMenu("Play")]
 		public bool Play()
 		{
-			return Play(m_startNode);
+			return Play(m_startNode.name);
 		}
 
-		public bool Play(string startNode)
+		public bool Play(string nodeName)
 		{
 			// Node doesn't exist, skip
-			if (!m_dialogueRunner.NodeExists(startNode))
+			if (!m_dialogueRunner.NodeExists(nodeName))
 				return false;
 
-			return DialogueManager.CastInstance.Play(this, startNode);
+			return DialogueManager.CastInstance.Play(this, nodeName);
+		}
+
+		public bool Play(YarnNode node)
+		{
+			if (m_dialogueRunner.yarnProject != node.project)
+			{
+				m_dialogueRunner.SetProject(node.project);
+			}
+			return Play(node.name);
 		}
 
 		internal void PlayInternal(string startNode)
 		{
 			if (m_replicateSettings)
 			{
-				DialogueManager.CastInstance.ReplicateSettings(this, m_appendDialogueViews);
+				DialogueManager.CastInstance.ReplicateSettings(this, m_appendDialogueViews, m_keepVariableStorage);
 			}
 			m_dialogueRunner.StartDialogue(startNode);
 		}
@@ -189,7 +201,7 @@ namespace ToolkitEngine.Dialogue
 		[ContextMenu("Enqueue")]
 		public void Enqueue()
 		{
-			Enqueue(m_startNode);
+			Enqueue(m_startNode.name);
 		}
 
 		public void Enqueue(string startNode)
@@ -204,7 +216,7 @@ namespace ToolkitEngine.Dialogue
 		[ContextMenu("Dequeue")]
 		public void Dequeue()
 		{
-			Dequeue(m_startNode);
+			Dequeue(m_startNode.name);
 		}
 
 		public void Dequeue(string startNode)

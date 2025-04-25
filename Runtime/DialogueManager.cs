@@ -298,36 +298,33 @@ namespace ToolkitEngine.Dialogue
 				&& TryGetDialogueRunnerSettings(category, out settings);
 		}
 
-		public bool ReplicateSettings(DialogueRunnerControl control, bool appendDialogueViews)
+		public bool ReplicateSettings(DialogueRunnerControl control, bool appendDialogueViews, bool keepVariableStorage)
 		{
-			if (TryGetDialogueRunnerSettings(control.dialogueType, out var settings))
+			if (TryGetDialogueRunnerSettings(control.dialogueType, out var settings) && settings != null)
 			{
-				if (settings != null)
+				if (!appendDialogueViews)
 				{
-					if (!appendDialogueViews)
+					control.dialogueRunner.dialogueViews = settings.dialogueViews;
+				}
+				else
+				{
+					// Going to append, skipping DialogueViews of the same type
+					var existingTypes = control.dialogueRunner.dialogueViews.Select(x => x.GetType()).ToHashSet();
+
+					// Appended list
+					var list = new List<DialogueViewBase>(control.dialogueRunner.dialogueViews);
+					foreach (var dialogueView in settings.dialogueViews)
 					{
-						control.dialogueRunner.dialogueViews = settings.dialogueViews;
+						if (existingTypes.Contains(dialogueView.GetType()))
+							continue;
+
+						list.Add(dialogueView);
 					}
-					else
-					{
-						// Going to append, skipping DialogueViews of the same type
-						var existingTypes = control.dialogueRunner.dialogueViews.Select(x => x.GetType()).ToHashSet();
 
-						// Appended list
-						var list = new List<DialogueViewBase>(control.dialogueRunner.dialogueViews);
-						foreach (var dialogueView in settings.dialogueViews)
-						{
-							if (existingTypes.Contains(dialogueView.GetType()))
-								continue;
-
-							list.Add(dialogueView);
-						}
-
-						control.dialogueRunner.dialogueViews = list.ToArray();
-					}
+					control.dialogueRunner.dialogueViews = list.ToArray();
 				}
 
-				if (settings.variableStorage != null)
+				if (!keepVariableStorage && settings.variableStorage != null)
 				{
 					control.dialogueRunner.VariableStorage = settings.variableStorage;
 				}
@@ -650,7 +647,7 @@ namespace ToolkitEngine.Dialogue
 			internal float GetQueueAge(DialogueRunnerControl control)
 			{
 				return m_queue.TryGetValue(control, out var tuple)
-					? tuple.Item2
+					? Time.time - tuple.Item2
 					: float.PositiveInfinity;
 			}
 
