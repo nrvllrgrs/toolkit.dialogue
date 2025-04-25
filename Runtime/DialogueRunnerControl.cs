@@ -105,7 +105,6 @@ namespace ToolkitEngine.Dialogue
 
 		public DialogueRunner dialogueRunner => m_dialogueRunner;
 		public DialogueType dialogueType { get => m_dialogueType; set => m_dialogueType = value; }
-
 		public bool isDialogueRunning => m_isDialogueRunning;
 		public bool startNodeExists => !string.IsNullOrWhiteSpace(m_startNode?.name) && m_dialogueRunner.NodeExists(m_startNode?.name);
 
@@ -247,6 +246,21 @@ namespace ToolkitEngine.Dialogue
 
 			m_isSkipping = skipping;
 			m_dialogueRunner.Stop();
+		}
+
+		public void SetStartNode(YarnProject project, string nodeName)
+		{
+			if (Application.isPlaying)
+			{
+				m_dialogueRunner.SetProject(project);
+			}
+#if UNITY_EDITOR
+			else
+			{
+				GetComponent<DialogueRunner>().SetProject(project);
+			}		
+#endif
+			m_startNode.name = nodeName;
 		}
 
 		#endregion

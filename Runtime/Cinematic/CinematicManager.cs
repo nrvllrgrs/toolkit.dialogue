@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -17,6 +18,7 @@ namespace ToolkitEngine.Dialogue
 		private float m_timeout = 0f;
 
 		private DialogueRunnerControl m_cinematicControl;
+		private int m_animateStateHash;
 
 		#endregion
 
@@ -71,6 +73,7 @@ namespace ToolkitEngine.Dialogue
 		protected override void Initialize()
 		{
 			DialogueManager.CastInstance.DialogueStarted += DialogueManager_DialogueStarted;
+			m_animateStateHash = Animator.StringToHash(Config.animateStateName);
 		}
 
 		protected override void Terminate()
@@ -205,6 +208,64 @@ namespace ToolkitEngine.Dialogue
 
 			var variableStorage = CastInstance.m_cinematicControl.dialogueRunner.VariableStorage;
 			variableStorage.SetValue(variableName, value);
+		}
+
+		#endregion
+
+		#region Animate
+
+		[YarnCommand("animate")]
+		public static void Animate(string characterName, string animationKey)
+		{
+			Animate(characterName, animationKey, CastInstance.Config.animateStateName, CastInstance.m_animateStateHash);
+		}
+
+		[YarnCommand("customAnimate")]
+		public static void Animate(string characterName, string animationKey, string animStateName)
+		{
+			Animate(characterName, animationKey, animStateName, Animator.StringToHash(animStateName));
+		}
+
+		public static void Animate(string characterName, string animationKey, string animStateName, int animStateHash)
+		{
+			if (DialogueManager.CastInstance.TryGetDialogueSpeakerTypeByCharacterName(characterName, out var speakerType)
+			   && DialogueManager.CastInstance.TryGetDialogueSpeakers(speakerType, out var speakers))
+			{
+				Animate(speakerType, speakers, animationKey, animStateName, animStateHash);
+			}
+		}
+
+		public static void Animate(DialogueSpeakerType speakerType, HashSet<DialogueSpeaker> speakers, string animationKey)
+		{
+			Animate(speakerType, speakers, animationKey, CastInstance.Config.animateStateName, CastInstance.m_animateStateHash);
+		}
+
+		public static void Animate(DialogueSpeakerType speakerType, HashSet<DialogueSpeaker> speakers, string animationKey, string animStateName)
+		{
+			Animate(speakerType, speakers, animationKey, CastInstance.Config.animateStateName, Animator.StringToHash(animStateName));
+		}
+
+		public static void Animate(DialogueSpeakerType speakerType, HashSet<DialogueSpeaker> speakers, string animationKey, string animStateName, int animStateHash)
+		{
+			if (speakers == null)
+				return;
+
+			// Set animation for each found speaker
+			foreach (var speaker in speakers)
+			{
+				AnimationClip clip = null;
+				if ((speaker.GetComponent<AnimationSetOverride>()?.TryGetClip(animationKey, out clip) ?? false)
+					|| (speakerType.animationSet?.TryGetClip(animationKey, out clip) ?? false))
+				{
+					var animatorStack = speaker.GetComponent<AnimatorStack>();
+					if (animatorStack != null)
+					{
+						animatorStack.Clear();
+						animatorStack.Push(clip, animStateName);
+						animatorStack.animator.Play(animStateHash, 0);
+					}
+				}
+			}
 		}
 
 		#endregion

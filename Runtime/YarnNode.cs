@@ -19,7 +19,7 @@ namespace ToolkitEngine.Dialogue
 		#region Properties
 
 		public YarnProject project => m_project;
-		public string name => m_name;
+		public string name { get => m_name; internal set => m_name = value; }
 
 		#endregion
 	}

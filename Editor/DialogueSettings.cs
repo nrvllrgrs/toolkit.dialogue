@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using ToolkitEngine.Dialogue;
 using UnityEditor;
 using UnityEngine;
@@ -22,6 +23,17 @@ namespace ToolkitEditor.Dialogue
 
 		[SerializeField]
 		private TTSGenerator m_generator;
+
+		[Header("Cinematics")]
+
+		[SerializeField]
+		private DialogueRunnerControl m_cinematicTemplate;
+
+		[SerializeField]
+		private Timeline m_timelineTemplate;
+
+		[SerializeField]
+		private DefaultAsset m_rootDirectory;
 
 		#endregion
 
@@ -190,6 +202,67 @@ namespace ToolkitEditor.Dialogue
 
 			return string.Equals(speakerTag, speaker, StringComparison.OrdinalIgnoreCase)
 				&& string.Equals(textTag, text, StringComparison.OrdinalIgnoreCase);
+		}
+
+		#endregion
+
+		#region Cinematic Methods
+
+		[MenuItem("Assets/Yarn Spinner/Create Cinematic")]
+		private static void CreateCinematic()
+		{
+			foreach (var script in Selection.objects.Cast<TextAsset>())
+			{
+				CreateCinematic(script);
+			}
+		}
+
+		private static void CreateCinematic(TextAsset script)
+		{
+			var settings = ProjectSettings.Load<DialogueSettings>();
+			if (settings.m_cinematicTemplate == null)
+			{
+				Debug.LogError("Cinematic template is undefined in Dialogue ProjectSettings!");
+				return;
+			}
+
+			if (settings.m_timelineTemplate == null)
+			{
+				Debug.LogError("Timeline template is undefined in Dialogue ProjectSettings!");
+				return;
+			}
+
+			var project = YarnEditorUtil.FindYarnProject(script);
+			if (project == null)
+			{
+				Debug.LogError($"Script {script.name} not associated with YarnProject!");
+				return;
+			}
+
+			var cinematic =
+				(PrefabUtility.InstantiatePrefab(AssetUtil.LoadAsset<GameObject>(settings.m_cinematicTemplate)) as GameObject)
+				.GetComponent<DialogueRunnerControl>();
+			cinematic.name = $"Cinematic_{script.name}";
+			cinematic.GetComponent<DialogueRunner>().SetProject(project);
+
+			var nodeMatch = Regex.Match(script.text, @"tite: ?(?<startNode>\w*)");
+			if (nodeMatch.Success)
+			{
+				cinematic.SetStartNode(project, nodeMatch.Groups["startNode"].Value);
+			}
+
+			var matches = Regex.Matches(script.text, @"<<startTimeline (?<timeline>\w*?)>>");
+			foreach (Match match in matches)
+			{
+				string key = match.Groups["timeline"].Value;
+				var timeline =
+					(PrefabUtility.InstantiatePrefab(AssetUtil.LoadAsset<GameObject>(settings.m_timelineTemplate)) as GameObject)
+					.GetComponent<Timeline>();
+				timeline.name = $"Timeline_{key}";
+				timeline.transform.SetParent(cinematic.transform);
+
+				// TODO
+			}
 		}
 
 		#endregion

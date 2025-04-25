@@ -4,7 +4,7 @@ using Yarn.Unity;
 namespace ToolkitEngine.Dialogue.VisualScripting
 {
 	[UnitCategory("Dialogue")]
-	public class GetYarnVariable : Unit
+	public class SetYarnVariable : Unit
 	{
 		#region Fields
 
@@ -23,22 +23,14 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 		[DoNotSerialize, PortLabelHidden]
 		public ControlOutput exit { get; private set; }
 
-		[DoNotSerialize]
-		public ValueOutput contains;
+		[DoNotSerialize, PortLabelHidden]
+		public ValueInput asBool;
 
 		[DoNotSerialize, PortLabelHidden]
-		public ValueOutput asBool;
+		public ValueInput asFloat;
 
 		[DoNotSerialize, PortLabelHidden]
-		public ValueOutput asFloat;
-
-		[DoNotSerialize, PortLabelHidden]
-		public ValueOutput asInt;
-
-		private bool m_contains;
-		private bool m_asBool;
-		private float m_asFloat;
-		private int m_asInt;
+		public ValueInput asInt;
 
 		#endregion
 
@@ -53,20 +45,18 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 			exit = ControlOutput(nameof(exit));
 			Succession(enter, exit);
 
-			contains = ValueOutput(nameof(contains), (x) => m_contains);
-
 			switch (variableType)
 			{
 				case YarnVariableType.Boolean:
-					asBool = ValueOutput(nameof(asBool), (x) => m_asBool);
+					asBool = ValueInput(nameof(asBool), false);
 					break;
 
 				case YarnVariableType.Float:
-					asFloat = ValueOutput(nameof(asFloat), (x) => m_asFloat);
+					asFloat = ValueInput(nameof(asFloat), 0f);
 					break;
 
 				case YarnVariableType.Integer:
-					asInt = ValueOutput(nameof(asInt), (x) => m_asInt);
+					asInt = ValueInput(nameof(asInt), 0);
 					break;
 			}
 		}
@@ -76,34 +66,20 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 			var variableStorage = flow.GetValue<DialogueRunner>(dialogueRunner)?.VariableStorage;
 			var variableName = flow.GetValue<string>(this.variableName);
 
-			m_contains = false;
-
 			if (variableStorage != null && !string.IsNullOrWhiteSpace(variableName))
 			{
 				switch (variableType)
 				{
 					case YarnVariableType.Boolean:
-						if (variableStorage.TryGetValue(variableName, out bool b))
-						{
-							m_contains = true;
-							m_asBool = b;
-						}
+						variableStorage.SetValue(variableName, flow.GetValue<bool>(asBool));
 						break;
 
 					case YarnVariableType.Float:
-						if (variableStorage.TryGetValue(variableName, out float f))
-						{
-							m_contains = true;
-							m_asFloat = f;
-						}
+						variableStorage.SetValue(variableName, flow.GetValue<float>(asFloat));
 						break;
 
 					case YarnVariableType.Integer:
-						if (variableStorage.TryGetValue(variableName, out int i))
-						{
-							m_contains = true;
-							m_asInt = i;
-						}
+						variableStorage.SetValue(variableName, flow.GetValue<int>(asInt));
 						break;
 				}
 			}
