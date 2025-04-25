@@ -34,9 +34,6 @@ namespace ToolkitEditor.Dialogue
 		{
 			m_dialogueRunner = (target as DialogueRunnerControl).GetComponent<DialogueRunner>();
 			m_serializedDialogueRunner = new SerializedObject(m_dialogueRunner);
-			
-			// DialogueRunner edits need to go through DialogueRunnerControl
-			m_dialogueRunner.hideFlags |= UnityEngine.HideFlags.NotEditable;
 
 			// Need to make sure DialogueRunner does not start automatically
 			m_dialogueRunner.startAutomatically = false;
@@ -58,11 +55,6 @@ namespace ToolkitEditor.Dialogue
 			m_onCommand = serializedObject.FindProperty(nameof(m_onCommand));
 		}
 
-		protected virtual void OnDisable()
-		{
-			m_dialogueRunner.hideFlags &= ~UnityEngine.HideFlags.NotEditable;
-		}
-
 		protected override void DrawProperties()
 		{
 			EditorGUILayout.PropertyField(m_dialogueType);
@@ -74,9 +66,6 @@ namespace ToolkitEditor.Dialogue
 			{
 				m_yarnProject.objectReferenceValue = (m_startNode.boxedValue as YarnNode)?.project;
 				m_serializedDialogueRunner.ApplyModifiedProperties();
-
-				// DialogueRunner edits need to go through DialogueRunnerControl
-				m_dialogueRunner.hideFlags |= UnityEngine.HideFlags.NotEditable;
 			}
 
 			EditorGUILayout.PropertyField(m_playOnStart);
