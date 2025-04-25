@@ -85,6 +85,8 @@ namespace ToolkitEditor.Dialogue
 						entry = entry,
 					};
 
+					yarnEntry.speakerTextMetadataMatch = DialogueSettings.IsSpeakerAndTextMatch(project, entry);
+
 					if (importer.UseUnityLocalisationSystem)
 					{
 #if USE_UNITY_LOCALIZATION
@@ -137,10 +139,14 @@ namespace ToolkitEditor.Dialogue
 				{
 					iconImage = new Background()
 					{
-						texture = icon.image as Texture2D
+						//texture = AssetUtil.LoadFirstAsset<Texture2D>("GenerateTTS EditorIcon")
+						texture = icon.image as Texture2D,
 					},
 					tooltip = "Generate All",
 				};
+				//generateAllButton.style.height = generateAllButton.style.width = 18f;
+				//generateAllButton.style.paddingBottom = generateAllButton.style.paddingLeft = generateAllButton.style.paddingRight = generateAllButton.style.paddingTop = 2f;
+
 				generateAllButton.RegisterCallback<ClickEvent>(GenerateAllButtonClicked);
 				header.Add(generateAllButton);
 			}
@@ -182,6 +188,10 @@ namespace ToolkitEditor.Dialogue
 			AddColumn("Generate", false, null, GetGenerateButton, (element, index) =>
 			{
 				(element as Button).userData = index;
+			});
+			AddColumn("Match", true, null, GetToggle, (element, index) =>
+			{
+				(element as Toggle).value = s_filteredEntries[index].speakerTextMetadataMatch;
 			});
 			AddColumn("Project", true, null, GetObjectField, (element, index) =>
 			{
@@ -397,6 +407,8 @@ namespace ToolkitEditor.Dialogue
 		{
 			public YarnProject project;
 			public Yarn.Unity.StringTableEntry entry;
+
+			public bool speakerTextMetadataMatch;
 
 #if USE_UNITY_LOCALIZATION
 			public bool stringInTable;

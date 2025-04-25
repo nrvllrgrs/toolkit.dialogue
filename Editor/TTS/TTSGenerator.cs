@@ -75,6 +75,10 @@ namespace ToolkitEditor.Dialogue
 						// Want to include attributes in metadata
 						DialogueSettings.SetSpeakerAndTextTags(path, ttSVoice.name, text);
 						Debug.Log($"Generated {path.Replace("\\", "/")}");
+
+						// Reimport AudioClip
+						var importer = AssetImporter.GetAtPath(FileUtil.GetRelativePath(path)) as AudioImporter;
+						importer?.SaveAndReimport();
 					});
 				}
 			}

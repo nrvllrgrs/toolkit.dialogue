@@ -200,7 +200,12 @@ namespace ToolkitEditor.Dialogue
 				|| !YarnParserUtil.TryGetSpeakerAndText(entry, out var speaker, out var text))
 				return false;
 
-			return string.Equals(speakerTag, speaker, StringComparison.OrdinalIgnoreCase)
+			var speakerType = YarnEditorUtil.GetDialogueSpeakerTypes()
+				.FirstOrDefault(x => string.Equals(x.name, speaker, StringComparison.OrdinalIgnoreCase));
+			if (speakerType == null)
+				return false;
+
+			return string.Equals(speakerTag, speakerType.ttsVoice?.name, StringComparison.OrdinalIgnoreCase)
 				&& string.Equals(textTag, text, StringComparison.OrdinalIgnoreCase);
 		}
 
