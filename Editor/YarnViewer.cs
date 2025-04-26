@@ -34,7 +34,10 @@ namespace ToolkitEditor.Dialogue
 		private static ToolbarSearchField s_searchField;
 		private static MultiColumnListView s_columnListView;
 
-#endregion
+		private const float BUTTON_HEIGHT = 20f;
+		private const float BUTTON_WIDTH = 30f;
+
+		#endregion
 
 		#region Methods
 
@@ -135,18 +138,27 @@ namespace ToolkitEditor.Dialogue
 				header.Add(s_searchField);
 
 				var icon = EditorGUIUtility.IconContent("Refresh");
+				var refreshButton = new Button()
+				{
+					iconImage = new Background()
+					{
+						texture = icon.image as Texture2D,
+					},
+					tooltip = "Refresh",
+				};
+				refreshButton.RegisterCallback<ClickEvent>(RefreshButtonClicked);
+				header.Add(refreshButton);
+
 				var generateAllButton = new Button()
 				{
 					iconImage = new Background()
 					{
-						//texture = AssetUtil.LoadFirstAsset<Texture2D>("GenerateTTS EditorIcon")
-						texture = icon.image as Texture2D,
+						texture = AssetUtil.LoadFirstAsset<Texture2D>("GenerateTTS EditorIcon"),
 					},
 					tooltip = "Generate All",
 				};
-				//generateAllButton.style.height = generateAllButton.style.width = 18f;
-				//generateAllButton.style.paddingBottom = generateAllButton.style.paddingLeft = generateAllButton.style.paddingRight = generateAllButton.style.paddingTop = 2f;
-
+				generateAllButton.style.minHeight = generateAllButton.style.maxHeight = BUTTON_HEIGHT;
+				generateAllButton.style.minWidth = generateAllButton.style.maxWidth = BUTTON_WIDTH;
 				generateAllButton.RegisterCallback<ClickEvent>(GenerateAllButtonClicked);
 				header.Add(generateAllButton);
 			}
@@ -187,7 +199,20 @@ namespace ToolkitEditor.Dialogue
 			});
 			AddColumn("Generate", false, null, GetGenerateButton, (element, index) =>
 			{
-				(element as Button).userData = index;
+				var value = s_filteredEntries[index];
+				var button = element as Button;
+				button.userData = index;
+
+				if (YarnParserUtil.TryGetSpeakerAndText(value.entry, out string speaker, out string text))
+				{
+					var speakerType = YarnEditorUtil.GetDialogueSpeakerTypes()
+						.FirstOrDefault(x => string.Equals(speaker, x.name, StringComparison.OrdinalIgnoreCase));
+					button.SetEnabled(speakerType?.ttsVoice != null);
+				}
+				else
+				{
+					button.SetEnabled(false);
+				}
 			});
 			AddColumn("Match", true, null, GetToggle, (element, index) =>
 			{
@@ -264,9 +289,10 @@ namespace ToolkitEditor.Dialogue
 			{
 				iconImage = new Background()
 				{
-					texture = icon.image as Texture2D
+					texture = AssetUtil.LoadFirstAsset<Texture2D>("GenerateTTS EditorIcon"),
 				}
 			};
+			element.style.minHeight = element.style.maxHeight = BUTTON_HEIGHT;
 			element.RegisterCallback<ClickEvent>(GenerateButtonClicked);
 			return element;
 		}
@@ -345,6 +371,11 @@ namespace ToolkitEditor.Dialogue
 			{
 				DialogueSettings.Generate(g.Key, g.Select(x => x.entry));
 			}
+		}
+
+		private void RefreshButtonClicked(ClickEvent e)
+		{
+			RefreshEntries();
 		}
 
 		#endregion
