@@ -205,7 +205,7 @@ namespace ToolkitEditor.Dialogue
 			if (speakerType == null)
 				return false;
 
-			return string.Equals(speakerTag, speakerType.ttsVoice?.name, StringComparison.OrdinalIgnoreCase)
+			return string.Equals(speakerTag, speakerType.ttsVoice?.voiceName, StringComparison.OrdinalIgnoreCase)
 				&& string.Equals(textTag, text, StringComparison.OrdinalIgnoreCase);
 		}
 

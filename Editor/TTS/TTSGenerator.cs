@@ -73,7 +73,7 @@ namespace ToolkitEditor.Dialogue
 						// Use Voice asset name because separate speakers may have different post-processing
 						// ...but could reference the same asset
 						// Want to include attributes in metadata
-						DialogueSettings.SetSpeakerAndTextTags(path, ttSVoice.name, text);
+						DialogueSettings.SetSpeakerAndTextTags(path, ttSVoice.voiceName, text);
 						Debug.Log($"Generated {path.Replace("\\", "/")}");
 
 						// Reimport AudioClip

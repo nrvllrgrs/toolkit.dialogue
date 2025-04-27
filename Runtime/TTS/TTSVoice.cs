@@ -11,6 +11,18 @@ namespace ToolkitEngine.Dialogue
 		private string m_previewText;
 
 		#endregion
+
+		#region Properties
+
+		public abstract string voiceName { get; }
+
+		#endregion
+
+		#region Methods
+
+		protected string GetVoiceName(string voiceName) => $"{voiceName}+{GetType().Name}";
+
+		#endregion
 	}
 #endif
 }

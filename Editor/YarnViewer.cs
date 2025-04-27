@@ -41,6 +41,15 @@ namespace ToolkitEditor.Dialogue
 
 		#region Methods
 
+		[InitializeOnLoadMethod]
+		private static void Initialize()
+		{
+			if (HasOpenInstances<YarnViewer>())
+			{
+				RefreshEntries();
+			}
+		}
+
 		[MenuItem("Window/Yarn Spinner/Yarn Viewer")]
 		public static void ShowWindow()
 		{
