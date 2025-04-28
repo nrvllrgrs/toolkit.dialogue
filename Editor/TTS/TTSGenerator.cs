@@ -117,10 +117,7 @@ namespace ToolkitEditor.Dialogue
 			if (m_importAssets)
 			{
 				var importer = AssetUtil.LoadImporter<YarnProjectImporter>(project);
-				if (importer != null)
-				{
-					importer.SaveAndReimport();
-				}
+				importer?.SaveAndReimport();
 			}
 			yield return null;
 		}

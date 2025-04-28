@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using System.Reflection;
 using ToolkitEngine.Dialogue;
-using UnityEditor.Localization;
 using UnityEngine;
 using Yarn.Unity;
 using Yarn.Unity.Editor;
+
+#if USE_UNITY_LOCALIZATION
+using UnityEditor.Localization;
+using UnityEngine.Localization;
+#endif
 
 namespace ToolkitEditor.Dialogue
 {
@@ -55,6 +59,27 @@ namespace ToolkitEditor.Dialogue
 			{
 				methodInfo.Invoke(null, new[] { importer });
 			}
+		}
+
+		public static string GetLocalizedDisplayName(DialogueSpeakerType speakerType)
+		{
+			if (speakerType == null)
+				return speakerType.name;
+
+#if USE_UNITY_LOCALIZATION
+
+			var fieldInfo = typeof(DialogueSpeakerType).GetField("m_displayName", BindingFlags.Instance | BindingFlags.NonPublic);
+			if (fieldInfo != null)
+			{
+				var localizedString = fieldInfo.GetValue(speakerType) as LocalizedString;
+				if (localizedString != null)
+				{
+					return LocalizedStringEditorExt.GetLocalizedStringImmediate(localizedString);
+				}
+			}
+#endif
+
+			return speakerType.displayName;
 		}
 
 		#region Audio Methods

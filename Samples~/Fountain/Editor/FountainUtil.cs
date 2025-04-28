@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
+using UnityEditor.Search;
 using UnityEngine;
 using Yarn.Markup;
 using Yarn.Unity;
@@ -55,22 +56,37 @@ namespace ToolkitEditor.Dialogue
 				|| Selection.objects.All(x => x is TextAsset);
 		}
 
-		[MenuItem("Assets/Yarn Spinner/Export to.../Fountain")]
-		private static string ExportSelectedToFountain()
+		[MenuItem("Assets/Yarn Spinner/Export to.../Fountain", priority = 110)]
+		private static void ExportSelectedToFountain()
         {
 			string path = null;
 			if (Selection.objects[0] is YarnProject)
 			{
-				path = ExportToFountain(Selection.objects.Cast<YarnProject>(), true);
+				path = ExportToFountain(Selection.objects.Cast<YarnProject>());
+			}
+			else if (Selection.objects[0] is TextAsset)
+			{
+				path = ExportToFountain(Selection.objects.Cast<TextAsset>());
 			}
 
-			return path;
+			if (!string.IsNullOrWhiteSpace(path))
+			{
+				OpenInExplorer(path);
+			}
         }
 
 		public static string ExportToFountain(YarnProject project) => ExportToFountain(new[] { project });
 
-		private static string ExportToFountain(IEnumerable<YarnProject> projects, bool showInExplorer = false)
+		private static string ExportToFountain(
+			IEnumerable<YarnProject> projects,
+			Func<StringTableEntry, bool> predicate = null)
 		{
+			var speakerNameMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+			foreach (var speakerType in YarnEditorUtil.GetDialogueSpeakerTypes())
+			{
+				speakerNameMap.Add(speakerType.name, YarnEditorUtil.GetLocalizedDisplayName(speakerType));
+			}
+
 			string path = GetYarnArtifactPath("Script", ".fountain");
 			using (StreamWriter writer = new StreamWriter(path))
 			{
@@ -97,6 +113,10 @@ namespace ToolkitEditor.Dialogue
 
 					foreach (var entry in entries)
 					{
+						// Does not match existing predicate criteria, skip
+						if (predicate != null && !predicate.Invoke(entry))
+							continue;
+
 						// Processing new file
 						if (!string.Equals(entry.File, lastFile))
 						{
@@ -126,6 +146,11 @@ namespace ToolkitEditor.Dialogue
 						if (match.Success)
 						{
 							speaker = match.Groups["speaker"].Value;
+							if (speakerNameMap.TryGetValue(speaker, out var displayName))
+							{
+								speaker = displayName;
+							}
+
 							text = match.Groups["text"].Value;
 						}
 
@@ -139,17 +164,23 @@ namespace ToolkitEditor.Dialogue
 							writer.WriteLine(speaker.ToUpper());
 
 							// Write parenthetical, if exists
-							string parenthetical = GetParenthetical(result);
-							if (!string.IsNullOrWhiteSpace(parenthetical))
+							if (TryGetParenthetical(result, out string parenthetical))
 							{
 								writer.WriteLine($"({parenthetical})");
 							}
 							writer.WriteLine(text + "\n");
 						}
 						// Use ACTION format
-						else if (!string.IsNullOrWhiteSpace(text))
+						else
 						{
-							writer.WriteLine(text + "\n");
+							if (!string.IsNullOrWhiteSpace(text))
+							{
+								writer.WriteLine(text + "\n");
+							}
+							else if (TryGetAction(result, out string action))
+							{
+								writer.WriteLine(action + "\n");
+							}
 						}
 					}
 				}
@@ -158,11 +189,21 @@ namespace ToolkitEditor.Dialogue
 				CloseScript(writer, lastFile);
 			}
 
-			if (showInExplorer)
-			{
-				OpenInExplorer(path);
-			}
 			return path;
+		}
+
+		public static string ExportToFountain(TextAsset script) => ExportToFountain(new[] { script });
+
+		private static string ExportToFountain(IEnumerable<TextAsset> scripts)
+		{
+			var projects = scripts.Select(x => YarnEditorUtil.FindYarnProject(x))
+				.Distinct();
+			var scriptNames = scripts.Select(x => x.name);
+
+			return ExportToFountain(projects, (entry) =>
+			{
+				return scriptNames.Contains(Path.GetFileNameWithoutExtension(entry.File), StringComparer.OrdinalIgnoreCase);
+			});
 		}
 
 		private static void OpenScript(StreamWriter writer, Yarn.Dialogue dialogue, StringTableEntry entry)
@@ -177,6 +218,8 @@ namespace ToolkitEditor.Dialogue
 
 		private static void OpenNode(StreamWriter writer, Yarn.Dialogue dialogue, StringTableEntry entry)
 		{
+			writer.WriteLine($">{entry.Node}\n");
+
 			IEnumerable<string> nodeTags = dialogue.GetTagsForNode(entry.Node);
 
 			// Add scene header
@@ -195,22 +238,20 @@ namespace ToolkitEditor.Dialogue
 		private static void CloseNode(StreamWriter writer, string node)
 		{ }
 
-		private static string GetParenthetical(MarkupParseResult parseResult)
+		private static bool TryGetParenthetical(MarkupParseResult result, out string value) => TryGetTag(result, "parenthetical", out value);
+		private static bool TryGetAction(MarkupParseResult result, out string value) => TryGetTag(result, "action", out value);
+
+		private static bool TryGetTag(MarkupParseResult result, string key, out string value)
 		{
-			foreach (var attr in parseResult.Attributes)
+			if (result.TryGetAttributeWithName(key, out var attr))
 			{
-				if (!string.Equals(attr.Name, "parenthetical", StringComparison.OrdinalIgnoreCase))
-					continue;
-
-				return attr.Properties.Values.ElementAt(0).StringValue;
+				value = attr.Properties.Values.ElementAt(0).StringValue;
+				return true;
 			}
-			return null;
+
+			value = null;
+			return false;
 		}
-
-		//private static string ExportToFountain(IEnumerable<TextAsset> scripts)
-		//{
-
-		//}
 
         private static void AttemptWriteLine(StringTableEntry entry, IEnumerable<string> tags, string key, Action<string> lineWriter)
         {
@@ -244,23 +285,42 @@ namespace ToolkitEditor.Dialogue
 		[MenuItem("Assets/Yarn Spinner/Export to.../Screenplay", true)]
 		private static bool ValidateExportToPDF() => ValidateExportToFountain();
 
-		[MenuItem("Assets/Yarn Spinner/Export to.../Screenplay")]
+		[MenuItem("Assets/Yarn Spinner/Export to.../Screenplay", priority = 110)]
 		private static void ExportSelectedToPDF()
 		{
 			string path = null;
 			if (Selection.objects[0] is YarnProject)
 			{
-				path = ExportToPDF(Selection.objects.Cast<YarnProject>(), true);
+				path = ExportToPDF(Selection.objects.Cast<YarnProject>());
+			}
+			else if (Selection.objects[0] is TextAsset)
+			{
+				path = ExportToPDF(Selection.objects.Cast<TextAsset>());
+			}
+
+			if (!string.IsNullOrEmpty(path))
+			{
+				OpenInExplorer(path);
 			}
 		}
 
 		public static string ExportToPDF(YarnProject project) => ExportToPDF(new[] { project });
 
-		private static string ExportToPDF(IEnumerable<YarnProject> projects, bool showInExplorer = false)
+		private static string ExportToPDF(IEnumerable<YarnProject> projects)
 		{
-			string fountainPath = ExportToFountain(projects);
-			string path = Path.ChangeExtension(fountainPath, ".pdf");
+			return ExportToPDF(ExportToFountain(projects));
+		}
 
+		public static string ExportToPDF(TextAsset script) => ExportToPDF(new[] { script });
+
+		private static string ExportToPDF(IEnumerable<TextAsset> scripts)
+		{
+			return ExportToPDF(ExportToFountain(scripts));
+		}
+
+		private static string ExportToPDF(string fountainPath)
+		{
+			string path = Path.ChangeExtension(fountainPath, ".pdf");
 			using (StreamReader reader = new StreamReader(fountainPath))
 			{
 				using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write))
@@ -271,10 +331,6 @@ namespace ToolkitEditor.Dialogue
 			}
 
 			File.Delete(fountainPath);
-			if (showInExplorer)
-			{
-				OpenInExplorer(path);
-			}
 			return path;
 		}
 

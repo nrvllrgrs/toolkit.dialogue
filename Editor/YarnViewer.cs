@@ -10,6 +10,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Yarn.Unity;
 using Yarn.Unity.Editor;
+using Yarn.Markup;
+
 
 #if USE_UNITY_LOCALIZATION
 using UnityEditor.Localization;
@@ -91,8 +93,21 @@ namespace ToolkitEditor.Dialogue
 				// Want to be sure Line IDs are assigned before possibly generating TTS
 				YarnEditorUtil.AddLineTagsToFilesInYarnProject(importer);
 
+				var dialogue = YarnEditorUtil.GetDialogue(project);
 				foreach (var entry in importer.GenerateStringsTable())
 				{
+					MarkupParseResult? result = null;
+					try
+					{
+						// Strip attributes for TTS generation
+						result = dialogue.ParseMarkup(entry.Text);
+					}
+					catch { }
+
+					// Line cannot be parsed OR does not exist, skip
+					if (!result.HasValue || string.IsNullOrWhiteSpace(result.Value.Text))
+						continue;
+
 					var yarnEntry = new YarnStringEntry()
 					{
 						project = project,

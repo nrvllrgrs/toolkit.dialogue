@@ -41,7 +41,6 @@ namespace ToolkitEngine.Dialogue
 					return m_displayName.GetLocalizedString();
 				}
 				catch { }
-#else
 #endif
 				return name;
 			}
