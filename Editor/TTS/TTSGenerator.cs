@@ -8,6 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using Yarn.Markup;
 using Yarn.Unity;
+using Yarn.Unity.Editor;
 
 namespace ToolkitEditor.Dialogue
 {
@@ -20,6 +21,12 @@ namespace ToolkitEditor.Dialogue
 
 		[SerializeField]
 		protected DefaultAsset m_directory;
+
+		#endregion
+
+		#region Events
+
+		public static Action GenerationCompleted;
 
 		#endregion
 
@@ -95,10 +102,28 @@ namespace ToolkitEditor.Dialogue
 				}
 			}
 
+			yield return EditorCoroutineUtility.StartCoroutine(AsyncFinishGenerate(project), this);
+
 			ProgressBarUtil.ClearProgressBar();
+
+			// Notify subscribers (ex. Yarn Viewer) that generation finished)
+			GenerationCompleted?.Invoke();
 		}
 
 		protected abstract IEnumerator AsyncGenerate(YarnProject project, Yarn.Dialogue dialogue, StringTableEntry entry, string text, T ttsVoice, Action<string> callback);
+
+		protected virtual IEnumerator AsyncFinishGenerate(YarnProject project)
+		{
+			if (m_importAssets)
+			{
+				var importer = AssetUtil.LoadImporter<YarnProjectImporter>(project);
+				if (importer != null)
+				{
+					importer.SaveAndReimport();
+				}
+			}
+			yield return null;
+		}
 
 		#endregion
 	}

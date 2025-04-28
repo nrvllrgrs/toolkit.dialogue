@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using ToolkitEngine.Dialogue;
 using UnityEditor;
@@ -125,8 +124,15 @@ namespace ToolkitEditor.Dialogue
 			Search(s_searchField?.value ?? string.Empty);
 		}
 
+		private void Awake()
+		{
+			TTSGenerator.GenerationCompleted += RefreshEntries;
+		}
+
 		private void OnDestroy()
 		{
+			TTSGenerator.GenerationCompleted -= RefreshEntries;
+
 			AudioUtil.StopAllPreviewClips();
 			s_window = null;
 		}
