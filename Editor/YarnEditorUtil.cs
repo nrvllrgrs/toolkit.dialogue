@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection;
 using ToolkitEngine.Dialogue;
 using UnityEditor.Localization;
 using UnityEngine;
@@ -34,6 +35,27 @@ namespace ToolkitEditor.Dialogue
 
             return null;
         }
+
+		public static void AddLineTagsToFilesInYarnProject(YarnProject project)
+		{
+			if (project == null)
+				return;
+
+			AddLineTagsToFilesInYarnProject(AssetUtil.LoadImporter<YarnProjectImporter>(project));
+		}
+
+		public static void AddLineTagsToFilesInYarnProject(YarnProjectImporter importer)
+		{
+			if (importer == null)
+				return;
+
+			var methodInfo = typeof(YarnProjectEditor).Assembly.GetType("Yarn.Unity.Editor.YarnProjectUtility")
+					.GetMethod("AddLineTagsToFilesInYarnProject", BindingFlags.Static | BindingFlags.NonPublic);
+			if (methodInfo != null)
+			{
+				methodInfo.Invoke(null, new[] { importer });
+			}
+		}
 
 		#region Audio Methods
 

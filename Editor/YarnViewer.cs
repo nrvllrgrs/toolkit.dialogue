@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using ToolkitEngine.Dialogue;
 using UnityEditor;
@@ -71,7 +72,7 @@ namespace ToolkitEditor.Dialogue
 
 			foreach (var project in YarnEditorUtil.GetYarnProjects())
 			{
-				var importer = GetImporter(project);
+				var importer = AssetUtil.LoadImporter<YarnProjectImporter>(project);
 				if (importer == null)
 					continue;
 
@@ -88,6 +89,8 @@ namespace ToolkitEditor.Dialogue
 					}
 				}
 #endif
+				// Want to be sure Line IDs are assigned before possibly generating TTS
+				YarnEditorUtil.AddLineTagsToFilesInYarnProject(importer);
 
 				foreach (var entry in importer.GenerateStringsTable())
 				{
@@ -120,11 +123,6 @@ namespace ToolkitEditor.Dialogue
 			}
 
 			Search(s_searchField?.value ?? string.Empty);
-		}
-
-		private static YarnProjectImporter GetImporter(YarnProject project)
-		{
-			return AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(project)) as YarnProjectImporter;
 		}
 
 		private void OnDestroy()
@@ -416,7 +414,8 @@ namespace ToolkitEditor.Dialogue
 						&& IsMatch('f', value, Path.GetFileNameWithoutExtension(x.entry.File))
 						&& IsMatch('p', value, x.project.name)
 						&& IsMatch('i', value, x.entry.ID)
-						&& IsMatch('d', value, YarnParserUtil.GetMetadata(x.entry)))
+						&& IsMatch('d', value, YarnParserUtil.GetMetadata(x.entry))
+						&& IsMatch('m', value, (r) => Equals(r, x.speakerTextMetadataMatch)))
 					{
 						s_filteredEntries.Add(x);
 					}
@@ -437,6 +436,20 @@ namespace ToolkitEditor.Dialogue
 				return false;
 
 			return find.Contains(search, StringComparison.InvariantCultureIgnoreCase);
+		}
+
+		private static bool IsMatch(char key, string value, Func<bool, bool> predicate)
+		{
+			var match = Regex.Match(value, $"{key}" + @":(?<value>\w*)");
+			if (!match.Success)
+				return true;
+
+			string search = match.Groups["value"].Value;
+			if (string.IsNullOrWhiteSpace(search)
+				|| !bool.TryParse(search, out var result))
+				return false;
+
+			return predicate.Invoke(result);
 		}
 
 		#endregion

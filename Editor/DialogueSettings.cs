@@ -122,10 +122,10 @@ namespace ToolkitEditor.Dialogue
 				|| Selection.objects.All(x => x is DialogueSpeakerType);
 		}
 
-		[MenuItem("Assets/Yarn Spinner/TTS/Generate All", validate = true)]
+		[MenuItem("Assets/Yarn Spinner/Generate TTS.../All", validate = true)]
 		private static bool ValidateGenerateSelectedAll() => ValidateGenerateSelected();
 
-		[MenuItem("Assets/Yarn Spinner/TTS/Generate All")]
+		[MenuItem("Assets/Yarn Spinner/Generate TTS.../All", priority = 110)]
 		private static void GenerateSelectedAll()
 		{
 			if (Selection.objects[0] is YarnProject)
@@ -142,10 +142,10 @@ namespace ToolkitEditor.Dialogue
 			}
 		}
 
-		[MenuItem("Assets/Yarn Spinner/TTS/Generate Mismatch", validate = true)]
+		[MenuItem("Assets/Yarn Spinner/Generate TTS.../Mismatch", validate = true)]
 		private static bool ValidateGenerateSelectedMismatch() => ValidateGenerateSelected();
 
-		[MenuItem("Assets/Yarn Spinner/TTS/Generate Mismatch")]
+		[MenuItem("Assets/Yarn Spinner/Generate TTS.../Mismatch", priority = 110)]
 		private static void GenerateSelectedMismatch()
 		{
 			if (Selection.objects[0] is YarnProject)

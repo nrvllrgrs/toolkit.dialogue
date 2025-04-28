@@ -6,6 +6,7 @@ using ToolkitEngine.Dialogue;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEngine;
+using Yarn.Markup;
 using Yarn.Unity;
 
 namespace ToolkitEditor.Dialogue
@@ -65,21 +66,32 @@ namespace ToolkitEditor.Dialogue
 					&& speakerTypeMap.TryGetValue(speaker, out var speakerType)
 					&& speakerType.ttsVoice is T ttSVoice)
 				{
-					// Strip attributes for TTS generation
-					var result = dialogue.ParseMarkup(text);
-
-					yield return AsyncGenerate(project, dialogue, entry, result.Text, ttSVoice, (path) =>
+					MarkupParseResult? result = null;
+					try
 					{
-						// Use Voice asset name because separate speakers may have different post-processing
-						// ...but could reference the same asset
-						// Want to include attributes in metadata
-						DialogueSettings.SetSpeakerAndTextTags(path, ttSVoice.voiceName, text);
-						Debug.Log($"Generated {path.Replace("\\", "/")}");
+						// Strip attributes for TTS generation
+						result = dialogue.ParseMarkup(text);
+					}
+					catch (Exception e)
+					{
+						Debug.LogError(e.Message);
+					}
 
-						// Reimport AudioClip
-						var importer = AssetImporter.GetAtPath(FileUtil.GetRelativePath(path)) as AudioImporter;
-						importer?.SaveAndReimport();
-					});
+					if (result.HasValue)
+					{
+						yield return AsyncGenerate(project, dialogue, entry, result.Value.Text, ttSVoice, (path) =>
+						{
+							// Use Voice asset name because separate speakers may have different post-processing
+							// ...but could reference the same asset
+							// Want to include attributes in metadata
+							DialogueSettings.SetSpeakerAndTextTags(path, ttSVoice.voiceName, text);
+							Debug.Log($"Generated {path.Replace("\\", "/")}");
+
+							// Reimport AudioClip
+							var importer = AssetImporter.GetAtPath(FileUtil.GetRelativePath(path)) as AudioImporter;
+							importer?.SaveAndReimport();
+						});
+					}
 				}
 			}
 
