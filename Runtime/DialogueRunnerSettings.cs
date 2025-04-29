@@ -32,9 +32,6 @@ namespace ToolkitEngine.Dialogue
 		[SerializeField]
 		private DialogueViewBase[] m_dialogueViews;
 
-		[SerializeField]
-		private LineProviderBehaviour m_lineProvider;
-
 		#endregion
 
 		#region Properties
@@ -44,7 +41,6 @@ namespace ToolkitEngine.Dialogue
 		public DialogueType dialogueType => m_dialogueType;
 		public VariableStorageBehaviour variableStorage => m_variableStorage;
 		public DialogueViewBase[] dialogueViews => m_dialogueViews;
-		public LineProviderBehaviour lineProvider => m_lineProvider;
 
 		#endregion
 
@@ -57,7 +53,10 @@ namespace ToolkitEngine.Dialogue
 
 		private void OnDisable()
 		{
-			DialogueManager.CastInstance.Unregister(this);
+			if (DialogueManager.Exists)
+			{
+				DialogueManager.CastInstance.Unregister(this);
+			}
 		}
 
 		#endregion

@@ -78,7 +78,10 @@ namespace ToolkitEngine.Dialogue
 
 		protected override void Terminate()
 		{
-			DialogueManager.CastInstance.DialogueStarted -= DialogueManager_DialogueStarted;
+			if (DialogueManager.Exists)
+			{
+				DialogueManager.CastInstance.DialogueStarted -= DialogueManager_DialogueStarted;
+			}
 		}
 
 		public void Skip()

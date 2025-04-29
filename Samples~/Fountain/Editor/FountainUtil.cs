@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
-using UnityEditor.Search;
 using UnityEngine;
 using Yarn.Markup;
 using Yarn.Unity;
@@ -16,13 +15,6 @@ namespace ToolkitEditor.Dialogue
 {
 	public static class FountainUtil
     {
-		#region Fields
-
-		private const string SCENE_TAG = "scene";
-        private const string ACTION_TAG = "action";
-
-		#endregion
-
 		#region Path Methods
 
 		private static string GetYarnArtifactPath(string prefix, string extension)
@@ -108,6 +100,9 @@ namespace ToolkitEditor.Dialogue
 					if (!entries.Any())
 						continue;
 
+					// Sort entries by order tag
+					entries = YarnEditorUtil.Sort(project, entries);
+
 					dialogue = YarnEditorUtil.GetDialogue(project);
 					lastFile = lastNode = string.Empty;
 
@@ -163,23 +158,28 @@ namespace ToolkitEditor.Dialogue
 						{
 							writer.WriteLine(speaker.ToUpper());
 
-							// Write parenthetical, if exists
+							// Write PARENTHETICAL, if exists
 							if (TryGetParenthetical(result, out string parenthetical))
 							{
 								writer.WriteLine($"({parenthetical})");
 							}
 							writer.WriteLine(text + "\n");
 						}
-						// Use ACTION format
 						else
 						{
+							// Use ACTION format
 							if (!string.IsNullOrWhiteSpace(text))
 							{
-								writer.WriteLine(text + "\n");
+								writer.WriteLine($"{text}\n");
 							}
 							else if (TryGetAction(result, out string action))
 							{
-								writer.WriteLine(action + "\n");
+								writer.WriteLine($"{action}\n");
+							}
+							// USE SCENE HEADING format
+							else if (TryGetSceneHeading(result, out string scene))
+							{
+								writer.WriteLine($".{scene}\n");
 							}
 						}
 					}
@@ -219,25 +219,12 @@ namespace ToolkitEditor.Dialogue
 		private static void OpenNode(StreamWriter writer, Yarn.Dialogue dialogue, StringTableEntry entry)
 		{
 			writer.WriteLine($">{entry.Node}\n");
-
-			IEnumerable<string> nodeTags = dialogue.GetTagsForNode(entry.Node);
-
-			// Add scene header
-			AttemptWriteLine(entry, nodeTags, SCENE_TAG, (scene) =>
-			{
-				writer.WriteLine($".{scene.ToUpper()}\n");
-			});
-
-			// Add action from node
-			AttemptWriteLine(entry, nodeTags, ACTION_TAG, (action) =>
-			{
-				writer.WriteLine($"{action}\n");
-			});
 		}
 
 		private static void CloseNode(StreamWriter writer, string node)
 		{ }
 
+		private static bool TryGetSceneHeading(MarkupParseResult result, out string value) => TryGetTag(result, "scene", out value);
 		private static bool TryGetParenthetical(MarkupParseResult result, out string value) => TryGetTag(result, "parenthetical", out value);
 		private static bool TryGetAction(MarkupParseResult result, out string value) => TryGetTag(result, "action", out value);
 

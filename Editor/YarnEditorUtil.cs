@@ -1,9 +1,14 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using ToolkitEngine.Dialogue;
 using UnityEngine;
 using Yarn.Unity;
 using Yarn.Unity.Editor;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+
 
 #if USE_UNITY_LOCALIZATION
 using UnityEditor.Localization;
@@ -14,7 +19,13 @@ namespace ToolkitEditor.Dialogue
 {
 	public static class YarnEditorUtil
     {
-        public static IEnumerable<YarnProject> GetYarnProjects() => AssetUtil.GetAssetsOfType<YarnProject>();
+		#region Fields
+
+		private const string ORDER_TAG = "order:";
+
+		#endregion
+
+		public static IEnumerable<YarnProject> GetYarnProjects() => AssetUtil.GetAssetsOfType<YarnProject>();
         public static IEnumerable<DialogueSpeakerType> GetDialogueSpeakerTypes() => AssetUtil.GetAssetsOfType<DialogueSpeakerType>();
 
         public static Yarn.Dialogue GetDialogue(YarnProject project)
@@ -39,6 +50,35 @@ namespace ToolkitEditor.Dialogue
 
             return null;
         }
+
+		public static IEnumerable<StringTableEntry> Sort(YarnProject project, IEnumerable<StringTableEntry> entries)
+		{
+			int act = 0, scene = 0, beat = 0;
+			return from entry in entries
+				   let hasOrder = TryGetOrder(project, entry, out act, out scene, out beat)
+				   orderby hasOrder descending, act ascending, scene ascending, beat ascending
+				   select entry;
+		}
+
+		public static bool TryGetOrder(YarnProject project, StringTableEntry entry, out int act, out int scene, out int beat)
+		{
+			act = scene = beat = 0;
+			var nodeTags = GetDialogue(project)?.GetTagsForNode(entry.Node);
+			if (nodeTags == null)
+				return false;
+
+			var orderTag = nodeTags.FirstOrDefault(x => x.StartsWith(ORDER_TAG, StringComparison.OrdinalIgnoreCase));
+			if (orderTag == null)
+				return false;
+
+			string[] s = orderTag.Substring(ORDER_TAG.Length).Split('.');
+			if (s.Length != 3)
+				return false;
+
+			return int.TryParse(s[0], out act)
+				&& int.TryParse(s[1], out scene)
+				&& int.TryParse(s[2], out beat);
+		}
 
 		public static void AddLineTagsToFilesInYarnProject(YarnProject project)
 		{

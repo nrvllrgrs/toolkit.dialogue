@@ -137,8 +137,11 @@ namespace ToolkitEngine.Dialogue
 			base.Terminate();
 
 			LifecycleSubsystem.Unregister(this, LifecycleSubsystem.Phase.Update);
-			DialogueManager.CastInstance.DialogueStarted -= DialogueManager_DialogueStart;
-			DialogueManager.CastInstance.DialogueCompleted -= DialogueManager_DialogueComplete;
+			if (DialogueManager.Exists)
+			{
+				DialogueManager.CastInstance.DialogueStarted -= DialogueManager_DialogueStart;
+				DialogueManager.CastInstance.DialogueCompleted -= DialogueManager_DialogueComplete;
+			}
 		}
 
 		public override void Update()

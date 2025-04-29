@@ -13,7 +13,6 @@ namespace ToolkitEditor.Dialogue
 		protected SerializedProperty m_dialogueType;
 		protected SerializedProperty m_variableStorage;
 		protected SerializedProperty m_dialogueViews;
-		protected SerializedProperty m_lineProvider;
 
 		#endregion
 
@@ -26,7 +25,6 @@ namespace ToolkitEditor.Dialogue
 			m_dialogueType = serializedObject.FindProperty(nameof(m_dialogueType));
 			m_variableStorage = serializedObject.FindProperty(nameof(m_variableStorage));
 			m_dialogueViews = serializedObject.FindProperty(nameof(m_dialogueViews));
-			m_lineProvider = serializedObject.FindProperty(nameof(m_lineProvider));
 		}
 
 		protected override void DrawProperties()
@@ -48,7 +46,6 @@ namespace ToolkitEditor.Dialogue
 
 			EditorGUILayout.PropertyField(m_variableStorage);
 			EditorGUILayout.PropertyField(m_dialogueViews);
-			EditorGUILayout.PropertyField(m_lineProvider);
 		}
 
 		#endregion

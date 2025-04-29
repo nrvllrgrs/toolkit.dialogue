@@ -15,7 +15,10 @@ namespace ToolkitEngine.Dialogue
 		private List<DialogueSpeakerType> m_speakers = new();
 
 		[SerializeField]
-		private Spawner m_spawner;
+		private Spawner m_dialogueSpawner;
+
+		[SerializeField]
+		private GameObject m_runnerSettingsTemplate;
 
 #if USE_UNITY_LOCALIZATION
 		[SerializeField]
@@ -27,7 +30,8 @@ namespace ToolkitEngine.Dialogue
 
 		public DialogueCategory[] categories => m_categories.ToArray();
 		public DialogueSpeakerType[] speakers => m_speakers.ToArray();
-		public Spawner dialogueSpawner => m_spawner;
+		public Spawner dialogueSpawner => m_dialogueSpawner;
+		public GameObject runnerSettingsTemplate => m_runnerSettingsTemplate;
 
 #if USE_UNITY_LOCALIZATION
 		public LocalizedTableMap tableMap => m_tableMap;

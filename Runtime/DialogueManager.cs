@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Yarn.Unity;
@@ -98,12 +99,24 @@ namespace ToolkitEngine.Dialogue
 					m_characterNameToSpeakerTypeMap.Add(speaker.name, speaker);
 				}
 			}
+		}
+
+		protected override void InstantiateSubsystem()
+		{
+			if (Config.runnerSettingsTemplate != null)
+			{
+				UnityEngine.Object.DontDestroyOnLoad(
+					UnityEngine.Object.Instantiate(Config.runnerSettingsTemplate));
+			}
 
 			// Any instantiated DialogueRunners should automatically be cleared by PoolItemManager
 		}
 
 		protected override void Terminate()
 		{
+			if (m_runtimeMap == null)
+				return;
+
 			foreach (var runtimeCategory in m_runtimeMap.Values)
 			{
 				runtimeCategory.Dispose();
