@@ -36,5 +36,20 @@ namespace ToolkitEngine.Dialogue
 				? entry.Comment.Substring(METADATA_PREFIX.Length)
 				: entry.Comment;
 		}
+
+		public static bool TryGetMetadataTag(StringTableEntry entry, string key, out string value)
+		{
+			value = null;
+			var metadata = GetMetadata(entry);
+			if (string.IsNullOrWhiteSpace(metadata))
+				return false;
+
+			var match = Regex.Match(metadata, $@"{key}:(?<data>\S*)");
+			if (!match.Success)
+				return false;
+
+			value = match.Groups["data"].Value;
+			return true;
+		}
 	}
 }

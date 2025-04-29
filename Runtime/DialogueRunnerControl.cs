@@ -312,5 +312,20 @@ namespace ToolkitEngine.Dialogue
 		}
 
 		#endregion
+
+		#region Editor-Only
+#if UNITY_EDITOR
+
+		[ContextMenu("Rename GameObject")]
+		private void RenameGameObject()
+		{
+			if (string.IsNullOrWhiteSpace(m_startNode.name))
+				return;
+
+			gameObject.name = $"Dialogue_{m_startNode.name}";
+		}
+
+#endif
+		#endregion
 	}
 }

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using ToolkitEngine.Dialogue;
 using UnityEditor;
 using UnityEngine;
 using Yarn.Markup;
@@ -153,6 +154,11 @@ namespace ToolkitEditor.Dialogue
 						var result = dialogue.ParseMarkup(text);
 						text = result.Text;
 
+						if (TryGetChoice(entry, out int number, out string choice))
+						{
+							writer.WriteLine($">CHOICE {number}: {choice}\n");
+						}
+
 						// Speaker exists, use CHARACTER-DIALOGUE format
 						if (!string.IsNullOrWhiteSpace(speaker))
 						{
@@ -176,11 +182,20 @@ namespace ToolkitEditor.Dialogue
 							{
 								writer.WriteLine($"{action}\n");
 							}
-							// USE SCENE HEADING format
+							// Use SCENE HEADING format
 							else if (TryGetSceneHeading(result, out string scene))
 							{
 								writer.WriteLine($".{scene}\n");
 							}
+							else if (TryGetAnchor(result, out string anchor))
+							{
+								writer.WriteLine($">{anchor}\n");
+							}
+						}
+
+						if (TryGetGoTo(entry, out string goTo))
+						{
+							writer.WriteLine($">GOTO: {goTo.Replace("_", " ")}\n");
 						}
 					}
 				}
@@ -218,15 +233,18 @@ namespace ToolkitEditor.Dialogue
 
 		private static void OpenNode(StreamWriter writer, Yarn.Dialogue dialogue, StringTableEntry entry)
 		{
-			writer.WriteLine($">{entry.Node}\n");
+			writer.WriteLine($">*{ConvertToMarkdown(entry.Node)}*<\n");
 		}
 
 		private static void CloseNode(StreamWriter writer, string node)
-		{ }
+		{
+			//writer.WriteLine($">*End of {ConvertToMarkdown(node)}*<\n");
+		}
 
 		private static bool TryGetSceneHeading(MarkupParseResult result, out string value) => TryGetTag(result, "scene", out value);
 		private static bool TryGetParenthetical(MarkupParseResult result, out string value) => TryGetTag(result, "parenthetical", out value);
 		private static bool TryGetAction(MarkupParseResult result, out string value) => TryGetTag(result, "action", out value);
+		private static bool TryGetAnchor(MarkupParseResult result, out string value) => TryGetTag(result, "anchor", out value);
 
 		private static bool TryGetTag(MarkupParseResult result, string key, out string value)
 		{
@@ -240,30 +258,23 @@ namespace ToolkitEditor.Dialogue
 			return false;
 		}
 
-        private static void AttemptWriteLine(StringTableEntry entry, IEnumerable<string> tags, string key, Action<string> lineWriter)
-        {
-            if (TryGetTag(tags, key, out string value))
-            {
-                lineWriter.Invoke(value);
-            }
-        }
+		private static bool TryGetChoice(StringTableEntry entry, out int number, out string value)
+		{
+			number = 0;
 
-        private static bool TryGetTag(IEnumerable<string> tags, string key, out string value)
-        {
-			if (tags == null || !tags.Any())
-			{
-				value = default;
+			if (!YarnParserUtil.TryGetMetadataTag(entry, "choice", out value))
 				return false;
-			}
 
-			value = tags.FirstOrDefault(x => x.StartsWith($"{key}:"));
-			if (string.IsNullOrWhiteSpace(value))
-                return false;
+			var match = Regex.Match(value, @"(?<number>\d*)\.(?<value>.*)");
+			if (!match.Success)
+				return false;
 
-			value = value.Substring($"{key}:".Length);
-            value = value.SnakeCaseToString();
-            return true;
+			number = int.Parse(match.Groups["number"].Value);
+			value = match.Groups["value"].Value;
+			return true;
 		}
+
+		private static bool TryGetGoTo(StringTableEntry entry, out string value) => YarnParserUtil.TryGetMetadataTag(entry, "goto", out value);
 
 		#endregion
 
