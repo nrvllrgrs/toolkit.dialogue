@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using ToolkitEngine.Dialogue;
 using UnityEngine;
 using Yarn.Unity;
 using Yarn.Unity.Editor;
-using System.Linq;
-using System.Text.RegularExpressions;
-
-
 
 #if USE_UNITY_LOCALIZATION
 using UnityEditor.Localization;
@@ -51,13 +48,40 @@ namespace ToolkitEditor.Dialogue
             return null;
         }
 
-		public static IEnumerable<StringTableEntry> Sort(YarnProject project, IEnumerable<StringTableEntry> entries)
+		public static IEnumerable<YarnProjectTableEntry> GetOrderedEntries(IEnumerable<YarnProject> projects)
 		{
-			int act = 0, scene = 0, beat = 0;
-			return from entry in entries
-				   let hasOrder = TryGetOrder(project, entry, out act, out scene, out beat)
-				   orderby hasOrder descending, act ascending, scene ascending, beat ascending
-				   select entry;
+			// Collect entries from ALL projects
+			List<YarnProjectTableEntry> yarnEntries = new();
+			foreach (var project in projects)
+			{
+				var importer = AssetUtil.LoadImporter<YarnProjectImporter>(project);
+				var entries = importer.GenerateStringsTable();
+
+				// Project doesn't have lines, skip
+				if (!entries.Any())
+					continue;
+
+				yarnEntries.AddRange(entries.Select(x => new YarnProjectTableEntry()
+				{
+					project = project,
+					entry = x
+				}));
+			}
+
+			// Sort all entries
+			return yarnEntries.Select(x => new
+			{
+				yarnEntry = x,
+				hasOrder = YarnEditorUtil.TryGetOrder(x.project, x.entry, out int act, out int scene, out int beat),
+				act,
+				scene,
+				beat,
+			})
+			.OrderByDescending(x => x.hasOrder)
+			.ThenBy(x => x.act)
+			.ThenBy(x => x.scene)
+			.ThenBy(x => x.beat)
+			.Select(x => x.yarnEntry);
 		}
 
 		public static bool TryGetOrder(YarnProject project, StringTableEntry entry, out int act, out int scene, out int beat)
@@ -172,5 +196,11 @@ namespace ToolkitEditor.Dialogue
 		}
 
 		#endregion
+	}
+
+	public struct YarnProjectTableEntry
+	{
+		public YarnProject project;
+		public StringTableEntry entry;
 	}
 }
