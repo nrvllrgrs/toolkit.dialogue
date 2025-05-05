@@ -45,6 +45,21 @@ namespace ToolkitEngine.Dialogue
 			});
 		}
 
+		[YarnCommand("increment")]
+		public void Increment(string variableName, int delta = 1)
+		{
+			if (m_variableStorage.TryGetValue(variableName, out int value))
+			{
+				m_variableStorage.SetValue(variableName, value +  delta);
+			}
+		}
+
+		[YarnCommand("decrement")]
+		public void Decrement(string variableName, int delta = 1)
+		{
+			Increment(variableName, -delta);
+		}
+
 		#endregion
 	}
 }
