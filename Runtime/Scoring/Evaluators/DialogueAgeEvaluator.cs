@@ -1,4 +1,5 @@
 using UnityEngine;
+using ToolkitEngine.Scoring;
 
 namespace ToolkitEngine.Dialogue.Scoring
 {
