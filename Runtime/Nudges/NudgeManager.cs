@@ -6,7 +6,7 @@ using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue
 {
-	public class NudgeManager : InstantiableSubsystem<NudgeManager, NudgeManagerConfig>
+	public class NudgeManager : ConfigurableSubsystem<NudgeManager, NudgeManagerConfig>, IInstantiableSubsystem
 	{
 		#region Fields
 
@@ -96,7 +96,7 @@ namespace ToolkitEngine.Dialogue
 			{
 				if (m_runner == null)
 				{
-					m_runner = GetInstance()?.GetComponent<DialogueRunner>();
+					m_runner = m_control?.GetComponent<DialogueRunner>();
 				}
 				return m_runner;
 			}
@@ -108,7 +108,7 @@ namespace ToolkitEngine.Dialogue
 			{
 				if (m_control == null)
 				{
-					m_control = GetInstance()?.GetComponent<DialogueRunnerControl>();
+					m_control = m_control?.GetComponent<DialogueRunnerControl>();
 					if (m_control != null)
 					{
 						m_control.Set(runner, Config.dialogueType);
@@ -142,6 +142,11 @@ namespace ToolkitEngine.Dialogue
 				DialogueManager.CastInstance.DialogueStarted -= DialogueManager_DialogueStart;
 				DialogueManager.CastInstance.DialogueCompleted -= DialogueManager_DialogueComplete;
 			}
+		}
+
+		public void Instantiate()
+		{
+			m_control = IInstantiableSubsystem.Instantiate(Config?.template);
 		}
 
 		public override void Update()

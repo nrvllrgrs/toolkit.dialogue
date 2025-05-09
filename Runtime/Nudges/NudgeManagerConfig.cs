@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +21,8 @@ namespace ToolkitEngine.Dialogue
 
 		#region Properties
 
+		public System.Type subsystemType => typeof(NudgeManager);
+		public DialogueRunnerControl template => m_template;
 		public DialogueType dialogueType => m_dialogueType;
 
 		#endregion
@@ -35,13 +36,6 @@ namespace ToolkitEngine.Dialogue
 				? (m_priorities.Count - 1) - index
 				: index;
 		}
-
-		#endregion
-
-		#region IInstantiableSubsystemConfig Methods
-
-		public GameObject GetTemplate() => m_template?.gameObject;
-		public Type GetManagerType() => typeof(NudgeManager);
 
 		#endregion
 	}

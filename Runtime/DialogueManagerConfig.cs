@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ToolkitEngine.Dialogue
 {
 	[CreateAssetMenu(menuName = "Toolkit/Config/DialogueManager Config")]
-	public class DialogueManagerConfig : ScriptableObject
+	public class DialogueManagerConfig : ScriptableObject, IInstantiableSubsystemConfig
     {
 		#region Fields
 
@@ -28,6 +28,7 @@ namespace ToolkitEngine.Dialogue
 
 		#region Properties
 
+		public System.Type subsystemType => typeof(DialogueManager);
 		public DialogueCategory[] categories => m_categories.ToArray();
 		public DialogueSpeakerType[] speakers => m_speakers.ToArray();
 		public Spawner dialogueSpawner => m_dialogueSpawner;

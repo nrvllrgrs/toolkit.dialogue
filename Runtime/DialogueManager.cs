@@ -9,7 +9,7 @@ using Yarn.Unity.UnityLocalization;
 
 namespace ToolkitEngine.Dialogue
 {
-	public class DialogueManager : ConfigurableSubsystem<DialogueManager, DialogueManagerConfig>
+	public class DialogueManager : ConfigurableSubsystem<DialogueManager, DialogueManagerConfig>, IInstantiableSubsystem
     {
 		#region Fields
 
@@ -101,13 +101,9 @@ namespace ToolkitEngine.Dialogue
 			}
 		}
 
-		protected override void InstantiateSubsystem()
+		public void Instantiate()
 		{
-			if (Config.runnerSettingsTemplate != null)
-			{
-				UnityEngine.Object.DontDestroyOnLoad(
-					UnityEngine.Object.Instantiate(Config.runnerSettingsTemplate));
-			}
+			IInstantiableSubsystem.Instantiate(Config?.runnerSettingsTemplate);
 
 			// Any instantiated DialogueRunners should automatically be cleared by PoolItemManager
 		}
