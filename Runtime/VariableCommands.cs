@@ -60,6 +60,21 @@ namespace ToolkitEngine.Dialogue
 			Increment(variableName, -delta);
 		}
 
+		[YarnCommand("incrementAndWrap")]
+		public void IncrementAndWrap(string variableName, int length, int delta = 1)
+		{
+			if (m_variableStorage.TryGetValue(variableName, out int value))
+			{
+				m_variableStorage.SetValue(variableName, (((value + delta) % length) + length) % length);
+			}
+		}
+
+		[YarnCommand("decrementAndWrap")]
+		public void DecrementAndWrap(string variableName, int length, int delta = 1)
+		{
+			IncrementAndWrap(variableName, length, -delta);
+		}
+
 		#endregion
 	}
 }
