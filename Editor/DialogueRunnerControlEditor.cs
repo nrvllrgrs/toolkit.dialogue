@@ -14,6 +14,7 @@ namespace ToolkitEditor.Dialogue
 		protected DialogueRunner m_dialogueRunner;
 		protected SerializedObject m_serializedDialogueRunner;
 		protected SerializedProperty m_yarnProject;
+		protected SerializedProperty m_lineProvider;
 
 		protected SerializedProperty m_dialogueType;
 		protected SerializedProperty m_playOnStart;
@@ -42,6 +43,7 @@ namespace ToolkitEditor.Dialogue
 			m_serializedDialogueRunner.ApplyModifiedProperties();
 
 			m_yarnProject = m_serializedDialogueRunner.FindProperty("yarnProject");
+			m_lineProvider = m_serializedDialogueRunner.FindProperty("lineProvider");
 
 			m_dialogueType = serializedObject.FindProperty(nameof(m_dialogueType));
 			m_playOnStart = serializedObject.FindProperty(nameof (m_playOnStart));
@@ -104,7 +106,13 @@ namespace ToolkitEditor.Dialogue
 						case LocalizationType.YarnInternal:
 							if (m_dialogueRunner.lineProvider is not AudioLineProvider)
 							{
-								m_dialogueRunner.lineProvider = m_dialogueRunner.gameObject.AddComponent<AudioLineProvider>();
+								var lineProvider = m_dialogueRunner.GetComponent<AudioLineProvider>();
+								if (lineProvider == null)
+								{
+									lineProvider = m_dialogueRunner.gameObject.AddComponent<AudioLineProvider>();
+								}
+
+								m_lineProvider.objectReferenceValue = lineProvider;
 							}
 							break;
 
@@ -113,8 +121,13 @@ namespace ToolkitEditor.Dialogue
 							var localizedLineProvider = m_dialogueRunner.lineProvider as UnityLocalisedLineProvider;
 							if (localizedLineProvider == null)
 							{
-								localizedLineProvider = m_dialogueRunner.gameObject.AddComponent<UnityLocalisedLineProvider>();
-								m_dialogueRunner.lineProvider = localizedLineProvider;
+								localizedLineProvider = m_dialogueRunner.GetComponent<UnityLocalisedLineProvider>();
+								if (localizedLineProvider == null)
+								{
+									localizedLineProvider = m_dialogueRunner.gameObject.AddComponent<UnityLocalisedLineProvider>();
+								}
+
+								m_lineProvider.objectReferenceValue = localizedLineProvider;
 							}
 
 							if (DialogueManager.CastInstance.Config.tableMap?.TryGetTables(project, out var tables) ?? false)
@@ -125,6 +138,8 @@ namespace ToolkitEditor.Dialogue
 							break;
 #endif
 					}
+
+					m_serializedDialogueRunner.ApplyModifiedProperties();
 				}
 			}
 			EditorGUI.EndDisabledGroup();
