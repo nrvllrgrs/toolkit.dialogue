@@ -5,26 +5,10 @@ namespace ToolkitEngine.Dialogue
 {
 	public class DialogueRunnerSettings : MonoBehaviour
     {
-		#region Enumerators
-
-		public enum RegistrationMode
-		{
-			Category,
-			Type
-		};
-
-		#endregion
-
 		#region Fields
 
 		[SerializeField]
-		private RegistrationMode m_registration = RegistrationMode.Category;
-
-		[SerializeField]
-		private DialogueCategory m_dialogueCategory;
-
-		[SerializeField]
-		private DialogueType m_dialogueType;
+		private DialogueRegistration m_registration;
 
 		[SerializeField]
 		private VariableStorageBehaviour m_variableStorage;
@@ -36,9 +20,7 @@ namespace ToolkitEngine.Dialogue
 
 		#region Properties
 
-		public RegistrationMode registration => m_registration;
-		public DialogueCategory dialogueCategory => m_dialogueCategory;
-		public DialogueType dialogueType => m_dialogueType;
+		public DialogueRegistration registration => m_registration;
 		public VariableStorageBehaviour variableStorage => m_variableStorage;
 		public DialogueViewBase[] dialogueViews => m_dialogueViews;
 

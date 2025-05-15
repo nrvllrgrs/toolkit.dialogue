@@ -253,27 +253,27 @@ namespace ToolkitEngine.Dialogue
 
 		public void Register(DialogueRunnerSettings settings)
 		{
-			switch (settings.registration)
+			switch (settings.registration.mode)
 			{
-				case DialogueRunnerSettings.RegistrationMode.Category:
-					if (!m_settingsByCategory.ContainsKey(settings.dialogueCategory))
+				case DialogueRegistration.Mode.Category:
+					if (!m_settingsByCategory.ContainsKey(settings.registration.dialogueCategory))
 					{
-						m_settingsByCategory.Add(settings.dialogueCategory, settings);
+						m_settingsByCategory.Add(settings.registration.dialogueCategory, settings);
 					}
 					else
 					{
-						m_settingsByCategory[settings.dialogueCategory] = settings;
+						m_settingsByCategory[settings.registration.dialogueCategory] = settings;
 					}
 					break;
 
-				case DialogueRunnerSettings.RegistrationMode.Type:
-					if (!m_settingsByType.ContainsKey(settings.dialogueType))
+				case DialogueRegistration.Mode.Type:
+					if (!m_settingsByType.ContainsKey(settings.registration.dialogueType))
 					{
-						m_settingsByType.Add(settings.dialogueType, settings);
+						m_settingsByType.Add(settings.registration.dialogueType, settings);
 					}
 					else
 					{
-						m_settingsByType[settings.dialogueType] = settings;
+						m_settingsByType[settings.registration.dialogueType] = settings;
 					}
 					break;
 			}
@@ -281,16 +281,34 @@ namespace ToolkitEngine.Dialogue
 
 		public void Unregister(DialogueRunnerSettings settings)
 		{
-			switch (settings.registration)
+			switch (settings.registration.mode)
 			{
-				case DialogueRunnerSettings.RegistrationMode.Category:
-					m_settingsByCategory.Remove(settings.dialogueCategory);
+				case DialogueRegistration.Mode.Category:
+					m_settingsByCategory.Remove(settings.registration.dialogueCategory);
 					break;
 
-				case DialogueRunnerSettings.RegistrationMode.Type:
-					m_settingsByType.Remove(settings.dialogueType);
+				case DialogueRegistration.Mode.Type:
+					m_settingsByType.Remove(settings.registration.dialogueType);
 					break;
 			}
+		}
+
+		public bool TryGetDialogueRunnerSettings(DialogueRegistration registration, out DialogueRunnerSettings settings)
+		{
+			settings = null;
+
+			if (registration == null)
+				return false;
+
+			switch (registration.mode)
+			{
+				case DialogueRegistration.Mode.Category:
+					return TryGetDialogueRunnerSettings(registration.dialogueCategory, out settings);
+
+				case DialogueRegistration.Mode.Type:
+					return TryGetDialogueRunnerSettings(registration.dialogueType, out settings);
+			}
+			return false;
 		}
 
 		public bool TryGetDialogueRunnerSettings(DialogueCategory category, out DialogueRunnerSettings settings)
@@ -435,6 +453,13 @@ namespace ToolkitEngine.Dialogue
 			}
 
 			set.Add(speaker);
+
+			// Need to map characterName to speakerType
+			// This can be permanent
+			if (!m_characterNameToSpeakerTypeMap.ContainsKey(speaker.speakerType.name))
+			{
+				m_characterNameToSpeakerTypeMap.Add(speaker.speakerType.name, speaker.speakerType);
+			}
 		}
 
 		public void Unregister(DialogueSpeaker speaker)
