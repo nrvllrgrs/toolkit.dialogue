@@ -6,7 +6,7 @@ using Yarn.Unity.UnityLocalization;
 
 namespace ToolkitEditor.Dialogue
 {
-	[CustomEditor(typeof(DialogueRunnerControl))]
+	[CustomEditor(typeof(DialogueRunnerControl), true)]
     public class DialogueRunnerControlEditor : BaseToolkitEditor
     {
 		#region Fields

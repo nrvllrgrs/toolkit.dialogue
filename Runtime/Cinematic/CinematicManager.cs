@@ -180,7 +180,7 @@ namespace ToolkitEngine.Dialogue
 		public static IEnumerator WaitForContinue()
 		{
 			CastInstance.m_waiting = true;
-			yield return new WaitUntil(() => CastInstance.m_waiting);
+			yield return new WaitWhile(() => CastInstance.m_waiting);
 		}
 
 		[YarnCommand("waitForContinueWithTimeout")]

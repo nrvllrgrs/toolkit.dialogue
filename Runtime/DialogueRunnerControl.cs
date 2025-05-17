@@ -8,7 +8,7 @@ namespace ToolkitEngine.Dialogue
 	{
 		#region Properties
 
-		public DialogueRunnerControl control { get; private set; }
+		public DialogueRunnerControl control { get; internal set; }
 		public string nodeName { get; private set; }
 		public string command { get; private set; }
 		public DialogueType type => control?.dialogueType;
@@ -122,7 +122,7 @@ namespace ToolkitEngine.Dialogue
 			m_dialogueRunner = GetComponent<DialogueRunner>();
 		}
 
-		private void OnEnable()
+		protected virtual void OnEnable()
 		{
 			m_dialogueRunner.onDialogueStart.AddListener(DialogueRunner_DialogueStart);
 			m_dialogueRunner.onDialogueComplete.AddListener(DialogueRunner_DialogueComplete);
@@ -131,7 +131,7 @@ namespace ToolkitEngine.Dialogue
 			m_dialogueRunner.onCommand.AddListener(DialogueRunner_Command);
 		}
 
-		private void OnDisable()
+		protected virtual void OnDisable()
 		{
 			m_dialogueRunner.onDialogueStart.RemoveListener(DialogueRunner_DialogueStart);
 			m_dialogueRunner.onDialogueComplete.RemoveListener(DialogueRunner_DialogueComplete);
@@ -279,8 +279,14 @@ namespace ToolkitEngine.Dialogue
 
 			m_startTime = Time.time;
 			m_isDialogueRunning = true;
+
+			// Notify method/subscribers dialogue started
+			DialogueStarted();
 			m_onDialogueStarted?.Invoke(new DialogueEventArgs(this));
 		}
+
+		protected virtual void DialogueStarted()
+		{ }
 
 		private void DialogueRunner_DialogueComplete()
 		{
@@ -292,19 +298,33 @@ namespace ToolkitEngine.Dialogue
 
 			var e = new DialogueEventArgs(this);
 			DialogueCompleting?.Invoke(this, e);
+
+			// Notify method/subscribers dialogue completed
+			DialogueCompleted();
 			m_onDialogueCompleted?.Invoke(e);
 			DialogueLateCompleted?.Invoke(this, e);
 		}
 
+		protected virtual void DialogueCompleted()
+		{ }
+
 		private void DialogueRunner_NodeStart(string nodeName)
 		{
+			NodeStarted(nodeName);
 			m_onNodeStarted?.Invoke(new DialogueEventArgs(this, nodeName));
 		}
 
+		protected virtual void NodeStarted(string nodeName)
+		{ }
+
 		private void DialogueRunner_NodeComplete(string nodeName)
 		{
+			NodeCompleted(nodeName);
 			m_onNodeCompleted?.Invoke(new DialogueEventArgs(this, nodeName));
 		}
+
+		protected virtual void NodeCompleted(string nodeName)
+		{ }
 
 		private void DialogueRunner_Command(string command)
 		{

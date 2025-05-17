@@ -81,6 +81,7 @@ namespace Yarn.Unity
 
 		private HashSet<AudioSource> m_activeAudioSources = new();
 		private float m_volume = 0f;
+		private string m_speakingCharacterName = string.Empty;
 
 		#endregion
 
@@ -101,6 +102,29 @@ namespace Yarn.Unity
 				foreach (var audioSource in m_activeAudioSources)
 				{
 					audioSource.volume = value;
+				}
+			}
+		}
+
+		private string speakingCharacterName
+		{
+			get => m_speakingCharacterName;
+			set
+			{
+				// No change, skip
+				if (value == m_speakingCharacterName)
+					return;
+
+				if (!string.IsNullOrWhiteSpace(m_speakingCharacterName))
+				{
+					DialogueManager.CastInstance.DeactivateSpeaker(m_speakingCharacterName);
+				}
+
+				m_speakingCharacterName = value;
+
+				if (!string.IsNullOrWhiteSpace(m_speakingCharacterName))
+				{
+					DialogueManager.CastInstance.ActivateSpeaker(m_speakingCharacterName);
 				}
 			}
 		}
@@ -368,6 +392,9 @@ namespace Yarn.Unity
 			{
 				Play(m_audioSource, voiceOverClip);
 			}
+
+			// Remember who is speaking
+			speakingCharacterName = dialogueLine.CharacterName;
 		}
 
 		private void Play(AudioSource audioSource, AudioClip voiceOverClip)
@@ -378,6 +405,9 @@ namespace Yarn.Unity
 
 		private void Stop()
 		{
+			// Nobody is speaking now
+			speakingCharacterName = null;
+
 			foreach (var audioSource in m_activeAudioSources)
 			{
 				audioSource.Stop();

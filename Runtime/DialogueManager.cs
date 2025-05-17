@@ -23,6 +23,8 @@ namespace ToolkitEngine.Dialogue
 		private Dictionary<DialogueSpeakerType, HashSet<DialogueSpeaker>> m_speakerMap = new();
 		private Dictionary<string, DialogueSpeakerType> m_characterNameToSpeakerTypeMap = new Dictionary<string, DialogueSpeakerType>(StringComparer.OrdinalIgnoreCase);
 
+		private HashSet<string> m_activeSpeakerNames;
+
 #if UNITY_EDITOR
 		private static GameObject s_container;
 #endif
@@ -73,6 +75,7 @@ namespace ToolkitEngine.Dialogue
 			m_spawnMap = new();
 			m_speakerMap = new();
 			m_characterNameToSpeakerTypeMap = new Dictionary<string, DialogueSpeakerType>(StringComparer.OrdinalIgnoreCase);
+			m_activeSpeakerNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
 			int categoryPriority = Config.categories.Length;
 			foreach (var category in Config.categories)
@@ -492,6 +495,23 @@ namespace ToolkitEngine.Dialogue
 				&& TryGetDialogueSpeakers(speakerType, out speakers);
 		}
 
+		public bool IsAnyDialogueSpeakerRunning() => m_activeSpeakerNames.Any();
+
+		internal void ActivateSpeaker(string characterName)
+		{
+			if (string.IsNullOrWhiteSpace(characterName))
+				return;
+
+			m_activeSpeakerNames.Add(characterName);
+		}
+		internal void DeactivateSpeaker(string characterName)
+		{
+			if (string.IsNullOrWhiteSpace(characterName))
+				return;
+
+			m_activeSpeakerNames.Remove(characterName);
+		}
+
 		#endregion
 
 		#region Callbacks
@@ -758,6 +778,7 @@ namespace ToolkitEngine.Dialogue
 				if (!IsActiveDialogueRunnerControl(e))
 					return;
 
+				e.control = e.runner.GetComponent<DialogueRunnerControl>();
 				NodeStarted?.Invoke(this, e);
 			}
 
@@ -766,6 +787,7 @@ namespace ToolkitEngine.Dialogue
 				if (!IsActiveDialogueRunnerControl(e))
 					return;
 
+				e.control = e.runner.GetComponent<DialogueRunnerControl>();
 				NodeCompleted?.Invoke(this, e);
 			}
 
@@ -774,6 +796,7 @@ namespace ToolkitEngine.Dialogue
 				if (!IsActiveDialogueRunnerControl(e))
 					return;
 
+				e.control = e.runner.GetComponent<DialogueRunnerControl>();
 				Command?.Invoke(this, e);
 			}
 
