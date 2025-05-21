@@ -10,7 +10,13 @@ namespace ToolkitEngine.Dialogue
     {
 		#region Fields
 
-		private IVariableStorage m_variableStorage;
+		private DialogueRunner m_dialogueRunner;
+
+		#endregion
+
+		#region Properties
+
+		public IVariableStorage variableStorage => m_dialogueRunner.VariableStorage;
 
 		#endregion
 
@@ -18,58 +24,64 @@ namespace ToolkitEngine.Dialogue
 
 		private void Awake()
 		{
-			m_variableStorage = GetComponent<DialogueRunner>()?.VariableStorage;
+			m_dialogueRunner = GetComponent<DialogueRunner>();
+			m_dialogueRunner.AddCommandHandler<string>("waitWhile", WaitWhileVariable);
+			m_dialogueRunner.AddCommandHandler<string>("waitUntil", WaitUntilVariable);
+			m_dialogueRunner.AddCommandHandler<string, int>("increment", Increment);
+			m_dialogueRunner.AddCommandHandler<string, int>("decrement", Decrement);
+			m_dialogueRunner.AddCommandHandler<string, int, int>("incrementAndWrap", IncrementAndWrap);
+			m_dialogueRunner.AddCommandHandler<string, int, int>("decrementAndWrap", DecrementAndWrap);
 		}
 
-		[YarnCommand("waitWhile")]
 		public IEnumerator WaitWhileVariable(string variableName)
 		{
-			if (!m_variableStorage.TryGetValue(variableName, out bool value) || !value)
+			if (!variableStorage.TryGetValue(variableName, out bool value) || !value)
 				yield break;
 
 			yield return new WaitWhile(() =>
 			{
-				return m_variableStorage.TryGetValue(variableName, out bool value) && value;
+				return variableStorage.TryGetValue(variableName, out bool value) && value;
 			});
 		}
 
-		[YarnCommand("waitUntil")]
 		public IEnumerator WaitUntilVariable(string variableName)
 		{
-			if (!m_variableStorage.TryGetValue(variableName, out bool value) || value)
+			if (!variableStorage.TryGetValue(variableName, out bool value) || value)
 				yield break;
 
 			yield return new WaitUntil(() =>
 			{
-				return m_variableStorage.TryGetValue(variableName, out bool value) && value;
+				return variableStorage.TryGetValue(variableName, out bool value) && value;
 			});
 		}
 
-		[YarnCommand("increment")]
 		public void Increment(string variableName, int delta = 1)
 		{
-			if (m_variableStorage.TryGetValue(variableName, out int value))
+			float value;
+			if (!variableStorage.TryGetValue(variableName, out value))
 			{
-				m_variableStorage.SetValue(variableName, value +  delta);
+				value = 0f;
 			}
+
+			variableStorage.SetValue(variableName, value + delta);
 		}
 
-		[YarnCommand("decrement")]
 		public void Decrement(string variableName, int delta = 1)
 		{
 			Increment(variableName, -delta);
 		}
 
-		[YarnCommand("incrementAndWrap")]
 		public void IncrementAndWrap(string variableName, int length, int delta = 1)
 		{
-			if (m_variableStorage.TryGetValue(variableName, out int value))
+			float value;
+			if (!variableStorage.TryGetValue(variableName, out value))
 			{
-				m_variableStorage.SetValue(variableName, (((value + delta) % length) + length) % length);
+				value = 0f;
 			}
+
+			variableStorage.SetValue(variableName, (((value + delta) % length) + length) % length);
 		}
 
-		[YarnCommand("decrementAndWrap")]
 		public void DecrementAndWrap(string variableName, int length, int delta = 1)
 		{
 			IncrementAndWrap(variableName, length, -delta);
