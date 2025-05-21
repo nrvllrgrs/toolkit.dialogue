@@ -8,7 +8,7 @@ namespace ToolkitEngine.Dialogue.VisualScripting
     {
 		#region Fields
 
-		[DoNotSerialize, UnitHeaderInspectable]
+		[UnitHeaderInspectable]
 		public YarnNode node { get; set; }
 
 		[DoNotSerialize]

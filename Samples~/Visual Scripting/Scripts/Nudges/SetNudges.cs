@@ -1,5 +1,4 @@
 using Unity.VisualScripting;
-using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue.VisualScripting
 {
@@ -19,10 +18,7 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 		public ValueInput nudgeType;
 
 		[DoNotSerialize]
-		public ValueInput project;
-
-		[DoNotSerialize]
-		public ValueInput startNode;
+		public ValueInput yarnNode;
 
 		[DoNotSerialize]
 		public ValueInput playImmediately;
@@ -38,20 +34,21 @@ namespace ToolkitEngine.Dialogue.VisualScripting
 			Succession(enter, exit);
 
 			nudgeType = ValueInput<NudgeType>(nameof(nudgeType), null);
-			project = ValueInput<YarnProject>(nameof(project), null);
-			startNode = ValueInput(nameof(startNode), "Start");
+			yarnNode = ValueInput<YarnNode>(nameof(yarnNode), null);
 			playImmediately = ValueInput(nameof(playImmediately), false);
 
 			Requirement(nudgeType, enter);
-			Requirement(project, enter);
+			Requirement(yarnNode, enter);
 		}
 
 		private ControlOutput Enter(Flow flow)
 		{
+			var node = flow.GetValue<YarnNode>(yarnNode);
+
 			NudgeManager.CastInstance.Set(
 				flow.GetValue<NudgeType>(nudgeType),
-				flow.GetValue<YarnProject>(project),
-				flow.GetValue<string>(startNode),
+				node.project,
+				node.name,
 				flow.GetValue<bool>(playImmediately));
 			return exit;
 		}
