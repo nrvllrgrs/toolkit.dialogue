@@ -200,32 +200,32 @@ namespace ToolkitEditor.Dialogue
 				virtualizationMethod = CollectionVirtualizationMethod.DynamicHeight,
 			};
 
-			AddColumn("ID", true, null, null, (element, index) =>
+			AddColumn("ID", true, true, null, null, (element, index) =>
 			{
 				(element as Label).text = YarnParserUtil.GetID(s_filteredEntries[index].entry);
 			});
-			AddColumn("Speaker", true, null, null, (element, index) =>
+			AddColumn("Speaker", true, true, null, null, (element, index) =>
 			{
 				YarnParserUtil.TryGetSpeakerAndText(s_filteredEntries[index].entry, out string speaker, out string text);
 				(element as Label).text = speaker;
 			});
-			AddColumn("Text", true, null, null, (element, index) =>
+			AddColumn("Text", true, true, null, null, (element, index) =>
 			{
 				YarnParserUtil.TryGetSpeakerAndText(s_filteredEntries[index].entry, out string speaker, out string text);
 				(element as Label).text = text;
 			});
-			AddColumn("Metadata", true, null, null, (element, index) =>
+			AddColumn("Metadata", true, true, null, null, (element, index) =>
 			{
 				(element as Label).text = YarnParserUtil.GetMetadata(s_filteredEntries[index].entry);
 			});
-			AddColumn("Preview", false, null, GetPreviewButton, (element, index) =>
+			AddColumn("Preview", false, false, null, GetPreviewButton, (element, index) =>
 			{
 				var value = s_filteredEntries[index];
 				var button = element as Button;
 				button.userData = index;
 				button.SetEnabled(YarnEditorUtil.GetPreviewClip(value.project, value.entry) != null);
 			});
-			AddColumn("Generate", false, null, GetGenerateButton, (element, index) =>
+			AddColumn("Generate", false, false, null, GetGenerateButton, (element, index) =>
 			{
 				var value = s_filteredEntries[index];
 				var button = element as Button;
@@ -242,20 +242,20 @@ namespace ToolkitEditor.Dialogue
 					button.SetEnabled(false);
 				}
 			});
-			AddColumn("Match", true, null, GetToggle, (element, index) =>
+			AddColumn("Match", true, false, null, GetToggle, (element, index) =>
 			{
 				(element as Toggle).value = s_filteredEntries[index].speakerTextMetadataMatch;
 			});
-			AddColumn("Project", true, null, GetObjectField, (element, index) =>
+			AddColumn("Project", true, true, null, GetObjectField, (element, index) =>
 			{
 				(element as ObjectField).value = s_filteredEntries[index].project;
 			});
-			AddColumn("File", true, null, GetObjectField, (element, index) =>
+			AddColumn("File", true, true, null, GetObjectField, (element, index) =>
 			{
 				var assetPath = s_filteredEntries[index].entry.File.Substring(Application.dataPath.Length + 1);
 				(element as ObjectField).value = AssetDatabase.LoadAssetAtPath<TextAsset>($"Assets/{assetPath}");
 			});
-			AddColumn("Node", true, null, null, (element, index) =>
+			AddColumn("Node", true, true, null, null, (element, index) =>
 			{
 				(element as Label).text = s_filteredEntries[index].entry.Node;
 			});
@@ -263,11 +263,11 @@ namespace ToolkitEditor.Dialogue
 			var locale = LocalizationEditorSettings.ActiveLocalizationSettings.GetSelectedLocale();
 			if (locale != null)
 			{
-				AddColumn($"{locale.Identifier.Code} - Text", true, null, GetToggle, (element, index) =>
+				AddColumn($"{locale.Identifier.Code} - Text", true, false, null, GetToggle, (element, index) =>
 				{
 					(element as Toggle).value = s_filteredEntries[index].stringInTable;
 				});
-				AddColumn($"{locale.Identifier.Code} - Audio", true, null, GetToggle, (element, index) =>
+				AddColumn($"{locale.Identifier.Code} - Audio", true, false, null, GetToggle, (element, index) =>
 				{
 					(element as Toggle).value = s_filteredEntries[index].audioInTable;
 				});
@@ -277,13 +277,14 @@ namespace ToolkitEditor.Dialogue
 			root.Add(s_columnListView);
 		}
 
-		private void AddColumn(string name, bool sortable, Comparison<int> comparison, Func<VisualElement> makeCell, Action<VisualElement, int> bindCell)
+		private void AddColumn(string name, bool sortable, bool stretchable, Comparison<int> comparison, Func<VisualElement> makeCell, Action<VisualElement, int> bindCell)
 		{
 			Column column = new Column()
 			{
 				name = name,
 				title = name,
 				sortable = sortable,
+				stretchable = stretchable,
 				comparison = comparison,
 			};
 			s_columnListView.columns.Add(column);
@@ -304,8 +305,10 @@ namespace ToolkitEditor.Dialogue
 				iconImage = new Background()
 				{
 					texture = icon.image as Texture2D
-				}
+				},
 			};
+			element.style.minHeight = element.style.maxHeight = BUTTON_HEIGHT;
+			element.style.minWidth = element.style.maxWidth = BUTTON_WIDTH;
 			element.RegisterCallback<ClickEvent>(PreviewButtonClicked);
 			return element;
 		}
@@ -318,9 +321,10 @@ namespace ToolkitEditor.Dialogue
 				iconImage = new Background()
 				{
 					texture = AssetUtil.LoadFirstAsset<Texture2D>("GenerateTTS EditorIcon"),
-				}
+				},
 			};
 			element.style.minHeight = element.style.maxHeight = BUTTON_HEIGHT;
+			element.style.minWidth = element.style.maxWidth = BUTTON_WIDTH;
 			element.RegisterCallback<ClickEvent>(GenerateButtonClicked);
 			return element;
 		}
