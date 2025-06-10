@@ -28,6 +28,11 @@
       "displayName": "Fountain",
       "description": "Fountain is a simple markup syntax for writing, editing and sharing screenplays in plain, human-readable text.",
       "path": "Samples~/Fountain"
+    },
+	{
+      "displayName": "Save Management",
+      "description": "Save Management integration.",
+      "path": "Samples~/Save Management"
     }
   ],
   "_fingerprint": "4273bde796d36549ca5ad4bc574013d3af35eb14"

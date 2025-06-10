@@ -1,0 +1,24 @@
+{
+    "name": "ToolkitEditor.Dialogue.SaveManagement",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0b2b191acd5ecdb4da1dd2e73cbe1d45",
+        "GUID:3cb24a45c22d8e045a5ef8a019b8a1b8",
+        "GUID:7def8f70da5207b40b7b94f230c91b65",
+        "GUID:056e0bc0d50090c40bc108cc8d932f3a",
+        "GUID:34aa492b82754644eac2f903cd496268",
+        "GUID:4f6675837be5f1d45a32fb1920bd0217",
+        "GUID:3536f865d91fa834cb92bc4c0287ac66"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
