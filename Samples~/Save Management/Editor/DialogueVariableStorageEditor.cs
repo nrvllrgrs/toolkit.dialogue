@@ -128,7 +128,7 @@ namespace ToolkitEditor.Dialogue.SaveManagement
 
 					if (GUILayout.Button(iconContent, GUILayout.Width(EditorGUIUtility.singleLineHeight + 2)))
 					{
-						m_variableStorage.floatVariables.Remove(key);
+						m_variableStorage.Remove(key);
 					}
 				}
 				EditorGUILayout.EndHorizontal();

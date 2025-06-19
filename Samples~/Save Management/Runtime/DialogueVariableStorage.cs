@@ -106,6 +106,13 @@ namespace ToolkitEngine.Dialogue.SaveManagement
 				|| m_stringVariables.ContainsKey(name);
 		}
 
+		public bool Remove(string name)
+		{
+			return m_boolVariables.Remove(name)
+				|| m_floatVariables.Remove(name)
+				|| m_stringVariables.Remove(name);
+		}
+
 		#endregion
 
 		#region Structures
