@@ -37,6 +37,8 @@ namespace ToolkitEngine.Dialogue
 
 		#region Properties
 
+		public DialogueRunnerControl dialogueRunnerControl => m_dialogueRunnerControl;
+
 		object IList.this[int index]
 		{
 			get => ((IList)m_nodes)[index];
