@@ -162,6 +162,7 @@ namespace ToolkitEditor.Dialogue
 			header.style.height = StyleKeyword.Auto;
 			{
 				s_searchField = new ToolbarSearchField();
+				s_searchField.Q<TextField>().isDelayed = true;
 				s_searchField.RegisterValueChangedCallback(Search);
 				header.Add(s_searchField);
 

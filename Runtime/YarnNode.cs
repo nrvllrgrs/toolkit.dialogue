@@ -22,5 +22,15 @@ namespace ToolkitEngine.Dialogue
 		public string name { get => m_name; internal set => m_name = value; }
 
 		#endregion
+
+		#region Constructors
+
+		public YarnNode()
+		{
+			m_project = null;
+			m_name = string.Empty;
+		}
+
+		#endregion
 	}
 }

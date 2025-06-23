@@ -30,9 +30,6 @@ namespace ToolkitEditor.Dialogue
 		{
 			if (m_paths == null)
 			{
-				m_project = property.FindPropertyRelative(nameof(m_project));
-				m_name = property.FindPropertyRelative(nameof(m_name));
-
 				m_paths = new();
 				m_tupleToPath = new();
 				m_pathToTuple = new();
@@ -62,6 +59,9 @@ namespace ToolkitEditor.Dialogue
 				m_paths.Sort();
 				m_paths.Insert(0, "[Empty]");
 			}
+
+			m_project ??= property.FindProperty(nameof(m_project));
+			m_name ??= property.FindProperty(nameof(m_name));
 
 			int selectedIndex = 0;
 			EditorGUI.BeginChangeCheck();
