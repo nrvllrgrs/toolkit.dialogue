@@ -20,6 +20,7 @@ namespace ToolkitEditor.Dialogue.SaveManagement
 		protected SerializedProperty m_boolVariables;
 		protected SerializedProperty m_floatVariables;
 		protected SerializedProperty m_stringVariables;
+		protected SerializedProperty m_onVariableChanged;
 
 		#endregion
 
@@ -33,6 +34,7 @@ namespace ToolkitEditor.Dialogue.SaveManagement
 			m_boolVariables = serializedObject.FindProperty(nameof(m_boolVariables));
 			m_floatVariables = serializedObject.FindProperty(nameof(m_floatVariables));
 			m_stringVariables = serializedObject.FindProperty(nameof(m_stringVariables));
+			m_onVariableChanged = serializedObject.FindProperty(nameof(m_onVariableChanged));
 		}
 
 		protected override void DrawProperties()
@@ -132,6 +134,14 @@ namespace ToolkitEditor.Dialogue.SaveManagement
 					}
 				}
 				EditorGUILayout.EndHorizontal();
+			}
+		}
+
+		protected override void DrawEvents()
+		{
+			if (EditorGUILayoutUtility.Foldout(m_onVariableChanged, "Events"))
+			{
+				EditorGUILayout.PropertyField(m_onVariableChanged);
 			}
 		}
 

@@ -1,7 +1,7 @@
-using UnityEngine;
-using Yarn.Unity;
-
 using ToolkitEngine.SaveManagement;
+using UnityEngine;
+using UnityEngine.Events;
+using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue.SaveManagement
 {
@@ -23,11 +23,20 @@ namespace ToolkitEngine.Dialogue.SaveManagement
 
 		#endregion
 
+		#region Events
+
+		[SerializeField]
+		private UnityEvent<VariableEventArgs> m_onVariableChanged;
+
+		#endregion
+
 		#region Properties
 
 		internal BoolVariableMap boolVariables => m_boolVariables;
 		internal FloatVariableMap floatVariables => m_floatVariables;
 		internal StringVariableMap stringVariables => m_stringVariables;
+
+		public UnityEvent<VariableEventArgs> onVariableChanged => m_onVariableChanged;
 
 		#endregion
 
@@ -94,7 +103,14 @@ namespace ToolkitEngine.Dialogue.SaveManagement
 			{
 				if (m_dialogueRunner.VariableStorage.TryGetValue<T>(p.Key, out var value))
 				{
-					p.Value.value = value;
+					if (!Equals(p.Value.value, value))
+					{
+						p.Value.value = value;
+
+						var args = new VariableEventArgs(p.Key, p.Value.value);
+						m_onVariableChanged?.Invoke(args);
+						SaveManager.CastInstance.InvokeVariableChanged(args);
+					}
 				}
 			}
 		}
