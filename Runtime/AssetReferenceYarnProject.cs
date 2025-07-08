@@ -1,5 +1,8 @@
-using UnityEngine.AddressableAssets;
 using Yarn.Unity;
+
+#if USE_ADDRESSABLES
+using UnityEngine.AddressableAssets;
+#endif
 
 namespace ToolkitEngine.Dialogue
 {
