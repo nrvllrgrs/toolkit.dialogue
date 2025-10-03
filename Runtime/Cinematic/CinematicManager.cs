@@ -92,16 +92,17 @@ namespace ToolkitEngine.Dialogue
 			m_cinematicControl.Stop(true);
 			if (!string.IsNullOrWhiteSpace(m_skipDestination))
 			{
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 				m_cinematicControl.Play(skipDestination);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 				skipDestination = null;
 			}
 		}
 
 		public void Continue()
 		{
-			m_waiting = true;
+			m_waiting = false;
 		}
-
 
 		#endregion
 

@@ -2,6 +2,7 @@ using UnityEditor;
 using ToolkitEngine.Dialogue;
 using Yarn.Unity;
 using UnityEngine;
+using Yarn.Unity.Legacy;
 using Yarn.Unity.UnityLocalization;
 
 namespace ToolkitEditor.Dialogue
@@ -39,7 +40,7 @@ namespace ToolkitEditor.Dialogue
 			m_serializedDialogueRunner = new SerializedObject(m_dialogueRunner);
 
 			// Need to make sure DialogueRunner does not start automatically
-			m_dialogueRunner.startAutomatically = false;
+			m_dialogueRunner.autoStart = false;
 			m_serializedDialogueRunner.ApplyModifiedProperties();
 
 			m_yarnProject = m_serializedDialogueRunner.FindProperty("yarnProject");
@@ -96,7 +97,7 @@ namespace ToolkitEditor.Dialogue
 
 			EditorGUILayout.Separator();
 
-			var project = m_dialogueRunner?.yarnProject;
+			var project = m_dialogueRunner?.YarnProject;
 			EditorGUI.BeginDisabledGroup(project == null || Application.isPlaying);
 			{
 				if (GUILayout.Button("Setup Line Provider"))
@@ -104,12 +105,12 @@ namespace ToolkitEditor.Dialogue
 					switch (project.localizationType)
 					{
 						case LocalizationType.YarnInternal:
-							if (m_dialogueRunner.lineProvider is not AudioLineProvider)
+							if (m_dialogueRunner.LineProvider is not BuiltinLocalisedLineProvider)
 							{
-								var lineProvider = m_dialogueRunner.GetComponent<AudioLineProvider>();
+								var lineProvider = m_dialogueRunner.GetComponent<BuiltinLocalisedLineProvider>();
 								if (lineProvider == null)
 								{
-									lineProvider = m_dialogueRunner.gameObject.AddComponent<AudioLineProvider>();
+									lineProvider = m_dialogueRunner.gameObject.AddComponent<BuiltinLocalisedLineProvider>();
 								}
 
 								m_lineProvider.objectReferenceValue = lineProvider;

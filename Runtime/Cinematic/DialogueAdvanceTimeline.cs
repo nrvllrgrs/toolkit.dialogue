@@ -43,7 +43,7 @@ namespace ToolkitEngine.Dialogue
 		{
 			if (m_lineView == null)
 			{
-				foreach (var dialogueView in m_dialogueRunner.dialogueViews)
+				foreach (var dialogueView in m_dialogueRunner.DialoguePresenters)
 				{
 					if (dialogueView is TimelineView lineView)
 					{

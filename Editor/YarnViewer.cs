@@ -11,6 +11,10 @@ using UnityEngine.UIElements;
 using Yarn.Unity;
 using Yarn.Unity.Editor;
 using Yarn.Markup;
+using UnityEditor.VersionControl;
+using static UnityEngine.EventSystems.EventTrigger;
+
+
 
 
 #if USE_UNITY_LOCALIZATION
@@ -61,7 +65,7 @@ namespace ToolkitEditor.Dialogue
 			s_window.titleContent = new GUIContent("Yarn Viewer");
 		}
 
-		private static void RefreshEntries()
+		private static async void RefreshEntries()
 		{
 			s_entries.Clear();
 			s_filteredEntries.Clear();
@@ -93,14 +97,14 @@ namespace ToolkitEditor.Dialogue
 				// Want to be sure Line IDs are assigned before possibly generating TTS
 				YarnEditorUtil.AddLineTagsToFilesInYarnProject(importer);
 
-				var dialogue = YarnEditorUtil.GetDialogue(project);
-				foreach (var entry in importer.GenerateStringsTable())
+				var parser = new LineParser();
+				foreach (var entry in YarnEditorUtil.GenerateStringsTable(importer))
 				{
 					MarkupParseResult? result = null;
 					try
 					{
 						// Strip attributes for TTS generation
-						result = dialogue.ParseMarkup(entry.Text);
+						result = parser.ParseString(entry.Text, System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
 					}
 					catch { }
 
@@ -114,7 +118,7 @@ namespace ToolkitEditor.Dialogue
 						entry = entry,
 					};
 
-					yarnEntry.speakerTextMetadataMatch = DialogueSettings.IsSpeakerAndTextMatch(project, entry);
+					yarnEntry.speakerTextMetadataMatch = await DialogueSettings.IsSpeakerAndTextMatch(project, entry);
 
 					if (importer.UseUnityLocalisationSystem)
 					{
@@ -190,6 +194,19 @@ namespace ToolkitEditor.Dialogue
 				generateAllButton.style.minWidth = generateAllButton.style.maxWidth = BUTTON_WIDTH;
 				generateAllButton.RegisterCallback<ClickEvent>(GenerateAllButtonClicked);
 				header.Add(generateAllButton);
+
+				var cleanButton = new Button()
+				{
+					iconImage = new Background()
+					{
+						texture = AssetUtil.LoadFirstAsset<Texture2D>("Clean EditorIcon"),
+					},
+					tooltip = "Clean",
+				};
+				cleanButton.style.minHeight = cleanButton.style.maxHeight = BUTTON_HEIGHT;
+				cleanButton.style.minWidth = cleanButton.style.maxWidth = BUTTON_WIDTH;
+				cleanButton.RegisterCallback<ClickEvent>(CleanButtonClicked);
+				header.Add(cleanButton);
 			}
 			root.Add(header);
 
@@ -219,13 +236,7 @@ namespace ToolkitEditor.Dialogue
 			{
 				(element as Label).text = YarnParserUtil.GetMetadata(s_filteredEntries[index].entry);
 			});
-			AddColumn("Preview", false, false, null, GetPreviewButton, (element, index) =>
-			{
-				var value = s_filteredEntries[index];
-				var button = element as Button;
-				button.userData = index;
-				button.SetEnabled(YarnEditorUtil.GetPreviewClip(value.project, value.entry) != null);
-			});
+			AddColumn("Preview", false, false, null, GetPreviewButton, BindPreviewButton);
 			AddColumn("Generate", false, false, null, GetGenerateButton, (element, index) =>
 			{
 				var value = s_filteredEntries[index];
@@ -314,6 +325,16 @@ namespace ToolkitEditor.Dialogue
 			return element;
 		}
 
+		private async void BindPreviewButton(VisualElement element, int index)
+		{
+			var value = s_filteredEntries[index];
+			var button = element as Button;
+			button.userData = index;
+
+			var clip = await YarnEditorUtil.GetPreviewClip(value.project, value.entry);
+			button.SetEnabled(clip != null);
+		}
+
 		private VisualElement GetGenerateButton()
 		{
 			var icon = EditorGUIUtility.IconContent("Refresh");
@@ -348,20 +369,21 @@ namespace ToolkitEditor.Dialogue
 
 		#region Preview Methods
 
-		private void PreviewButtonClicked(ClickEvent e)
+		private async void PreviewButtonClicked(ClickEvent e)
 		{
 			var value = s_filteredEntries[(int)(e.target as Button).userData];
-			AudioUtil.PlayPreviewClip(YarnEditorUtil.GetPreviewClip(value.project, value.entry));
+			var clip = await YarnEditorUtil.GetPreviewClip(value.project, value.entry);
+			AudioUtil.PlayPreviewClip(clip);
 		}
 
 #endregion
 
 		#region Generate Methods
 
-		private void GenerateButtonClicked(ClickEvent e)
+		private async void GenerateButtonClicked(ClickEvent e)
 		{
 			var value = s_filteredEntries[(int)(e.target as Button).userData];
-			var clip = YarnEditorUtil.GetPreviewClip(value.project, value.entry);
+			var clip = await YarnEditorUtil.GetPreviewClip(value.project, value.entry);
 			if (clip != null && !EditorUtility.DisplayDialog(
 				"Generate AudioClip",
 				$"This action will override {clip.name}. Are you sure that you want to perform this action?",
@@ -374,7 +396,7 @@ namespace ToolkitEditor.Dialogue
 			DialogueSettings.Generate(value.project, value.entry);
 		}
 
-		private void GenerateAllButtonClicked(ClickEvent e)
+		private async void GenerateAllButtonClicked(ClickEvent e)
 		{
 			bool overrideAll = false;
 			List<YarnStringEntry> entries = new();
@@ -382,7 +404,7 @@ namespace ToolkitEditor.Dialogue
 			{
 				if (!overrideAll)
 				{
-					var clip = YarnEditorUtil.GetPreviewClip(value.project, value.entry);
+					var clip = await YarnEditorUtil.GetPreviewClip(value.project, value.entry);
 					if (clip != null)
 					{
 						int result = EditorUtility.DisplayDialogComplex(
@@ -403,6 +425,58 @@ namespace ToolkitEditor.Dialogue
 			foreach (var g in entries.GroupBy(x => x.project))
 			{
 				DialogueSettings.Generate(g.Key, g.Select(x => x.entry));
+			}
+		}
+
+		private void CleanButtonClicked(ClickEvent e)
+		{
+			if (!EditorUtility.DisplayDialog(
+				"Clean",
+				"Are you sure you want to delete assets?\n\n This action cannot be undone.",
+				"Clean",
+				"Cancel"))
+			{
+				return;
+			}
+
+			foreach (var group in from project in YarnEditorUtil.GetYarnProjects()
+								  let importer = AssetUtil.LoadImporter<YarnProjectImporter>(project)
+								  let assetFolder = importer.ImportData.BaseLocalizationEntry.assetsFolder
+								  group new
+								  {
+									  project,
+									  importer,
+									  assetFolder,
+								  } by assetFolder into grouping
+								  select grouping)
+			{
+				string path = AssetDatabase.GetAssetPath(group.First().assetFolder);
+				if (string.IsNullOrEmpty(path))
+					continue;
+
+				// Get lineIds in assetFolder (excluding meta files)
+				var lineIdsInDir = Directory.GetFiles(path)
+					.Where(x => Path.GetExtension(x) != ".meta")
+					.Select(x => Path.GetFileName(x)).ToArray();
+
+				// Get all valid lineIds
+				var lineIds = group.SelectMany(x => YarnEditorUtil.GenerateStringsTable(x.importer)
+					.Select(entry => YarnParserUtil.GetID(entry))).ToHashSet();
+
+				// Remove all assets that don't exist in Yarn scripts
+				var lineIdsToDelete = (from lineId in lineIdsInDir
+									   where !string.IsNullOrWhiteSpace(lineId)
+									   where !lineIds.Contains(Path.GetFileNameWithoutExtension(lineId))
+									   select Path.Combine(Application.dataPath, path.Substring("/Assets".Length), lineId)).ToArray();
+				int i = 0, total = lineIdsToDelete.Length;
+				foreach (var assetPath in lineIdsToDelete)
+				{
+					try
+					{
+						File.Delete(assetPath);
+					}
+					catch { }
+				}
 			}
 		}
 

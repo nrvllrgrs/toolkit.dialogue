@@ -14,6 +14,9 @@ namespace ToolkitEngine.Dialogue
 #if USE_UNITY_LOCALIZATION
 		[SerializeField, Tooltip("Name of speaking character.")]
 		private LocalizedString m_displayName;
+#else
+		[SerializeField]
+		private string m_displayName;
 #endif
 
 		[SerializeField]
@@ -21,6 +24,9 @@ namespace ToolkitEngine.Dialogue
 
 		[SerializeField]
 		private AnimationSet m_animationSet;
+
+		[SerializeField]
+		private PortraitSet m_portraitSet;
 
 #if UNITY_EDITOR
 		[SerializeField]
@@ -41,6 +47,11 @@ namespace ToolkitEngine.Dialogue
 					return m_displayName.GetLocalizedString();
 				}
 				catch { }
+#else
+				if (!string.IsNullOrWhiteSpace(m_displayName))
+				{
+					return m_displayName;
+				}
 #endif
 				return name;
 			}
@@ -48,6 +59,7 @@ namespace ToolkitEngine.Dialogue
 
 		public Color color => m_color;
 		public AnimationSet animationSet => m_animationSet;
+		public PortraitSet portraitSet => m_portraitSet;
 
 #if UNITY_EDITOR
 		public TTSVoice ttsVoice => m_ttsVoice;

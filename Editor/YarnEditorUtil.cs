@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using ToolkitEngine.Dialogue;
 using UnityEngine;
 using Yarn.Unity;
@@ -48,6 +50,29 @@ namespace ToolkitEditor.Dialogue
             return null;
         }
 
+		public static TextAsset FindYarnScript(YarnProject project, string nodeName)
+		{
+			if (!project.NodeExists(nodeName))
+				return null;
+
+			var importer = AssetUtil.LoadImporter<YarnProjectImporter>(project);
+			if (importer == null)
+				return null;
+
+			foreach (var yarnFile in importer.ImportData.yarnFiles)
+			{
+				foreach (var line in Regex.Split(yarnFile.text, @"\r?\n"))
+				{
+					var match = Regex.Match(line, @"(?!//).*title:\s*(?<title>\w*)");
+					if (match.Success && string.Equals(match.Groups["title"].Value, nodeName, StringComparison.OrdinalIgnoreCase))
+					{
+						return yarnFile;
+					}
+				}
+			}
+			return null;
+		}
+
 		public static IEnumerable<YarnProjectTableEntry> GetOrderedEntries(IEnumerable<YarnProject> projects)
 		{
 			// Collect entries from ALL projects
@@ -55,7 +80,7 @@ namespace ToolkitEditor.Dialogue
 			foreach (var project in projects)
 			{
 				var importer = AssetUtil.LoadImporter<YarnProjectImporter>(project);
-				var entries = importer.GenerateStringsTable();
+				var entries = YarnEditorUtil.GenerateStringsTable(importer);
 
 				// Project doesn't have lines, skip
 				if (!entries.Any())
@@ -87,7 +112,7 @@ namespace ToolkitEditor.Dialogue
 		public static bool TryGetOrder(YarnProject project, StringTableEntry entry, out int act, out int scene, out int beat)
 		{
 			act = scene = beat = 0;
-			var nodeTags = GetDialogue(project)?.GetTagsForNode(entry.Node);
+			var nodeTags = GetDialogue(project)?.GetHeaderValue(entry.Node, "tags")?.Split(" ");
 			if (nodeTags == null)
 				return false;
 
@@ -125,6 +150,21 @@ namespace ToolkitEditor.Dialogue
 			}
 		}
 
+		public static IEnumerable<StringTableEntry> GenerateStringsTable(YarnProjectImporter importer)
+		{
+			if (importer == null)
+				return null;
+
+			var methodInfo = typeof(YarnProjectEditor).Assembly.GetType("Yarn.Unity.Editor.YarnProjectImporter")
+					.GetMethod("GenerateStringsTable", BindingFlags.Instance | BindingFlags.NonPublic, null, new Type[] { }, null);
+			if (methodInfo != null)
+			{
+				return methodInfo.Invoke(importer, null) as IEnumerable<StringTableEntry>;
+			}
+
+			return new StringTableEntry[] { };
+		}
+
 		public static string GetLocalizedDisplayName(DialogueSpeakerType speakerType)
 		{
 			if (speakerType == null)
@@ -148,14 +188,13 @@ namespace ToolkitEditor.Dialogue
 
 		#region Audio Methods
 
-		public static AudioClip GetPreviewClip(YarnProject project, StringTableEntry entry)
+		public static async YarnTask<AudioClip> GetPreviewClip(YarnProject project, StringTableEntry entry)
 		{
 			string localeCode = string.Empty;
 			switch (project.localizationType)
 			{
 				case LocalizationType.YarnInternal:
-					localeCode = project.baseLocalization?.LocaleCode;
-					break;
+					return await GetPreviewClip(project, entry, project.baseLocalization);
 
 #if USE_UNITY_LOCALIZATION
 				case LocalizationType.Unity:
@@ -163,16 +202,48 @@ namespace ToolkitEditor.Dialogue
 					break;
 #endif
 			}
-			return GetPreviewClip(project, entry, localeCode);
+
+			return null;
 		}
 
-		public static AudioClip GetPreviewClip(YarnProject project, StringTableEntry entry, string localeCode)
+		public static async YarnTask<AudioClip> GetPreviewClip(YarnProject project, StringTableEntry entry, string localeCode)
 		{
+			switch (project.localizationType)
+			{
+				case LocalizationType.YarnInternal:
+					return await GetPreviewClip(project, entry, project.GetLocalization(localeCode));
+
+#if USE_UNITY_LOCALIZATION
+				case LocalizationType.Unity:
+					var activeLocalization = LocalizationEditorSettings.ActiveLocalizationSettings;
+
+
+					//var record = s_assetTableCollections.Select(x => x.GetTable(localeCode) as AssetTable)
+					//	.Select(x => x.GetEntry(value.entry.ID))
+					//	.Where(x => x != null)
+					//	.FirstOrDefault();
+
+					//if (record != null)
+					//{
+					//	clip = activeLocalization.GetAssetDatabase()?.GetLocalizedAsset<AudioClip>(record.Table.TableCollectionName, record.KeyId);
+					//}
+					break;
+#endif
+			}
+
+			return null;
+		}
+
+		private static async YarnTask<AudioClip> GetPreviewClip(YarnProject project, StringTableEntry entry, Localization localization)
+		{
+			if (localization == null)
+				return null;
+
 			AudioClip clip = null;
 			switch (project.localizationType)
 			{
 				case LocalizationType.YarnInternal:
-					clip = project.GetLocalization(localeCode)?.GetLocalizedObject<AudioClip>(entry.ID);
+					clip = await localization.GetLocalizedObjectAsync<AudioClip>(entry.ID);
 					break;
 
 #if USE_UNITY_LOCALIZATION
@@ -198,7 +269,7 @@ namespace ToolkitEditor.Dialogue
 		#endregion
 	}
 
-	public struct YarnProjectTableEntry
+public struct YarnProjectTableEntry
 	{
 		public YarnProject project;
 		public StringTableEntry entry;

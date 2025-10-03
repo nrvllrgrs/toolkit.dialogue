@@ -59,7 +59,7 @@ namespace ToolkitEditor.Dialogue
 
 		private static void Generate(YarnProject project, bool onlyMismatch, Func<StringTableEntry, bool> predicate) => Generate(new[] { project }, onlyMismatch, predicate);
 
-		private static void Generate(IEnumerable<YarnProject> projects, bool onlyMismatch, Func<StringTableEntry, bool> predicate)
+		private static async void Generate(IEnumerable<YarnProject> projects, bool onlyMismatch, Func<StringTableEntry, bool> predicate)
 		{
 			foreach (var project in projects)
 			{
@@ -67,7 +67,7 @@ namespace ToolkitEditor.Dialogue
 				if (importer == null)
 					continue;
 
-				var entries = importer.GenerateStringsTable();
+				var entries = YarnEditorUtil.GenerateStringsTable(importer);
 
 				// Filter entries by predicate
 				if (predicate != null)
@@ -78,7 +78,17 @@ namespace ToolkitEditor.Dialogue
 				// Filter entries by mismatch
 				if (onlyMismatch)
 				{
-					entries = entries.Where(x => !IsSpeakerAndTextMatch(project, x));
+					List<StringTableEntry> filteredEntries = new();
+					foreach (var entry in entries)
+					{
+						bool isMatch = await IsSpeakerAndTextMatch(project, entry);
+						if (!isMatch)
+						{
+							filteredEntries.Add(entry);
+						}
+					}
+
+					entries = filteredEntries;
 				}
 
 				Generate(project, entries);
@@ -191,9 +201,9 @@ namespace ToolkitEditor.Dialogue
 			tagFile.Save();
 		}
 
-		public static bool IsSpeakerAndTextMatch(YarnProject project, StringTableEntry entry)
+		public static async YarnTask<bool> IsSpeakerAndTextMatch(YarnProject project, StringTableEntry entry)
 		{
-			var clip = YarnEditorUtil.GetPreviewClip(project, entry);
+			var clip = await YarnEditorUtil.GetPreviewClip(project, entry);
 			var path = FileUtil.GetAbsolutePath(clip);
 
 			if (!TryGetSpeakerAndTextTags(path, out var speakerTag, out var textTag)

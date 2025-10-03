@@ -63,7 +63,7 @@ namespace ToolkitEngine.Dialogue
 			base.PlayInternal(startNode);
 
 			m_timelineViews.Clear();
-			foreach (var view in dialogueRunner.dialogueViews)
+			foreach (var view in dialogueRunner.DialoguePresenters)
 			{
 				if (view is not TimelineView timelineView)
 					continue;

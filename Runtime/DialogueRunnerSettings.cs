@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue
@@ -13,8 +14,8 @@ namespace ToolkitEngine.Dialogue
 		[SerializeField]
 		private VariableStorageBehaviour m_variableStorage;
 
-		[SerializeField]
-		private DialogueViewBase[] m_dialogueViews;
+		[SerializeField, FormerlySerializedAs("m_dialogueViews")]
+		private DialoguePresenterBase[] m_dialoguePresenters;
 
 		#endregion
 
@@ -22,7 +23,7 @@ namespace ToolkitEngine.Dialogue
 
 		public DialogueRegistration registration => m_registration;
 		public VariableStorageBehaviour variableStorage => m_variableStorage;
-		public DialogueViewBase[] dialogueViews => m_dialogueViews;
+		public DialoguePresenterBase[] dialoguePresenters => m_dialoguePresenters;
 
 		#endregion
 

@@ -1,9 +1,25 @@
+using Yarn;
+
 namespace ToolkitEditor.Dialogue
 {
-	public class EmptyVariableStorage : Yarn.IVariableStorage
+	public class EmptyVariableStorage : IVariableStorage
 	{
+		#region Properties
+
+		public Program Program { get; set; }
+		public ISmartVariableEvaluator SmartVariableEvaluator { get; set; }
+
+		#endregion
+
+		#region Methods
+
 		public void Clear()
 		{ }
+
+		public VariableKind GetVariableKind(string name)
+		{
+			return VariableKind.Unknown;
+		}
 
 		public void SetValue(string variableName, string stringValue)
 		{ }
@@ -19,5 +35,7 @@ namespace ToolkitEditor.Dialogue
 			result = default(T);
 			return false;
 		}
+
+		#endregion
 	}
 }

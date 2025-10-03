@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ToolkitEngine.Dialogue;
 using UnityEngine;
+using Yarn.Unity;
+using Yarn.Unity.Legacy;
 
-namespace Yarn.Unity
+namespace ToolkitEngine.Dialogue
 {
 	/// <summary>
 	/// A subclass of <see cref="DialogueViewBase"/> that plays voice-over <see
@@ -172,7 +173,7 @@ namespace Yarn.Unity
 		/// <inheritdoc cref="DialogueViewBase.RunLine(LocalizedLine, Action)"
 		/// path="/param"/>
 		/// <seealso cref="DialogueViewBase.RunLine(LocalizedLine, Action)"/>
-		public override void RunLine(LocalizedLine dialogueLine, Action onDialogueLineFinished)
+		public override void RunLine(DialogueRunner dialogueRunner, LocalizedLine dialogueLine, Action onDialogueLineFinished)
 		{
 			// If we have a current playback for some reason, stop it
 			// immediately.
@@ -293,7 +294,7 @@ namespace Yarn.Unity
 		/// Action)" path="/param"/>
 		/// <seealso cref="DialogueViewBase.InterruptLine(LocalizedLine,
 		/// Action)"/>
-		public override void InterruptLine(LocalizedLine dialogueLine, Action onDialogueLineFinished)
+		public override void InterruptLine(DialogueRunner dialogueRunner, LocalizedLine dialogueLine, Action onDialogueLineFinished)
 		{
 			if (m_interruptToken.CanInterrupt)
 			{
@@ -314,7 +315,7 @@ namespace Yarn.Unity
 		/// <inheritdoc cref="DialogueViewBase.DismissLine(Action)"
 		/// path="/param"/>
 		/// <seealso cref="DialogueViewBase.DismissLine(Action)"/>
-		public override void DismissLine(Action onDismissalComplete)
+		public override void DismissLine(DialogueRunner dialogueRunner, Action onDismissalComplete)
 		{
 			// There's not much to do for a dismissal, since there's nothing
 			// visible on screen and any audio playback is likely to have

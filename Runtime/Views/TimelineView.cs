@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Yarn.Unity;
+using Yarn.Unity.Legacy;
 
 namespace ToolkitEngine.Dialogue
 {
@@ -62,13 +63,13 @@ namespace ToolkitEngine.Dialogue
 		}
 
 		/// <inheritdoc/>
-		public override void DismissLine(Action onDismissalComplete)
+		public override void DismissLine(DialogueRunner dialogueRunner, Action onDismissalComplete)
 		{
 			m_currentLine = null;
 			StartCoroutine(
 				ProcessInternal(
 					m_dismissal,
-					(view) => view.DismissLine(ViewDismissalComplete),
+					(view) => view.DismissLine(dialogueRunner, ViewDismissalComplete),
 					onDismissalComplete));
 		}
 
@@ -78,7 +79,7 @@ namespace ToolkitEngine.Dialogue
 		}
 
 		/// <inheritdoc/>
-		public override void InterruptLine(LocalizedLine dialogueLine, Action onInterruptLineFinished)
+		public override void InterruptLine(DialogueRunner dialogueRunner, LocalizedLine dialogueLine, Action onInterruptLineFinished)
 		{
 			m_currentLine = dialogueLine;
 
@@ -91,24 +92,24 @@ namespace ToolkitEngine.Dialogue
 				if (view == null)
 					continue;
 
-				view.InterruptLine(dialogueLine, () => { });
+				view.InterruptLine(dialogueRunner, dialogueLine, () => { });
 			}
 
 			onInterruptLineFinished();
 		}
 
 		/// <inheritdoc/>
-		public override void RunLine(LocalizedLine dialogueLine, Action onDialogueLineFinished)
+		public override void RunLine(DialogueRunner dialogueRunner, LocalizedLine dialogueLine, Action onDialogueLineFinished)
 		{
 			// Stop any coroutines currently running on this line view (for
 			// example, any other RunLine that might be running)
 			StopAllCoroutines();
 
 			// Begin running the line as a coroutine.
-			StartCoroutine(RunLineInternal(dialogueLine, onDialogueLineFinished));
+			StartCoroutine(RunLineInternal(dialogueRunner, dialogueLine, onDialogueLineFinished));
 		}
 
-		private IEnumerator RunLineInternal(LocalizedLine dialogueLine, Action onDialogueLineFinished)
+		private IEnumerator RunLineInternal(DialogueRunner dialogueRunner, LocalizedLine dialogueLine, Action onDialogueLineFinished)
 		{
 			m_currentLine = dialogueLine;
 
@@ -121,7 +122,7 @@ namespace ToolkitEngine.Dialogue
 			StartCoroutine(
 				ProcessInternal(
 					m_runLine,
-					(view) => view.RunLine(dialogueLine, ViewDialogueLineFinished),
+					(view) => view.RunLine(dialogueRunner, dialogueLine, ViewDialogueLineFinished),
 					onDialogueLineFinished));
 		}
 

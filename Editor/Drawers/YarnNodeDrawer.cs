@@ -40,13 +40,22 @@ namespace ToolkitEditor.Dialogue
 					if (importer == null)
 						continue;
 
-					foreach (var t in importer.GenerateStringsTable()
+					//foreach (var t in project.NodeNames
+					//	.Select(x => new
+					//	{
+					//		script = YarnEditorUtil.FindYarnScript(project, x)?.name,
+					//		node = x,
+					//	}).Distinct())
+					foreach (var t in YarnEditorUtil.GenerateStringsTable(importer)
 						.Select(x => new
 						{
 							script = Path.GetFileNameWithoutExtension(x.File),
 							node = x.Node
 						}).Distinct())
 					{
+						if (string.IsNullOrEmpty(t.script))
+							continue;
+
 						string path = $"{project.name}/{t.script}/{t.node}";
 						var tuple = new Tuple<YarnProject, string>(project, t.node);
 
@@ -60,12 +69,65 @@ namespace ToolkitEditor.Dialogue
 				m_paths.Insert(0, "[Empty]");
 			}
 
-			m_project ??= property.FindProperty(nameof(m_project));
-			m_name ??= property.FindProperty(nameof(m_name));
+			m_project ??= property.FindPropertyRelative(nameof(m_project));
+			m_name ??= property.FindPropertyRelative(nameof(m_name));
 
-			int selectedIndex = 0;
-			EditorGUI.BeginChangeCheck();
+			EditorGUI.BeginProperty(position, GUIContent.none, property);
 			{
+				int selectedIndex = 0;
+				EditorGUI.BeginChangeCheck();
+				{
+					if (!string.IsNullOrWhiteSpace(m_name.stringValue)
+						&& m_project.objectReferenceValue != null)
+					{
+						var tuple = new Tuple<YarnProject, string>(m_project.objectReferenceValue as YarnProject, m_name.stringValue);
+						if (m_tupleToPath.TryGetValue(tuple, out var selectedPath))
+						{
+							selectedIndex = m_paths.IndexOf(selectedPath);
+						}
+					}
+
+					var tooltipRect = position;
+					tooltipRect.x += EditorGUIUtility.labelWidth;
+					tooltipRect.width -= EditorGUIUtility.labelWidth;
+
+					selectedIndex = EditorGUIRectLayout.Popup(ref position, label.text, selectedIndex, m_paths.ToArray());
+
+					if (selectedIndex == 0 && !string.IsNullOrEmpty(m_name.stringValue))
+					{
+						++EditorGUI.indentLevel;
+						m_name.stringValue = EditorGUIRectLayout.TextField(ref position, "Name", m_name.stringValue);
+						--EditorGUI.indentLevel;
+					}
+
+					if (selectedIndex > 0 && m_pathToTuple.TryGetValue(m_paths[selectedIndex], out var selectedTuple))
+					{
+						EditorGUI.LabelField(tooltipRect, new GUIContent(string.Empty, selectedTuple.Item2));
+					}
+				}
+				if (EditorGUI.EndChangeCheck())
+				{
+					if (selectedIndex == 0)
+					{
+						m_project.objectReferenceValue = null;
+						m_name.stringValue = string.Empty;
+					}
+					else if (m_pathToTuple.TryGetValue(m_paths[selectedIndex], out var tuple))
+					{
+						m_project.objectReferenceValue = tuple.Item1;
+						m_name.stringValue = tuple.Item2;
+					}
+				}
+			}
+			EditorGUI.EndProperty();
+		}
+
+		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+		{
+			float height = base.GetPropertyHeight(property, label);
+            if (m_name != null)
+            {
+				int selectedIndex = 0;
 				if (!string.IsNullOrWhiteSpace(m_name.stringValue)
 					&& m_project.objectReferenceValue != null)
 				{
@@ -76,35 +138,13 @@ namespace ToolkitEditor.Dialogue
 					}
 				}
 
-				var tooltipRect = position;
-				tooltipRect.x += EditorGUIUtility.labelWidth;
-				tooltipRect.width -= EditorGUIUtility.labelWidth;
-
-				selectedIndex = EditorGUIRectLayout.Popup(ref position, label.text, selectedIndex, m_paths.ToArray());
-
-				if (selectedIndex > 0 && m_pathToTuple.TryGetValue(m_paths[selectedIndex], out var selectedTuple))
+				if (selectedIndex == 0 && !string.IsNullOrEmpty(m_name.stringValue))
 				{
-					EditorGUI.LabelField(tooltipRect, new GUIContent(string.Empty, selectedTuple.Item2));
+					height += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 				}
 			}
-			if (EditorGUI.EndChangeCheck())
-			{
-				if (selectedIndex == 0)
-				{
-					m_project.objectReferenceValue = null;
-					m_name.stringValue = string.Empty;
-				}
-				else if (m_pathToTuple.TryGetValue(m_paths[selectedIndex], out var tuple))
-				{
-					m_project.objectReferenceValue = tuple.Item1;
-					m_name.stringValue = tuple.Item2;
-				}
-			}
-		}
 
-		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-		{
-			return base.GetPropertyHeight(property, label);
+            return height;
 		}
 
 		#endregion

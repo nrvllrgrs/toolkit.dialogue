@@ -45,6 +45,13 @@ namespace ToolkitEditor.Dialogue
 	public abstract class TTSGenerator<T> : TTSGenerator
 		where T : TTSVoice
     {
+		#region Fields
+
+		public const string NO_AUDIO_METADATA_TAG = "noAudio";
+
+		#endregion
+
+
 		#region Methods
 
 		protected override IEnumerator AsyncGenerate(
@@ -58,7 +65,7 @@ namespace ToolkitEditor.Dialogue
 			}
 
 			// Create dialogue to parse markup
-			var dialogue = YarnEditorUtil.GetDialogue(project);
+			var parser = new LineParser();
 
 			int i = 0;
 			float total = entries.Count();
@@ -77,7 +84,7 @@ namespace ToolkitEditor.Dialogue
 					try
 					{
 						// Strip attributes for TTS generation
-						result = dialogue.ParseMarkup(text);
+						result = parser.ParseString(text, System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
 					}
 					catch (Exception e)
 					{
@@ -86,7 +93,14 @@ namespace ToolkitEditor.Dialogue
 
 					if (result.HasValue)
 					{
-						yield return AsyncGenerate(project, dialogue, entry, result.Value.Text, ttSVoice, (path) =>
+						var metadata = YarnParserUtil.GetMetadata(entry);
+						if (metadata.Contains(NO_AUDIO_METADATA_TAG))
+						{
+							Debug.Log($"Skipping {entry.Text}");
+							continue;
+						}
+
+						yield return AsyncGenerate(project, entry, result.Value.Text, ttSVoice, (path) =>
 						{
 							// Use Voice asset name because separate speakers may have different post-processing
 							// ...but could reference the same asset
@@ -110,7 +124,7 @@ namespace ToolkitEditor.Dialogue
 			GenerationCompleted?.Invoke();
 		}
 
-		protected abstract IEnumerator AsyncGenerate(YarnProject project, Yarn.Dialogue dialogue, StringTableEntry entry, string text, T ttsVoice, Action<string> callback);
+		protected abstract IEnumerator AsyncGenerate(YarnProject project, StringTableEntry entry, string text, T ttsVoice, Action<string> callback);
 
 		protected virtual IEnumerator AsyncFinishGenerate(YarnProject project)
 		{

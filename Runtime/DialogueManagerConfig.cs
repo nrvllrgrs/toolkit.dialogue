@@ -17,6 +17,10 @@ namespace ToolkitEngine.Dialogue
 		[SerializeField]
 		private Spawner m_dialogueSpawner;
 
+		[SerializeField, Min(0f)]
+		[Tooltip("Seconds to wait after dialogue completes before dequeuing next dialogue.")]
+		private float m_delayBetweenDequeues = 0.2f;
+
 		[SerializeField]
 		private GameObject m_runnerSettingsTemplate;
 
@@ -32,6 +36,7 @@ namespace ToolkitEngine.Dialogue
 		public DialogueCategory[] categories => m_categories.ToArray();
 		public DialogueSpeakerType[] speakers => m_speakers.ToArray();
 		public Spawner dialogueSpawner => m_dialogueSpawner;
+		public float delayBetweenDequeues => m_delayBetweenDequeues;
 		public GameObject runnerSettingsTemplate => m_runnerSettingsTemplate;
 
 #if USE_UNITY_LOCALIZATION

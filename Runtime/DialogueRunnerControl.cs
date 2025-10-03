@@ -128,16 +128,21 @@ namespace ToolkitEngine.Dialogue
 			m_dialogueRunner.onDialogueComplete.AddListener(DialogueRunner_DialogueComplete);
 			m_dialogueRunner.onNodeStart.AddListener(DialogueRunner_NodeStart);
 			m_dialogueRunner.onNodeComplete.AddListener(DialogueRunner_NodeComplete);
-			m_dialogueRunner.onCommand.AddListener(DialogueRunner_Command);
+			m_dialogueRunner.onUnhandledCommand.AddListener(DialogueRunner_Command);
 		}
 
 		protected virtual void OnDisable()
 		{
+			if (isDialogueRunning)
+			{
+				Stop();
+			}
+
 			m_dialogueRunner.onDialogueStart.RemoveListener(DialogueRunner_DialogueStart);
 			m_dialogueRunner.onDialogueComplete.RemoveListener(DialogueRunner_DialogueComplete);
 			m_dialogueRunner.onNodeStart.RemoveListener(DialogueRunner_NodeStart);
 			m_dialogueRunner.onNodeComplete.RemoveListener(DialogueRunner_NodeComplete);
-			m_dialogueRunner.onCommand.RemoveListener(DialogueRunner_Command);
+			m_dialogueRunner.onUnhandledCommand.RemoveListener(DialogueRunner_Command);
 		}
 
 		public void Set(DialogueRunner runner, DialogueType dialogueType)
@@ -150,42 +155,48 @@ namespace ToolkitEngine.Dialogue
 		{
 			if (m_playOnStart)
 			{
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 				Play();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 			}
 		}
 
 		public void QuickPlay()
 		{
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 			Play();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 		}
 
 		public void QuickPlay(string startNode)
 		{
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 			Play(startNode);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 		}
 
 		[ContextMenu("Play")]
-		public bool Play()
+		public async YarnTask<bool> Play()
 		{
-			return Play(m_startNode.name);
+			return await Play(m_startNode.name);
 		}
 
-		public bool Play(string nodeName)
+		public async YarnTask<bool> Play(string nodeName)
 		{
 			// Node doesn't exist, skip
 			if (string.IsNullOrWhiteSpace(nodeName) || !m_dialogueRunner.NodeExists(nodeName))
 				return false;
 
-			return DialogueManager.CastInstance.Play(this, nodeName);
+			return await DialogueManager.CastInstance.Play(this, nodeName);
 		}
 
-		public bool Play(YarnNode node)
+		public async YarnTask<bool> Play(YarnNode node)
 		{
-			if (m_dialogueRunner.yarnProject != node.project)
+			if (m_dialogueRunner.YarnProject != node.project)
 			{
 				m_dialogueRunner.SetProject(node.project);
 			}
-			return Play(node.name);
+			return await Play(node.name);
 		}
 
 		internal virtual void PlayInternal(string startNode)

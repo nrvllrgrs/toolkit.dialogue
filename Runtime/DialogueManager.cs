@@ -25,6 +25,8 @@ namespace ToolkitEngine.Dialogue
 
 		private HashSet<string> m_activeSpeakerNames;
 
+		private const float MIN_DELAY_BETWEEN_REUSE = 0.2f;
+
 #if UNITY_EDITOR
 		private static GameObject s_container;
 #endif
@@ -82,6 +84,9 @@ namespace ToolkitEngine.Dialogue
 			{
 				foreach (var priority in category.priorities)
 				{
+					if (priority == null)
+						continue;
+
 					m_priorityToCategoryMap.Add(priority, category);
 				}
 
@@ -143,12 +148,12 @@ namespace ToolkitEngine.Dialogue
 			return false;
 		}
 
-		public bool Play(DialogueRunnerControl control, string startNode)
+		public async YarnTask<bool> Play(DialogueRunnerControl control, string startNode)
 		{
 			if (!TryGetRuntimeDialogueCategory(control, out var runtimeCategory))
 				return false;
 
-			return runtimeCategory.Play(control, startNode);
+			return await runtimeCategory.Play(control, startNode);
 		}
 
 		public bool Enqueue(DialogueType dialogueType, YarnProject project, string startNode, Action<GameObject> onSpawned = null)
@@ -334,16 +339,16 @@ namespace ToolkitEngine.Dialogue
 			{
 				if (!appendDialogueViews)
 				{
-					control.dialogueRunner.dialogueViews = settings.dialogueViews;
+					control.dialogueRunner.DialoguePresenters = settings.dialoguePresenters;
 				}
 				else
 				{
 					// Going to append, skipping DialogueViews of the same type
-					var existingTypes = control.dialogueRunner.dialogueViews.Select(x => x.GetType()).ToHashSet();
+					var existingTypes = control.dialogueRunner.DialoguePresenters.Select(x => x.GetType()).ToHashSet();
 
 					// Appended list
-					var list = new List<DialogueViewBase>(control.dialogueRunner.dialogueViews);
-					foreach (var dialogueView in settings.dialogueViews)
+					var list = new List<DialoguePresenterBase>(control.dialogueRunner.DialoguePresenters);
+					foreach (var dialogueView in settings.dialoguePresenters)
 					{
 						if (existingTypes.Contains(dialogueView.GetType()))
 							continue;
@@ -351,7 +356,7 @@ namespace ToolkitEngine.Dialogue
 						list.Add(dialogueView);
 					}
 
-					control.dialogueRunner.dialogueViews = list.ToArray();
+					control.dialogueRunner.DialoguePresenters = list.ToArray();
 				}
 
 				if (!keepVariableStorage && settings.variableStorage != null)
@@ -395,10 +400,15 @@ namespace ToolkitEngine.Dialogue
 
 			control.dialogueType = args[1] as DialogueType;
 			control.dialogueRunner.SetProject(args[2] as YarnProject);
-			string startNode = args[3] as string;
+			string startNode = (string)args[3];
 
 			// Map parameters to spawned object so it can be referenced
-			var key = new Tuple<DialogueType, YarnProject, string>(control.dialogueType, control.dialogueRunner.yarnProject, startNode);
+			var key = new Tuple<DialogueType, YarnProject, string>(control.dialogueType, control.dialogueRunner.YarnProject, startNode);
+			if (m_spawnMap.TryGetValue(key, out var prevControl) && prevControl == null)
+			{
+				m_spawnMap.Remove(key);
+			}
+
 			m_spawnMap.Add(key, control);
 
 			UpdateLineProvider(control);
@@ -590,7 +600,7 @@ namespace ToolkitEngine.Dialogue
 
 			#region Methods
 
-			internal bool Play(DialogueRunnerControl control, string startNode)
+			internal async YarnTask<bool> Play(DialogueRunnerControl control, string startNode)
 			{
 				// Under allowed simultaneous runners
 				if (dialogueCategory.infiniteSimultaneous || m_activeRunnerControls.Count < dialogueCategory.maxSimultaneous)
@@ -608,10 +618,14 @@ namespace ToolkitEngine.Dialogue
 						if (interruptable.dialogueRunner.IsDialogueRunning)
 						{
 							interruptable.Stop();
+							if (interruptable == control)
+							{
+								await YarnTask.Delay(TimeSpan.FromSeconds(MIN_DELAY_BETWEEN_REUSE));
+							}
 						}
 						Remove(interruptable);
 
-						return Play(control, startNode);
+						return await Play(control, startNode);
 					}
 					// Determine if enqueuing should occur
 					else if (dialogueCategory.queueable && control.dialogueType.enqueueIfBlocked)
@@ -746,7 +760,7 @@ namespace ToolkitEngine.Dialogue
 				DialogueRunnerControl_DialogueCompleted(e);
 			}
 
-			private void DialogueRunnerControl_DialogueCompleted(DialogueEventArgs e)
+			private async void DialogueRunnerControl_DialogueCompleted(DialogueEventArgs e)
 			{
 				DialogueCompleted?.Invoke(this, e);
 
@@ -765,7 +779,10 @@ namespace ToolkitEngine.Dialogue
 					var next = dialogueCategory.Next(m_queue.Keys);
 					if (next != null && m_queue.TryGetValue(next, out var tuple))
 					{
+						await YarnTask.Delay(TimeSpan.FromSeconds(CastInstance.Config.delayBetweenDequeues));						
+
 						m_queue.Remove(next);
+						m_interrupted = false;
 						PlayInternal(next, tuple.Item1);
 					}
 				}
