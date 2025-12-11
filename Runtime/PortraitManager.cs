@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
-using Yarn;
 using Yarn.Unity;
 
 namespace ToolkitEngine.Dialogue
@@ -9,7 +8,7 @@ namespace ToolkitEngine.Dialogue
     {
 		#region Fields
 
-		private Dictionary<DialogueSpeakerType, Image> m_map = new();
+		private Dictionary<DialogueSpeakerType, HashSet<Image>> m_map = new();
 
 		private const string DEFAULT_KEY = "Default";
 		private const string PORTRAIT_META_KEY = "portrait:";
@@ -22,7 +21,13 @@ namespace ToolkitEngine.Dialogue
 		{
 			foreach (var speakerType in portrait.speakerTypes)
 			{
-				m_map.Add(speakerType, portrait.image);
+				if (!m_map.TryGetValue(speakerType, out var set))
+				{
+					set = new HashSet<Image>();
+					m_map.Add(speakerType, set);
+				}
+
+				set.Add(portrait.image);
 			}
 		}
 
@@ -30,30 +35,49 @@ namespace ToolkitEngine.Dialogue
 		{
 			foreach (var speakerType in portrait.speakerTypes)
 			{
-				m_map.Remove(speakerType);
+				if (!m_map.TryGetValue(speakerType, out var set))
+					continue;
+
+				set.Remove(portrait.image);
+
+				if (set.Count == 0)
+				{
+					m_map.Remove(speakerType);
+				}
 			}
 		}
 
 		public void HideAllPortraits()
 		{
-			foreach (var image in m_map.Values)
+			foreach (var set in m_map.Values)
 			{
-				image.enabled = false;
+				foreach (var image in set)
+				{
+					image.enabled = false;
+				}
 			}
 		}
 
 		public void SetPortrait(string speakerName, string portraitKey)
 		{
 			if (DialogueManager.CastInstance.TryGetDialogueSpeakerTypeByCharacterName(speakerName, out var speakerType)
-				&& m_map.TryGetValue(speakerType, out var image))
+				&& m_map.TryGetValue(speakerType, out var set))
 			{
-				SetPortrait(speakerType, portraitKey, image);
+				SetPortrait(speakerType, portraitKey, set);
 			}
 		}
 
 		public void SetPortrait(DialogueSpeakerType speakerType, LocalizedLine line, IPortraitPresenter presenter = null)
 		{
 			if (speakerType != null && m_map.TryGetValue(speakerType, out var image))
+			{
+				SetPortrait(speakerType, line, image, presenter);
+			}
+		}
+
+		private void SetPortrait(DialogueSpeakerType speakerType, LocalizedLine line, HashSet<Image> set, IPortraitPresenter presenter)
+		{
+			foreach (var image in set)
 			{
 				SetPortrait(speakerType, line, image, presenter);
 			}
@@ -85,9 +109,25 @@ namespace ToolkitEngine.Dialogue
 			SetPortrait(speakerType, portraitKey: null, image);
 		}
 
-		private bool SetPortrait(DialogueSpeakerType speakerType, string portraitKey, Image image)
+		private bool SetPortrait(DialogueSpeakerType speakerType, string portraitKey, HashSet<Image> set)
 		{
 			HideAllPortraits();
+
+			bool allEnabled = true;
+			foreach (var image in set)
+			{
+				allEnabled &= SetPortrait(speakerType, portraitKey, image, false);
+			}
+
+			return allEnabled;
+		}
+
+		private bool SetPortrait(DialogueSpeakerType speakerType, string portraitKey, Image image, bool hideAllPortraits = true)
+		{
+			if (hideAllPortraits)
+			{
+				HideAllPortraits();
+			}
 
 			if (!string.IsNullOrWhiteSpace(portraitKey) && (speakerType?.portraitSet?.TryGetPortrait(portraitKey, out var sprite) ?? false))
 			{

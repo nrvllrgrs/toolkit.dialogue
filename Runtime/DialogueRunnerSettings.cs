@@ -6,6 +6,17 @@ namespace ToolkitEngine.Dialogue
 {
 	public class DialogueRunnerSettings : MonoBehaviour
     {
+		#region Enumerators
+
+		public enum RunSelectedOption
+		{
+			UseDialogueRunner,
+			AsLine,
+			NotAsLine
+		};
+
+		#endregion
+
 		#region Fields
 
 		[SerializeField]
@@ -17,6 +28,9 @@ namespace ToolkitEngine.Dialogue
 		[SerializeField, FormerlySerializedAs("m_dialogueViews")]
 		private DialoguePresenterBase[] m_dialoguePresenters;
 
+		[SerializeField]
+		private RunSelectedOption m_runSelectedOption = RunSelectedOption.UseDialogueRunner;
+
 		#endregion
 
 		#region Properties
@@ -24,6 +38,17 @@ namespace ToolkitEngine.Dialogue
 		public DialogueRegistration registration => m_registration;
 		public VariableStorageBehaviour variableStorage => m_variableStorage;
 		public DialoguePresenterBase[] dialoguePresenters => m_dialoguePresenters;
+		public RunSelectedOption runSelectedOption => m_runSelectedOption;
+
+		public DialogueRunner firstDialogueRunner
+		{
+			get
+			{
+				return DialogueManager.CastInstance.TryGetFirstDialogueRunner(registration, out var dialogueRunner)
+					? dialogueRunner
+					: null;
+			}
+		}
 
 		#endregion
 
@@ -40,6 +65,11 @@ namespace ToolkitEngine.Dialogue
 			{
 				DialogueManager.CastInstance.Unregister(this);
 			}
+		}
+
+		public void Stop()
+		{
+			firstDialogueRunner?.Stop();
 		}
 
 		#endregion

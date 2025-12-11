@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ToolkitEngine.Dialogue
 {
-	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Portrait Set")]
+	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Portrait Set", order = 1600)]
 	public class PortraitSet : ScriptableObject
     {
 		#region Fields

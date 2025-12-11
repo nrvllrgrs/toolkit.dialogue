@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using ToolkitEngine.Dialogue;
 using Unity.EditorCoroutines.Editor;
 using UnityEditor;
@@ -100,7 +101,7 @@ namespace ToolkitEditor.Dialogue
 							continue;
 						}
 
-						yield return AsyncGenerate(project, entry, result.Value.Text, ttSVoice, (path) =>
+						yield return AsyncGenerate(project, entry, Regex.Replace(result.Value.Text, "<.*?>", string.Empty), ttSVoice, (path) =>
 						{
 							// Use Voice asset name because separate speakers may have different post-processing
 							// ...but could reference the same asset

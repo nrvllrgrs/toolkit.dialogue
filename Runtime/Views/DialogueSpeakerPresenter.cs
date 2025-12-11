@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
 using UnityEngine;
 using Yarn.Unity;
 using Yarn.Unity.Attributes;
@@ -168,10 +167,12 @@ namespace ToolkitEngine.Dialogue
 		/// LineCancellationToken)" path="/param"/>
 		/// <seealso cref="DialoguePresenterBase.RunLineAsync(LocalizedLine,
 		/// LineCancellationToken)"/>
-		public override async YarnTask RunLineAsync(DialogueRunner dialogueRunner, LocalizedLine dialogueLine, LineCancellationToken lineCancellationToken)
+		public override async YarnTask RunLineAsync(LocalizedLine dialogueLine, LineCancellationToken lineCancellationToken)
 		{
 			// Get the localized voice over audio clip
 			AudioClip? voiceOverClip = null;
+
+			var dialogueRunner = dialogueLine.Source as DialogueRunner;
 
 			if (dialogueLine.Asset is AudioClip clip)
 			{
@@ -217,7 +218,7 @@ namespace ToolkitEngine.Dialogue
 			{
 				await YarnTask.Delay(
 					TimeSpan.FromSeconds(waitTimeBeforeLineStart),
-					lineCancellationToken.NextLineToken).SuppressCancellationThrow();
+					lineCancellationToken.NextContentToken).SuppressCancellationThrow();
 			}
 
 			// Start playing the audio.
@@ -225,7 +226,7 @@ namespace ToolkitEngine.Dialogue
 
 			// Playback may not begin immediately, so wait until it does (or if
 			// the line is interrupted.)
-			await YarnTask.WaitUntil(() => IsAnyPlaying(), lineCancellationToken.NextLineToken).SuppressCancellationThrow();
+			await YarnTask.WaitUntil(() => IsAnyPlaying(), lineCancellationToken.NextContentToken).SuppressCancellationThrow();
 
 			if (!DialogueRunner.IsInPlaymode)
 			{
@@ -234,7 +235,7 @@ namespace ToolkitEngine.Dialogue
 
 			// Now wait until either the audio source finishes playing, or the
 			// line is interrupted.
-			await YarnTask.WaitUntil(() => !IsAnyPlaying(), lineCancellationToken.NextLineToken).SuppressCancellationThrow();
+			await YarnTask.WaitUntil(() => !IsAnyPlaying(), lineCancellationToken.NextContentToken).SuppressCancellationThrow();
 
 			if (!DialogueRunner.IsInPlaymode)
 			{
@@ -244,7 +245,7 @@ namespace ToolkitEngine.Dialogue
 			// If the line was interrupted while we were playing, we need to
 			// wrap up the playback as quickly as we can. We do this here with a
 			// fade-out to zero over fadeOutTimeOnLineFinish seconds.
-			if (IsAnyPlaying() && lineCancellationToken.IsNextLineRequested)
+			if (IsAnyPlaying() && lineCancellationToken.IsNextContentRequested)
 			{
 				// Fade out voice over clip
 				float lerpPosition = 0f;
@@ -273,11 +274,11 @@ namespace ToolkitEngine.Dialogue
 			// because the user has already indicated that they're fine with
 			// things moving faster than sounds normal.)
 
-			if (!lineCancellationToken.IsNextLineRequested && waitTimeAfterLineComplete > 0)
+			if (!lineCancellationToken.IsNextContentRequested && waitTimeAfterLineComplete > 0)
 			{
 				await YarnTask.Delay(
 					TimeSpan.FromSeconds(waitTimeAfterLineComplete),
-					lineCancellationToken.NextLineToken
+					lineCancellationToken.NextContentToken
 				).SuppressCancellationThrow();
 			}
 
@@ -353,11 +354,6 @@ namespace ToolkitEngine.Dialogue
 			m_activeAudioSources.Clear();
 		}
 
-		/// <inheritdoc/>
-		public override YarnTask<DialogueOption?> RunOptionsAsync(DialogueRunner dialogueRunner, DialogueOption[] dialogueOptions, CancellationToken cancellationToken)
-		{
-			return DialogueRunner.NoOptionSelected;
-		}
 		/// <inheritdoc/>
 		public override YarnTask OnDialogueStartedAsync()
 		{

@@ -1,4 +1,3 @@
-using System.Threading;
 using ToolkitEngine.Dialogue;
 
 namespace Yarn.Unity
@@ -12,18 +11,13 @@ namespace Yarn.Unity
 	{
 		#region Methods
 
-		public override YarnTask RunLineAsync(DialogueRunner dialogueRunner, LocalizedLine line, LineCancellationToken token)
+		public override YarnTask RunLineAsync(LocalizedLine line, LineCancellationToken token)
 		{
 			if (DialogueManager.CastInstance.TryGetDialogueSpeakerTypeByCharacterName(line.CharacterName, out var speakerType))
 			{
 				PortraitManager.CastInstance.SetPortrait(speakerType, line, this);
 			}
 			return YarnTask.CompletedTask;
-		}
-
-		public override YarnTask<DialogueOption> RunOptionsAsync(DialogueRunner dialogueRunner, DialogueOption[] dialogueOptions, CancellationToken cancellationToken)
-		{
-			return DialogueRunner.NoOptionSelected;
 		}
 
 		public override YarnTask OnDialogueStartedAsync()

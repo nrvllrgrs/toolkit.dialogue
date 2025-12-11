@@ -223,6 +223,12 @@ namespace ToolkitEditor.Dialogue
 
 		#region Cinematic Methods
 
+		[MenuItem("Assets/Yarn Spinner/Create Cinematic", true)]
+		private static bool ValidateExportToFountain()
+		{
+			return Selection.objects.All(x => x is TextAsset);
+		}
+
 		[MenuItem("Assets/Yarn Spinner/Create Cinematic")]
 		private static void CreateCinematic()
 		{

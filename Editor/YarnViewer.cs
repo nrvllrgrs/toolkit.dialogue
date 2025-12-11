@@ -11,11 +11,6 @@ using UnityEngine.UIElements;
 using Yarn.Unity;
 using Yarn.Unity.Editor;
 using Yarn.Markup;
-using UnityEditor.VersionControl;
-using static UnityEngine.EventSystems.EventTrigger;
-
-
-
 
 #if USE_UNITY_LOCALIZATION
 using UnityEditor.Localization;
@@ -503,11 +498,10 @@ namespace ToolkitEditor.Dialogue
 			}
 			else
 			{
+				string line = Regex.Replace(value, @"\w:\w*", string.Empty).Trim();
 				foreach (var x in s_entries)
 				{
 					YarnParserUtil.TryGetSpeakerAndText(x.entry, out string speaker, out string text);
-					string line = Regex.Replace(value, @"\w:\w*", string.Empty).Trim();
-
 					if (text.Contains(line, StringComparison.InvariantCultureIgnoreCase)
 						&& IsMatch('s', value, speaker)
 						&& IsMatch('n', value, x.entry.Node)

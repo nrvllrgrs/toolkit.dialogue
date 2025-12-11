@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ToolkitEngine.Dialogue
 {
-	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Dialogue Type")]
+	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Dialogue Type", order = 402)]
 	public class DialogueType : ScriptableObject
 	{
 		#region Enumerators

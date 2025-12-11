@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Yarn.Unity;
-using Yarn.Unity.UnityLocalization;
 
 namespace ToolkitEngine.Dialogue
 {
@@ -197,6 +196,9 @@ namespace ToolkitEngine.Dialogue
 			runtimeCategory.ClearQueue();
 		}
 
+		public DialogueType[] GetDialogueTypes() => m_priorityToCategoryMap.Keys.ToArray();
+		public YarnProject[] GetYarnProjects() => Config.projects;
+
 		public bool TryGetDialogueCategory(DialogueType type, out DialogueCategory category)
 		{
 			if (TryGetRuntimeDialogueCategory(type, out var runtimeCategory))
@@ -301,6 +303,37 @@ namespace ToolkitEngine.Dialogue
 			}
 		}
 
+		public bool TryGetFirstDialogueRunner(DialogueRegistration registration, out DialogueRunner runner)
+		{
+			runner = null;
+
+			if (registration == null)
+				return false;
+
+			RuntimeDialogueCategory runtimeCategory = null;
+			switch (registration.mode)
+			{
+				case DialogueRegistration.Mode.Category:
+					if (registration.dialogueCategory != null
+						&& m_runtimeMap.TryGetValue(registration.dialogueCategory, out runtimeCategory))
+					{ }
+					break;
+
+				case DialogueRegistration.Mode.Type:
+					if (registration.dialogueType != null
+						&& TryGetRuntimeDialogueCategory(registration.dialogueType, out runtimeCategory))
+					{ }
+					break;
+			}
+
+			if (runtimeCategory?.isDialogueRunning ?? false)
+			{
+				runner = runtimeCategory.activeRunnerControls[0].dialogueRunner;
+				return true;
+			}
+			return false;
+		}
+
 		public bool TryGetDialogueRunnerSettings(DialogueRegistration registration, out DialogueRunnerSettings settings)
 		{
 			settings = null;
@@ -362,6 +395,17 @@ namespace ToolkitEngine.Dialogue
 				if (!keepVariableStorage && settings.variableStorage != null)
 				{
 					control.dialogueRunner.VariableStorage = settings.variableStorage;
+				}
+
+				switch (settings.runSelectedOption)
+				{
+					case DialogueRunnerSettings.RunSelectedOption.AsLine:
+						control.dialogueRunner.runSelectedOptionAsLine = true;
+						break;
+
+					case DialogueRunnerSettings.RunSelectedOption.NotAsLine:
+						control.dialogueRunner.runSelectedOptionAsLine = false;
+						break;
 				}
 
 				return true;
@@ -733,7 +777,7 @@ namespace ToolkitEngine.Dialogue
 
 			private bool IsActiveDialogueRunnerControl(DialogueEventArgs e)
 			{
-				return e.control != null && m_activeRunnerControls.Contains(e.control);
+				return e?.control != null && (m_activeRunnerControls?.Contains(e.control) ?? false);
 			}
 
 			private void DialogueRunnerControl_DialogueStarted(DialogueEventArgs e)
@@ -766,7 +810,7 @@ namespace ToolkitEngine.Dialogue
 
 				// Check if dialogue is queued and start next
 				// But if interrupted, skip
-				if (!m_interrupted && m_queue.Count > 0)
+				if (!m_interrupted && m_queue != null && m_queue.Count > 0)
 				{
 					// Find "forgotten" keys
 					var forgottenKeys = m_queue.Keys.Where(x => GetQueueAge(x) > dialogueCategory.timeToForget).ToArray();
@@ -779,7 +823,7 @@ namespace ToolkitEngine.Dialogue
 					var next = dialogueCategory.Next(m_queue.Keys);
 					if (next != null && m_queue.TryGetValue(next, out var tuple))
 					{
-						await YarnTask.Delay(TimeSpan.FromSeconds(CastInstance.Config.delayBetweenDequeues));						
+						await YarnTask.Delay(TimeSpan.FromSeconds(CastInstance.Config.delayBetweenDequeues));
 
 						m_queue.Remove(next);
 						m_interrupted = false;

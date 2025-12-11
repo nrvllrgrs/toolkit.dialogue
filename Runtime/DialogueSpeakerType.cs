@@ -6,7 +6,7 @@ using UnityEngine.Localization;
 
 namespace ToolkitEngine.Dialogue
 {
-	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Dialogue Speaker")]
+	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Dialogue Speaker", order = 401)]
 	public class DialogueSpeakerType : ScriptableObject
     {
 		#region Fields

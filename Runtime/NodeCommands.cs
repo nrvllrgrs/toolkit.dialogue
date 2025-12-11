@@ -14,19 +14,19 @@ namespace ToolkitEngine.Dialogue
 
 		#region Methods
 
-		[YarnFunction("isLocked")]
+		[YarnFunction("isNodeLocked")]
 		public static bool IsNodeLocked(string nodeName)
 		{
 			return s_lockedNodes.Contains(nodeName);
 		}
 
-		[YarnCommand("lock")]
+		[YarnCommand("lockNode")]
 		public static void LockNode(string nodeName)
 		{
 			s_lockedNodes.Add(nodeName);
 		}
 
-		[YarnCommand("unlock")]
+		[YarnCommand("unlockNode")]
 		public static void UnlockNode(string nodeName)
 		{
 			if (s_lockedNodes.Contains(nodeName))
@@ -35,7 +35,7 @@ namespace ToolkitEngine.Dialogue
 			}
 		}
 
-		[YarnCommand("unlockNext")]
+		[YarnCommand("unlockNextNode")]
 		public static void UnlockNextNode(int count = 1)
 		{
 			for (int i = 0; i < count; ++i)
@@ -47,7 +47,7 @@ namespace ToolkitEngine.Dialogue
 			}
 		}
 
-		[YarnCommand("shuffle")]
+		[YarnCommand("shuffleNodes")]
 		public static void ShuffleNodes()
 		{
 			s_lockedNodes = s_lockedNodes.Shuffle().ToList();

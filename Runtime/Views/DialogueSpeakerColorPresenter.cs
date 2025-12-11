@@ -1,15 +1,14 @@
-using System.Threading;
 using UnityEngine;
 using Yarn.Unity;
 using Yarn.Unity.Attributes;
-
-#nullable enable
 
 #if USE_TMP
 using TMPro;
 #else
 using TextMeshProUGUI = Yarn.Unity.TMPShim;
 #endif
+
+#nullable enable
 
 namespace ToolkitEngine.Dialogue
 {
@@ -40,7 +39,7 @@ namespace ToolkitEngine.Dialogue
 			return YarnTask.CompletedTask;
 		}
 
-		public override YarnTask RunLineAsync(DialogueRunner dialogueRunner, LocalizedLine dialogueLine, LineCancellationToken token)
+		public override YarnTask RunLineAsync(LocalizedLine dialogueLine, LineCancellationToken token)
 		{
 			if (m_lineText != null)
 			{
@@ -49,17 +48,13 @@ namespace ToolkitEngine.Dialogue
 					: m_defaultColor;
 
 				m_lineText.color = color;
+
 				if (m_characterNameText != null)
 				{
 					m_characterNameText.color = color;
 				}
 			}
 			return YarnTask.CompletedTask;
-		}
-
-		public override YarnTask<DialogueOption?> RunOptionsAsync(DialogueRunner dialogueRunner, DialogueOption[] dialogueOptions, CancellationToken cancellationToken)
-		{
-			return DialogueRunner.NoOptionSelected;
 		}
 
 		public override YarnTask OnDialogueCompleteAsync()

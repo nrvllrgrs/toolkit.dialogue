@@ -5,7 +5,7 @@ using ToolkitEngine.Scoring;
 
 namespace ToolkitEngine.Dialogue
 {
-	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Dialogue Category")]
+	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Dialogue Category", order = 400)]
 	public class DialogueCategory : ScriptableObject
 	{
 		#region Fields

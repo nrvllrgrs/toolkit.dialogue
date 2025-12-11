@@ -10,17 +10,12 @@ using UnityEditor;
 using UnityEngine;
 using Yarn.Markup;
 using Yarn.Unity;
+using Yarn.Unity.Editor;
 
 namespace ToolkitEditor.Dialogue
 {
 	public static class FountainUtil
-	{
-		#region Fields
-
-		private static Dictionary<string, int> s_choiceCount = new();
-
-		#endregion
-
+    {
 		#region Path Methods
 
 		private static string GetYarnArtifactPath(string prefix, string extension)
@@ -35,19 +30,6 @@ namespace ToolkitEditor.Dialogue
 		private static string ConvertToMarkdown(string text)
 		{
 			text = text.Replace("_", @"\_");
-
-			// Bold
-			text = text.Replace("<b>", "**");
-			text = text.Replace("</b>", "**");
-
-			// Italics
-			text = text.Replace("<i>", "*");
-			text = text.Replace("</i>", "*");
-
-			// Underline
-			text = text.Replace("<u>", "_");
-			text = text.Replace("</u>", "_");
-
 			return text;
 		}
 
@@ -69,7 +51,7 @@ namespace ToolkitEditor.Dialogue
 
 		[MenuItem("Assets/Yarn Spinner/Export to.../Fountain", priority = 110)]
 		private static void ExportSelectedToFountain()
-		{
+        {
 			string path = null;
 			if (Selection.objects[0] is YarnProject)
 			{
@@ -84,7 +66,7 @@ namespace ToolkitEditor.Dialogue
 			{
 				OpenInExplorer(path);
 			}
-		}
+        }
 
 		public static string ExportToFountain(YarnProject project) => ExportToFountain(new[] { project });
 
@@ -92,119 +74,129 @@ namespace ToolkitEditor.Dialogue
 			IEnumerable<YarnProject> projects,
 			Func<StringTableEntry, bool> predicate = null)
 		{
-			s_choiceCount.Clear();
-
 			var speakerNameMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 			foreach (var speakerType in YarnEditorUtil.GetDialogueSpeakerTypes())
 			{
 				speakerNameMap.Add(speakerType.name, YarnEditorUtil.GetLocalizedDisplayName(speakerType));
 			}
 
-			string path = GetYarnArtifactPath(Application.productName, ".fountain");
+			string path = GetYarnArtifactPath("Script", ".fountain");
 			using (StreamWriter writer = new StreamWriter(path))
 			{
 				writer.WriteLine($"Title: {Application.productName.ToUpper()}");
 				writer.WriteLine($"Author: {Application.companyName}");
 				writer.WriteLine("\n===\n");
 
-				// Get ordered entries from ALL projects
-				var yarnEntries = YarnEditorUtil.GetOrderedEntries(projects);
-
 				// Need dialogue to parse line attributes
-				var parser = new LineParser();
+				Yarn.Dialogue dialogue = null;
 				string lastFile = string.Empty;
 				string lastNode = string.Empty;
 
-				foreach (var yarnEntry in yarnEntries)
+				foreach (var project in projects)
 				{
-					// Does not match existing predicate criteria, skip
-					if (predicate != null && !predicate.Invoke(yarnEntry.entry))
+					var importer = AssetUtil.LoadImporter<YarnProjectImporter>(project);
+					var entries = importer.GenerateStringsTable();
+
+					// Project doesn't have lines, skip
+					if (!entries.Any())
 						continue;
 
-					// Processing new file
-					if (!string.Equals(yarnEntry.entry.File, lastFile))
+					// Sort entries by order tag
+					entries = YarnEditorUtil.Sort(project, entries);
+
+					dialogue = YarnEditorUtil.GetDialogue(project);
+					lastFile = lastNode = string.Empty;
+
+					foreach (var entry in entries)
 					{
-						if (!string.IsNullOrWhiteSpace(lastFile))
+						// Does not match existing predicate criteria, skip
+						if (predicate != null && !predicate.Invoke(entry))
+							continue;
+
+						// Processing new file
+						if (!string.Equals(entry.File, lastFile))
 						{
-							CloseScript(writer, lastFile);
+							if (!string.IsNullOrWhiteSpace(lastFile))
+							{
+								CloseScript(writer, lastFile);
+							}
+
+							OpenScript(writer, dialogue, entry);
+							lastFile = entry.File;
 						}
 
-						OpenScript(writer, parser, yarnEntry.entry);
-						lastFile = yarnEntry.entry.File;
-					}
-
-					// Processing new node
-					if (!string.Equals(yarnEntry.entry.Node, lastNode))
-					{
-						if (!string.IsNullOrWhiteSpace(lastNode))
+						// Processing new node
+						if (!string.Equals(entry.Node, lastNode))
 						{
-							CloseNode(writer, lastNode);
+							if (!string.IsNullOrWhiteSpace(lastNode))
+							{
+								CloseNode(writer, lastNode);
+							}
+
+							OpenNode(writer, dialogue, entry);
+							lastNode = entry.Node;
 						}
 
-						OpenNode(writer, parser, yarnEntry.entry);
-						lastNode = yarnEntry.entry.Node;
-					}
-
-					string speaker = string.Empty, text = yarnEntry.entry.Text;
-					var match = Regex.Match(yarnEntry.entry.Text, @"^(?<speaker>\w*?): ?(?<text>.*)$");
-					if (match.Success)
-					{
-						speaker = match.Groups["speaker"].Value;
-						if (speakerNameMap.TryGetValue(speaker, out var displayName))
+						string speaker = string.Empty, text = entry.Text;
+						var match = Regex.Match(entry.Text, @"^(?<speaker>\w*?): ?(?<text>.*)$");
+						if (match.Success)
 						{
-							speaker = displayName;
+							speaker = match.Groups["speaker"].Value;
+							if (speakerNameMap.TryGetValue(speaker, out var displayName))
+							{
+								speaker = displayName;
+							}
+
+							text = match.Groups["text"].Value;
 						}
 
-						text = match.Groups["text"].Value;
-					}
+						// Strip attibutes from text
+						var result = dialogue.ParseMarkup(text);
+						text = result.Text;
 
-					// Strip attibutes from text
-					var result = parser.ParseString(text, System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
-					text = result.Text;
-
-					if (TryGetChoice(yarnEntry.entry, out int number, out string choice))
-					{
-						writer.WriteLine($">{ConvertToMarkdown(choice)} CHOICE {number}\n");
-					}
-
-					// Speaker exists, use CHARACTER-DIALOGUE format
-					if (!string.IsNullOrWhiteSpace(speaker))
-					{
-						writer.WriteLine(speaker.ToUpper());
-
-						// Write PARENTHETICAL, if exists
-						if (TryGetParenthetical(result, out string parenthetical))
+						if (TryGetChoice(entry, out int number, out string choice))
 						{
-							writer.WriteLine($"({parenthetical})");
+							writer.WriteLine($">CHOICE {number}: {choice}\n");
 						}
 
-						WriteLine(writer, text);
-					}
-					else
-					{
-						// Use ACTION format
-						if (!string.IsNullOrWhiteSpace(text))
+						// Speaker exists, use CHARACTER-DIALOGUE format
+						if (!string.IsNullOrWhiteSpace(speaker))
 						{
-							WriteLine(writer, text);
-						}
-						else if (TryGetAction(result, out string action))
-						{
-							WriteLine(writer, action);
-						}
-						// Use SCENE HEADING format
-						else if (TryGetSceneHeading(result, out string scene))
-						{
-							WriteLine(writer, scene, ".");
-						}
-						else if (TryGetAnchor(result, out string anchor))
-						{
-							WriteLine(writer, anchor, ">");
-						}
-					}
+							writer.WriteLine(speaker.ToUpper());
 
-					if (TryGetGoTo(yarnEntry.entry, out string goTo))
-					{
-						WriteLine(writer, goTo, ">GOTO:");
+							// Write PARENTHETICAL, if exists
+							if (TryGetParenthetical(result, out string parenthetical))
+							{
+								writer.WriteLine($"({parenthetical})");
+							}
+							writer.WriteLine(text + "\n");
+						}
+						else
+						{
+							// Use ACTION format
+							if (!string.IsNullOrWhiteSpace(text))
+							{
+								writer.WriteLine($"{text}\n");
+							}
+							else if (TryGetAction(result, out string action))
+							{
+								writer.WriteLine($"{action}\n");
+							}
+							// Use SCENE HEADING format
+							else if (TryGetSceneHeading(result, out string scene))
+							{
+								writer.WriteLine($".{scene}\n");
+							}
+							else if (TryGetAnchor(result, out string anchor))
+							{
+								writer.WriteLine($">{anchor}\n");
+							}
+						}
+
+						if (TryGetGoTo(entry, out string goTo))
+						{
+							writer.WriteLine($">GOTO: {goTo.Replace("_", " ")}\n");
+						}
 					}
 				}
 
@@ -229,27 +221,19 @@ namespace ToolkitEditor.Dialogue
 			});
 		}
 
-		private static void WriteLine(StreamWriter writer, string message, string prefix = null, string postfix = null)
+		private static void OpenScript(StreamWriter writer, Yarn.Dialogue dialogue, StringTableEntry entry)
 		{
-			writer.WriteLine($"{prefix ?? string.Empty}{ConvertToMarkdown(message)}{postfix ?? string.Empty}\n");
-		}
-
-		private static void OpenScript(StreamWriter writer, LineParser parser, StringTableEntry entry)
-		{
-			string scriptName = Path.GetFileNameWithoutExtension(entry.File);
-			writer.WriteLine($"# {scriptName}\n");
-			WriteLine(writer, scriptName, ">**", "**<");
+			writer.WriteLine($">**{ConvertToMarkdown(Path.GetFileNameWithoutExtension(entry.File))}**<\n");
 		}
 
 		private static void CloseScript(StreamWriter writer, string file)
 		{
-			//writer.WriteLine($">**End of {ConvertToMarkdown(Path.GetFileNameWithoutExtension(file))}**<\n");
+			writer.WriteLine($">**End of {ConvertToMarkdown(Path.GetFileNameWithoutExtension(file))}**<\n");
 		}
 
-		private static void OpenNode(StreamWriter writer, LineParser parser, StringTableEntry entry)
+		private static void OpenNode(StreamWriter writer, Yarn.Dialogue dialogue, StringTableEntry entry)
 		{
-			writer.WriteLine($"## {entry.Node}\n");
-			WriteLine(writer, entry.Node, ">*", "*<");
+			writer.WriteLine($">*{ConvertToMarkdown(entry.Node)}*<\n");
 		}
 
 		private static void CloseNode(StreamWriter writer, string node)
@@ -277,17 +261,16 @@ namespace ToolkitEditor.Dialogue
 		private static bool TryGetChoice(StringTableEntry entry, out int number, out string value)
 		{
 			number = 0;
+
 			if (!YarnParserUtil.TryGetMetadataTag(entry, "choice", out value))
 				return false;
 
-			if (!s_choiceCount.TryGetValue(value, out number))
-			{
-				s_choiceCount.Add(value, ++number);
-			}
-			else
-			{
-				s_choiceCount[value] = ++number;
-			}
+			var match = Regex.Match(value, @"(?<number>\d*)\.(?<value>.*)");
+			if (!match.Success)
+				return false;
+
+			number = int.Parse(match.Groups["number"].Value);
+			value = match.Groups["value"].Value;
 			return true;
 		}
 

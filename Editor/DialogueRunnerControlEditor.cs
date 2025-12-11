@@ -2,7 +2,6 @@ using UnityEditor;
 using ToolkitEngine.Dialogue;
 using Yarn.Unity;
 using UnityEngine;
-using Yarn.Unity.Legacy;
 using Yarn.Unity.UnityLocalization;
 
 namespace ToolkitEditor.Dialogue

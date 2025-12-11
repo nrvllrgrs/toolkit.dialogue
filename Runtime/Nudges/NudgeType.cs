@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ToolkitEngine.Dialogue
 {
-	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Nudge Type")]
+	[CreateAssetMenu(menuName = "Toolkit/Dialogue/Nudge Type", order = 1400)]
 	public class NudgeType : ScriptableObject
     {
 		#region Fields

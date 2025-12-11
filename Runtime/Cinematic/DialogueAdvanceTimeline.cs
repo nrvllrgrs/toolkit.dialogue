@@ -15,7 +15,7 @@ namespace ToolkitEngine.Dialogue
 		[SerializeField]
 		private SignalAsset m_signal;
 
-		private TimelineView m_lineView;
+		private TimelinePresenter m_lineView;
 
 		#endregion
 
@@ -45,7 +45,7 @@ namespace ToolkitEngine.Dialogue
 			{
 				foreach (var dialogueView in m_dialogueRunner.DialoguePresenters)
 				{
-					if (dialogueView is TimelineView lineView)
+					if (dialogueView is TimelinePresenter lineView)
 					{
 						m_lineView = lineView;
 						break;
